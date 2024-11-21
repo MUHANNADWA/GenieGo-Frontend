@@ -1,0 +1,27 @@
+import 'dart:developer';
+
+import 'package:dart_ipify/dart_ipify.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:new_store/app.dart';
+
+void main() async {
+  // Initialize Widgets Binding
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: '.env');
+
+  final ipv4 = await Ipify.ipv4();
+  log(ipv4.toString());
+
+  final mygeo = await Ipify.geo(dotenv.env['IPTFY_GEO_KEY']!, ip: ipv4);
+  log(mygeo.location!.country.toString());
+
+  // Initialize Get Storage
+  await GetStorage.init();
+
+  // Run App
+  runApp(const App());
+}
