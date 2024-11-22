@@ -25,7 +25,7 @@ class LoginScreen extends StatelessWidget {
               const LoginForm(),
 
               // Divider
-              FormDivider(dividerText: AppTexts.orSignInWith().toUpperCase()),
+              FormDivider(dividerText: AppTexts.orSignInWith.toUpperCase()),
 
               const SizedBox(height: AppSizes.spaceBtwSections),
 

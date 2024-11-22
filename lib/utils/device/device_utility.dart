@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class AppDeviceUtils {
-  static void hideKeyboard(BuildContext context) {
-    FocusScope.of(context).requestFocus(FocusNode());
+  static void hideKeyboard() {
+    Get.focusScope?.unfocus();
   }
 
   static Future<void> setStatusBarColor(Color color) async {
@@ -17,58 +17,18 @@ class AppDeviceUtils {
     );
   }
 
-  static bool isLandscapeOrientation(BuildContext context) {
-    final viewInsets = View.of(context).viewInsets;
-    return viewInsets.bottom == 0;
+  static bool isLandscapeOrientation() {
+    return Get.context?.mediaQuery.orientation == Orientation.landscape;
   }
 
-  static bool isPortraitOrientation(BuildContext context) {
-    final viewInsets = View.of(context).viewInsets;
-    return viewInsets.bottom != 0;
+  static bool isPortraitOrientation() {
+    return Get.context?.mediaQuery.orientation == Orientation.portrait;
   }
 
   static void setFullScreen(bool enable) {
     SystemChrome.setEnabledSystemUIMode(
-        enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
-  }
-
-  static double getScreenHeight() {
-    return MediaQuery.of(Get.context!).size.height;
-  }
-
-  static double getScreenWidth(BuildContext context) {
-    return MediaQuery.of(context).size.width;
-  }
-
-  static double getPixelRatio() {
-    return MediaQuery.of(Get.context!).devicePixelRatio;
-  }
-
-  static double getStatusBarHeight() {
-    return MediaQuery.of(Get.context!).padding.top;
-  }
-
-  static double getBottomNavigationBarHeight() {
-    return kBottomNavigationBarHeight;
-  }
-
-  static double getAppBarHeight() {
-    return kToolbarHeight;
-  }
-
-  static double getKeyboardHeight() {
-    final viewInsets = MediaQuery.of(Get.context!).viewInsets;
-    return viewInsets.bottom;
-  }
-
-  static Future<bool> isKeyboardVisible() async {
-    final viewInsets = View.of(Get.context!).viewInsets;
-    return viewInsets.bottom > 0;
-  }
-
-  static Future<bool> isPhysicalDevice() async {
-    return defaultTargetPlatform == TargetPlatform.android ||
-        defaultTargetPlatform == TargetPlatform.iOS;
+      enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge,
+    );
   }
 
   static void vibrate(Duration duration) {
@@ -86,28 +46,22 @@ class AppDeviceUtils {
   }
 
   static void showStatusBar() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: SystemUiOverlay.values);
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual,
+      overlays: SystemUiOverlay.values,
+    );
   }
 
   static Future<bool> hasInternetConnection() async {
     try {
       final result = await InternetAddress.lookup('example.com');
       return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
-    } on SocketException catch (_) {
+    } on SocketException {
       return false;
     }
   }
 
-  static bool isIOS() {
-    return Platform.isIOS;
-  }
-
-  static bool isAndroid() {
-    return Platform.isAndroid;
-  }
-
-  static void launchUrl(String url) async {
+  static Future<void> launchUrl(String url) async {
     if (await canLaunchUrlString(url)) {
       await launchUrlString(url);
     } else {
@@ -115,5 +69,27 @@ class AppDeviceUtils {
     }
   }
 
-// Add more device utility methods as per your specific requirements.
+  static bool get isIOS => Platform.isIOS;
+  static bool get isAndroid => Platform.isAndroid;
+
+  static double get screenHeight => Get.height;
+  static double get screenWidth => Get.width;
+
+  static double get pixelRatio =>
+      Get.context?.mediaQuery.devicePixelRatio ?? 1.0;
+
+  static double get statusBarHeight => Get.context?.mediaQueryPadding.top ?? 0;
+
+  static double get bottomNavigationBarHeight => kBottomNavigationBarHeight;
+
+  static double get appBarHeight => kToolbarHeight;
+
+  static double get keyboardHeight =>
+      Get.context?.mediaQueryViewInsets.bottom ?? 0;
+
+  static bool get isKeyboardVisible => keyboardHeight > 0;
+
+  static bool get isPhysicalDevice =>
+      defaultTargetPlatform == TargetPlatform.android ||
+      defaultTargetPlatform == TargetPlatform.iOS;
 }

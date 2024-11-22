@@ -13,11 +13,11 @@ class OnBoardingNextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelperFunctions.isDarkMode(context);
+    final dark = AppHelperFunctions.isDarkMode;
     final isRtl = Directionality.of(context) == TextDirection.rtl;
 
     return Positioned(
-      bottom: AppDeviceUtils.getBottomNavigationBarHeight(),
+      bottom: AppDeviceUtils.bottomNavigationBarHeight,
       right: isRtl ? null : AppSizes.defaultSpace,
       left: isRtl ? AppSizes.defaultSpace : null,
       child: ElevatedButton(

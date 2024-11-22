@@ -3,64 +3,66 @@ import 'package:get/get.dart';
 /// This class contains all the App Text in String formats.
 class AppTexts {
   // GLOBAL Texts
-  static String and() => 'and'.tr;
-  static String skip() => 'skip'.tr;
-  static String done() => 'done'.tr;
-  static String submit() => 'submit'.tr;
-  static String appName() => 'appName'.tr;
-  static String tContinue() => 'tContinue'.tr;
-  static String changeLang() => 'changeLang'.tr;
-  static String searchCountry() => 'searchCountry'.tr;
+  static String get and => 'and'.tr;
+  static String get skip => 'skip'.tr;
+  static String get done => 'done'.tr;
+  static String get submit => 'submit'.tr;
+  static String get appName => 'appName'.tr;
+  static String get tContinue => 'tContinue'.tr;
+  static String get changeLang => 'changeLang'.tr;
+  static String get searchCountry => 'searchCountry'.tr;
 
   // OnBoarding Texts
-  static String onBoardingTitle1() => 'onBoardingTitle1'.tr;
+  static String get onBoardingTitle1 => 'onBoardingTitle1'.tr;
 
-  static String onBoardingTitle2() => 'onBoardingTitle2'.tr;
-  static String onBoardingTitle3() => 'onBoardingTitle3'.tr;
+  static String get onBoardingTitle2 => 'onBoardingTitle2'.tr;
+  static String get onBoardingTitle3 => 'onBoardingTitle3'.tr;
 
-  static String onBoardingSubTitle1() => 'onBoardingSubTitle1'.tr;
-  static String onBoardingSubTitle2() => 'onBoardingSubTitle2'.tr;
-  static String onBoardingSubTitle3() => 'onBoardingSubTitle3'.tr;
+  static String get onBoardingSubTitle1 => 'onBoardingSubTitle1'.tr;
+  static String get onBoardingSubTitle2 => 'onBoardingSubTitle2'.tr;
+  static String get onBoardingSubTitle3 => 'onBoardingSubTitle3'.tr;
 
   // Authentication Forms
-  static String firstName() => 'firstName'.tr;
-  static String lastName() => 'lastName'.tr;
-  static String email() => 'email'.tr;
-  static String password() => 'password'.tr;
-  static String newPassword() => 'newPassword'.tr;
-  static String username() => 'username'.tr;
-  static String phoneNo() => 'phoneNo'.tr;
-  static String rememberMe() => 'rememberMe'.tr;
-  static String forgotPassword() => 'forgotPassword'.tr;
-  static String signIn() => 'signIn'.tr;
-  static String createAccount() => 'createAccount'.tr;
-  static String orSignInWith() => 'orSignInWith'.tr;
-  static String orSignUpWith() => 'orSignUpWith'.tr;
-  static String iAgreeTo() => 'iAgreeTo'.tr;
-  static String privacyPolicy() => 'privacyPolicy'.tr;
-  static String termsOfUse() => 'termsOfUse'.tr;
-  static String verificationCode() => 'verificationCode'.tr;
-  static String resendEmail() => 'resendEmail'.tr;
-  static String resendEmailIn() => 'resendEmailIn'.tr;
+  static String get firstName => 'firstName'.tr;
+  static String get lastName => 'lastName'.tr;
+  static String get email => 'email'.tr;
+  static String get password => 'password'.tr;
+  static String get newPassword => 'newPassword'.tr;
+  static String get username => 'username'.tr;
+  static String get phoneNo => 'phoneNo'.tr;
+  static String get rememberMe => 'rememberMe'.tr;
+  static String get forgotPassword => 'forgotPassword'.tr;
+  static String get signIn => 'signIn'.tr;
+  static String get createAccount => 'createAccount'.tr;
+  static String get orSignInWith => 'orSignInWith'.tr;
+  static String get orSignUpWith => 'orSignUpWith'.tr;
+  static String get iAgreeTo => 'iAgreeTo'.tr;
+  static String get privacyPolicy => 'privacyPolicy'.tr;
+  static String get termsOfUse => 'termsOfUse'.tr;
+  static String get verificationCode => 'verificationCode'.tr;
+  static String get resendEmail => 'resendEmail'.tr;
+  static String get resendEmailIn => 'resendEmailIn'.tr;
 
   // Authentication Headings
-  static String loginTitle() => 'loginTitle'.tr;
-  static String loginSubTitle() => 'loginSubTitle'.tr;
-  static String signupTitle() => 'signupTitle'.tr;
-  static String forgotPasswordTitle() => 'forgotPasswordTitle'.tr;
-  static String forgotPasswordSubTitle() => 'forgotPasswordSubTitle'.tr;
-  static String changeYourPasswordTitle() => 'changeYourPasswordTitle'.tr;
-  static String changeYourPasswordSubTitle() => 'changeYourPasswordSubTitle'.tr;
-  static String confirmEmail() => 'confirmEmail'.tr;
-  static String confirmEmailSubTitle() => 'confirmEmailSubTitle'.tr;
-  static String emailNotReceivedMessage() => 'emailNotReceivedMessage'.tr;
-  static String yourAccountCreatedTitle() => 'yourAccountCreatedTitle'.tr;
-  static String yourAccountCreatedSubTitle() => 'yourAccountCreatedSubTitle'.tr;
+  static String get loginTitle => 'loginTitle'.tr;
+  static String get loginSubTitle => 'loginSubTitle'.tr;
+  static String get signupTitle => 'signupTitle'.tr;
+  static String get forgotPasswordTitle => 'forgotPasswordTitle'.tr;
+  static String get forgotPasswordSubTitle => 'forgotPasswordSubTitle'.tr;
+  static String get changeYourPasswordTitle => 'changeYourPasswordTitle'.tr;
+  static String get changeYourPasswordSubTitle =>
+      'changeYourPasswordSubTitle'.tr;
+  static String get confirmEmail => 'confirmEmail'.tr;
+  static String get confirmEmailSubTitle => 'confirmEmailSubTitle'.tr;
+  static String get emailNotReceivedMessage => 'emailNotReceivedMessage'.tr;
+  static String get yourAccountCreatedTitle => 'yourAccountCreatedTitle'.tr;
+  static String get yourAccountCreatedSubTitle =>
+      'yourAccountCreatedSubTitle'.tr;
 
   // Product
-  static String popularProducts() => 'popularProducts'.tr;
+  static String get popularProducts => 'popularProducts'.tr;
 
   // Home
-  static String homeAppbarTitle() => 'homeAppbarTitle'.tr;
-  static String homeAppbarSubTitle() => 'homeAppbarSubTitle'.tr;
+  static String get homeAppbarTitle => 'homeAppbarTitle'.tr;
+  static String get homeAppbarSubTitle => 'homeAppbarSubTitle'.tr;
 }

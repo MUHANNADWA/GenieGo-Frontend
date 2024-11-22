@@ -11,7 +11,7 @@ class NavigationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
-    final dark = AppHelperFunctions.isDarkMode(context);
+    final dark = AppHelperFunctions.isDarkMode;
 
     return Scaffold(
       bottomNavigationBar: Obx(

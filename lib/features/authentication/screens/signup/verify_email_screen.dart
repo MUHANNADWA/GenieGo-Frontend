@@ -32,14 +32,14 @@ class VerifyEmailScreen extends StatelessWidget {
               // Image
               Image.asset(
                 AppImages.deliveredEmailIllustration,
-                width: AppHelperFunctions.screenWidth() * 0.6,
+                width: AppHelperFunctions.screenWidth * 0.6,
               ),
 
               const SizedBox(height: AppSizes.spaceBtwSections),
 
               // Title
               Text(
-                AppTexts.confirmEmail(),
+                AppTexts.confirmEmail,
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
@@ -57,7 +57,7 @@ class VerifyEmailScreen extends StatelessWidget {
 
               // SubTitle
               Text(
-                AppTexts.confirmEmailSubTitle(),
+                AppTexts.confirmEmailSubTitle,
                 style: Theme.of(context).textTheme.labelMedium,
                 textAlign: TextAlign.center,
               ),
@@ -69,7 +69,7 @@ class VerifyEmailScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => Get.to(() => const SuccessScreen()),
-                  child: Text(AppTexts.tContinue()),
+                  child: Text(AppTexts.tContinue),
                 ),
               ),
 
@@ -80,7 +80,7 @@ class VerifyEmailScreen extends StatelessWidget {
                 width: double.infinity,
                 child: TextButton(
                   onPressed: () => Get.to(() => const SignupScreen()),
-                  child: Text(AppTexts.resendEmail()),
+                  child: Text(AppTexts.resendEmail),
                 ),
               ),
 

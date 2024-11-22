@@ -11,7 +11,7 @@ class LoginHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelperFunctions.isDarkMode(context);
+    final dark = AppHelperFunctions.isDarkMode;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +24,7 @@ class LoginHeader extends StatelessWidget {
 
         //Title
         Text(
-          AppTexts.loginTitle(),
+          AppTexts.loginTitle,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
 
@@ -32,7 +32,7 @@ class LoginHeader extends StatelessWidget {
 
         // SubTitle
         Text(
-          AppTexts.loginSubTitle(),
+          AppTexts.loginSubTitle,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],

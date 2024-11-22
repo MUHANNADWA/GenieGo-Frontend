@@ -14,11 +14,11 @@ class OnBoardingDotNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = OnBoardingController.instance;
-    final dark = AppHelperFunctions.isDarkMode(context);
+    final dark = AppHelperFunctions.isDarkMode;
     final isRtl = Directionality.of(context) == TextDirection.rtl;
 
     return Positioned(
-      bottom: AppDeviceUtils.getBottomNavigationBarHeight() + 25,
+      bottom: AppDeviceUtils.bottomNavigationBarHeight + 25,
       right: isRtl ? AppSizes.defaultSpace : null,
       left: isRtl ? null : AppSizes.defaultSpace,
       child: SmoothPageIndicator(

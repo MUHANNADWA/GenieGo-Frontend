@@ -14,12 +14,12 @@ class OnBoardingSkip extends StatelessWidget {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
 
     return Positioned(
-      top: AppDeviceUtils.getAppBarHeight(),
+      top: AppDeviceUtils.appBarHeight,
       right: isRtl ? null : AppSizes.defaultSpace,
       left: isRtl ? AppSizes.defaultSpace : null,
       child: TextButton(
           onPressed: OnBoardingController.instance.skipPage,
-          child: Text(AppTexts.skip())),
+          child: Text(AppTexts.skip)),
     );
   }
 }

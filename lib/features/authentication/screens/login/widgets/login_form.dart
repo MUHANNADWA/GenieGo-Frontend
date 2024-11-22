@@ -38,7 +38,7 @@ class LoginForm extends StatelessWidget {
             // Password
             TextFormField(
               decoration: InputDecoration(
-                labelText: AppTexts.password(),
+                labelText: AppTexts.password,
                 prefixIcon: const Icon(Iconsax.password_check),
                 suffixIcon: IconButton(
                   icon: const Icon(Iconsax.eye_slash),
@@ -58,14 +58,14 @@ class LoginForm extends StatelessWidget {
                 Row(
                   children: [
                     Checkbox(value: true, onChanged: (value) {}),
-                    Text(AppTexts.rememberMe())
+                    Text(AppTexts.rememberMe)
                   ],
                 ),
 
                 // Forgot Password
                 TextButton(
                   onPressed: () => Get.to(() => const ForgotPasswordScreen()),
-                  child: Text(AppTexts.forgotPassword()),
+                  child: Text(AppTexts.forgotPassword),
                 )
               ],
             ),
@@ -77,7 +77,7 @@ class LoginForm extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () => Get.to(() => const NavigationMenu()),
-                child: Text(AppTexts.signIn()),
+                child: Text(AppTexts.signIn),
               ),
             ),
 
@@ -88,7 +88,7 @@ class LoginForm extends StatelessWidget {
               width: double.infinity,
               child: OutlinedButton(
                 onPressed: () => Get.to(() => const SignupScreen()),
-                child: Text(AppTexts.createAccount()),
+                child: Text(AppTexts.createAccount),
               ),
             ),
 

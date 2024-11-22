@@ -31,14 +31,14 @@ class ResetPasswordScreen extends StatelessWidget {
               // Image
               Image.asset(
                 AppImages.deliveredEmailIllustration,
-                width: AppHelperFunctions.screenWidth() * 0.6,
+                width: AppHelperFunctions.screenWidth * 0.6,
               ),
 
               const SizedBox(height: AppSizes.spaceBtwSections),
 
               // Title
               Text(
-                AppTexts.changeYourPasswordTitle(),
+                AppTexts.changeYourPasswordTitle,
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
@@ -47,7 +47,7 @@ class ResetPasswordScreen extends StatelessWidget {
 
               // SubTitle
               Text(
-                AppTexts.changeYourPasswordSubTitle(),
+                AppTexts.changeYourPasswordSubTitle,
                 style: Theme.of(context).textTheme.labelMedium,
                 textAlign: TextAlign.center,
               ),
@@ -59,7 +59,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => Get.to(() => const LoginScreen()),
-                  child: Text(AppTexts.done()),
+                  child: Text(AppTexts.done),
                 ),
               ),
 
@@ -70,7 +70,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 width: double.infinity,
                 child: TextButton(
                   onPressed: () => Get.to(() => const LoginScreen()),
-                  child: Text(AppTexts.resendEmail()),
+                  child: Text(AppTexts.resendEmail),
                 ),
               ),
 

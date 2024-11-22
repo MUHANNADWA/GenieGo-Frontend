@@ -11,11 +11,11 @@ class InternationalPhoneNumberInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return InternationalPhoneNumberInput(
       inputDecoration: InputDecoration(
-        labelText: AppTexts.phoneNo(),
+        labelText: AppTexts.phoneNo,
         prefixIcon: const Icon(Iconsax.call),
       ),
       searchBoxDecoration: InputDecoration(
-        labelText: AppTexts.searchCountry(),
+        labelText: AppTexts.searchCountry,
         prefixIcon: const Icon(Iconsax.global_search),
       ),
       locale: Get.locale.toString(),

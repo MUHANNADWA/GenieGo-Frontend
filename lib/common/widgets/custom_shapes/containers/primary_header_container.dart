@@ -18,6 +18,7 @@ class PrimaryHeaderContainer extends StatelessWidget {
           height: 400,
           child: Stack(
             children: [
+              // Rounded Containers
               const Positioned(
                 top: -150,
                 right: -250,
@@ -28,6 +29,8 @@ class PrimaryHeaderContainer extends StatelessWidget {
                 right: -300,
                 child: RoundedContainer(),
               ),
+
+              // Child
               child,
             ],
           ),

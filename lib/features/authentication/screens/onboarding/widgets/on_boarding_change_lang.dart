@@ -15,14 +15,14 @@ class OnBoardingChangeLang extends StatelessWidget {
     final AppLocaleController langController = Get.put(AppLocaleController());
 
     return Positioned(
-      top: AppDeviceUtils.getAppBarHeight(),
+      top: AppDeviceUtils.appBarHeight,
       right: isRtl ? AppSizes.defaultSpace : null,
       left: isRtl ? null : AppSizes.defaultSpace,
       child: TextButton(
           onPressed: () => langController.toggleLang(),
           child: Row(
             children: [
-              Text('${AppTexts.changeLang()}  '),
+              Text('${AppTexts.changeLang}  '),
               CountryFlag.fromLanguageCode(
                 Get.locale!.toString() == 'ar' ? 'en' : 'ar-sy',
                 width: 18,

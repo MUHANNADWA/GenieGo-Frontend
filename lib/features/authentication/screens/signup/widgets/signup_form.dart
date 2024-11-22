@@ -24,7 +24,7 @@ class SignupForm extends StatelessWidget {
                 child: TextFormField(
                   expands: false,
                   decoration: InputDecoration(
-                    labelText: AppTexts.firstName(),
+                    labelText: AppTexts.firstName,
                     prefixIcon: const Icon(Iconsax.user),
                   ),
                 ),
@@ -37,7 +37,7 @@ class SignupForm extends StatelessWidget {
                 child: TextFormField(
                   expands: false,
                   decoration: InputDecoration(
-                    labelText: AppTexts.lastName(),
+                    labelText: AppTexts.lastName,
                     prefixIcon: const Icon(Iconsax.user),
                   ),
                 ),
@@ -51,7 +51,7 @@ class SignupForm extends StatelessWidget {
           TextFormField(
             expands: false,
             decoration: InputDecoration(
-              labelText: AppTexts.username(),
+              labelText: AppTexts.username,
               prefixIcon: const Icon(Iconsax.user_edit),
             ),
           ),
@@ -62,7 +62,7 @@ class SignupForm extends StatelessWidget {
           TextFormField(
             expands: false,
             decoration: InputDecoration(
-              labelText: AppTexts.email(),
+              labelText: AppTexts.email,
               prefixIcon: const Icon(Iconsax.direct),
             ),
           ),
@@ -78,7 +78,7 @@ class SignupForm extends StatelessWidget {
           TextFormField(
             expands: false,
             decoration: InputDecoration(
-              labelText: AppTexts.password(),
+              labelText: AppTexts.password,
               prefixIcon: const Icon(Iconsax.password_check),
               suffixIcon: IconButton(
                 icon: const Icon(Iconsax.eye_slash),
@@ -99,7 +99,7 @@ class SignupForm extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () => Get.to(() => const VerifyEmailScreen()),
-              child: Text(AppTexts.createAccount()),
+              child: Text(AppTexts.createAccount),
             ),
           ),
         ],

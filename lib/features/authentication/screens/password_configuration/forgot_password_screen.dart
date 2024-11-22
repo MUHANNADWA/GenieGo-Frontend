@@ -20,7 +20,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             children: [
               // Title
               Text(
-                AppTexts.forgotPasswordTitle(),
+                AppTexts.forgotPasswordTitle,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
 
@@ -28,7 +28,7 @@ class ForgotPasswordScreen extends StatelessWidget {
 
               // SubTitle
               Text(
-                AppTexts.forgotPasswordSubTitle(),
+                AppTexts.forgotPasswordSubTitle,
                 style: Theme.of(context).textTheme.labelMedium,
               ),
 
@@ -38,7 +38,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               TextFormField(
                 expands: false,
                 decoration: InputDecoration(
-                  labelText: AppTexts.email(),
+                  labelText: AppTexts.email,
                   prefixIcon: const Icon(Iconsax.direct),
                 ),
               ),
@@ -50,7 +50,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => Get.off(() => const ResetPasswordScreen()),
-                  child: Text(AppTexts.submit()),
+                  child: Text(AppTexts.submit),
                 ),
               ),
             ],

@@ -21,9 +21,8 @@ class AppFullScreenLoader {
       builder: (_) => PopScope(
         canPop: false, // Disable popping with the back button
         child: Container(
-          color: AppHelperFunctions.isDarkMode(Get.context!)
-              ? AppColors.dark
-              : AppColors.white,
+          color:
+              AppHelperFunctions.isDarkMode ? AppColors.dark : AppColors.white,
           width: double.infinity,
           height: double.infinity,
           child: Column(

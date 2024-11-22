@@ -20,7 +20,7 @@ class SignupScreen extends StatelessWidget {
             children: [
               // Title
               Text(
-                AppTexts.signupTitle(),
+                AppTexts.signupTitle,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
 
@@ -32,7 +32,7 @@ class SignupScreen extends StatelessWidget {
               const SizedBox(height: AppSizes.spaceBtwSections),
 
               // Divider
-              FormDivider(dividerText: AppTexts.orSignUpWith().toUpperCase()),
+              FormDivider(dividerText: AppTexts.orSignUpWith.toUpperCase()),
 
               const SizedBox(height: AppSizes.spaceBtwSections),
 

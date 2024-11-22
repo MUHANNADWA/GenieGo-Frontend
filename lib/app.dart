@@ -13,7 +13,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     AppLocaleController langController = Get.put(AppLocaleController());
     return GetMaterialApp(
-      title: AppTexts.appName(),
+      title: AppTexts.appName,
       themeMode: ThemeMode.system,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,

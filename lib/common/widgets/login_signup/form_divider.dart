@@ -12,7 +12,7 @@ class FormDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelperFunctions.isDarkMode(context);
+    final dark = AppHelperFunctions.isDarkMode;
 
     return Row(
       children: [

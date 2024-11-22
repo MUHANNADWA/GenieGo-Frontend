@@ -21,14 +21,14 @@ class SuccessScreen extends StatelessWidget {
               // Image
               Image.asset(
                 AppImages.staticSuccessIllustration,
-                width: AppHelperFunctions.screenWidth() * 0.6,
+                width: AppHelperFunctions.screenWidth * 0.6,
               ),
 
               const SizedBox(height: AppSizes.spaceBtwSections),
 
               // Title
               Text(
-                AppTexts.yourAccountCreatedTitle(),
+                AppTexts.yourAccountCreatedTitle,
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
@@ -37,7 +37,7 @@ class SuccessScreen extends StatelessWidget {
 
               // SubTitle
               Text(
-                AppTexts.yourAccountCreatedSubTitle(),
+                AppTexts.yourAccountCreatedSubTitle,
                 style: Theme.of(context).textTheme.labelMedium,
                 textAlign: TextAlign.center,
               ),
@@ -49,7 +49,7 @@ class SuccessScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => Get.offAll(() => const LoginScreen()),
-                  child: Text(AppTexts.tContinue()),
+                  child: Text(AppTexts.tContinue),
                 ),
               ),
 
