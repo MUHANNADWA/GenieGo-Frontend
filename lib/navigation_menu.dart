@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:new_store/features/authentication/screens/home/home_screen.dart';
-import 'package:new_store/utils/constants/colors.dart';
-import 'package:new_store/utils/helpers/helper_functions.dart';
+import 'package:geniego/features/authentication/screens/home/home_screen.dart';
+import 'package:geniego/utils/constants/colors.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -11,7 +11,7 @@ class NavigationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
-    final dark = AppHelperFunctions.isDarkMode;
+    final dark = AppHelper.isDarkMode;
 
     return Scaffold(
       bottomNavigationBar: Obx(

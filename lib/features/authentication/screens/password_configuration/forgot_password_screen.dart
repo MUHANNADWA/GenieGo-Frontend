@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:new_store/features/authentication/screens/password_configuration/reset_password_screen.dart';
-import 'package:new_store/utils/constants/sizes.dart';
-import 'package:new_store/utils/constants/text_strings.dart';
+import 'package:geniego/features/authentication/screens/password_configuration/reset_password_screen.dart';
+import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});

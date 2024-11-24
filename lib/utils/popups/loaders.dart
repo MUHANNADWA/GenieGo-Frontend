@@ -20,7 +20,7 @@ class AppLoaders {
           margin: const EdgeInsets.symmetric(horizontal: 30),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            color: AppHelperFunctions.isDarkMode
+            color: AppHelper.isDarkMode
                 ? AppColors.darkerGrey.withOpacity(0.9)
                 : AppColors.grey.withOpacity(0.9),
           ),

@@ -14,7 +14,6 @@ class AppTexts {
 
   // OnBoarding Texts
   static String get onBoardingTitle1 => 'onBoardingTitle1'.tr;
-
   static String get onBoardingTitle2 => 'onBoardingTitle2'.tr;
   static String get onBoardingTitle3 => 'onBoardingTitle3'.tr;
 

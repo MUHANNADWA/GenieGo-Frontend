@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:new_store/utils/constants/colors.dart';
-import 'package:new_store/utils/constants/sizes.dart';
-import 'package:new_store/utils/constants/text_strings.dart';
-import 'package:new_store/utils/helpers/helper_functions.dart';
+import 'package:geniego/utils/constants/colors.dart';
+import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class SignupTermsAndConditionsCheckBox extends StatelessWidget {
   const SignupTermsAndConditionsCheckBox({
@@ -11,7 +11,7 @@ class SignupTermsAndConditionsCheckBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelperFunctions.isDarkMode;
+    final dark = AppHelper.isDarkMode;
 
     return Row(
       children: [

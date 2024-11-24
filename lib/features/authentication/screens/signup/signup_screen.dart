@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:new_store/common/widgets/login_signup/form_divider.dart';
-import 'package:new_store/common/widgets/login_signup/social_buttons.dart';
-import 'package:new_store/features/authentication/screens/signup/widgets/signup_form.dart';
-import 'package:new_store/utils/constants/sizes.dart';
-import 'package:new_store/utils/constants/text_strings.dart';
+import 'package:geniego/features/authentication/screens/signup/widgets/signup_form.dart';
+import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -28,16 +26,6 @@ class SignupScreen extends StatelessWidget {
 
               // Signup Form
               const SignupForm(),
-
-              const SizedBox(height: AppSizes.spaceBtwSections),
-
-              // Divider
-              FormDivider(dividerText: AppTexts.orSignUpWith.toUpperCase()),
-
-              const SizedBox(height: AppSizes.spaceBtwSections),
-
-              // Footer
-              const SocialButtons(),
             ],
           ),
         ),

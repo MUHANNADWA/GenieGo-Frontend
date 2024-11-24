@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:new_store/common/widgets/login_signup/international_phone_number_input_field.dart';
-import 'package:new_store/features/authentication/screens/signup/verify_email_screen.dart';
-import 'package:new_store/features/authentication/screens/signup/widgets/signup_terms_and_conditions_check_box.dart';
-import 'package:new_store/utils/constants/sizes.dart';
-import 'package:new_store/utils/constants/text_strings.dart';
+import 'package:geniego/common/widgets/login_signup/international_phone_number_input_field.dart';
+import 'package:geniego/features/authentication/screens/signup/verify_email_screen.dart';
+import 'package:geniego/features/authentication/screens/signup/widgets/signup_terms_and_conditions_check_box.dart';
+import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 
 class SignupForm extends StatelessWidget {
   const SignupForm({

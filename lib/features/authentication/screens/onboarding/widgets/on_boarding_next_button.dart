@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:new_store/features/authentication/controllers/onboarding/onboarding_controller.dart';
-import 'package:new_store/utils/constants/colors.dart';
-import 'package:new_store/utils/constants/sizes.dart';
-import 'package:new_store/utils/device/device_utility.dart';
-import 'package:new_store/utils/helpers/helper_functions.dart';
+import 'package:geniego/features/authentication/controllers/onboarding/onboarding_controller.dart';
+import 'package:geniego/utils/constants/colors.dart';
+import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/device/device_utility.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class OnBoardingNextButton extends StatelessWidget {
   const OnBoardingNextButton({
@@ -13,8 +13,8 @@ class OnBoardingNextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelperFunctions.isDarkMode;
-    final isRtl = Directionality.of(context) == TextDirection.rtl;
+    final dark = AppHelper.isDarkMode;
+    final isRtl = AppHelper.isRtl;
 
     return Positioned(
       bottom: AppDeviceUtils.bottomNavigationBarHeight,

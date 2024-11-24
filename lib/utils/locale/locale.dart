@@ -28,7 +28,7 @@ class AppLocale implements Translations {
           // Authentication Forms
           'firstName': 'First Name',
           'lastName': 'Last Name',
-          'email': 'E-Mail',
+          'email': 'Email',
           'password': 'Password',
           'newPassword': 'New Password',
           'username': 'Username',
@@ -71,7 +71,7 @@ class AppLocale implements Translations {
 
           // Home
           'homeAppbarTitle': 'Good day for shopping',
-          'homeAppbarSubTitle': 'MegaFast'
+          'homeAppbarSubTitle': 'User Name'
         },
         'ar': {
           // GLOBAL Texts
@@ -140,7 +140,7 @@ class AppLocale implements Translations {
 
           // Home
           'homeAppbarTitle': 'يوم رائع للتسوق',
-          'homeAppbarSubTitle': 'ميغافاست'
+          'homeAppbarSubTitle': 'اسم المستخدم'
         },
       };
 }

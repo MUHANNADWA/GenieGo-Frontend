@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:new_store/common/styles/spacing_styles.dart';
-import 'package:new_store/features/authentication/screens/login/login_screen.dart';
-import 'package:new_store/utils/constants/image_strings.dart';
-import 'package:new_store/utils/constants/sizes.dart';
-import 'package:new_store/utils/constants/text_strings.dart';
-import 'package:new_store/utils/helpers/helper_functions.dart';
+import 'package:geniego/common/styles/spacing_styles.dart';
+import 'package:geniego/features/authentication/screens/login/login_screen.dart';
+import 'package:geniego/utils/constants/image_strings.dart';
+import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({super.key});
@@ -21,7 +21,7 @@ class SuccessScreen extends StatelessWidget {
               // Image
               Image.asset(
                 AppImages.staticSuccessIllustration,
-                width: AppHelperFunctions.screenWidth * 0.6,
+                width: AppHelper.screenWidth * 0.6,
               ),
 
               const SizedBox(height: AppSizes.spaceBtwSections),

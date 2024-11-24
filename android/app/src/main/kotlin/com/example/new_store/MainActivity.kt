@@ -1,4 +1,4 @@
-package com.example.new_store
+package com.example.geniego
 
 import android.os.Bundle
 import androidx.core.view.WindowCompat

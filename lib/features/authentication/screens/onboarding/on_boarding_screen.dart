@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:new_store/features/authentication/controllers/onboarding/onboarding_controller.dart';
-import 'package:new_store/features/authentication/screens/onboarding/widgets/on_boarding_change_lang.dart';
-import 'package:new_store/features/authentication/screens/onboarding/widgets/on_boarding_dot_navigation.dart';
-import 'package:new_store/features/authentication/screens/onboarding/widgets/on_boarding_next_button.dart';
-import 'package:new_store/features/authentication/screens/onboarding/widgets/on_boarding_skip.dart';
-import 'package:new_store/features/authentication/screens/onboarding/widgets/on_boarding_page.dart';
-import 'package:new_store/utils/constants/image_strings.dart';
-import 'package:new_store/utils/constants/text_strings.dart';
+import 'package:geniego/features/authentication/controllers/onboarding/onboarding_controller.dart';
+import 'package:geniego/features/authentication/screens/onboarding/widgets/on_boarding_change_lang.dart';
+import 'package:geniego/features/authentication/screens/onboarding/widgets/on_boarding_dot_navigation.dart';
+import 'package:geniego/features/authentication/screens/onboarding/widgets/on_boarding_next_button.dart';
+import 'package:geniego/features/authentication/screens/onboarding/widgets/on_boarding_skip.dart';
+import 'package:geniego/features/authentication/screens/onboarding/widgets/on_boarding_page.dart';
+import 'package:geniego/utils/constants/image_strings.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});

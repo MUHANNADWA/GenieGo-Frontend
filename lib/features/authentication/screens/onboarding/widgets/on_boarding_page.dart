@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:new_store/utils/constants/sizes.dart';
-import 'package:new_store/utils/helpers/helper_functions.dart';
+import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({
@@ -19,8 +19,8 @@ class OnBoardingPage extends StatelessWidget {
       child: Column(
         children: [
           Image(
-            width: AppHelperFunctions.screenWidth * 0.8,
-            height: AppHelperFunctions.screenHeight * 0.6,
+            width: AppHelper.screenWidth * 0.8,
+            height: AppHelper.screenHeight * 0.6,
             image: AssetImage(image),
           ),
           Text(

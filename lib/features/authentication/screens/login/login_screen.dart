@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:new_store/common/styles/spacing_styles.dart';
-import 'package:new_store/features/authentication/screens/login/widgets/login_Header.dart';
-import 'package:new_store/common/widgets/login_signup/form_divider.dart';
-import 'package:new_store/features/authentication/screens/login/widgets/login_form.dart';
-import 'package:new_store/common/widgets/login_signup/social_buttons.dart';
-import 'package:new_store/utils/constants/sizes.dart';
-import 'package:new_store/utils/constants/text_strings.dart';
+import 'package:geniego/common/styles/spacing_styles.dart';
+import 'package:geniego/features/authentication/screens/login/widgets/login_Header.dart';
+import 'package:geniego/common/widgets/login_signup/form_divider.dart';
+import 'package:geniego/features/authentication/screens/login/widgets/login_form.dart';
+import 'package:geniego/common/widgets/login_signup/other_ways_to_login_buttons.dart';
+import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: AppSizes.spaceBtwSections),
 
               // Footer
-              const SocialButtons(),
+              const OtherWaysToLoginButtons(),
             ],
           ),
         ),

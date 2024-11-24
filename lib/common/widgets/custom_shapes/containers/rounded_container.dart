@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_store/utils/constants/colors.dart';
+import 'package:geniego/utils/constants/colors.dart';
 
 class RoundedContainer extends StatelessWidget {
   const RoundedContainer({

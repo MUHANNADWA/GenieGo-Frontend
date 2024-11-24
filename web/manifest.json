@@ -1,6 +1,6 @@
 {
-    "name": "new_store",
-    "short_name": "new_store",
+    "name": "geniego",
+    "short_name": "geniego",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

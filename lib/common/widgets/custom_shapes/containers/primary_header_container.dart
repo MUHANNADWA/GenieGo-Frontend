@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:new_store/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:new_store/common/widgets/custom_shapes/curved_edges/curved_edge.dart';
-import 'package:new_store/utils/constants/colors.dart';
+import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:geniego/common/widgets/custom_shapes/curved_edges/curved_edge.dart';
+import 'package:geniego/utils/constants/colors.dart';
 
 class PrimaryHeaderContainer extends StatelessWidget {
   const PrimaryHeaderContainer({super.key, required this.child});

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:new_store/features/authentication/controllers/onboarding/onboarding_controller.dart';
-import 'package:new_store/utils/constants/sizes.dart';
-import 'package:new_store/utils/constants/text_strings.dart';
-import 'package:new_store/utils/device/device_utility.dart';
+import 'package:geniego/features/authentication/controllers/onboarding/onboarding_controller.dart';
+import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
+import 'package:geniego/utils/device/device_utility.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class OnBoardingSkip extends StatelessWidget {
   const OnBoardingSkip({
@@ -11,7 +12,7 @@ class OnBoardingSkip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isRtl = Directionality.of(context) == TextDirection.rtl;
+    final isRtl = AppHelper.isRtl;
 
     return Positioned(
       top: AppDeviceUtils.appBarHeight,
