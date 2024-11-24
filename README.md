@@ -1,4 +1,4 @@
-# Welcome to GenieGo
+# Welcome to GenieGo 🧞
 
 
 GenieGo is a delivery app designed to make ordering and receiving goods easier and more efficient. With GenieGo, users can browse and order products from various stores and restaurants, and track the delivery status in real-time.
@@ -6,7 +6,7 @@ GenieGo is a delivery app designed to make ordering and receiving goods easier a
 ## Table of Contents
 
 
-- [Welcome to GenieGo](#welcome-to-geniego)
+- [Welcome to GenieGo 🧞](#welcome-to-geniego-)
   - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
