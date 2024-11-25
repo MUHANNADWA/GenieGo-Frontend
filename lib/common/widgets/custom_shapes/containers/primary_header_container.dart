@@ -14,26 +14,23 @@ class PrimaryHeaderContainer extends StatelessWidget {
       child: Container(
         color: AppColors.primary,
         padding: const EdgeInsets.all(0),
-        child: SizedBox(
-          height: 400,
-          child: Stack(
-            children: [
-              // Rounded Containers
-              const Positioned(
-                top: -150,
-                right: -250,
-                child: RoundedContainer(),
-              ),
-              const Positioned(
-                top: 100,
-                right: -300,
-                child: RoundedContainer(),
-              ),
+        child: Stack(
+          children: [
+            // Rounded Containers
+            const Positioned(
+              top: -150,
+              right: -250,
+              child: RoundedContainer(),
+            ),
+            const Positioned(
+              top: 100,
+              right: -300,
+              child: RoundedContainer(),
+            ),
 
-              // Child
-              child,
-            ],
-          ),
+            // Child
+            child,
+          ],
         ),
       ),
     );

@@ -7,7 +7,7 @@ void main() async {
   // Initialize Widgets Binding
   WidgetsFlutterBinding.ensureInitialized();
 
-  await dotenv.load();
+  // await dotenv.load();
 
   // final ipv4 = await Ipify.ipv4();
   // log(ipv4.toString());
