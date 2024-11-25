@@ -11,14 +11,12 @@ class LoginHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelper.isDarkMode;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Logo
         Image.asset(
-          dark ? AppImages.lightAppLogo : AppImages.darkAppLogo,
+          AppHelper.isDarkMode ? AppImages.lightAppLogo : AppImages.darkAppLogo,
           height: 150,
         ),
 

@@ -9,8 +9,6 @@ class AppTexts {
   static String get submit => 'submit'.tr;
   static String get appName => 'appName'.tr;
   static String get tContinue => 'tContinue'.tr;
-  static String get changeLang => 'changeLang'.tr;
-  static String get searchCountry => 'searchCountry'.tr;
 
   // OnBoarding Texts
   static String get onBoardingTitle1 => 'onBoardingTitle1'.tr;
@@ -21,6 +19,8 @@ class AppTexts {
   static String get onBoardingSubTitle2 => 'onBoardingSubTitle2'.tr;
   static String get onBoardingSubTitle3 => 'onBoardingSubTitle3'.tr;
 
+  static String get changeLang => 'changeLang'.tr;
+
   // Authentication Forms
   static String get firstName => 'firstName'.tr;
   static String get lastName => 'lastName'.tr;
@@ -29,6 +29,7 @@ class AppTexts {
   static String get newPassword => 'newPassword'.tr;
   static String get username => 'username'.tr;
   static String get phoneNo => 'phoneNo'.tr;
+  static String get searchCountry => 'searchCountry'.tr;
   static String get rememberMe => 'rememberMe'.tr;
   static String get forgotPassword => 'forgotPassword'.tr;
   static String get signIn => 'signIn'.tr;
@@ -64,4 +65,5 @@ class AppTexts {
   // Home
   static String get homeAppbarTitle => 'homeAppbarTitle'.tr;
   static String get homeAppbarSubTitle => 'homeAppbarSubTitle'.tr;
+  static String get searchStore => 'searchStore'.tr;
 }

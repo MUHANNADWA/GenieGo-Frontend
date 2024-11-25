@@ -13,20 +13,19 @@ class OnBoardingNextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelper.isDarkMode;
-    final isRtl = AppHelper.isRtl;
-
     return Positioned(
       bottom: AppDeviceUtils.bottomNavigationBarHeight,
-      right: isRtl ? null : AppSizes.defaultSpace,
-      left: isRtl ? AppSizes.defaultSpace : null,
+      right: AppHelper.isRtl ? null : AppSizes.defaultSpace,
+      left: AppHelper.isRtl ? AppSizes.defaultSpace : null,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
-          backgroundColor: dark ? AppColors.primary : AppColors.black,
+          backgroundColor:
+              AppHelper.isDarkMode ? AppColors.primary : AppColors.black,
         ),
         onPressed: OnBoardingController.instance.nextPage,
-        child: Icon(isRtl ? Iconsax.arrow_left_2 : Iconsax.arrow_right_3),
+        child: Icon(
+            AppHelper.isRtl ? Iconsax.arrow_left_2 : Iconsax.arrow_right_3),
       ),
     );
   }

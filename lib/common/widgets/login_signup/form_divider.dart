@@ -12,14 +12,12 @@ class FormDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelper.isDarkMode;
-
     return Row(
       children: [
         // Left Line
         Flexible(
             child: Divider(
-          color: dark ? AppColors.darkGrey : AppColors.grey,
+          color: AppHelper.isDarkMode ? AppColors.darkGrey : AppColors.grey,
           thickness: 0.5,
           indent: 60,
           endIndent: 5,
@@ -34,7 +32,7 @@ class FormDivider extends StatelessWidget {
         // Right Line
         Flexible(
           child: Divider(
-            color: dark ? AppColors.darkGrey : AppColors.grey,
+            color: AppHelper.isDarkMode ? AppColors.darkGrey : AppColors.grey,
             thickness: 0.5,
             indent: 5,
             endIndent: 60,

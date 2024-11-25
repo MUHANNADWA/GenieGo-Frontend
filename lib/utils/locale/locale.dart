@@ -71,7 +71,8 @@ class AppLocale implements Translations {
 
           // Home
           'homeAppbarTitle': 'Good day for shopping',
-          'homeAppbarSubTitle': 'User Name'
+          'homeAppbarSubTitle': 'User Name',
+          'searchStore': 'Search what you want ..'
         },
         'ar': {
           // GLOBAL Texts
@@ -140,7 +141,8 @@ class AppLocale implements Translations {
 
           // Home
           'homeAppbarTitle': 'يوم رائع للتسوق',
-          'homeAppbarSubTitle': 'اسم المستخدم'
+          'homeAppbarSubTitle': 'اسم المستخدم',
+          'searchStore': '.. ابحث عن ما تريد'
         },
       };
 }

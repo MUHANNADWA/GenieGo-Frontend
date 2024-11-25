@@ -12,13 +12,12 @@ class OnBoardingChangeLang extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isRtl = AppHelper.isRtl;
     final AppLocaleController langController = Get.put(AppLocaleController());
 
     return Positioned(
       top: AppDeviceUtils.appBarHeight,
-      right: isRtl ? AppSizes.defaultSpace : null,
-      left: isRtl ? null : AppSizes.defaultSpace,
+      right: AppHelper.isRtl ? AppSizes.defaultSpace : null,
+      left: AppHelper.isRtl ? null : AppSizes.defaultSpace,
       child: TextButton(
           onPressed: () => langController.toggleLang(),
           child: Row(

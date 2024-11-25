@@ -14,17 +14,16 @@ class OnBoardingDotNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = OnBoardingController.instance;
-    final dark = AppHelper.isDarkMode;
-    final isRtl = AppHelper.isRtl;
 
     return Positioned(
       bottom: AppDeviceUtils.bottomNavigationBarHeight + 25,
-      right: isRtl ? AppSizes.defaultSpace : null,
-      left: isRtl ? null : AppSizes.defaultSpace,
+      right: AppHelper.isRtl ? AppSizes.defaultSpace : null,
+      left: AppHelper.isRtl ? null : AppSizes.defaultSpace,
       child: SmoothPageIndicator(
         count: 3,
         effect: ExpandingDotsEffect(
-          activeDotColor: dark ? AppColors.light : AppColors.dark,
+          activeDotColor:
+              AppHelper.isDarkMode ? AppColors.light : AppColors.dark,
           dotHeight: 6,
         ),
         controller: controller.pageController,

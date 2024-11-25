@@ -11,8 +11,6 @@ class SignupTermsAndConditionsCheckBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelper.isDarkMode;
-
     return Row(
       children: [
         // Checkbox
@@ -41,10 +39,13 @@ class SignupTermsAndConditionsCheckBox extends StatelessWidget {
               TextSpan(
                 text: AppTexts.privacyPolicy,
                 style: Theme.of(context).textTheme.bodyMedium!.apply(
-                      color: dark ? AppColors.white : AppColors.primary,
+                      color: AppHelper.isDarkMode
+                          ? AppColors.white
+                          : AppColors.primary,
                       decoration: TextDecoration.underline,
-                      decorationColor:
-                          dark ? AppColors.white : AppColors.primary,
+                      decorationColor: AppHelper.isDarkMode
+                          ? AppColors.white
+                          : AppColors.primary,
                     ),
               ),
 
@@ -58,10 +59,13 @@ class SignupTermsAndConditionsCheckBox extends StatelessWidget {
               TextSpan(
                 text: AppTexts.termsOfUse,
                 style: Theme.of(context).textTheme.bodyMedium!.apply(
-                      color: dark ? AppColors.white : AppColors.primary,
+                      color: AppHelper.isDarkMode
+                          ? AppColors.white
+                          : AppColors.primary,
                       decoration: TextDecoration.underline,
-                      decorationColor:
-                          dark ? AppColors.white : AppColors.primary,
+                      decorationColor: AppHelper.isDarkMode
+                          ? AppColors.white
+                          : AppColors.primary,
                     ),
               ),
             ],
