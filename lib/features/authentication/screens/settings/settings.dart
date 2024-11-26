@@ -179,7 +179,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   const SizedBox(
-                    height: AppSizes.spaceBtwSections * 2.5,
+                    height: AppSizes.spaceBtwSections,
                   ),
                 ],
               ),

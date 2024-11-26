@@ -31,6 +31,10 @@ class HomeScreen extends StatelessWidget {
 
                   // Popular Stores
                   const HomePopularStores(),
+
+                  const SizedBox(
+                    height: AppSizes.spaceBtwSections,
+                  ),
                 ],
               ),
             ),
