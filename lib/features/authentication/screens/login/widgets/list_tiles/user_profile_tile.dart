@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
+import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:iconsax/iconsax.dart';
 
 class UserProfileTile extends StatelessWidget {
@@ -9,11 +11,10 @@ class UserProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircularImage(
-        image: Images.user,
+      leading: const AppCircularImage(
+        image: AppImages.user,
         width: 50,
         height: 50,
-        padding: 0,
       ),
       title: Text(
         'Coding with T',
