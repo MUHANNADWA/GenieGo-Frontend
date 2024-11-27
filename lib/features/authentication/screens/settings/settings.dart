@@ -3,8 +3,10 @@ import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_c
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
+import 'package:geniego/features/authentication/screens/profile/Profile.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -36,7 +38,8 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   // User Profile Card
-                  const UserProfileTile(),
+                  const UserProfileTile(
+                      onPressed: () => Get.to(() => const ProfileScreen())),
 
                   const SizedBox(
                     height: AppSizes.spaceBtwSections,
