@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/utils/validators/validation.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:geniego/common/widgets/login_signup/international_phone_number_input_field.dart';
@@ -17,6 +18,7 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(LoginController());
+
     return Form(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 32),
@@ -24,44 +26,49 @@ class LoginForm extends StatelessWidget {
           () => Column(
             children: [
               // Show Email Feild If The Chosed To Sign In With Email
-              controller.isEmailScreen.value
-                  ? TextFormField(
-                      decoration: InputDecoration(
-                        labelText: AppTexts.email,
-                        prefixIcon: const Icon(Iconsax.direct),
-                      ),
-                    )
-                  : const SizedBox(),
+              if (controller.isEmailScreen.value)
+                TextFormField(
+                  controller: controller.email,
+                  validator: (value) => AppValidator.validateEmail(value),
+                  decoration: InputDecoration(
+                    labelText: AppTexts.email,
+                    prefixIcon: const Icon(Iconsax.direct),
+                  ),
+                ),
 
               // Show Phone Number Feild If The Chosed To Sign In With Phone Number
-              controller.isPhoneNumberScreen.value
-                  ? const InternationalPhoneNumberInputField()
-                  : const SizedBox(),
+              if (controller.isPhoneNumberScreen.value)
+                InternationalPhoneNumberInputField(
+                  controller: controller.phoneNumber,
+                ),
 
               // Show Username Feild If The Chosed To Sign In With Username
-              controller.isUsernameScreen.value
-                  ? TextFormField(
-                      expands: false,
-                      decoration: InputDecoration(
-                        labelText: AppTexts.username,
-                        prefixIcon: const Icon(Iconsax.user_edit),
-                      ),
-                    )
-                  : const SizedBox(),
+              if (controller.isUsernameScreen.value)
+                TextFormField(
+                  controller: controller.username,
+                  validator: (value) =>
+                      AppValidator.validateEmptyText(AppTexts.username, value),
+                  decoration: InputDecoration(
+                    labelText: AppTexts.username,
+                    prefixIcon: const Icon(Iconsax.user_edit),
+                  ),
+                ),
 
               const SizedBox(height: AppSizes.spaceBtwInputFields),
 
               // Password
               TextFormField(
+                controller: controller.password,
+                validator: (value) => AppValidator.validatePassword(value),
                 decoration: InputDecoration(
                   labelText: AppTexts.password,
                   prefixIcon: const Icon(Iconsax.password_check),
                   suffixIcon: IconButton(
-                    icon: const Icon(Iconsax.eye_slash),
-                    onPressed: () {},
+                    icon: controller.passwordIcon.value,
+                    onPressed: () => controller.togglePasswordVisibility(),
                   ),
                 ),
-                obscureText: true,
+                obscureText: controller.isPasswordObscured.value,
               ),
 
               const SizedBox(height: AppSizes.spaceBtwInputFields / 2),
@@ -73,7 +80,9 @@ class LoginForm extends StatelessWidget {
                   // Remember Me
                   Row(
                     children: [
-                      Checkbox(value: true, onChanged: (value) {}),
+                      Checkbox(
+                          value: controller.rememberMe.value,
+                          onChanged: (value) => controller.rememberMe.toggle()),
                       Text(AppTexts.rememberMe)
                     ],
                   ),

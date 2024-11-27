@@ -4,7 +4,6 @@ import 'package:geniego/utils/validators/validation.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:geniego/common/widgets/login_signup/international_phone_number_input_field.dart';
-import 'package:geniego/features/authentication/screens/signup/widgets/signup_terms_and_conditions_check_box.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 
@@ -28,8 +27,7 @@ class SignupForm extends StatelessWidget {
                 child: TextFormField(
                   controller: controller.firstName,
                   validator: (value) =>
-                      AppValidator.validateEmptyText('First Name', value),
-                  expands: false,
+                      AppValidator.validateEmptyText(AppTexts.firstName, value),
                   decoration: InputDecoration(
                     labelText: AppTexts.firstName,
                     prefixIcon: const Icon(Iconsax.user),
@@ -44,8 +42,7 @@ class SignupForm extends StatelessWidget {
                 child: TextFormField(
                   controller: controller.lastName,
                   validator: (value) =>
-                      AppValidator.validateEmptyText('Last Name', value),
-                  expands: false,
+                      AppValidator.validateEmptyText(AppTexts.lastName, value),
                   decoration: InputDecoration(
                     labelText: AppTexts.lastName,
                     prefixIcon: const Icon(Iconsax.user),
@@ -61,8 +58,7 @@ class SignupForm extends StatelessWidget {
           TextFormField(
             controller: controller.username,
             validator: (value) =>
-                AppValidator.validateEmptyText('Username', value),
-            expands: false,
+                AppValidator.validateEmptyText(AppTexts.username, value),
             decoration: InputDecoration(
               labelText: AppTexts.username,
               prefixIcon: const Icon(Iconsax.user_edit),
@@ -75,7 +71,6 @@ class SignupForm extends StatelessWidget {
           TextFormField(
             controller: controller.email,
             validator: (value) => AppValidator.validateEmail(value),
-            expands: false,
             decoration: InputDecoration(
               labelText: AppTexts.email,
               prefixIcon: const Icon(Iconsax.direct),
@@ -92,24 +87,42 @@ class SignupForm extends StatelessWidget {
           const SizedBox(height: AppSizes.spaceBtwInputFields),
 
           // Password
-          TextFormField(
-            controller: controller.password,
-            validator: (value) => AppValidator.validatePassword(value),
-            expands: false,
-            decoration: InputDecoration(
-              labelText: AppTexts.password,
-              prefixIcon: const Icon(Iconsax.password_check),
-              suffixIcon: IconButton(
-                icon: const Icon(Iconsax.eye_slash),
-                onPressed: () {},
+          Obx(
+            () => TextFormField(
+              controller: controller.password,
+              validator: (value) => AppValidator.validatePassword(value),
+              obscureText: controller.isPasswordObscured.value,
+              decoration: InputDecoration(
+                labelText: AppTexts.password,
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  icon: controller.passwordIcon.value,
+                  onPressed: () => controller.togglePasswordVisibility(),
+                ),
               ),
             ),
           ),
 
-          const SizedBox(height: AppSizes.spaceBtwSections),
+          const SizedBox(height: AppSizes.spaceBtwInputFields),
 
-          // Terms & Conditions Checkbox
-          const SignupTermsAndConditionsCheckBox(),
+          // Password Confirmation
+          Obx(
+            () => TextFormField(
+              controller: controller.passwordConfirmation,
+              validator: (value) => AppValidator.validatePasswordConfirmation(
+                  value, controller.password.text),
+              obscureText: controller.isPasswordConfirmationObscured.value,
+              decoration: InputDecoration(
+                labelText: AppTexts.passwordConfirmation,
+                prefixIcon: const Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  icon: controller.passwordConfirmationIcon.value,
+                  onPressed: () =>
+                      controller.togglePasswordConfirmationVisibility(),
+                ),
+              ),
+            ),
+          ),
 
           const SizedBox(height: AppSizes.spaceBtwSections),
 

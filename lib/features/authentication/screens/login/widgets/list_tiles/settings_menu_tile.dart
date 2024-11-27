@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:geniego/utils/constants/colors.dart';
 
 class SettingsMenuTile extends StatelessWidget {
-  const SettingsMenuTile(
-      {super.key,
-      required this.icon,
-      required this.title,
-      required this.subTitle,
-      this.trailing,
-      this.onTap});
+  const SettingsMenuTile({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.subTitle,
+    this.trailing,
+    this.onTap,
+  });
   final IconData icon;
   final String title, subTitle;
   final Widget? trailing;

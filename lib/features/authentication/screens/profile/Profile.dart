@@ -13,12 +13,13 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // User Profile AppBar
       appBar: const AppAppBar(
         showBackArrow: true,
         title: Text('Profile'),
       ),
 
-      /// Body
+      // Body
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AppSizes.defaultSpace),
@@ -33,6 +34,7 @@ class ProfileScreen extends StatelessWidget {
                     height: 80,
                     width: 80,
                   ),
+
                   TextButton(
                     onPressed: () {},
                     child: const Text('Change Profile Picture'),
@@ -41,41 +43,50 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
 
-            /// Details
+            // Details
             const SizedBox(
               height: AppSizes.spaceBtwItems / 2,
             ),
+
             const Divider(),
+
             const SizedBox(
               height: AppSizes.spaceBtwItems,
             ),
 
-            /// Heading Profile Info
+            // Heading Profile Info
             const SectionHeading(
                 title: 'Profile Information', showActionButton: false),
+
             const SizedBox(height: AppSizes.spaceBtwItems),
+
             ProfileMenu(
               title: 'Name',
               value: 'Name',
               onPressed: () {},
             ),
+
             ProfileMenu(
               title: 'Username',
               value: 'user name',
               onPressed: () {},
             ),
             const SizedBox(height: AppSizes.spaceBtwItems),
+
             const Divider(),
+
             const SizedBox(height: AppSizes.spaceBtwItems),
 
-            /// Heading Personal Info
+            // Heading Personal Info
             const SectionHeading(
               title: 'Profile Information',
               showActionButton: false,
             ),
+
             const SizedBox(
               height: AppSizes.spaceBtwItems,
             ),
+
             ProfileMenu(
               title: 'Name',
               value: 'user name',
@@ -87,26 +98,32 @@ class ProfileScreen extends StatelessWidget {
                 value: '45689',
                 icon: Iconsax.copy,
                 onPressed: () {}),
+
             ProfileMenu(
                 title: 'E-mail', value: 'coding_with_t', onPressed: () {}),
+
             ProfileMenu(
                 title: 'Phone Number',
                 value: '+92-317-8059528',
                 onPressed: () {}),
+
             ProfileMenu(
               title: 'Gender',
               value: 'Male',
               onPressed: () {},
             ),
+
             ProfileMenu(
                 title: 'Date of Birth',
                 value: '18 Oct, 1994',
                 onPressed: () {}),
 
             const Divider(),
+
             const SizedBox(
               height: AppSizes.spaceBtwItems,
             ),
+
             Center(
               child: TextButton(
                 onPressed: () {},

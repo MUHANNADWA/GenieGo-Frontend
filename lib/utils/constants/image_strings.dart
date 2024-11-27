@@ -8,10 +8,6 @@ class AppImages {
   static const String lightAppLogo =
       'assets/logos/t-store-splash-logo-white.png';
 
-  // -- Social Logos
-  static const String google = 'assets/logos/google-icon.png';
-  static const String facebook = 'assets/logos/facebook-icon.png';
-
   // -- Category Icons
   static const String sportIcon =
       'assets/icons/categories/icons8-bowling-64.png';
@@ -57,7 +53,8 @@ class AppImages {
       'assets/images/animations/sammy-line-man-receives-a-mail.png';
   static const String verifyIllustration =
       'assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif';
-
+  static const String loadingIllustration =
+      'assets/images/animations/sammy-line-programmer.lottie';
   // -- OnBoarding Texts
   static const String onBoardingImage1 =
       'assets/images/on_boarding_images/sammy-line-searching.gif';

@@ -1,41 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 import '../constants/colors.dart';
-import '../helpers/helper_functions.dart';
+import '../loaders/animation_loader.dart';
 
 class AppFullScreenLoader {
-  static void openLoadingDialog(String text, String imaage) {
+  static void openLoadingDialog(String text, String animation) {
     showDialog(
       context: Get.overlayContext!,
       barrierDismissible: false,
       builder: (_) => PopScope(
         canPop: false,
-        child: Scaffold(
-          body: Container(
-            color: AppHelper.isDarkMode ? AppColors.dark : AppColors.white,
-            width: double.infinity,
-            height: double.infinity,
-            child: Center(
-              child: Column(
-                children: [
-                  Image.asset(
-                    imaage,
-                    width: AppHelper.screenWidth * 0.6,
-                  ),
-                  Text(text),
-                ],
-              ),
-            ),
+        child: Container(
+          color: AppHelper.isDarkMode ? AppColors.dark : AppColors.white,
+          width: double.infinity,
+          height: double.infinity,
+          child: Column(
+            children: [
+              AppAnimationLoaderWidget(text: text, animation: animation),
+            ],
           ),
         ),
       ),
     );
   }
 
-  /// Stop the currently open loading dialog.
-  /// This method doesn't return anything.
   static stopLoading() {
-    Navigator.of(Get.overlayContext!)
-        .pop(); // Close the dialog using the Navigator
+    Navigator.of(Get.overlayContext!).pop();
   }
 }

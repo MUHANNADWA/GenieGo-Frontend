@@ -26,6 +26,7 @@ class AppTexts {
   static String get lastName => 'lastName'.tr;
   static String get email => 'email'.tr;
   static String get password => 'password'.tr;
+  static String get passwordConfirmation => 'passwordConfirmation'.tr;
   static String get newPassword => 'newPassword'.tr;
   static String get username => 'username'.tr;
   static String get phoneNo => 'phoneNo'.tr;

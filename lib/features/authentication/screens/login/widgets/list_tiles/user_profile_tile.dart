@@ -7,11 +7,15 @@ import 'package:iconsax/iconsax.dart';
 class UserProfileTile extends StatelessWidget {
   const UserProfileTile({
     super.key,
+    required this.onTap,
   });
+
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onTap,
       leading: const AppCircularImage(
         image: AppImages.user,
         width: 50,

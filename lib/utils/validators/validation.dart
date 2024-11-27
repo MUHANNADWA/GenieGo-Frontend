@@ -42,6 +42,16 @@ class AppValidator {
     return null;
   }
 
+  static String? validatePasswordConfirmation(String? value, String? password) {
+    if (value == null || value.isEmpty) {
+      return 'Password confirmation is required.';
+    }
+    if (value != password) {
+      return 'Password confirmation should match the password.';
+    }
+    return null;
+  }
+
   static String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {
       return 'Phone number is required.';

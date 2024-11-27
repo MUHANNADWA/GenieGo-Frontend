@@ -36,7 +36,6 @@ class ForgotPasswordScreen extends StatelessWidget {
 
               // Email Text Feild
               TextFormField(
-                expands: false,
                 decoration: InputDecoration(
                   labelText: AppTexts.email,
                   prefixIcon: const Icon(Iconsax.direct),

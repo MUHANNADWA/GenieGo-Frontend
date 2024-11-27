@@ -4,25 +4,49 @@ import 'package:geniego/utils/helpers/network_manager.dart';
 import 'package:geniego/utils/popups/full_screen_loader.dart';
 import 'package:geniego/utils/popups/loaders.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
 
-// Variables
+  //* Toggle Password
+  Rx<bool> isPasswordObscured = true.obs;
+  Rx<bool> isPasswordConfirmationObscured = true.obs;
+  Rx<Icon> passwordIcon = const Icon(Iconsax.eye).obs;
+  Rx<Icon> passwordConfirmationIcon = const Icon(Iconsax.eye).obs;
+
+  // Toggle Password
+  togglePasswordVisibility() {
+    isPasswordObscured.toggle();
+    passwordIcon.value = isPasswordObscured.value
+        ? const Icon(Iconsax.eye)
+        : const Icon(Iconsax.eye_slash);
+  }
+
+  // Toggle Password
+  togglePasswordConfirmationVisibility() {
+    isPasswordConfirmationObscured.toggle();
+    passwordConfirmationIcon.value = isPasswordConfirmationObscured.value
+        ? const Icon(Iconsax.eye)
+        : const Icon(Iconsax.eye_slash);
+  }
+
+  //* Signup Variables
   final firstName = TextEditingController();
   final lastName = TextEditingController();
   final username = TextEditingController();
   final email = TextEditingController();
   final phoneNumber = TextEditingController();
   final password = TextEditingController();
+  final passwordConfirmation = TextEditingController();
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
-// Signup
+  //* Signup
   Future<void> signup() async {
     try {
       // Start Loading
       AppFullScreenLoader.openLoadingDialog(
-          'Gathering You data...', AppImages.onBoardingImage1);
+          'Gathering You data...', AppImages.loadingIllustration);
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -36,6 +60,8 @@ class SignupController extends GetxController {
 
       // Form Validation
       if (!signupFormKey.currentState!.validate()) return;
+
+      //
     } catch (e) {
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
