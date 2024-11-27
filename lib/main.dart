@@ -11,7 +11,7 @@ void main() async {
   // final ipv4 = await Ipify.ipv4();
   // log(ipv4.toString());
 
-  // final mygeo = await Ipify.geo(dotenv.env['IPTFY_GEO_KEY']!, ip: ipv4);
+  // final mygeo = await Ipify.geo(dotenv.env['IPIFY_GEO_KEY']!, ip: ipv4);
   // log(mygeo.location!.country.toString());
 
   // Initialize Get Storage

@@ -20,8 +20,8 @@ class AppValidator {
     }
 
     // Check for minimum password length
-    if (value.length < 6) {
-      return 'Password must be at least 6 characters long.';
+    if (value.length < 8) {
+      return 'Password must be at least 8 characters long.';
     }
 
     // Check for uppercase letters
@@ -47,15 +47,20 @@ class AppValidator {
       return 'Phone number is required.';
     }
 
-    // Regular expression for phone number validation (assuming a 10-digit US phone number format)
-    final phoneRegExp = RegExp(r'^\d{10}$');
+    // Regular expression for international phone number validation
+    final phoneRegExp = RegExp(r'^\d{3,4}[- ]?\d{3}[- ]?\d{3,4}$');
 
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Invalid phone number format (10 digits required).';
+      return 'Invalid phone number format.';
     }
 
     return null;
   }
 
-// Add more custom validators as needed for your specific requirements.
+  static String? validateEmptyText(String feildName, String? value) {
+    if (value == null || value.isEmpty) {
+      return '$feildName is required.';
+    }
+    return null;
+  }
 }

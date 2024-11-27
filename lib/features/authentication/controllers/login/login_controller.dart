@@ -14,34 +14,17 @@ class LoginController extends GetxController {
     isEmailScreen.value = false;
   }
 
+  // Change Screen To Login With User Name
   setLoginScreenToUsername() {
     isPhoneNumberScreen.value = false;
     isUsernameScreen.value = true;
     isEmailScreen.value = false;
   }
 
+  // Change Screen To Login With Email
   setLoginScreenToEmail() {
     isPhoneNumberScreen.value = false;
     isUsernameScreen.value = false;
     isEmailScreen.value = true;
   }
-
-  // // Jump to the specific dot selected page.
-  // void dotNavigationClick(index) {
-  //   currentPageIndex.value = index;
-  // }
-
-  // // Update Current Index & jump to next page
-  // void nextPage() {
-  //   if (currentPageIndex.value == 2) {
-  //     Get.offAll(() => const LoginScreen());
-  //   } else {
-  //     currentPageIndex.value + 1;
-  //   }
-  // }
-
-  // // Update Current Index & jump to the last Page
-  // void skipPage() {
-  //   currentPageIndex.value = 2;
-  // }
 }

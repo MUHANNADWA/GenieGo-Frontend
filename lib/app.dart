@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/bindings/general_bindings.dart';
 import 'package:get/get.dart';
 import 'package:geniego/features/authentication/screens/onboarding/on_boarding_screen.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
@@ -20,7 +21,7 @@ class App extends StatelessWidget {
       locale: langController.initialLang(),
       translations: AppLocale(),
       debugShowCheckedModeBanner: false,
-      // initialBinding: GeneralBindings(),
+      initialBinding: GeneralBindings(),
       home: const OnBoardingScreen(),
     );
   }

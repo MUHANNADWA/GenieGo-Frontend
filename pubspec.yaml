@@ -20,7 +20,6 @@ dependencies:
   flutter_native_splash: ^2.4.0
   smooth_page_indicator: ^1.2.0+3
   connectivity_plus: ^6.0.3
-  lottie: ^3.1.0
   intl_phone_number_input: ^0.7.4
   dart_ipify: ^1.1.1
   flutter_dotenv: ^5.0.2
@@ -36,17 +35,8 @@ dependencies:
 
   # Product Specific
   readmore: ^3.0.0
-  carousel_slider: ^5.0.0
   flutter_rating_bar: ^4.0.1
   capped_progress_indicator: ^0.0.2
-
-  # Firebase
-  firebase_core: ^3.4.0
-  firebase_auth: ^5.2.0
-  cloud_firestore: ^5.4.0
-  firebase_storage: ^12.2.0
-
-
 
   #--------------- ./ PACKAGES END ------------------#
 
@@ -66,11 +56,9 @@ flutter:
     - assets/icons/brands/
     - assets/images/content/
     - assets/images/User/
-    - assets/images/banners/
     - assets/images/reviews/
     - assets/images/products/
     - assets/icons/categories/
-    - assets/images/animations/
     - assets/icons/payment_methods/
     - assets/images/on_boarding_images/
     - .env
