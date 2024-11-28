@@ -31,7 +31,7 @@ class OnBoardingController extends GetxController {
       AppDialogs.showFullScreenLoadingDialog(
         'Getting things ready...',
         'Hold on, we\'re getting everything ready for you!',
-        AppImages.loadingIllustration,
+        AppImages.loading,
       );
 
       // Getting Country Code

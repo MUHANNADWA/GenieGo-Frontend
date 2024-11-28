@@ -1,14 +1,14 @@
-/* -- App Image Strings -- */
+/* App Image Strings */
 
 /// This class contains all the App Images in String formats.
 class AppImages {
-  // -- App Logos
+  // App Logos
   static const String darkAppLogo =
       'assets/logos/t-store-splash-logo-black.png';
   static const String lightAppLogo =
       'assets/logos/t-store-splash-logo-white.png';
 
-  // -- Category Icons
+  // Category Icons
   static const String sportIcon =
       'assets/icons/categories/icons8-bowling-64.png';
   static const String clothIcon =
@@ -27,7 +27,7 @@ class AppImages {
   static const String electronicsIcon =
       'assets/icons/categories/icons8-smartphone-64.png';
 
-  // -- Brand Icons
+  // Brand Icons
   static const String nikeLogo = 'assets/icons/brands/nike.png';
   static const String adidasLogo = 'assets/icons/brands/adidas-logo.png';
   static const String appleLogo = 'assets/icons/brands/apple-logo.png';
@@ -40,33 +40,55 @@ class AppImages {
   static const String ikeaLogo = 'assets/icons/brands/ikea_logo.png';
   static const String acerlogo = 'assets/icons/brands/acer_logo.png';
 
-  // -- Animations
-  static const String productsIllustration =
-      'assets/images/animations/sammy-line-workout.gif';
-  static const String productsSaleIllustration =
-      'assets/images/animations/sammy-line-sale.png';
-  static const String staticSuccessIllustration =
-      'assets/images/animations/sammy-line-success.png';
-  static const String deliveredInPlaneIllustration =
-      'assets/images/animations/sammy-line-come-back-later.png';
-  static const String deliveredEmailIllustration =
-      'assets/images/animations/sammy-line-man-receives-a-mail.png';
-  static const String verifyIllustration =
-      'assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif';
-  static const String noInternetIllustration =
-      'assets/images/on_boarding_images/sammy-line-no-connection.gif';
-  static const String loadingIllustration =
-      'assets/images/animations/sammy-line-programmer.lottie';
+  // Static Images
+  static const String productsSale = 'assets/images/static/sale.png';
+  static const String staticSuccess = 'assets/images/static/success.png';
+  static const String deliveredInPlane =
+      'assets/images/static/come-back-later.png';
+  static const String deliveredEmail =
+      'assets/images/static/man-receives-a-mail.png';
+  static const String prepairingOrder =
+      'assets/images/static/delivering-order.svg';
+  static const String canNotDeliver = 'assets/images/static/misplacement.svg';
+  static const String sendingOrder = 'assets/images/static/rapid-deliver.svg';
+  static const String deliveringOrder = 'assets/images/static/order-on-way.svg';
+  static const String deliveringOrderToDoor =
+      'assets/images/static/delivering-order-to-door.svg';
+  static const String disconnected = 'assets/images/static/disconnect.svg';
+  static const String forbidden = 'assets/images/static/forbidden.svg';
+  static const String calculating =
+      'assets/images/static/girl-counting-money.svg';
+  static const String lastTouches = 'assets/images/static/last-touches.svg';
+  static const String checking =
+      'assets/images/static/man-marks-completed-tasks-in-a-notebook.svg';
+  static const String map = 'assets/images/static/map-order.svg';
+  static const String location = 'assets/images/static/order-location.svg';
+  static const String orderSent = 'assets/images/static/order-sent.svg';
+  static const String orderSentWithPlane =
+      'assets/images/static/plane-order.svg';
+  static const String planet = 'assets/images/static/planet-order.svg';
+  static const String checksEverything =
+      'assets/images/static/programming2.svg';
+  static const String rating = 'assets/images/static/rating.svg';
+  static const String truckMap = 'assets/images/static/truck-map.svg';
+  static const String truckWorld = 'assets/images/static/truck-world.svg';
+  static const String calculating2 =
+      'assets/images/static/woman-counts-money-on-a-cash-register.svg';
+  static const String confirmInfo =
+      'assets/images/static/woman-shaking-hands-with-new-employee.svg';
 
-  // -- OnBoarding Texts
-  static const String onBoardingImage1 =
-      'assets/images/on_boarding_images/sammy-line-searching.gif';
-  static const String onBoardingImage2 =
-      'assets/images/on_boarding_images/sammy-line-shopping.gif';
-  static const String onBoardingImage3 =
-      'assets/images/on_boarding_images/sammy-line-delivery.gif';
+  // Animated Images
+  static const String products = 'assets/images/animated/workout.gif';
+  static const String verify =
+      'assets/images/animated/travel-backpack-with-passport-and-air-ticket.gif';
+  static const String noInternet = 'assets/images/animated/connection.gif';
+  static const String loading = 'assets/images/animated/programmer.lottie';
+  // OnBoarding Images
+  static const String onBoardingImage1 = 'assets/images/animated/searching.gif';
+  static const String onBoardingImage2 = 'assets/images/animated/shopping.gif';
+  static const String onBoardingImage3 = 'assets/images/animated/delivery.gif';
 
-  // -- Products
+  // Products
   static const String productImage1 = 'assets/images/products/nike-shoes.png';
   static const String productImage2 = 'assets/images/products/product-1.png';
   static const String productImage3 =
@@ -217,7 +239,7 @@ class AppImages {
   static const String productImage77 =
       'assets/images/products/slipper-product.png';
 
-  // -- Product Reviews
+  // Product Reviews
   static const String userProfileImage1 =
       'assets/images/reviews/review_profile_image_1.jpg';
   static const String userProfileImage2 =
@@ -244,7 +266,7 @@ class AppImages {
   //Profile
   static const String user = 'assets/images/content/user.png';
 
-  // -- Payment Methods
+  // Payment Methods
   static const String applePay = 'assets/icons/payment_methods/apple-pay.png';
   static const String googlePay = 'assets/icons/payment_methods/google-pay.png';
   static const String creditCard =

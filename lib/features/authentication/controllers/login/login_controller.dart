@@ -68,7 +68,7 @@ class LoginController extends GetxController {
       AppDialogs.showFullScreenLoadingDialog(
         'Processing your request..',
         'Working behind the scenes to get things ready.',
-        AppImages.loadingIllustration,
+        AppImages.loading,
       );
 
       log('I am here 2');

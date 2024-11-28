@@ -13,7 +13,7 @@ class NoInternetConnentionPage extends StatelessWidget {
     return Column(
       children: [
         AppDefaultPage(
-          image: AppImages.noInternetIllustration,
+          image: AppImages.noInternet,
           title: 'Uh-oh! You\'re Offline.',
           subTitle:
               'It seems like there\'s no internet. Reconnect to continue.',

@@ -15,17 +15,19 @@ dependencies:
   # Utility Packages
   http: ^1.2.1
   intl: ^0.20.0
-  logger: ^2.2.0
   url_launcher: ^6.2.6
   flutter_native_splash: ^2.4.0
   smooth_page_indicator: ^1.2.0+3
   connectivity_plus: ^6.0.3
-  lottie: ^3.1.3
-  dotlottie_loader: ^0.0.4
   intl_phone_number_input: ^0.7.4
   dart_ipify: ^1.1.1
   flutter_dotenv: ^5.0.2
 
+  # Images
+  lottie: ^3.1.3
+  dotlottie_loader: ^0.0.4
+  flutter_svg: ^2.0.16
+  
   # Icons
   iconsax: ^0.0.8
   cupertino_icons: ^1.0.6

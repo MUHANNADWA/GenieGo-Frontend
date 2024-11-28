@@ -31,7 +31,7 @@ class VerifyEmailScreen extends StatelessWidget {
             children: [
               // Image
               Image.asset(
-                AppImages.deliveredEmailIllustration,
+                AppImages.deliveredEmail,
                 width: AppHelper.screenWidth * 0.6,
               ),
 

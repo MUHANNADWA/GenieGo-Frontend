@@ -20,7 +20,7 @@ class SuccessScreen extends StatelessWidget {
             children: [
               // Image
               Image.asset(
-                AppImages.staticSuccessIllustration,
+                AppImages.staticSuccess,
                 width: AppHelper.screenWidth * 0.6,
               ),
 

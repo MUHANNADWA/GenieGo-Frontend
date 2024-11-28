@@ -48,7 +48,7 @@ class SignupController extends GetxController {
       AppDialogs.showFullScreenLoadingDialog(
         'Hang tight, we\'re almost there..',
         'Please wait while we gather the required data...',
-        AppImages.loadingIllustration,
+        AppImages.loading,
       );
 
       // Check Internet Connectivity
