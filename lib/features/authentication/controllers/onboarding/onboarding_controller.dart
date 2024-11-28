@@ -35,7 +35,10 @@ class OnBoardingController extends GetxController {
       );
 
       // Getting Country Code
-      countryCode = await getCountryCode() ?? 'SY';
+      if (dotenv.env['ENV'] != 'development') {
+        countryCode = await getCountryCode() ?? 'SY';
+      }
+      countryCode = 'SY';
 
       // Stop The Loader
       AppDialogs.hideDialog();

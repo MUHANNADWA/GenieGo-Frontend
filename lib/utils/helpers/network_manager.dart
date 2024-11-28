@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geniego/utils/popups/app_dialogs.dart';
 import 'package:get/get.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -24,7 +25,7 @@ class NetworkManager extends GetxController {
   Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
     _connectionStatus.value = result;
     if (result.contains(ConnectivityResult.none)) {
-      AppDialogs.showNoInternetDialog();
+      if (dotenv.env['ENV'] != 'development') AppDialogs.showNoInternetDialog();
     }
   }
 
