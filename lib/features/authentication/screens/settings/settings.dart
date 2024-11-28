@@ -4,6 +4,7 @@ import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
 import 'package:geniego/features/authentication/screens/profile/profile.dart';
+import 'package:geniego/features/authentication/screens/shop/screens/order/widgets/Order.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:get/get.dart';
@@ -87,7 +88,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.bag_tick,
                     title: 'My Orders',
                     subTitle: 'In-progress and Completed Orders',
-                    onTap: () {},
+                    onTap: () => Get.to(() => const OrderScreen()),
                   ),
 
                   // Bank Account

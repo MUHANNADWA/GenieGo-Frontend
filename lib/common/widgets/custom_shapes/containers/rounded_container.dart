@@ -4,8 +4,18 @@ import 'package:geniego/utils/constants/colors.dart';
 class RoundedContainer extends StatelessWidget {
   const RoundedContainer({
     super.key,
+    this.child,
+    this.padding,
+    this.showBorder = false,
+    this.backgroundColor = AppColors.white,
+    this.borderColor = AppColors.borderPrimary,
   });
 
+  final bool showBorder;
+  final EdgeInsetsGeometry? padding;
+  final Color backgroundColor;
+  final Color borderColor;
+  final Widget? child;
   @override
   Widget build(BuildContext context) {
     return Container(
