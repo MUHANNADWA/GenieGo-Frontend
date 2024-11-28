@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
-import 'package:geniego/features/authentication/screens/profile/widgets/Profile_Menu.dart';
+import 'package:geniego/features/authentication/screens/profile/widgets/profile_menu.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';

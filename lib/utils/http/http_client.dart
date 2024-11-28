@@ -1,9 +1,9 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 class AppHttpHelper {
-  static const String _baseUrl =
-      'https://your-api-base-url.com'; // Replace with your API base URL
+  static const String _baseUrl = 'http://172.26.1.1:4567/api';
 
   // Helper method to make a GET request
   static Future<Map<String, dynamic>> get(String endpoint) async {
@@ -16,7 +16,10 @@ class AppHttpHelper {
       String endpoint, dynamic data) async {
     final response = await http.post(
       Uri.parse('$_baseUrl/$endpoint'),
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
       body: json.encode(data),
     );
     return _handleResponse(response);
@@ -43,6 +46,7 @@ class AppHttpHelper {
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else {
+      log(json.decode(response.body));
       throw Exception('Failed to load data: ${response.statusCode}');
     }
   }

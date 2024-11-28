@@ -1,11 +1,9 @@
 import 'dart:async';
+import 'package:geniego/utils/popups/app_dialogs.dart';
 import 'package:get/get.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';
 
-import '../popups/loaders.dart';
-
-/// Manages the network connectivity status and provides methods to check and handle connectivity changes.
 class NetworkManager extends GetxController {
   static NetworkManager get instance => Get.find();
 
@@ -14,7 +12,7 @@ class NetworkManager extends GetxController {
   final RxList<ConnectivityResult> _connectionStatus =
       <ConnectivityResult>[].obs;
 
-  /// Initialize the network manager and set up a stream to continually check the connection status.
+  // Initialize the network manager and set up a stream to continually check the connection status.
   @override
   void onInit() {
     super.onInit();
@@ -22,16 +20,16 @@ class NetworkManager extends GetxController {
         _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
   }
 
-  /// Update the connection status based on changes in connectivity and show a relevant popup for no internet connection.
+  // Update the connection status based on changes in connectivity and show a relevant popup for no internet connection.
   Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
     _connectionStatus.value = result;
     if (result.contains(ConnectivityResult.none)) {
-      AppLoaders.customToast(message: 'No Internet Connection');
+      AppDialogs.showNoInternetDialog();
     }
   }
 
-  /// Check the internet connection status.
-  /// Returns `true` if connected, `false` otherwise.
+  // Check the internet connection status.
+  // Returns `true` if connected, `false` otherwise.
   Future<bool> isConnected() async {
     try {
       final result = await _connectivity.checkConnectivity();
@@ -45,7 +43,7 @@ class NetworkManager extends GetxController {
     }
   }
 
-  /// Dispose or close the active connectivity stream.
+  // Dispose or close the active connectivity stream.
   @override
   void onClose() {
     super.onClose();

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/helpers/network_manager.dart';
-import 'package:geniego/utils/popups/full_screen_loader.dart';
+import 'package:geniego/utils/http/http_client.dart';
+import 'package:geniego/utils/popups/app_dialogs.dart';
 import 'package:geniego/utils/popups/loaders.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+
+import 'dart:developer';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
@@ -48,20 +51,27 @@ class LoginController extends GetxController {
         : const Icon(Iconsax.eye_slash);
   }
 
-  //* Signup Variables
+  //* Login Variables
   final username = TextEditingController();
   final email = TextEditingController();
   final phoneNumber = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
-  //* Signup
-  Future<void> signup() async {
-    try {
-      // Start Loading
-      AppFullScreenLoader.openLoadingDialog(
-          'Gathering You data...', AppImages.loadingIllustration);
+  late dynamic userCredentials;
 
+  //* Login
+  Future<void> login() async {
+    try {
+      log('I am here');
+      // Start Loading
+      AppDialogs.showFullScreenLoadingDialog(
+        'Processing your request..',
+        'Working behind the scenes to get things ready.',
+        AppImages.loadingIllustration,
+      );
+
+      log('I am here 2');
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -72,15 +82,30 @@ class LoginController extends GetxController {
         return;
       }
 
+      final userData = {
+        'username': username.text,
+        // 'email': email.text,
+        // 'phone': phoneNumber.text,
+        'password': password.text
+      };
+
+      log('I am here 3');
       // Form Validation
       if (!loginFormKey.currentState!.validate()) return;
+      log('I am here 4');
 
-      //
+      log('hello1');
+      // Rabt For Megaamms
+      userCredentials = await AppHttpHelper.post('login', userData);
+
+      log('hello2');
+      // log(userCredentials.toString());
     } catch (e) {
+      // log(userCredentials.toString());
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       await Future.delayed(const Duration(seconds: 2));
-      AppFullScreenLoader.stopLoading();
+      AppDialogs.hideDialog();
     }
   }
 }

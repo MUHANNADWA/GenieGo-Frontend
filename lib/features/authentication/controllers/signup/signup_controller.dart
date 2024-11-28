@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/helpers/network_manager.dart';
-import 'package:geniego/utils/popups/full_screen_loader.dart';
+import 'package:geniego/utils/popups/app_dialogs.dart';
 import 'package:geniego/utils/popups/loaders.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -45,8 +45,11 @@ class SignupController extends GetxController {
   Future<void> signup() async {
     try {
       // Start Loading
-      AppFullScreenLoader.openLoadingDialog(
-          'Gathering You data...', AppImages.loadingIllustration);
+      AppDialogs.showFullScreenLoadingDialog(
+        'Hang tight, we\'re almost there..',
+        'Please wait while we gather the required data...',
+        AppImages.loadingIllustration,
+      );
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
@@ -63,10 +66,11 @@ class SignupController extends GetxController {
 
       //
     } catch (e) {
+      AppDialogs.hideDialog();
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {
       await Future.delayed(const Duration(seconds: 2));
-      AppFullScreenLoader.stopLoading();
+      AppDialogs.hideDialog();
     }
   }
 }

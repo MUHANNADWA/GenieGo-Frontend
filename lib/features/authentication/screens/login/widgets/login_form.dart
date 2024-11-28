@@ -20,6 +20,7 @@ class LoginForm extends StatelessWidget {
     final controller = Get.put(LoginController());
 
     return Form(
+      key: controller.loginFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 32),
         child: Obx(
@@ -29,6 +30,7 @@ class LoginForm extends StatelessWidget {
               if (controller.isEmailScreen.value)
                 TextFormField(
                   controller: controller.email,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) => AppValidator.validateEmail(value),
                   decoration: InputDecoration(
                     labelText: AppTexts.email,
@@ -46,6 +48,7 @@ class LoginForm extends StatelessWidget {
               if (controller.isUsernameScreen.value)
                 TextFormField(
                   controller: controller.username,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) =>
                       AppValidator.validateEmptyText(AppTexts.username, value),
                   decoration: InputDecoration(
@@ -59,6 +62,7 @@ class LoginForm extends StatelessWidget {
               // Password
               TextFormField(
                 controller: controller.password,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) => AppValidator.validatePassword(value),
                 decoration: InputDecoration(
                   labelText: AppTexts.password,
@@ -97,11 +101,14 @@ class LoginForm extends StatelessWidget {
 
               const SizedBox(height: AppSizes.spaceBtwSections),
 
-              // SignIn Button
+              // Login Button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.to(() => const NavigationMenu()),
+                  onPressed: () async {
+                    await controller.login();
+                    Get.to(() => const NavigationMenu());
+                  },
                   child: Text(AppTexts.signIn),
                 ),
               ),

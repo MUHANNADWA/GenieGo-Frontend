@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/widgets/default_page/app_default_page.dart';
 import 'package:get/get.dart';
 import 'package:geniego/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:geniego/features/authentication/screens/onboarding/widgets/on_boarding_change_lang.dart';
 import 'package:geniego/features/authentication/screens/onboarding/widgets/on_boarding_dot_navigation.dart';
 import 'package:geniego/features/authentication/screens/onboarding/widgets/on_boarding_next_button.dart';
 import 'package:geniego/features/authentication/screens/onboarding/widgets/on_boarding_skip.dart';
-import 'package:geniego/features/authentication/screens/onboarding/widgets/on_boarding_page.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 
@@ -25,17 +25,17 @@ class OnBoardingScreen extends StatelessWidget {
             controller: controller.pageController,
             onPageChanged: controller.updatePageIndicator,
             children: [
-              OnBoardingPage(
+              AppDefaultPage(
                 image: AppImages.onBoardingImage1,
                 title: AppTexts.onBoardingTitle1,
                 subTitle: AppTexts.onBoardingSubTitle1,
               ),
-              OnBoardingPage(
+              AppDefaultPage(
                 image: AppImages.onBoardingImage2,
                 title: AppTexts.onBoardingTitle2,
                 subTitle: AppTexts.onBoardingSubTitle2,
               ),
-              OnBoardingPage(
+              AppDefaultPage(
                 image: AppImages.onBoardingImage3,
                 title: AppTexts.onBoardingTitle3,
                 subTitle: AppTexts.onBoardingSubTitle3,

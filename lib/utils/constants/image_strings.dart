@@ -53,8 +53,11 @@ class AppImages {
       'assets/images/animations/sammy-line-man-receives-a-mail.png';
   static const String verifyIllustration =
       'assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif';
+  static const String noInternetIllustration =
+      'assets/images/on_boarding_images/sammy-line-no-connection.gif';
   static const String loadingIllustration =
       'assets/images/animations/sammy-line-programmer.lottie';
+
   // -- OnBoarding Texts
   static const String onBoardingImage1 =
       'assets/images/on_boarding_images/sammy-line-searching.gif';

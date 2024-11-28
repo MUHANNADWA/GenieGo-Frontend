@@ -26,6 +26,7 @@ class SignupForm extends StatelessWidget {
               Expanded(
                 child: TextFormField(
                   controller: controller.firstName,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) =>
                       AppValidator.validateEmptyText(AppTexts.firstName, value),
                   decoration: InputDecoration(
@@ -41,6 +42,7 @@ class SignupForm extends StatelessWidget {
               Expanded(
                 child: TextFormField(
                   controller: controller.lastName,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) =>
                       AppValidator.validateEmptyText(AppTexts.lastName, value),
                   decoration: InputDecoration(
@@ -57,6 +59,7 @@ class SignupForm extends StatelessWidget {
           // Username
           TextFormField(
             controller: controller.username,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) =>
                 AppValidator.validateEmptyText(AppTexts.username, value),
             decoration: InputDecoration(
@@ -70,6 +73,7 @@ class SignupForm extends StatelessWidget {
           // Email
           TextFormField(
             controller: controller.email,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: (value) => AppValidator.validateEmail(value),
             decoration: InputDecoration(
               labelText: AppTexts.email,
@@ -90,6 +94,7 @@ class SignupForm extends StatelessWidget {
           Obx(
             () => TextFormField(
               controller: controller.password,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) => AppValidator.validatePassword(value),
               obscureText: controller.isPasswordObscured.value,
               decoration: InputDecoration(
@@ -109,6 +114,7 @@ class SignupForm extends StatelessWidget {
           Obx(
             () => TextFormField(
               controller: controller.passwordConfirmation,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) => AppValidator.validatePasswordConfirmation(
                   value, controller.password.text),
               obscureText: controller.isPasswordConfirmationObscured.value,
