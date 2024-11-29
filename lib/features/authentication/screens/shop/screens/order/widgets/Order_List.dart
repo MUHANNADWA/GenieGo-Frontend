@@ -10,7 +10,7 @@ class AppOrderListItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelper.isDarkMode(context);
+    final dark = AppHelper.isDarkMode;
 
     return ListView.separated(
       shrinkWrap: true,
