@@ -87,7 +87,9 @@ class LoginForm extends StatelessWidget {
                       Checkbox(
                           value: controller.rememberMe.value,
                           onChanged: (value) => controller.rememberMe.toggle()),
-                      Text(AppTexts.rememberMe)
+                      GestureDetector(
+                          onTap: () => controller.rememberMe.toggle(),
+                          child: Text(AppTexts.rememberMe))
                     ],
                   ),
 

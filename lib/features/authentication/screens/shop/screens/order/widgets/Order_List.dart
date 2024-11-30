@@ -10,8 +10,6 @@ class AppOrderListItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelper.isDarkMode;
-
     return ListView.separated(
       shrinkWrap: true,
       itemCount: 10,
@@ -21,21 +19,21 @@ class AppOrderListItems extends StatelessWidget {
       itemBuilder: (_, index) => RoundedContainer(
         padding: const EdgeInsets.all(AppSizes.md),
         showBorder: true,
-        backgroundColor: dark ? AppColors.dark : AppColors.light,
+        backgroundColor:
+            AppHelper.isDarkMode ? AppColors.dark : AppColors.light,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ///Row 1
-
+            // Row
             Row(
               children: [
-                /// 1- Icon
+                // Icon
                 const Icon(Iconsax.ship),
                 const SizedBox(
                   width: AppSizes.spaceBtwItems / 2,
                 ),
 
-                /// 2-Status & Date
+                // Status & Date
                 Expanded(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -54,7 +52,7 @@ class AppOrderListItems extends StatelessWidget {
                   ),
                 ),
 
-                /// 3- Icon
+                // Icon
                 IconButton(
                     onPressed: () {},
                     icon: const Icon(
@@ -63,48 +61,24 @@ class AppOrderListItems extends StatelessWidget {
                     iconSize: AppSizes.iconSm),
               ],
             ),
+
             const SizedBox(
               height: AppSizes.spaceBtwItems,
             ),
 
-            ///Row 2
+            //Row 2
             Row(
               children: [
                 Expanded(
                   child: Row(
                     children: [
-                      /// 1- Icon
-                      const Icon(Iconsax.tag),
-                      const SizedBox(
-                        width: AppSizes.spaceBtwItems / 2,
-                      ),
-
-                      /// 2-Status & Date
-                      Expanded(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Order',
-                                style: Theme.of(context).textTheme.labelMedium),
-                            Text('#256f2',
-                                style: Theme.of(context).textTheme.titleMedium),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      /// 1- Icon
+                      // Icon
                       const Icon(Iconsax.calendar),
                       const SizedBox(
                         width: AppSizes.spaceBtwItems / 2,
                       ),
 
-                      /// 2-Status & Date
+                      /// Status & Date
                       Expanded(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -120,31 +94,33 @@ class AppOrderListItems extends StatelessWidget {
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    /// 1- Icon
-                    const Icon(Iconsax.ship),
-                    const SizedBox(
-                      width: AppSizes.spaceBtwItems / 2,
-                    ),
-
-                    /// 2-Status & Date
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Order',
-                              style: Theme.of(context).textTheme.labelMedium),
-                          Text('#256f2',
-                              style: Theme.of(context).textTheme.titleMedium),
-                        ],
+                Expanded(
+                  child: Row(
+                    children: [
+                      /// Icon
+                      const Icon(Iconsax.tag),
+                      const SizedBox(
+                        width: AppSizes.spaceBtwItems / 2,
                       ),
-                    ),
-                  ],
-                ),
+
+                      /// Status & Date
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Order',
+                                style: Theme.of(context).textTheme.labelMedium),
+                            Text('#256f2',
+                                style: Theme.of(context).textTheme.titleMedium),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               ],
-            )
+            ),
           ],
         ),
       ),

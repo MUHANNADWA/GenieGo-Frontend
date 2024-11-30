@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
-import 'package:geniego/features/authentication/screens/shop/screens/order/widgets/Order_List.dart';
+import 'package:geniego/features/authentication/screens/shop/screens/order/widgets/order_list.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 
 class OrderScreen extends StatelessWidget {

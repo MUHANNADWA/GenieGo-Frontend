@@ -1,31 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/utils/constants/colors.dart';
+import 'package:geniego/utils/constants/sizes.dart';
 
 class RoundedContainer extends StatelessWidget {
   const RoundedContainer({
     super.key,
+    this.width,
+    this.height,
     this.child,
     this.padding,
+    this.margin,
+    this.radius = AppSizes.cardRadiusLg,
     this.showBorder = false,
     this.backgroundColor = AppColors.white,
     this.borderColor = AppColors.borderPrimary,
   });
 
+  final double? width;
+  final double? height;
+  final double radius;
   final bool showBorder;
   final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
   final Color backgroundColor;
   final Color borderColor;
   final Widget? child;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400,
-      height: 400,
-      padding: const EdgeInsets.all(0),
+      width: width,
+      height: height,
+      padding: padding,
+      margin: margin,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(400),
-        color: AppColors.textWhite.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(radius),
+        color: backgroundColor,
+        border: showBorder ? Border.all(color: borderColor) : null,
       ),
+      child: child,
     );
   }
 }
