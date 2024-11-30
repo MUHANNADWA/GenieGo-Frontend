@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/helpers/network_manager.dart';
-import 'package:geniego/utils/popups/app_dialogs.dart';
-import 'package:geniego/utils/popups/loaders.dart';
+import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
+import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:geniego/utils/validators/validation.dart';
+import 'package:geniego/utils/validator/validator.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:geniego/common/widgets/login_signup/international_phone_number_input_field.dart';
@@ -63,7 +63,8 @@ class LoginForm extends StatelessWidget {
               TextFormField(
                 controller: controller.password,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) => AppValidator.validatePassword(value),
+                validator: (value) =>
+                    AppValidator.validateEmptyText(AppTexts.password, value),
                 decoration: InputDecoration(
                   labelText: AppTexts.password,
                   prefixIcon: const Icon(Iconsax.password_check),
@@ -77,22 +78,10 @@ class LoginForm extends StatelessWidget {
 
               const SizedBox(height: AppSizes.spaceBtwInputFields / 2),
 
-              // Remember Me & Forgot Password
+              // Forgot Password
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  // Remember Me
-                  Row(
-                    children: [
-                      Checkbox(
-                          value: controller.rememberMe.value,
-                          onChanged: (value) => controller.rememberMe.toggle()),
-                      GestureDetector(
-                          onTap: () => controller.rememberMe.toggle(),
-                          child: Text(AppTexts.rememberMe))
-                    ],
-                  ),
-
                   // Forgot Password
                   TextButton(
                     onPressed: () => Get.to(() => const ForgotPasswordScreen()),

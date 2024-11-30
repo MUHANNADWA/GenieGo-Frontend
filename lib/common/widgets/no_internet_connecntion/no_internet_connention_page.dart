@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/default_page/app_default_page.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/helpers/network_manager.dart';
-import 'package:geniego/utils/popups/app_dialogs.dart';
-import 'package:geniego/utils/popups/loaders.dart';
+import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
+import 'package:geniego/utils/popups_loaders/loaders.dart';
 
 class NoInternetConnentionPage extends StatelessWidget {
   const NoInternetConnentionPage({super.key});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_container.dart';
-import 'package:geniego/features/authentication/screens/home/widgets/home_app_bar.dart';
+import 'package:geniego/features/shop/screens/home/widgets/home_app_bar.dart';
 import 'package:geniego/utils/constants/sizes.dart';
-import 'package:geniego/features/authentication/screens/home/widgets/home_popular_stores.dart';
+import 'package:geniego/features/shop/screens/home/widgets/home_popular_stores.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 
 class HomeScreen extends StatelessWidget {

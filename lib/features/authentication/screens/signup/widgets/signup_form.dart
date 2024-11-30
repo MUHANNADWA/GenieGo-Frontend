@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/features/authentication/controllers/signup/signup_controller.dart';
-import 'package:geniego/utils/validators/validation.dart';
+import 'package:geniego/utils/validator/validator.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:geniego/common/widgets/login_signup/international_phone_number_input_field.dart';

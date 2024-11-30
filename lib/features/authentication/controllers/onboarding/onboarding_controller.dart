@@ -2,7 +2,7 @@ import 'package:dart_ipify/dart_ipify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
-import 'package:geniego/utils/popups/app_dialogs.dart';
+import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:get/get.dart';
 import 'package:geniego/features/authentication/screens/login/login_screen.dart';
 

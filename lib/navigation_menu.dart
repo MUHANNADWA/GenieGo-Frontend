@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geniego/features/authentication/screens/settings/settings.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:geniego/features/authentication/screens/home/home_screen.dart';
+import 'package:geniego/features/shop/screens/home/home_screen.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 

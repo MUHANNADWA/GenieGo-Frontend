@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:geniego/utils/popups/app_dialogs.dart';
+import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:get/get.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';

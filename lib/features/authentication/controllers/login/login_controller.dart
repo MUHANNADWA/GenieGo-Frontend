@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/helpers/network_manager.dart';
 import 'package:geniego/utils/http/http_client.dart';
-import 'package:geniego/utils/popups/app_dialogs.dart';
-import 'package:geniego/utils/popups/loaders.dart';
+import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
+import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -39,7 +39,6 @@ class LoginController extends GetxController {
   }
 
   //* Toggle Password And Remember Me
-  Rx<bool> rememberMe = true.obs;
   Rx<bool> isPasswordObscured = true.obs;
   Rx<Icon> passwordIcon = const Icon(Iconsax.eye).obs;
 
@@ -83,13 +82,16 @@ class LoginController extends GetxController {
       }
 
       final userData = {
-        'username': username.text,
-        // 'email': email.text,
-        // 'phone': phoneNumber.text,
+        if (isUsernameScreen.value) 'username': username.text,
+        if (isEmailScreen.value) 'email': email.text,
+        if (isPhoneNumberScreen.value) 'phone': phoneNumber.text,
         'password': password.text
       };
 
+      log('userData = $userData');
+
       log('I am here 3');
+
       // Form Validation
       if (!loginFormKey.currentState!.validate()) return;
       log('I am here 4');
@@ -99,6 +101,7 @@ class LoginController extends GetxController {
       userCredentials = await AppHttpHelper.post('login', userData);
 
       log('hello2');
+
       // log(userCredentials.toString());
     } catch (e) {
       // log(userCredentials.toString());
