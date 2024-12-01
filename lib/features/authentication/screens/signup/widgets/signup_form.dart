@@ -84,9 +84,7 @@ class SignupForm extends StatelessWidget {
           const SizedBox(height: AppSizes.spaceBtwInputFields),
 
           // Phone Number
-          InternationalPhoneNumberInputField(
-            controller: controller.phoneNumber,
-          ),
+          const InternationalPhoneNumberInputField<SignupController>(),
 
           const SizedBox(height: AppSizes.spaceBtwInputFields),
 

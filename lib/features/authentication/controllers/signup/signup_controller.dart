@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/features/authentication/services/auth_service.dart';
+import 'package:geniego/navigation_menu.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/helpers/network_manager.dart';
 import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
@@ -36,7 +38,7 @@ class SignupController extends GetxController {
   final lastName = TextEditingController();
   final username = TextEditingController();
   final email = TextEditingController();
-  final phoneNumber = TextEditingController();
+  Rx<String> phoneNumber = ''.obs;
   final password = TextEditingController();
   final passwordConfirmation = TextEditingController();
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
@@ -44,33 +46,46 @@ class SignupController extends GetxController {
   //* Signup
   Future<void> signup() async {
     try {
-      // Start Loading
-      AppDialogs.showFullScreenLoadingDialog(
-        'Hang tight, we\'re almost there..',
-        'Please wait while we gather the required data...',
-        AppImages.loading,
-      );
+      // Form Validation
+      if (!signupFormKey.currentState!.validate()) return;
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
         AppLoaders.errorSnackBar(
           title: 'No Internet',
-          message: 'Please Check You internet connection',
+          message: 'Please Check Your internet connection',
         );
         return;
       }
 
-      // Form Validation
-      if (!signupFormKey.currentState!.validate()) return;
+      // Start Loading
+      AppDialogs.showFullScreenLoadingDialog(
+        'Processing your request..',
+        'Working behind the scenes to get things ready.',
+        AppImages.loading,
+      );
 
-      //
+      final userData = {
+        'first_name': firstName.text,
+        'last_name': lastName.text,
+        'username': username.text,
+        'email': email.text,
+        'phone': phoneNumber.value,
+        'password': password.text,
+        'password_confirmation': passwordConfirmation.text
+      };
+
+      // Login User
+      await AuthService.signup(userData);
+
+      // Stop Loading
+      await AppDialogs.hideDialog();
+
+      // Navigate To Navigation Menu
+      Get.to(() => const NavigationMenu());
     } catch (e) {
-      AppDialogs.hideDialog();
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    } finally {
-      await Future.delayed(const Duration(seconds: 2));
-      AppDialogs.hideDialog();
     }
   }
 }

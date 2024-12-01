@@ -6,7 +6,6 @@ import 'package:geniego/common/widgets/login_signup/international_phone_number_i
 import 'package:geniego/features/authentication/controllers/login/login_controller.dart';
 import 'package:geniego/features/authentication/screens/password_configuration/forgot_password_screen.dart';
 import 'package:geniego/features/authentication/screens/signup/signup_screen.dart';
-import 'package:geniego/navigation_menu.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 
@@ -40,9 +39,7 @@ class LoginForm extends StatelessWidget {
 
               // Show Phone Number Feild If The Chosed To Sign In With Phone Number
               if (controller.isPhoneNumberScreen.value)
-                InternationalPhoneNumberInputField(
-                  controller: controller.phoneNumber,
-                ),
+                const InternationalPhoneNumberInputField<LoginController>(),
 
               // Show Username Feild If The Chosed To Sign In With Username
               if (controller.isUsernameScreen.value)
@@ -96,10 +93,7 @@ class LoginForm extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () async {
-                    await controller.login();
-                    Get.to(() => const NavigationMenu());
-                  },
+                  onPressed: () async => await controller.login(),
                   child: Text(AppTexts.signIn),
                 ),
               ),

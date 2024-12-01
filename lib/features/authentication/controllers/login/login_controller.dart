@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
+import 'package:geniego/navigation_menu.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/helpers/network_manager.dart';
 import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-
-import 'dart:developer';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
@@ -51,26 +50,18 @@ class LoginController extends GetxController {
   }
 
   //* Login Variables
+  Rx<String?> phoneNumber = ''.obs;
   final username = TextEditingController();
   final email = TextEditingController();
-  final phoneNumber = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-
-  late dynamic userCredentials;
 
   //* Login
   Future<void> login() async {
     try {
-      log('I am here');
-      // Start Loading
-      AppDialogs.showFullScreenLoadingDialog(
-        'Processing your request..',
-        'Working behind the scenes to get things ready.',
-        AppImages.loading,
-      );
+      // Form Validation
+      if (!loginFormKey.currentState!.validate()) return;
 
-      log('I am here 2');
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -81,34 +72,31 @@ class LoginController extends GetxController {
         return;
       }
 
+      // Start Loading
+      AppDialogs.showFullScreenLoadingDialog(
+        'Processing your request..',
+        'Working behind the scenes to get things ready.',
+        AppImages.loading,
+      );
+
       final userData = {
         if (isUsernameScreen.value) 'username': username.text,
         if (isEmailScreen.value) 'email': email.text,
-        if (isPhoneNumberScreen.value) 'phone': phoneNumber.text,
+        if (isPhoneNumberScreen.value) 'phone': phoneNumber.value,
         'password': password.text
       };
 
-      log('userData = $userData');
+      // Login User
+      await AuthService.login(userData);
 
-      log('I am here 3');
+      // Stop Loading
+      await AppDialogs.hideDialog();
 
-      // Form Validation
-      if (!loginFormKey.currentState!.validate()) return;
-      log('I am here 4');
-
-      log('hello1');
-      // Rabt For Megaamms
-      userCredentials = await AuthService.login(userData);
-
-      log('hello2');
-
-      // log(userCredentials.toString());
+      // Navigate To Navigation Menu
+      Get.to(() => const NavigationMenu());
     } catch (e) {
-      // log(userCredentials.toString());
-      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    } finally {
-      await Future.delayed(const Duration(seconds: 2));
       AppDialogs.hideDialog();
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 }

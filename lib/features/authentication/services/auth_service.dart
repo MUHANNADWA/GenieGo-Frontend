@@ -6,7 +6,7 @@ class AuthService {
   }
 
   static signup(userData) {
-    return AppHttpHelper.post('signup', userData);
+    return AppHttpHelper.post('register', userData);
   }
 
   static logout() {
