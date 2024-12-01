@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 class AppHttpHelper {
@@ -43,11 +42,11 @@ class AppHttpHelper {
 
   // Handle the HTTP response
   static Map<String, dynamic> _handleResponse(http.Response response) {
-    if (response.statusCode == 200) {
+    if (response.statusCode >= 200 && response.statusCode < 300) {
       return json.decode(response.body);
     } else {
-      log(json.decode(response.body));
-      throw Exception('Failed to load data: ${response.statusCode}');
+      throw Exception(
+          '${json.decode(response.body)['message'] ?? 'Unexpected error occured'}');
     }
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/helpers/network_manager.dart';
-import 'package:geniego/utils/http/http_client.dart';
 import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
@@ -76,7 +76,7 @@ class LoginController extends GetxController {
       if (!isConnected) {
         AppLoaders.errorSnackBar(
           title: 'No Internet',
-          message: 'Please Check You internet connection',
+          message: 'Please Check Your internet connection',
         );
         return;
       }
@@ -98,7 +98,7 @@ class LoginController extends GetxController {
 
       log('hello1');
       // Rabt For Megaamms
-      userCredentials = await AppHttpHelper.post('login', userData);
+      userCredentials = await AuthService.login(userData);
 
       log('hello2');
 
