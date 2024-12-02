@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/navigation_menu.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
@@ -87,8 +88,9 @@ class LoginController extends GetxController {
       };
 
       // Login User
-      await AuthService.login(userData);
-
+      if (dotenv.env['ENV'] != 'development') {
+        await AuthService.login(userData);
+      }
       // Stop Loading
       await AppDialogs.hideDialog();
 

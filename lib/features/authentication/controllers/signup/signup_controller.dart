@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/navigation_menu.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
@@ -54,7 +55,7 @@ class SignupController extends GetxController {
       if (!isConnected) {
         AppLoaders.errorSnackBar(
           title: 'No Internet',
-          message: 'Please Check Your internet connection',
+          message: 'Please Check Your Internet Connection',
         );
         return;
       }
@@ -76,8 +77,10 @@ class SignupController extends GetxController {
         'password_confirmation': passwordConfirmation.text
       };
 
-      // Login User
-      await AuthService.signup(userData);
+      // Signup User
+      if (dotenv.env['ENV'] != 'development') {
+        await AuthService.signup(userData);
+      }
 
       // Stop Loading
       await AppDialogs.hideDialog();
