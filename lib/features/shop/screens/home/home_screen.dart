@@ -1,6 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_container.dart';
+import 'package:geniego/common/widgets/layouts/grid_layout.dart';
+import 'package:geniego/common/widgets/products/product_Cards/Product_Card_Vertical.dart';
 import 'package:geniego/features/shop/screens/home/widgets/home_app_bar.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/features/shop/screens/home/widgets/home_popular_stores.dart';
@@ -26,6 +30,9 @@ class HomeScreen extends StatelessWidget {
                   AppSearchBar(
                     searchText: AppTexts.searchStore,
                   ),
+                  const SizedBox(
+                    height: AppSizes.spaceBtwSections,
+                  ),
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
@@ -34,6 +41,20 @@ class HomeScreen extends StatelessWidget {
 
                   const SizedBox(
                     height: AppSizes.spaceBtwSections,
+                  ),
+                ],
+              ),
+            ),
+
+            // Body
+            Padding(
+              padding: const EdgeInsets.all(AppSizes.defaultSpace),
+              child: Column(
+                children: [
+                  // Popular Products
+                  GridLayout(
+                    itemCount: 2,
+                    itemBuilder: (_, index) => const ProductCardVertical(),
                   ),
                 ],
               ),
