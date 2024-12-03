@@ -9,7 +9,7 @@ class OrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      ///AppBar
+      // AppBar
       appBar: AppAppBar(
         title: Text(
           'My Orders',
@@ -20,7 +20,7 @@ class OrderScreen extends StatelessWidget {
       body: const Padding(
         padding: EdgeInsets.all(AppSizes.defaultSpace),
 
-        /// Orders
+        // Orders
         child: AppOrderListItems(),
       ),
     );

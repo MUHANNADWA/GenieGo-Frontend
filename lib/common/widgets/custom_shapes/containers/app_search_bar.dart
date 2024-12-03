@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
-import 'package:geniego/utils/device/device_utility.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -27,7 +26,7 @@ class AppSearchBar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
         child: Container(
-          width: AppDeviceUtils.screenWidth,
+          width: double.infinity,
           padding: const EdgeInsets.all(AppSizes.xs),
           decoration: BoxDecoration(
             color: showBackground!

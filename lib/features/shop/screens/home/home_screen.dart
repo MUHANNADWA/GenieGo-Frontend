@@ -5,6 +5,7 @@ import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.d
 import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_Cards/Product_Card_Vertical.dart';
+import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/shop/screens/home/widgets/home_app_bar.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/features/shop/screens/home/widgets/home_popular_stores.dart';
@@ -39,9 +40,7 @@ class HomeScreen extends StatelessWidget {
                   // Popular Stores
                   const HomePopularStores(),
 
-                  const SizedBox(
-                    height: AppSizes.spaceBtwSections,
-                  ),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
                 ],
               ),
             ),
@@ -51,6 +50,11 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(AppSizes.defaultSpace),
               child: Column(
                 children: [
+                  // Heading
+                  SectionHeading(title: 'Popular Products'),
+
+                  const SizedBox(height: AppSizes.spaceBtwSections),
+
                   // Popular Products
                   GridLayout(
                     itemCount: 10,
