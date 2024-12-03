@@ -16,7 +16,6 @@ class ProductCardVertical extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelper.isDarkMode;
     //Container with side paddings,color,edges,radius and shadow.
     return GestureDetector(
       onTap: () {},
@@ -26,25 +25,27 @@ class ProductCardVertical extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [AppShadowStyle.verticalProductShadow],
           borderRadius: BorderRadius.circular(AppSizes.productImageRadius),
-          color: dark ? AppColors.darkerGrey : AppColors.white,
+          color: AppHelper.isDarkMode ? AppColors.darkerGrey : AppColors.white,
         ),
         child: Column(
           children: [
-            /// *Thumbnail,Wishlist Button, Discount Tag
+            //* Thumbnail,Wishlist Button, Discount Tag
             RoundedContainer(
               height: 180,
               padding: const EdgeInsets.all(AppSizes.sm),
-              backgroundColor: dark ? AppColors.dark : AppColors.light,
+              backgroundColor:
+                  AppHelper.isDarkMode ? AppColors.dark : AppColors.light,
               child: Stack(
                 children: [
-                  /// Thumbnail Image
-                  const RoundedImage(
+                  // Thumbnail Image
+                  RoundedImage(
                     imageUrl: AppImages.productImage1,
                     applyImageRadius: true,
+                    backgroundColor:
+                        AppHelper.isDarkMode ? AppColors.dark : AppColors.light,
                   ),
 
-                  /// Sale Tag
-                  ///
+                  // Sale Tag
                   Positioned(
                     top: 12,
                     child: RoundedContainer(
@@ -62,8 +63,7 @@ class ProductCardVertical extends StatelessWidget {
                     ),
                   ),
 
-                  /// Favourite Icon Button
-
+                  // Favourite Icon Button
                   const Positioned(
                     top: 0,
                     right: 0,
@@ -75,23 +75,24 @@ class ProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
-            // ignore: prefer_const_constructors
+
             const SizedBox(height: AppSizes.spaceBtwItems / 2),
 
-            /// Details
-
+            // Details
             Padding(
-              padding: const EdgeInsets.only(
-                left: AppSizes.sm,
-              ),
+              padding: const EdgeInsets.only(left: AppSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Product Title
                   const ProductTitleText(
                     title: 'Green Nike Air Shoes',
                     smallSize: true,
                   ),
+
                   const SizedBox(height: AppSizes.spaceBtwItems / 2),
+
+                  // Product Store
                   Row(
                     children: [
                       Text(
@@ -100,9 +101,10 @@ class ProductCardVertical extends StatelessWidget {
                         maxLines: 1,
                         style: Theme.of(context).textTheme.labelMedium,
                       ),
-                      const SizedBox(
-                        width: AppSizes.xs,
-                      ),
+
+                      const SizedBox(width: AppSizes.xs),
+
+                      // Verified Icon
                       const Icon(
                         Iconsax.verify5,
                         color: AppColors.primary,
@@ -110,16 +112,16 @@ class ProductCardVertical extends StatelessWidget {
                       ),
                     ],
                   ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      /// Price
+                      // Price
                       ProductPriceText(
                         price: '35.0',
                       ),
 
                       // Add To Cart Button
-
                       Container(
                         decoration: const BoxDecoration(
                           color: AppColors.dark,

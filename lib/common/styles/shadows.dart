@@ -8,7 +8,7 @@ class AppShadowStyle {
     spreadRadius: 7,
     offset: const Offset(0, 2),
   );
-  static final HorizontalProductShadow = BoxShadow(
+  static final horizontalProductShadow = BoxShadow(
     color: AppColors.darkGrey.withOpacity(0.1),
     blurRadius: 50,
     spreadRadius: 7,

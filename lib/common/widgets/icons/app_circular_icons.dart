@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/utils/constants/colors.dart';
+import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
-import 'package:iconsax/iconsax.dart';
 
 class CircularIcon extends StatelessWidget {
-  /// A Custom Circular Icon Widget With A Background Color.
-  ///
-  ///Properites Are:
-  ///Container[width],[height],&[backgroundColor].
-  ///
-  ///Icon's [size],[color] & [onPressed]
-
   const CircularIcon({
     super.key,
     required this.icon,
     this.width,
     this.height,
-    this.size,
+    this.size = AppSizes.lg,
     this.color,
     this.backgroundColor,
     this.onPressed,
@@ -30,17 +23,19 @@ class CircularIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelper.isDarkMode;
     return Container(
+      width: width,
+      height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color: dark
-            ? AppColors.black.withOpacity(0.9)
-            : AppColors.white.withOpacity(0.9),
+        color: backgroundColor ??
+            (AppHelper.isDarkMode
+                ? AppColors.black.withOpacity(0.9)
+                : AppColors.white.withOpacity(0.9)),
       ),
       child: IconButton(
-        onPressed: () {},
-        icon: const Icon(Iconsax.heart5),
+        onPressed: onPressed,
+        icon: Icon(icon, color: color, size: size),
       ),
     );
   }

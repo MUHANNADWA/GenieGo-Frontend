@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   // Popular Products
                   GridLayout(
-                    itemCount: 2,
+                    itemCount: 10,
                     itemBuilder: (_, index) => const ProductCardVertical(),
                   ),
                 ],
