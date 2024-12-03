@@ -29,7 +29,7 @@ class AppCircularImage extends StatelessWidget {
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         color: backgroundColor ??
-            (AppHelper.isDarkMode ? AppColors.black : AppColors.white),
+            (AppHelper.isDarkMode ? AppColors.dark : AppColors.white),
         borderRadius: BorderRadius.circular(100),
       ),
       child: Image(

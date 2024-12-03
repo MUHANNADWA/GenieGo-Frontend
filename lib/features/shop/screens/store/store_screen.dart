@@ -49,7 +49,7 @@ class StoreScreen extends StatelessWidget {
                     backgroundColor: Colors.transparent,
                     image: AppImages.clothIcon,
                     overlayColor:
-                        AppHelper.isDarkMode ? AppColors.dark : AppColors.light,
+                        AppHelper.isDarkMode ? AppColors.light : AppColors.dark,
                   ),
                 )
               ],
