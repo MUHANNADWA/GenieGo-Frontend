@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/bindings/general_bindings.dart';
+import 'package:geniego/navigation_menu.dart';
 import 'package:get/get.dart';
-import 'package:geniego/features/authentication/screens/onboarding/on_boarding_screen.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/locale/locale.dart';
 import 'package:geniego/utils/locale/locale_controller.dart';
@@ -22,7 +22,8 @@ class App extends StatelessWidget {
       translations: AppLocale(),
       debugShowCheckedModeBanner: false,
       initialBinding: GeneralBindings(),
-      home: const OnBoardingScreen(),
+      // home: const OnBoardingScreen(),
+      home: const NavigationMenu(),
     );
   }
 }
