@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/features/authentication/screens/settings/settings.dart';
+import 'package:geniego/features/shop/screens/wishlist/wishlist.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:geniego/features/shop/screens/home/home_screen.dart';
@@ -124,6 +125,6 @@ class NavigationController extends GetxController {
     const HomeScreen(),
     Container(color: Colors.blue),
     Container(color: Colors.deepPurple),
-    const SettingsScreen(),
+    const FavouriteScreen(),
   ];
 }
