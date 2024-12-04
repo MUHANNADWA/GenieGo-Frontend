@@ -4,6 +4,7 @@ import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
 import 'package:geniego/features/authentication/screens/profile/profile.dart';
+import 'package:geniego/features/shop/screens/address/widgets/address.dart';
 import 'package:geniego/features/shop/screens/order/order.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
@@ -72,7 +73,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.safe_home,
                     title: 'My Addresses',
                     subTitle: 'Set shopping delivery  address',
-                    onTap: () {},
+                    onTap: () => Get.to(() => const UserAddressScreen()),
                   ),
 
                   // My Cart
