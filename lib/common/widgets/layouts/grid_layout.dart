@@ -11,7 +11,7 @@ class GridLayout extends StatelessWidget {
 
   final int itemCount;
   final double mainAxisExtent;
-  final Widget? Function(BuildContext, int) itemBuilder;
+  final Widget? Function(BuildContext context, int index) itemBuilder;
 
   @override
   Widget build(BuildContext context) {

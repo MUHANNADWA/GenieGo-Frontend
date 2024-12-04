@@ -52,39 +52,33 @@ class NavigationMenu extends StatelessWidget {
         children: [
           // Side Bar
           AppHelper.screenWidth > 800
-              ? Container(
-                  width: 300,
-                  color: AppHelper.isDarkMode
-                      ? AppColors.black.withOpacity(0.9)
-                      : AppColors.white,
-                  child: Obx(
-                    () => NavigationBar(
-                      elevation: 0,
-                      indicatorColor: AppHelper.isDarkMode
-                          ? AppColors.white.withOpacity(0.1)
-                          : AppColors.black.withOpacity(0.1),
-                      selectedIndex: controller.selectedIndex.value,
-                      onDestinationSelected: (index) =>
-                          controller.selectedIndex.value = index,
-                      destinations: [
-                        const NavigationDestination(
-                          icon: Icon(Iconsax.home),
-                          label: 'Home',
-                        ),
-                        const NavigationDestination(
-                          icon: Icon(Iconsax.shop),
-                          label: 'Store',
-                        ),
-                        const NavigationDestination(
-                          icon: Icon(Iconsax.heart),
-                          label: 'Wishlist',
-                        ),
-                        const NavigationDestination(
-                          icon: Icon(Iconsax.user),
-                          label: 'Profile',
-                        ),
-                      ],
-                    ),
+              ? Obx(
+                  () => NavigationRail(
+                    extended: true,
+                    indicatorColor: AppHelper.isDarkMode
+                        ? AppColors.white.withOpacity(0.1)
+                        : AppColors.black.withOpacity(0.1),
+                    selectedIndex: controller.selectedIndex.value,
+                    onDestinationSelected: (index) =>
+                        controller.selectedIndex.value = index,
+                    destinations: [
+                      const NavigationRailDestination(
+                        icon: Icon(Iconsax.home),
+                        label: Text('Home'),
+                      ),
+                      const NavigationRailDestination(
+                        icon: Icon(Iconsax.shop),
+                        label: Text('Store'),
+                      ),
+                      const NavigationRailDestination(
+                        icon: Icon(Iconsax.heart),
+                        label: Text('Wishlist'),
+                      ),
+                      const NavigationRailDestination(
+                        icon: Icon(Iconsax.user),
+                        label: Text('Profile'),
+                      ),
+                    ],
                   ),
                 )
               : SizedBox(),
