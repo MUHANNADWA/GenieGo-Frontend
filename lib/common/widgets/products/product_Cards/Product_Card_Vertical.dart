@@ -39,7 +39,7 @@ class ProductCardVertical extends StatelessWidget {
                 children: [
                   // Thumbnail Image
                   RoundedImage(
-                    imageUrl: AppImages.productImage1,
+                    imageUrl: AppImages.productImage22,
                     applyImageRadius: true,
                     backgroundColor:
                         AppHelper.isDarkMode ? AppColors.dark : AppColors.light,
@@ -85,7 +85,7 @@ class ProductCardVertical extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Product Title
-                  const ProductTitleText(
+                  const ProductStoreTitleText(
                     title: 'Green Nike Air Shoes',
                     smallSize: true,
                   ),
