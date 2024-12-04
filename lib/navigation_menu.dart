@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
 import 'package:geniego/features/authentication/screens/settings/settings.dart';
 import 'package:geniego/features/shop/screens/wishlist/wishlist.dart';
 import 'package:geniego/features/shop/screens/store/store_screen.dart';
@@ -54,6 +55,16 @@ class NavigationMenu extends StatelessWidget {
           AppHelper.screenWidth > 800
               ? Obx(
                   () => NavigationRail(
+                    leading: Column(
+                      children: [
+                        const SizedBox(height: 20),
+                        SizedBox(
+                            width: 250,
+                            child:
+                                const UserProfileTile(showEditButton: false)),
+                        const Divider(color: Colors.grey),
+                      ],
+                    ),
                     extended: true,
                     indicatorColor: AppHelper.isDarkMode
                         ? AppColors.white.withOpacity(0.1)
@@ -95,7 +106,7 @@ class NavigationMenu extends StatelessWidget {
 }
 
 class NavigationController extends GetxController {
-  Rx<int> selectedIndex = 1.obs;
+  Rx<int> selectedIndex = 0.obs;
 
   final screens = [
     const HomeScreen(),
