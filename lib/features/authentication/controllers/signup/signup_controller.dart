@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
-import 'package:geniego/navigation_menu.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
+import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/helpers/network_manager.dart';
 import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
@@ -86,7 +86,7 @@ class SignupController extends GetxController {
       await AppDialogs.hideDialog();
 
       // Navigate To Navigation Menu
-      Get.to(() => const NavigationMenu());
+      Get.toNamed(mainScreen);
     } catch (e) {
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }

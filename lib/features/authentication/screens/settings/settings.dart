@@ -7,6 +7,7 @@ import 'package:geniego/features/authentication/screens/profile/profile.dart';
 import 'package:geniego/features/shop/screens/address/widgets/address.dart';
 import 'package:geniego/features/shop/screens/order/order.dart';
 import 'package:geniego/utils/constants/colors.dart';
+import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -40,9 +41,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   // User Profile Card
-                  UserProfileTile(
-                    onTap: () => Get.to(() => const ProfileScreen()),
-                  ),
+                  UserProfileTile(),
 
                   const SizedBox(
                     height: AppSizes.spaceBtwSections,
@@ -89,7 +88,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.bag_tick,
                     title: 'My Orders',
                     subTitle: 'In-progress and Completed Orders',
-                    onTap: () => Get.to(() => const OrderScreen()),
+                    onTap: () => Get.toNamed(ordersScreen),
                   ),
 
                   // Bank Account

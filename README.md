@@ -5,18 +5,15 @@ GenieGo is a delivery app designed to make ordering and receiving goods easier a
 
 ## Table of Contents
 
-
-- [Welcome to GenieGo 🧞](#welcome-to-geniego-)
-  - [Table of Contents](#table-of-contents)
-  - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-  - [Features](#features)
-  - [Technical Requirements](#technical-requirements)
-  - [Usage](#usage)
-  - [Troubleshooting](#troubleshooting)
-  - [Contributing](#contributing)
-  - [License](#license)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Features](#features)
+- [Technical Requirements](#technical-requirements)
+- [Usage](#usage)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Getting Started
 

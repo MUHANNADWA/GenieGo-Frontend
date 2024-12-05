@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geniego/utils/constants/pages.dart';
 import 'package:get/get.dart';
-import 'package:geniego/features/authentication/screens/login/login_screen.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
@@ -58,7 +58,7 @@ class ResetPasswordScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.to(() => const LoginScreen()),
+                  onPressed: () => Get.toNamed(loginScreen),
                   child: Text(AppTexts.done),
                 ),
               ),
@@ -69,7 +69,7 @@ class ResetPasswordScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () => Get.to(() => const LoginScreen()),
+                  onPressed: () => Get.toNamed(loginScreen),
                   child: Text(AppTexts.resendEmail),
                 ),
               ),

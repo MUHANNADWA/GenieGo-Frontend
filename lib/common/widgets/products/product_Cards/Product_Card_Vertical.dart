@@ -16,11 +16,10 @@ class ProductCardVertical extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Container with side paddings,color,edges,radius and shadow.
+    // Container with side paddings,color,edges,radius and shadow.
     return GestureDetector(
       onTap: () {},
       child: Container(
-        width: 180,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
           boxShadow: [AppShadowStyle.verticalProductShadow],
@@ -29,7 +28,7 @@ class ProductCardVertical extends StatelessWidget {
         ),
         child: Column(
           children: [
-            //* Thumbnail,Wishlist Button, Discount Tag
+            //* Thumbnail, Wishlist Button, Discount Tag
             RoundedContainer(
               height: 180,
               padding: const EdgeInsets.all(AppSizes.sm),
@@ -39,6 +38,7 @@ class ProductCardVertical extends StatelessWidget {
                 children: [
                   // Thumbnail Image
                   RoundedImage(
+                    width: double.infinity,
                     imageUrl: AppImages.productImage22,
                     applyImageRadius: true,
                     backgroundColor:
