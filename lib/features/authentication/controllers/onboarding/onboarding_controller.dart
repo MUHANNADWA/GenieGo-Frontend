@@ -12,7 +12,7 @@ class OnBoardingController extends GetxController {
   // Variables
   final pageController = PageController();
   Rx<int> currentPageIndex = 0.obs;
-  String? countryCode;
+  Rx<String> countryCode = 'SY'.obs;
 
   // Update Current Index When Page Scrolled
   void updatePageIndicator(index) => currentPageIndex.value = index;
@@ -36,9 +36,8 @@ class OnBoardingController extends GetxController {
 
       // Getting Country Code
       if (dotenv.env['ENV'] != 'development') {
-        countryCode = await getCountryCode() ?? 'SY';
+        countryCode.value = await getCountryCode() ?? 'SY';
       }
-      countryCode = 'SY';
 
       // Stop The Loader
       AppDialogs.hideDialog();

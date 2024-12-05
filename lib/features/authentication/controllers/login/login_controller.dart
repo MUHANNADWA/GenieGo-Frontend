@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:geniego/features/authentication/models/user.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/pages.dart';
@@ -82,15 +83,17 @@ class LoginController extends GetxController {
       );
 
       final userData = {
-        if (isUsernameScreen.value) 'username': username.text,
-        if (isEmailScreen.value) 'email': email.text,
+        if (isUsernameScreen.value) 'username': username.text.trim(),
+        if (isEmailScreen.value) 'email': email.text.trim(),
         if (isPhoneNumberScreen.value) 'phone': phoneNumber.value,
-        'password': password.text
+        'password': password.text.trim()
       };
 
       // Login User
       if (dotenv.env['ENV'] != 'development') {
-        await AuthService.login(userData);
+        final response = await AuthService.login(userData);
+        User user = User.fromJson(response);
+        await GetStorage().write('user', user.toJson());
       }
 
       // Store User Status

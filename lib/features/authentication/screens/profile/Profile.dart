@@ -71,6 +71,7 @@ class ProfileScreen extends StatelessWidget {
               value: 'user name',
               onPressed: () {},
             ),
+
             const SizedBox(height: AppSizes.spaceBtwItems),
 
             const Divider(),

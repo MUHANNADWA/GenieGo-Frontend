@@ -20,32 +20,34 @@ class InternationalPhoneNumberInputField<T extends GetxController>
     final controller = Get.put(OnBoardingController());
     final T tController = Get.find<T>();
 
-    return InternationalPhoneNumberInput(
-      autoValidateMode: AutovalidateMode.onUserInteraction,
-      validator: (value) => AppValidator.validatePhoneNumber(value),
-      inputDecoration: InputDecoration(
-        labelText: AppTexts.phoneNo,
-        prefixIcon: const Icon(Iconsax.call),
+    return Obx(
+      () => InternationalPhoneNumberInput(
+        autoValidateMode: AutovalidateMode.onUserInteraction,
+        validator: (value) => AppValidator.validatePhoneNumber(value),
+        inputDecoration: InputDecoration(
+          labelText: AppTexts.phoneNo,
+          prefixIcon: const Icon(Iconsax.call),
+        ),
+        searchBoxDecoration: InputDecoration(
+          labelText: AppTexts.searchCountry,
+          prefixIcon: const Icon(Iconsax.global_search),
+        ),
+        locale: AppHelper.currentLang,
+        initialValue: PhoneNumber(isoCode: controller.countryCode.value),
+        selectorConfig: const SelectorConfig(
+          selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+          useBottomSheetSafeArea: true,
+        ),
+        onInputChanged: (PhoneNumber number) {
+          if (tController is LoginController) {
+            (tController as LoginController).phoneNumber.value =
+                number.phoneNumber ?? '';
+          } else if (tController is SignupController) {
+            (tController as SignupController).phoneNumber.value =
+                number.phoneNumber ?? '';
+          }
+        },
       ),
-      searchBoxDecoration: InputDecoration(
-        labelText: AppTexts.searchCountry,
-        prefixIcon: const Icon(Iconsax.global_search),
-      ),
-      locale: AppHelper.currentLang,
-      initialValue: PhoneNumber(isoCode: controller.countryCode),
-      selectorConfig: const SelectorConfig(
-        selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-        useBottomSheetSafeArea: true,
-      ),
-      onInputChanged: (PhoneNumber number) {
-        if (tController is LoginController) {
-          (tController as LoginController).phoneNumber.value =
-              number.phoneNumber ?? '';
-        } else if (tController is SignupController) {
-          (tController as SignupController).phoneNumber.value =
-              number.phoneNumber ?? '';
-        }
-      },
     );
   }
 }

@@ -68,13 +68,13 @@ class SignupController extends GetxController {
       );
 
       final userData = {
-        'first_name': firstName.text,
-        'last_name': lastName.text,
-        'username': username.text,
-        'email': email.text,
+        'first_name': firstName.text.trim(),
+        'last_name': lastName.text.trim(),
+        'username': username.text.trim(),
+        'email': email.text.trim(),
         'phone': phoneNumber.value,
-        'password': password.text,
-        'password_confirmation': passwordConfirmation.text
+        'password': password.text.trim(),
+        'password_confirmation': passwordConfirmation.text.trim()
       };
 
       // Signup User
