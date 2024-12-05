@@ -3,7 +3,7 @@ import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/icons/app_circular_icons.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_Cards/product_card_vertical.dart';
-import 'package:geniego/features/shop/screens/home/home_screen.dart';
+import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +23,7 @@ class FavouriteScreen extends StatelessWidget {
         actions: [
           CircularIcon(
             icon: Iconsax.add,
-            onPressed: () => Get.to(() => const HomeScreen()),
+            onPressed: () => Get.toNamed(homeScreen),
           ),
         ],
       ),

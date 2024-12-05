@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/validator/validator.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:geniego/common/widgets/login_signup/international_phone_number_input_field.dart';
 import 'package:geniego/features/authentication/controllers/login/login_controller.dart';
-import 'package:geniego/features/authentication/screens/password_configuration/forgot_password_screen.dart';
-import 'package:geniego/features/authentication/screens/signup/signup_screen.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 
@@ -81,7 +80,7 @@ class LoginForm extends StatelessWidget {
                 children: [
                   // Forgot Password
                   TextButton(
-                    onPressed: () => Get.to(() => const ForgotPasswordScreen()),
+                    onPressed: () => Get.toNamed(forgotPasswordScreen),
                     child: Text(AppTexts.forgotPassword),
                   )
                 ],
@@ -104,7 +103,7 @@ class LoginForm extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
-                  onPressed: () => Get.to(() => const SignupScreen()),
+                  onPressed: () => Get.toNamed(signupScreen),
                   child: Text(AppTexts.createAccount),
                 ),
               ),

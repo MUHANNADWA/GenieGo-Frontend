@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:geniego/common/widgets/default_page/app_default_page.dart';
-import 'package:geniego/common/widgets/no_internet_connecntion/no_internet_connention_page.dart';
+import 'package:geniego/common/pages/app_default_page.dart';
+import 'package:geniego/common/pages/no_internet_connention_page.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:geniego/utils/popups_loaders/circular_loader.dart';
 import 'package:get/get.dart';

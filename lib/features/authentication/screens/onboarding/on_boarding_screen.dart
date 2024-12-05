@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:geniego/common/widgets/default_page/app_default_page.dart';
+import 'package:geniego/common/pages/app_default_page.dart';
 import 'package:get/get.dart';
 import 'package:geniego/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:geniego/features/authentication/screens/onboarding/widgets/on_boarding_change_lang.dart';

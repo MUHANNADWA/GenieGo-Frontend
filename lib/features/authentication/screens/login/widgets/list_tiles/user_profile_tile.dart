@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
-import 'package:geniego/features/authentication/screens/profile/Profile.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
+import 'package:geniego/utils/constants/pages.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -17,7 +17,7 @@ class UserProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () => Get.to(() => const ProfileScreen()),
+      onTap: () => Get.toNamed(profileScreen),
       leading: const AppCircularImage(
         image: AppImages.user,
         width: 50,
