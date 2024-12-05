@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
-import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/features/shop/screens/address/widgets/add_new_address.dart';
 import 'package:geniego/features/shop/screens/address/widgets/single_address.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 class UserAddressScreen extends StatelessWidget {
@@ -15,16 +13,6 @@ class UserAddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(
-          () => const AddNewAddressScreen(),
-        ),
-        child: Icon(
-          Iconsax.add,
-          color: AppColors.white,
-        ),
-        backgroundColor: AppColors.primary,
-      ),
       appBar: AppAppBar(
         showBackArrow: true,
         title:
@@ -40,6 +28,11 @@ class UserAddressScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.to(() => const AddNewAddressScreen()),
+        backgroundColor: AppColors.primary,
+        child: Icon(Iconsax.add, color: AppColors.white),
       ),
     );
   }

@@ -3,9 +3,7 @@ import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_c
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
-import 'package:geniego/features/authentication/screens/profile/profile.dart';
-import 'package:geniego/features/shop/screens/address/widgets/address.dart';
-import 'package:geniego/features/shop/screens/order/order.dart';
+import 'package:geniego/features/shop/screens/address/address.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/sizes.dart';
