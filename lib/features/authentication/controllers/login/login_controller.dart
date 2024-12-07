@@ -40,7 +40,7 @@ class LoginController extends GetxController {
     isEmailScreen.value = true;
   }
 
-  //* Toggle Password And Remember Me
+  //* Toggle Password
   Rx<bool> isPasswordObscured = true.obs;
   Rx<Icon> passwordIcon = const Icon(Iconsax.eye).obs;
 

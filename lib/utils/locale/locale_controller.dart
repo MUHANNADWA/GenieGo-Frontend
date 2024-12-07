@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class AppLocaleController extends GetxController {
+  static AppLocaleController get instance => Get.find();
   final localStorage = GetStorage();
 
   Locale initialLang() {
@@ -17,8 +18,14 @@ class AppLocaleController extends GetxController {
   }
 
   void changeLang(String langCode) {
-    Locale locale = Locale(langCode);
-    localStorage.write('lang', langCode);
-    Get.updateLocale(locale);
+    langCode = langCode.toLowerCase();
+    if (langCode == 'system') {
+      Get.updateLocale(Get.deviceLocale!);
+      localStorage.write('lang', Get.deviceLocale!.toString());
+    } else {
+      Locale locale = Locale(langCode);
+      localStorage.write('lang', langCode);
+      Get.updateLocale(locale);
+    }
   }
 }

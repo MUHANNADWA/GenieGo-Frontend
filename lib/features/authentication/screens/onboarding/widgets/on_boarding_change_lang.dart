@@ -1,6 +1,5 @@
 import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/device/device_utility.dart';
@@ -12,14 +11,12 @@ class OnBoardingChangeLang extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppLocaleController langController = Get.put(AppLocaleController());
-
     return Positioned(
       top: AppDeviceUtils.appBarHeight,
       right: AppHelper.isRtl ? AppSizes.defaultSpace : null,
       left: AppHelper.isRtl ? null : AppSizes.defaultSpace,
       child: TextButton(
-          onPressed: () => langController.toggleLang(),
+          onPressed: () => AppLocaleController.instance.toggleLang(),
           child: Row(
             children: [
               Text('${AppTexts.changeLang}  '),

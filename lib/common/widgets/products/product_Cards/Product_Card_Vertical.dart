@@ -48,6 +48,7 @@ class ProductCardVertical extends StatelessWidget {
                   // Sale Tag
                   Positioned(
                     top: 12,
+                    left: 0,
                     child: RoundedContainer(
                       radius: AppSizes.sm,
                       backgroundColor: AppColors.secondary.withOpacity(0.8),
@@ -80,7 +81,9 @@ class ProductCardVertical extends StatelessWidget {
 
             // Details
             Padding(
-              padding: const EdgeInsets.only(left: AppSizes.sm),
+              padding: AppHelper.isRtl
+                  ? const EdgeInsets.only(right: AppSizes.sm)
+                  : const EdgeInsets.only(left: AppSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -123,12 +126,23 @@ class ProductCardVertical extends StatelessWidget {
 
                       // Add To Cart Button
                       Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: AppColors.dark,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(AppSizes.cardRadiusMd),
-                              bottomRight:
-                                  Radius.circular(AppSizes.productImageRadius)),
+                          borderRadius: AppHelper.isRtl
+                              ? BorderRadius.only(
+                                  topRight:
+                                      Radius.circular(AppSizes.cardRadiusMd),
+                                  bottomLeft: Radius.circular(
+                                    AppSizes.productImageRadius,
+                                  ),
+                                )
+                              : BorderRadius.only(
+                                  topLeft:
+                                      Radius.circular(AppSizes.cardRadiusMd),
+                                  bottomRight: Radius.circular(
+                                    AppSizes.productImageRadius,
+                                  ),
+                                ),
                         ),
                         child: const SizedBox(
                           width: AppSizes.iconLg * 1.2,

@@ -3,6 +3,7 @@ import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_c
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
+import 'package:geniego/features/shop/controllers/settings/settings_controller.dart';
 import 'package:geniego/features/shop/screens/address/address.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/pages.dart';
@@ -15,6 +16,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SettingsController());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -129,7 +132,7 @@ class SettingsScreen extends StatelessWidget {
 
                   // App Settings Heading
                   const SectionHeading(
-                    title: 'appsettings',
+                    title: 'App Settings',
                     showActionButton: false,
                   ),
 
@@ -137,35 +140,69 @@ class SettingsScreen extends StatelessWidget {
                     height: AppSizes.spaceBtwItems,
                   ),
 
-                  // Load Data
-                  const SettingsMenuTile(
-                    icon: Iconsax.document_upload,
-                    title: 'Load Data',
-                    subTitle: 'Upload Data to your Cloud firebase',
+                  // Change Lang
+                  SettingsMenuTile(
+                    icon: Iconsax.language_square,
+                    title: 'Language',
+                    subTitle: 'Choose your language between: En, Ar',
+                    trailing: DropdownButton<String>(
+                      value: controller.languages.value,
+                      items: [
+                        DropdownMenuItem(
+                          value: 'System',
+                          child: Text('System'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'En',
+                          child: Text('En'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'Ar',
+                          child: Text('Ar'),
+                        ),
+                      ],
+                      onChanged: (Object? value) =>
+                          controller.chnageLang(value),
+                    ),
+                  ),
+
+                  // Change Theme
+                  SettingsMenuTile(
+                    icon: Iconsax.colors_square,
+                    title: 'Theme',
+                    subTitle: 'Change the app look to which you like',
+                    trailing: DropdownButton<String>(
+                      value: controller.themes.value,
+                      items: [
+                        DropdownMenuItem(
+                          value: 'System',
+                          child: Text('System'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'Light',
+                          child: Text('Light'),
+                        ),
+                        DropdownMenuItem(
+                          value: 'Dark',
+                          child: Text('Dark'),
+                        ),
+                      ],
+                      onChanged: (Object? value) =>
+                          controller.chnageTheme(value),
+                    ),
                   ),
 
                   // Geolocation
-                  SettingsMenuTile(
-                    icon: Iconsax.location,
-                    title: 'Geolocation',
-                    subTitle: 'Set recommendation based on locaion',
-                    trailing: Switch(value: true, onChanged: (value) {}),
-                  ),
-
-                  // Safe Mode
-                  SettingsMenuTile(
-                    icon: Iconsax.security_user,
-                    title: 'Safe Mode',
-                    subTitle: 'Search result is safe for all ages',
-                    trailing: Switch(value: false, onChanged: (value) {}),
-                  ),
-
-                  // HD Image Quality
-                  SettingsMenuTile(
-                    icon: Iconsax.image,
-                    title: 'HD Image Quality',
-                    subTitle: 'Set Image Quality to be seen',
-                    trailing: Switch(value: false, onChanged: (value) {}),
+                  Obx(
+                    () => SettingsMenuTile(
+                      icon: Iconsax.location,
+                      title: 'Geolocation',
+                      subTitle: 'Set recommendation based on locaion',
+                      trailing: Switch(
+                        value: controller.geoLocation.value,
+                        onChanged: (value) => controller.geoLocation.toggle(),
+                      ),
+                    ),
                   ),
 
                   const SizedBox(

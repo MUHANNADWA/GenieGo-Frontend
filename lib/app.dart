@@ -25,14 +25,14 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     AppLocaleController langController = Get.put(AppLocaleController());
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: AppTexts.appName,
       themeMode: ThemeMode.system,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
+      initialBinding: GeneralBindings(),
       locale: langController.initialLang(),
       translations: AppLocale(),
-      debugShowCheckedModeBanner: false,
-      initialBinding: GeneralBindings(),
       initialRoute: '/',
       unknownRoute: GetPage(name: notFound, page: () => NotFoundScreen()),
       getPages: [
