@@ -8,6 +8,7 @@ import 'package:geniego/features/shop/screens/address/address.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -29,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
                   // AppBar
                   AppBar(
                     title: Text(
-                      'Account',
+                      AppTexts.profile,
                       style: Theme.of(context)
                           .textTheme
                           .headlineMedium!
@@ -59,8 +60,8 @@ class SettingsScreen extends StatelessWidget {
                   //* Account Settings
 
                   // Account Settings Heading
-                  const SectionHeading(
-                    title: 'Account Settings',
+                  SectionHeading(
+                    title: AppTexts.accountSettings,
                     showActionButton: false,
                   ),
 
@@ -71,57 +72,25 @@ class SettingsScreen extends StatelessWidget {
                   // My Adresses
                   SettingsMenuTile(
                     icon: Iconsax.safe_home,
-                    title: 'My Addresses',
-                    subTitle: 'Set shopping delivery  address',
+                    title: AppTexts.addresses,
+                    subTitle: AppTexts.addressesSub,
                     onTap: () => Get.to(() => const UserAddressScreen()),
                   ),
 
                   // My Cart
                   SettingsMenuTile(
                     icon: Iconsax.shopping_cart,
-                    title: 'My Cart',
-                    subTitle: 'Add,Remove products and move to checkout',
+                    title: AppTexts.cart,
+                    subTitle: AppTexts.cartSub,
                     onTap: () {},
                   ),
 
                   // My Orders
                   SettingsMenuTile(
                     icon: Iconsax.bag_tick,
-                    title: 'My Orders',
-                    subTitle: 'In-progress and Completed Orders',
+                    title: AppTexts.orders,
+                    subTitle: AppTexts.ordersSub,
                     onTap: () => Get.toNamed(ordersScreen),
-                  ),
-
-                  // Bank Account
-                  SettingsMenuTile(
-                    icon: Iconsax.bank,
-                    title: 'Bank Account',
-                    subTitle: 'Withdraw balance to register bank account',
-                    onTap: () {},
-                  ),
-
-                  // My Coupons
-                  SettingsMenuTile(
-                    icon: Iconsax.discount_shape,
-                    title: 'My coupons',
-                    subTitle: 'List of all discounted coupons',
-                    onTap: () {},
-                  ),
-
-                  // Notifications
-                  SettingsMenuTile(
-                    icon: Iconsax.notification,
-                    title: 'Notifications',
-                    subTitle: 'Set any kind of Notification message',
-                    onTap: () {},
-                  ),
-
-                  // Account Privacy
-                  SettingsMenuTile(
-                    icon: Iconsax.security_card,
-                    title: 'Account Privacy',
-                    subTitle: 'Manage data usage and connect accounts',
-                    onTap: () {},
                   ),
 
                   const SizedBox(
@@ -131,8 +100,8 @@ class SettingsScreen extends StatelessWidget {
                   //* App Settings
 
                   // App Settings Heading
-                  const SectionHeading(
-                    title: 'App Settings',
+                  SectionHeading(
+                    title: AppTexts.appSettings,
                     showActionButton: false,
                   ),
 
@@ -143,8 +112,8 @@ class SettingsScreen extends StatelessWidget {
                   // Change Lang
                   SettingsMenuTile(
                     icon: Iconsax.language_square,
-                    title: 'Language',
-                    subTitle: 'Choose your language between: En, Ar',
+                    title: AppTexts.language,
+                    subTitle: AppTexts.languageSub,
                     trailing: DropdownButton<String>(
                       value: controller.languages.value,
                       items: [
@@ -169,8 +138,8 @@ class SettingsScreen extends StatelessWidget {
                   // Change Theme
                   SettingsMenuTile(
                     icon: Iconsax.colors_square,
-                    title: 'Theme',
-                    subTitle: 'Change the app look to which you like',
+                    title: AppTexts.theme,
+                    subTitle: AppTexts.themeSub,
                     trailing: DropdownButton<String>(
                       value: controller.themes.value,
                       items: [
@@ -196,11 +165,24 @@ class SettingsScreen extends StatelessWidget {
                   Obx(
                     () => SettingsMenuTile(
                       icon: Iconsax.location,
-                      title: 'Geolocation',
-                      subTitle: 'Set recommendation based on locaion',
+                      title: AppTexts.geolocation,
+                      subTitle: AppTexts.geolocationSub,
                       trailing: Switch(
                         value: controller.geoLocation.value,
                         onChanged: (value) => controller.geoLocation.toggle(),
+                      ),
+                    ),
+                  ),
+
+                  // Notifications
+                  Obx(
+                    () => SettingsMenuTile(
+                      icon: Iconsax.notification,
+                      title: AppTexts.notifications,
+                      subTitle: AppTexts.notificationsSub,
+                      trailing: Switch(
+                        value: controller.notification.value,
+                        onChanged: (value) => controller.notification.toggle(),
                       ),
                     ),
                   ),

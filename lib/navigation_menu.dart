@@ -3,6 +3,7 @@ import 'package:geniego/features/authentication/screens/login/widgets/list_tiles
 import 'package:geniego/features/authentication/screens/settings/settings.dart';
 import 'package:geniego/features/shop/screens/wishlist/wishlist.dart';
 import 'package:geniego/features/shop/screens/store/store_screen.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:geniego/features/shop/screens/home/home_screen.dart';
@@ -29,21 +30,21 @@ class NavigationMenu extends StatelessWidget {
                 onDestinationSelected: (index) =>
                     controller.selectedIndex.value = index,
                 destinations: [
-                  const NavigationDestination(
+                  NavigationDestination(
                     icon: Icon(Iconsax.home),
-                    label: 'Home',
+                    label: AppTexts.home,
                   ),
-                  const NavigationDestination(
+                  NavigationDestination(
                     icon: Icon(Iconsax.shop),
-                    label: 'Store',
+                    label: AppTexts.shop,
                   ),
-                  const NavigationDestination(
+                  NavigationDestination(
                     icon: Icon(Iconsax.heart),
-                    label: 'Wishlist',
+                    label: AppTexts.wishlist,
                   ),
-                  const NavigationDestination(
+                  NavigationDestination(
                     icon: Icon(Iconsax.user),
-                    label: 'Profile',
+                    label: AppTexts.profile,
                   ),
                 ],
               ),
@@ -73,21 +74,21 @@ class NavigationMenu extends StatelessWidget {
                     onDestinationSelected: (index) =>
                         controller.selectedIndex.value = index,
                     destinations: [
-                      const NavigationRailDestination(
+                      NavigationRailDestination(
                         icon: Icon(Iconsax.home),
-                        label: Text('Home'),
+                        label: Text(AppTexts.home),
                       ),
-                      const NavigationRailDestination(
+                      NavigationRailDestination(
                         icon: Icon(Iconsax.shop),
-                        label: Text('Store'),
+                        label: Text(AppTexts.shop),
                       ),
-                      const NavigationRailDestination(
+                      NavigationRailDestination(
                         icon: Icon(Iconsax.heart),
-                        label: Text('Wishlist'),
+                        label: Text(AppTexts.wishlist),
                       ),
-                      const NavigationRailDestination(
+                      NavigationRailDestination(
                         icon: Icon(Iconsax.user),
-                        label: Text('Profile'),
+                        label: Text(AppTexts.profile),
                       ),
                     ],
                   ),
@@ -106,7 +107,7 @@ class NavigationMenu extends StatelessWidget {
 }
 
 class NavigationController extends GetxController {
-  Rx<int> selectedIndex = 0.obs;
+  Rx<int> selectedIndex = 3.obs;
 
   final screens = [
     const HomeScreen(),

@@ -7,6 +7,7 @@ class SettingsController extends GetxController {
 
   //* Settings Variables
   Rx<bool> geoLocation = true.obs;
+  Rx<bool> notification = true.obs;
   Rx<String> languages = 'System'.obs;
   Rx<String> themes = 'System'.obs;
 

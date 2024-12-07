@@ -14,6 +14,12 @@ class AppLocale implements Translations {
           'changeLang': 'Change Language',
           'searchCountry': 'Search by country name or dial code',
 
+          // Screens
+          'home': 'Home',
+          'shop': 'Shop',
+          'wishlist': 'Wishlist',
+          'profile': 'Profile',
+
           // OnBoarding Texts
           'onBoardingTitle1': 'Choose your product',
           'onBoardingTitle2': 'Select Payment Method',
@@ -76,6 +82,23 @@ class AppLocale implements Translations {
           'searchStore': 'Search what you want ..',
 
           // Settings
+          'accountSettings': 'Account Settings',
+          'addresses': 'Addresses',
+          'addressesSub': 'Set shopping delivery  address',
+          'cart': 'Cart',
+          'cartSub': 'Add, Remove products and move to checkout',
+          'orders': 'Orders',
+          'ordersSub': 'In-progress and Completed Orders',
+
+          'appSettings': 'App Settings',
+          'language': 'Language',
+          'languageSub': 'Choose your language between: English and Arabic',
+          'theme': 'Theme',
+          'themeSub': 'Change to the app look you like',
+          'geolocation': 'Geolocation',
+          'geolocationSub': 'Set recommendation based on location',
+          'notifications': 'Notifications',
+          'notificationsSub': 'Enable or Disable app notifications',
         },
         'ar': {
           // GLOBAL Texts
@@ -87,6 +110,12 @@ class AppLocale implements Translations {
           'tContinue': 'متابعة',
           'changeLang': ' تغيير اللغة',
           'searchCountry': 'البحث حسب اسم الدولة أو رمز الاتصال',
+
+          // Screens
+          'home': 'الرئيسية',
+          'shop': 'المتاجر',
+          'wishlist': 'المفضلة',
+          'profile': 'الملف الشخصي',
 
           // OnBoarding Texts
           'onBoardingTitle1': 'اختر منتجك',
@@ -149,6 +178,23 @@ class AppLocale implements Translations {
           'searchStore': '.. ابحث عن ما تريد',
 
           // Settings
+          'accountSettings': 'إعدادات الحساب',
+          'addresses': 'أماكن التوصيل',
+          'addressesSub': 'تعيين عناوين التوصيل',
+          'cart': 'سلة التسوق',
+          'cartSub': 'إضافة منتجات أو إزالة وإكمال التسوق',
+          'orders': 'طلباتي',
+          'ordersSub': 'عرض طلباتك وتتبعها',
+
+          'appSettings': 'إعدادات التطبيق',
+          'language': 'اللغة',
+          'languageSub': 'يمكنك اختيار لغة التطبيق بين العربية والإنجليزية',
+          'theme': 'السمة',
+          'themeSub': 'غير سمة التطبيق للوضع الذي تراه مناسبا',
+          'geolocation': 'الموقع',
+          'geolocationSub': 'عرض الاقتراحات بناء على الموقع',
+          'notifications': 'الإشعارات',
+          'notificationsSub': 'تفعيل الإشعارات أو إلغاء تفعيلها',
         },
       };
 }

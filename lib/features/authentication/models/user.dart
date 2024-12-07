@@ -1,12 +1,12 @@
 class User {
-  final String id;
+  final int id;
   final String firstName;
   final String lastName;
   final String username;
   final String email;
   final String password;
   final String phone;
-  final String roleId;
+  final int roleId;
 
   User({
     required this.id,
@@ -42,5 +42,10 @@ class User {
       'phone': phone,
       'roleId': roleId,
     };
+  }
+
+  @override
+  String toString() {
+    return 'User(id: $id, firstName: $firstName, lastName: $lastName, username: $username, email: $email, password: $password, phone: $phone, roleId: $roleId)';
   }
 }

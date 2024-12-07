@@ -16,7 +16,6 @@ class ProductCardVertical extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Container with side paddings,color,edges,radius and shadow.
     return GestureDetector(
       onTap: () {},
       child: Container(

@@ -10,6 +10,12 @@ class AppTexts {
   static String get appName => 'appName'.tr;
   static String get tContinue => 'tContinue'.tr;
 
+  // Screens
+  static String get home => 'home'.tr;
+  static String get shop => 'shop'.tr;
+  static String get wishlist => 'wishlist'.tr;
+  static String get profile => 'profile'.tr;
+
   // OnBoarding Texts
   static String get onBoardingTitle1 => 'onBoardingTitle1'.tr;
   static String get onBoardingTitle2 => 'onBoardingTitle2'.tr;
@@ -67,4 +73,23 @@ class AppTexts {
   static String get homeAppbarTitle => 'homeAppbarTitle'.tr;
   static String get homeAppbarSubTitle => 'homeAppbarSubTitle'.tr;
   static String get searchStore => 'searchStore'.tr;
+
+  // Settings
+  static String get accountSettings => 'accountSettings'.tr;
+  static String get addresses => 'addresses'.tr;
+  static String get addressesSub => 'addressesSub'.tr;
+  static String get cart => 'cart'.tr;
+  static String get cartSub => 'cartSub'.tr;
+  static String get orders => 'orders'.tr;
+  static String get ordersSub => 'ordersSub'.tr;
+
+  static String get appSettings => 'appSettings'.tr;
+  static String get language => 'language'.tr;
+  static String get languageSub => 'languageSub'.tr;
+  static String get theme => 'theme'.tr;
+  static String get themeSub => 'themeSub'.tr;
+  static String get geolocation => 'geolocation'.tr;
+  static String get geolocationSub => 'geolocationSub'.tr;
+  static String get notifications => 'notifications'.tr;
+  static String get notificationsSub => 'notificationsSub'.tr;
 }
