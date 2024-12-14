@@ -18,11 +18,11 @@ class AppLocaleController extends GetxController {
   }
 
   void changeLang(String langCode) {
-    langCode = langCode.toLowerCase();
-    if (langCode == 'system') {
+    if (langCode == 'System') {
       Get.updateLocale(Get.deviceLocale!);
       localStorage.write('lang', Get.deviceLocale!.toString());
     } else {
+      langCode = langCode.toLowerCase();
       Locale locale = Locale(langCode);
       localStorage.write('lang', langCode);
       Get.updateLocale(locale);

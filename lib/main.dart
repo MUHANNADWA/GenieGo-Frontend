@@ -13,6 +13,8 @@ void main() async {
   // Initialize Get Storage
   await GetStorage.init();
 
+  // GetStorage().erase();
+
   // Run App
   runApp(const App());
 }

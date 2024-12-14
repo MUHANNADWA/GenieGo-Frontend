@@ -169,7 +169,8 @@ class SettingsScreen extends StatelessWidget {
                       subTitle: AppTexts.geolocationSub,
                       trailing: Switch(
                         value: controller.geoLocation.value,
-                        onChanged: (value) => controller.geoLocation.toggle(),
+                        onChanged: (value) =>
+                            controller.toggleGeolocation(value),
                       ),
                     ),
                   ),
@@ -182,7 +183,8 @@ class SettingsScreen extends StatelessWidget {
                       subTitle: AppTexts.notificationsSub,
                       trailing: Switch(
                         value: controller.notification.value,
-                        onChanged: (value) => controller.notification.toggle(),
+                        onChanged: (value) =>
+                            controller.toggleNotification(value),
                       ),
                     ),
                   ),
