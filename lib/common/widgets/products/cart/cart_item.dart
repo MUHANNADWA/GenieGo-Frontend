@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_rounded_image.dart';
+import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
@@ -30,36 +31,32 @@ class CartItem extends StatelessWidget {
         /// Title,Price,& Size
         Expanded(
           child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              BrandTitleWithVerifiedIcon(title: 'Nike'),
-              Flexible(
-                child: ProductTitleText(
-                  title: 'Black Sports Shoes',
-                  maxLines: 1,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Nike'),
+                Flexible(
+                    child: ProductStoreTitleText(
+                        title: 'Black Sports Shoes', maxLines: 1)),
 
-                  /// Attributes
-                  Text.rich(
-                    TextSpan(children: [
-                      TextSpan(
-                          text: 'Color',
-                          style: Theme.of(context).textTheme.bodySmall),
-                      TextSpan(
-                          text: 'Green',
-                          style: Theme.of(context).textTheme.bodyLarge),
-                      TextSpan(
-                          text: 'Size',
-                          style: Theme.of(context).textTheme.bodySmall),
-                      TextSpan(
-                          text: 'UK 08',
-                          style: Theme.of(context).textTheme.bodyLarge),
-                    ]),
-                  ),
+                /// Attributes
+                Text.rich(
+                  TextSpan(children: [
+                    TextSpan(
+                        text: 'Color',
+                        style: Theme.of(context).textTheme.bodySmall),
+                    TextSpan(
+                        text: 'Green',
+                        style: Theme.of(context).textTheme.bodyLarge),
+                    TextSpan(
+                        text: 'Size',
+                        style: Theme.of(context).textTheme.bodySmall),
+                    TextSpan(
+                        text: 'UK 08',
+                        style: Theme.of(context).textTheme.bodyLarge),
+                  ]),
                 ),
-              ),
-            ],
-          ),
+              ]),
         ),
       ],
     );

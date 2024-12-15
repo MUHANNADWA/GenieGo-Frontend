@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
-import 'package:geniego/common/widgets/custom_shapes/containers/app_rounded_image.dart';
-import 'package:geniego/common/widgets/icons/app_circular_icons.dart';
 import 'package:geniego/common/widgets/products/cart/add_remove_button.dart';
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
-import 'package:geniego/utils/constants/colors.dart';
-import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
-import 'package:geniego/utils/helpers/helper_functions.dart';
-import 'package:iconsax/iconsax.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
