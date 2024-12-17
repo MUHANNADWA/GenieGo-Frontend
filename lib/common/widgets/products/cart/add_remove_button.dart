@@ -24,19 +24,6 @@ class ProductQuantityWithAddRemoveButton extends StatelessWidget {
           backgroundColor:
               AppHelper.isDarkMode ? AppColors.darkerGrey : AppColors.light,
         ),
-        Row(
-          children: [
-            CircularIcon(
-              icon: Iconsax.minus,
-              width: 32,
-              height: 32,
-              size: AppSizes.md,
-              color: AppHelper.isDarkMode ? AppColors.white : AppColors.black,
-              backgroundColor:
-                  AppHelper.isDarkMode ? AppColors.darkerGrey : AppColors.light,
-            ),
-          ],
-        ),
         const SizedBox(
           width: AppSizes.spaceBtwItems,
         ),
