@@ -8,7 +8,14 @@ import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({super.key});
+  const SuccessScreen(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.subTitle,
+      required this.onPressed});
+  final String image, title, subTitle;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +26,8 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             children: [
               // Image
-              Image.asset(
-                AppImages.staticSuccess,
+              Image(
+                image: AssetImage(image),
                 width: AppHelper.screenWidth * 0.6,
               ),
 
@@ -28,7 +35,7 @@ class SuccessScreen extends StatelessWidget {
 
               // Title
               Text(
-                AppTexts.yourAccountCreatedTitle,
+                title,
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
@@ -37,7 +44,7 @@ class SuccessScreen extends StatelessWidget {
 
               // SubTitle
               Text(
-                AppTexts.yourAccountCreatedSubTitle,
+                subTitle,
                 style: Theme.of(context).textTheme.labelMedium,
                 textAlign: TextAlign.center,
               ),
