@@ -13,29 +13,34 @@ class StoreScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'store',
+          'Stores',
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         actions: [CartCounterIcon(onPressed: () {})],
       ),
-      body: Column(
-        children: [
-          AppSearchBar(
-            searchText: 'searchText',
-            showBackground: false,
-            showBorder: true,
-          ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(AppSizes.defaultSpace),
+          child: Column(
+            children: [
+              AppSearchBar(
+                searchText: 'searchText',
+                showBackground: false,
+                showBorder: true,
+              ),
 
-          // Stores
-          Padding(
-            padding: const EdgeInsets.all(AppSizes.defaultSpace),
-            child: GridLayout(
-              mainAxisExtent: 80,
-              itemCount: 5,
-              itemBuilder: (context, index) => StoreCard(),
-            ),
+              SizedBox(height: AppSizes.spaceBtwItems),
+
+              // Stores
+              GridLayout(
+                crossAxisCount: 1,
+                mainAxisExtent: 80,
+                itemCount: 5,
+                itemBuilder: (context, index) => StoreCard(),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

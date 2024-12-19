@@ -54,7 +54,7 @@ class AppLocale implements Translations {
           'resendEmailIn': 'Resend email in',
 
           // Authentication Headings
-          'loginTitle': 'Welcome back,',
+          'loginTitle': 'Welcome back',
           'loginSubTitle':
               'Discover Limitless Choices and Unmatched Convenience.',
           'signupTitle': 'Let’s create your account',
@@ -151,7 +151,7 @@ class AppLocale implements Translations {
           'resendEmailIn': 'إعادة إرسال البريد الإلكتروني بعد',
 
           // Authentication Headings
-          'loginTitle': 'مرحبًا بك مجددًا،',
+          'loginTitle': 'مرحبًا بك مجددًا',
           'loginSubTitle': 'اكتشف خيارات لا حدود لها وراحة لا مثيل لها.',
           'signupTitle': 'لننشئ حسابك',
           'forgotPasswordTitle': 'نسيت كلمة المرور',
