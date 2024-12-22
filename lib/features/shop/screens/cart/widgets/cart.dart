@@ -4,10 +4,9 @@ import 'package:geniego/common/widgets/products/cart/add_remove_button.dart';
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/checkout/widgets/checkout.dart';
-import 'package:geniego/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -18,18 +17,49 @@ class CartScreen extends StatelessWidget {
       appBar: AppAppBar(
         showBackArrow: true,
         title: Text(
-          'Cart',
+          AppTexts.cart,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
       body: Padding(
         padding: EdgeInsets.all(AppSizes.defaultSpace),
+        child: ListView.separated(
+            shrinkWrap: true,
+            itemBuilder: (_, index) => Column(
+                  children: [
+                    // Item
+                    CartItem(),
 
-        /// -- Items In Cart
-        child: CartItems(),
+                    SizedBox(
+                      height: AppSizes.spaceBtwItems,
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            // Extra Space
+                            const SizedBox(
+                              width: 70,
+                            ),
+                          ],
+                        ),
+
+                        /// Add Remove Buttons
+                        ProductQuantityWithAddRemoveButton(),
+
+                        // Product Price
+                        ProductPriceText(price: '256'),
+                      ],
+                    ),
+                  ],
+                ),
+            separatorBuilder: (_, __) => const SizedBox(
+                  height: AppSizes.spaceBtwSections,
+                ),
+            itemCount: 10),
       ),
-
-      /// Checkout Button
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(AppSizes.defaultSpace),
         child: ElevatedButton(

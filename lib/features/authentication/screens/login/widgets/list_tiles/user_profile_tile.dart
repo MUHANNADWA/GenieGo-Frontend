@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
+import 'package:geniego/features/authentication/models/user.dart';
+import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/pages.dart';
@@ -16,6 +18,8 @@ class UserProfileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final User user = AuthService.currentUser;
+
     return ListTile(
       onTap: () => Get.toNamed(profileScreen),
       leading: const AppCircularImage(
@@ -26,7 +30,7 @@ class UserProfileTile extends StatelessWidget {
 
       // User Email
       title: Text(
-        'useremail@example.com',
+        user.email,
         style: Theme.of(context)
             .textTheme
             .bodySmall!
@@ -35,7 +39,7 @@ class UserProfileTile extends StatelessWidget {
 
       // User Name
       subtitle: Text(
-        'User Name',
+        user.fullName,
         style: Theme.of(context)
             .textTheme
             .bodyMedium!

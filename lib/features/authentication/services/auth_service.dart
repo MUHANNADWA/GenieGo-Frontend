@@ -1,3 +1,4 @@
+import 'package:geniego/features/authentication/models/user.dart';
 import 'package:geniego/utils/http/http_client.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -13,6 +14,9 @@ class AuthService {
   static logout() {
     return AppHttpHelper.post('logout', {});
   }
+
+  static get currentUser => User.fromJson(
+      GetStorage().read('user') ?? AppHttpHelper.get('current-user'));
 
   static get authenticated => GetStorage().read('isUserSignedIn') ?? false;
 }

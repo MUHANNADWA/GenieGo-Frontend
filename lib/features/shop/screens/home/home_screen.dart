@@ -31,6 +31,7 @@ class HomeScreen extends StatelessWidget {
                   AppSearchBar(
                     searchText: AppTexts.searchStore,
                   ),
+
                   const SizedBox(
                     height: AppSizes.spaceBtwSections,
                   ),

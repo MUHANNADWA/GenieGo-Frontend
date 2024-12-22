@@ -2,21 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
+import 'package:geniego/features/authentication/models/user.dart';
 import 'package:geniego/features/authentication/screens/profile/widgets/profile_menu.dart';
+import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final User user = AuthService.currentUser;
+
     return Scaffold(
       // User Profile AppBar
-      appBar: const AppAppBar(
+      appBar: AppAppBar(
         showBackArrow: true,
-        title: Text('Profile'),
+        title: Text(AppTexts.profile),
       ),
 
       // Body
@@ -54,30 +58,6 @@ class ProfileScreen extends StatelessWidget {
               height: AppSizes.spaceBtwItems,
             ),
 
-            // Heading Profile Info
-            const SectionHeading(
-                title: 'Profile Information', showActionButton: false),
-
-            const SizedBox(height: AppSizes.spaceBtwItems),
-
-            ProfileMenu(
-              title: 'Name',
-              value: 'Name',
-              onPressed: () {},
-            ),
-
-            ProfileMenu(
-              title: 'Username',
-              value: 'user name',
-              onPressed: () {},
-            ),
-
-            const SizedBox(height: AppSizes.spaceBtwItems),
-
-            const Divider(),
-
-            const SizedBox(height: AppSizes.spaceBtwItems),
-
             // Heading Personal Info
             const SectionHeading(
               title: 'Profile Information',
@@ -90,34 +70,23 @@ class ProfileScreen extends StatelessWidget {
 
             ProfileMenu(
               title: 'Name',
-              value: 'user name',
+              value: user.fullName,
               onPressed: () {},
             ),
 
             ProfileMenu(
-                title: 'User ID',
-                value: '45689',
-                icon: Iconsax.copy,
-                onPressed: () {}),
-
-            ProfileMenu(
-                title: 'E-mail', value: 'coding_with_t', onPressed: () {}),
-
-            ProfileMenu(
-                title: 'Phone Number',
-                value: '+92-317-8059528',
-                onPressed: () {}),
-
-            ProfileMenu(
-              title: 'Gender',
-              value: 'Male',
+              title: 'Username',
+              value: user.username,
               onPressed: () {},
             ),
 
             ProfileMenu(
-                title: 'Date of Birth',
-                value: '18 Oct, 1994',
-                onPressed: () {}),
+                title: 'User ID', value: user.id.toString(), onPressed: () {}),
+
+            ProfileMenu(title: 'E-mail', value: user.email, onPressed: () {}),
+
+            ProfileMenu(
+                title: 'Phone Number', value: user.phone, onPressed: () {}),
 
             const Divider(),
 

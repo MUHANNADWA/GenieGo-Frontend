@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geniego/features/authentication/models/user.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
@@ -89,12 +88,14 @@ class LoginController extends GetxController {
         'password': password.text.trim()
       };
 
+      User user;
       // Login User
-      if (dotenv.env['ENV'] != 'development') {
-        final response = await AuthService.login(userData);
-        User user = User.fromJson(response);
-        await GetStorage().write('user', user.toJson());
-      }
+      // if (dotenv.env['ENV'] != 'development') {
+      final response = await AuthService.login(userData);
+
+      user = User.fromJson(response['data']['user']);
+      await GetStorage().write('user', user.toJson());
+      // }
 
       // Store User Status
       final localStorage = GetStorage();

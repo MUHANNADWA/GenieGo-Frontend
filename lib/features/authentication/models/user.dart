@@ -4,9 +4,9 @@ class User {
   final String lastName;
   final String username;
   final String email;
-  final String password;
+  // final String password;
   final String phone;
-  final int roleId;
+  // final int roleId;
 
   User({
     required this.id,
@@ -14,9 +14,9 @@ class User {
     required this.lastName,
     required this.username,
     required this.email,
-    required this.password,
+    // required this.password,
     required this.phone,
-    required this.roleId,
+    // required this.roleId,
   });
 
   factory User.fromJson(jsonData) {
@@ -26,26 +26,45 @@ class User {
       lastName: jsonData['last_name'],
       username: jsonData['username'],
       email: jsonData['email'],
-      password: jsonData['password'],
+      // password: jsonData['password'],
       phone: jsonData['phone'],
-      roleId: jsonData['role_id'],
+      // roleId: jsonData['role_id'],
     );
   }
 
   toJson() {
     return {
-      'firstName': firstName,
-      'lastName': lastName,
+      'id': id,
+      'first_name': firstName,
+      'last_name': lastName,
       'username': username,
       'email': email,
-      'password': password,
+      // 'password': password,
       'phone': phone,
-      'roleId': roleId,
+      // 'roleId': roleId,
     };
   }
 
+  properties() {
+    ['First Name', 'Last Name', 'Username', 'Email', 'Phone', 'Role Id'];
+  }
+
+  values() {
+    [
+      firstName,
+      lastName,
+      username,
+      email,
+      phone, /*roleId*/
+    ];
+  }
+
+  String get fullName => '$firstName $lastName';
+
   @override
   String toString() {
-    return 'User(id: $id, firstName: $firstName, lastName: $lastName, username: $username, email: $email, password: $password, phone: $phone, roleId: $roleId)';
+    // password: $password
+    // , roleId: $roleId
+    return 'User(id: $id, firstName: $firstName, lastName: $lastName, username: $username, email: $email, phone: $phone)';
   }
 }

@@ -2,7 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AppHttpHelper {
-  static const String _baseUrl = 'http://172.26.1.1:4567/api';
+  // static const String _baseUrl = 'http://172.26.1.1:4567/api';
+  static const String _baseUrl = 'http://192.168.0.150:4567/api';
 
   // Helper method to make a GET request
   static Future<Map<String, dynamic>> get(String endpoint) async {
