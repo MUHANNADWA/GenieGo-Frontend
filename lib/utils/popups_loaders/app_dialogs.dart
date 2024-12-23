@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/pages/app_default_page.dart';
 import 'package:geniego/common/pages/no_internet_connention_page.dart';
+import 'package:geniego/features/authentication/screens/signup/success_screen.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:geniego/utils/popups_loaders/circular_loader.dart';
 import 'package:get/get.dart';
@@ -11,7 +12,7 @@ class AppDialogs {
   static void showFullScreenLoadingDialog(
     String title,
     String subTitle,
-    String animation,
+    String image,
   ) {
     showDialog(
       context: Get.overlayContext!,
@@ -23,7 +24,7 @@ class AppDialogs {
           child: Column(
             children: [
               AppDefaultPage(
-                image: animation,
+                image: image,
                 title: title,
                 subTitle: subTitle,
               ),
@@ -57,6 +58,30 @@ class AppDialogs {
         child: Container(
           color: AppHelper.isDarkMode ? AppColors.dark : AppColors.white,
           child: const NoInternetConnentionPage(),
+        ),
+      ),
+    );
+  }
+
+  static void showSuccessDialog(
+    String title,
+    String subTitle,
+    String image,
+    VoidCallback onPressed,
+  ) {
+    showDialog(
+      context: Get.overlayContext!,
+      barrierDismissible: false,
+      builder: (_) => PopScope(
+        canPop: false,
+        child: Container(
+          color: AppHelper.isDarkMode ? AppColors.dark : AppColors.white,
+          child: SuccessScreen(
+            title: title,
+            subTitle: subTitle,
+            image: image,
+            onPressed: onPressed,
+          ),
         ),
       ),
     );

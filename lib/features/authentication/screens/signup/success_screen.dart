@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:geniego/common/styles/spacing_styles.dart';
-import 'package:geniego/features/authentication/screens/login/login_screen.dart';
-import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen(
-      {super.key,
-      required this.image,
-      required this.title,
-      required this.subTitle,
-      required this.onPressed});
+  const SuccessScreen({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.subTitle,
+    required this.onPressed,
+  });
+
   final String image, title, subTitle;
   final VoidCallback onPressed;
 
@@ -55,7 +54,7 @@ class SuccessScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.offAll(() => const LoginScreen()),
+                  onPressed: onPressed,
                   child: Text(AppTexts.tContinue),
                 ),
               ),

@@ -6,7 +6,6 @@ import 'package:geniego/features/authentication/screens/onboarding/on_boarding_s
 import 'package:geniego/features/authentication/screens/password_configuration/forgot_password_screen.dart';
 import 'package:geniego/features/authentication/screens/profile/profile.dart';
 import 'package:geniego/features/authentication/screens/signup/signup_screen.dart';
-import 'package:geniego/features/authentication/screens/signup/success_screen.dart';
 import 'package:geniego/features/authentication/services/auth_middleware.dart';
 import 'package:geniego/features/shop/screens/home/home_screen.dart';
 import 'package:geniego/features/shop/screens/order/order.dart';
@@ -52,7 +51,6 @@ class App extends StatelessWidget {
         GetPage(name: homeScreen, page: () => HomeScreen()),
         GetPage(name: profileScreen, page: () => ProfileScreen()),
         GetPage(name: ordersScreen, page: () => OrdersScreen()),
-        GetPage(name: successScreen, page: () => SuccessScreen()),
       ],
     );
   }

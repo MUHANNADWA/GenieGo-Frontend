@@ -5,6 +5,7 @@ import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:shimmer/shimmer.dart';
 
 class HomePopularStores extends StatelessWidget {
@@ -31,20 +32,6 @@ class HomePopularStores extends StatelessWidget {
           FutureBuilder(
               future: ShopService.getStores(),
               builder: (context, snapshot) {
-                // return SizedBox(
-                //   height: 90,
-                //   child: ListView.builder(
-                //     shrinkWrap: true,
-                //     itemCount: 6,
-                //     scrollDirection: Axis.horizontal,
-                //     itemBuilder: (context, index) {
-                //       return const VerticalImageAndName(
-                //         image: AppImages.acerlogo,
-                //         title: 'acer inds dsniv',
-                //       );
-                //     },
-                //   ),
-                // );
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   // Show shimmer loading
                   return SizedBox(
@@ -68,7 +55,6 @@ class HomePopularStores extends StatelessWidget {
                 } else if (snapshot.hasData) {
                   // Show the actual data
                   final dynamic stores = snapshot.data!;
-
                   return SizedBox(
                     height: 90,
                     child: ListView.builder(
@@ -79,7 +65,8 @@ class HomePopularStores extends StatelessWidget {
                         final store = stores['data'][index];
                         return VerticalImageAndName(
                           image: AppImages.appLogo,
-                          title: store['translations'][1]['name'],
+                          title: store['translations']
+                              [AppHelper.currentLang.substring(0, 2)]['name'],
                         );
                       },
                     ),

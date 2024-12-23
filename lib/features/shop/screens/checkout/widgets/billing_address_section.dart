@@ -16,13 +16,12 @@ class BillingAddressSection extends StatelessWidget {
           buttonTitle: 'Change',
           onPressed: () {},
         ),
+
         const SizedBox(
-          width: AppSizes.spaceBtwItems,
+          height: AppSizes.spaceBtwItems / 2,
         ),
-        Text(
-          'Shipping Address',
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
+
+        // Shipping Info
         Row(
           children: [
             Icon(
@@ -30,16 +29,22 @@ class BillingAddressSection extends StatelessWidget {
               color: AppColors.grey,
               size: 16,
             ),
+
             const SizedBox(
               width: AppSizes.spaceBtwItems,
             ),
+
+            // Phone
             Text(
               '+92-317-8059525',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
+
             const SizedBox(
               width: AppSizes.spaceBtwItems,
             ),
+
+            // Location
             Row(
               children: [
                 Icon(
@@ -47,15 +52,16 @@ class BillingAddressSection extends StatelessWidget {
                   color: AppColors.grey,
                   size: 16,
                 ),
+
                 const SizedBox(
                   width: AppSizes.spaceBtwItems,
                 ),
-                Expanded(
-                  child: Text(
-                    'South Latina,Maine 87695,USA',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                    softWrap: true,
-                  ),
+
+                // Address
+                Text(
+                  'South Latina, Maine 87695, USA',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  softWrap: true,
                 ),
               ],
             )

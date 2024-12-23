@@ -28,15 +28,9 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
                   // Search Bar
-                  AppSearchBar(
-                    searchText: AppTexts.searchStore,
-                  ),
+                  AppSearchBar(searchText: AppTexts.searchStore),
 
-                  const SizedBox(
-                    height: AppSizes.spaceBtwSections,
-                  ),
-
-                  const SizedBox(height: AppSizes.spaceBtwSections),
+                  const SizedBox(height: AppSizes.spaceBtwSections * 2),
 
                   // Popular Stores
                   const HomePopularStores(),

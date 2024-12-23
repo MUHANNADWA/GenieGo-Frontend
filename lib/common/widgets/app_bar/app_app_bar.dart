@@ -37,7 +37,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () => Get.back(),
                 icon: AppHelper.isRtl
                     ? Icon(
-                        Iconsax.arrow_right,
+                        Iconsax.arrow_right_1,
                         color: backArrowColor ?? AppHelper.isDarkMode
                             ? AppColors.white
                             : AppColors.dark,

@@ -107,7 +107,7 @@ class NavigationMenu extends StatelessWidget {
 }
 
 class NavigationController extends GetxController {
-  Rx<int> selectedIndex = 3.obs;
+  Rx<int> selectedIndex = 0.obs;
 
   final screens = [
     const HomeScreen(),
