@@ -5,10 +5,13 @@ import 'package:geniego/common/widgets/custom_shapes/containers/rounded_containe
 import 'package:geniego/common/widgets/icons/app_circular_icons.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
+import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductCardVertical extends StatelessWidget {
@@ -17,7 +20,7 @@ class ProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => const ProductDetails()),
       child: Container(
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
