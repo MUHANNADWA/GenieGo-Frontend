@@ -8,8 +8,8 @@ import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
-class ProductImageSlider extends StatelessWidget {
-  ProductImageSlider({
+class ProductImage extends StatelessWidget {
+  ProductImage({
     super.key,
   });
 
@@ -29,7 +29,7 @@ class ProductImageSlider extends StatelessWidget {
                 padding: const EdgeInsets.all(AppSizes.productImageRadius * 2),
                 child: Center(
                   child: Image(
-                    image: AssetImage(AppImages.productImage5),
+                    image: AssetImage(AppImages.productImage22),
                   ),
                 ),
               ),

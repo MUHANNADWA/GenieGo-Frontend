@@ -43,6 +43,7 @@ dependencies:
   capped_progress_indicator: ^0.0.2
   shimmer: ^3.0.0
 
+
   #--------------- ./ PACKAGES END ------------------#
 
 dev_dependencies:
