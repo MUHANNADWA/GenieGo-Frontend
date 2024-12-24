@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/products/cart/cart_counter_icon.dart';
+import 'package:geniego/features/authentication/models/user.dart';
+import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 
@@ -11,6 +13,8 @@ class HomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final User user = AuthService.currentUser;
+
     return AppAppBar(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,7 +29,7 @@ class HomeAppBar extends StatelessWidget {
 
           // SubTitle
           Text(
-            AppTexts.homeAppbarSubTitle,
+            user.fullName,
             style: Theme.of(context).textTheme.headlineSmall!.apply(
                   color: AppColors.white,
                 ),

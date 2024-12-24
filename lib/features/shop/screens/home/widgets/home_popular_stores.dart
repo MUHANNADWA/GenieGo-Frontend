@@ -68,8 +68,10 @@ class HomePopularStores extends StatelessWidget {
                       itemCount: 6,
                       itemBuilder: (context, index) {
                         final store = stores['data'][index];
+
                         return VerticalImageAndName(
-                          image: AppImages.appLogo,
+                          isNetworkImage: true,
+                          image: store['icon_url'],
                           title: store['translations']
                               [AppHelper.currentLang.substring(0, 2)]['name'],
                         );

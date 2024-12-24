@@ -1,12 +1,13 @@
+import 'package:geniego/features/shop/models/site.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class Store {
   final int id;
-  final Site site;
-  final List tags;
-  final String? image;
   final String name;
   final String description;
+  final Site site;
+  final String image;
+  final List tags;
 
   Store({
     required this.tags,
@@ -40,35 +41,4 @@ class Store {
       'description': description,
     };
   }
-}
-
-class Site {
-  final int id;
-  final String name;
-  final String address;
-
-  Site({
-    required this.id,
-    required this.name,
-    required this.address,
-  });
-
-  toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'address': address,
-    };
-  }
-
-  factory Site.fromJson(jsonData) {
-    return Site(
-      id: jsonData['id'],
-      name: jsonData['name'],
-      address: jsonData['address'],
-    );
-  }
-
-  @override
-  String toString() => 'Site(id: $id, name: $name, address: $address)';
 }

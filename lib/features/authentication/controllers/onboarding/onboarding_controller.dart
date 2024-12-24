@@ -1,4 +1,3 @@
-import 'package:dart_ipify/dart_ipify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geniego/utils/constants/image_strings.dart';

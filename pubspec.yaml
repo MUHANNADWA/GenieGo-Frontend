@@ -59,12 +59,8 @@ flutter:
   #--------------- LOCAL ASSETS ------------------#
   assets:
     - assets/logos/
-    - assets/icons/brands/
     - assets/images/content/
     - assets/images/animated/
-    - assets/images/reviews/
-    - assets/images/products/
-    - assets/icons/categories/
     - assets/icons/payment_methods/
     - assets/images/static/
     - .env

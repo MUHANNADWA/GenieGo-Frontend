@@ -6,16 +6,17 @@ import 'package:geniego/common/widgets/icons/app_circular_icons.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details.dart';
+import 'package:geniego/features/shop/models/product.dart';
 import 'package:geniego/utils/constants/colors.dart';
-import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductCardVertical extends StatelessWidget {
-  const ProductCardVertical({super.key});
+  const ProductCardVertical({super.key, required this.product});
+
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +42,9 @@ class ProductCardVertical extends StatelessWidget {
                   // Thumbnail Image
                   RoundedImage(
                     width: double.infinity,
-                    imageUrl: AppImages.productImage22,
-                    applyImageRadius: true,
+                    height: double.infinity,
+                    isNetworkImage: true,
+                    imageUrl: product.image,
                     backgroundColor:
                         AppHelper.isDarkMode ? AppColors.dark : AppColors.light,
                   ),
@@ -90,8 +92,8 @@ class ProductCardVertical extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Product Title
-                  const ProductStoreTitleText(
-                    title: 'Green Nike Air Shoes',
+                  ProductStoreTitleText(
+                    title: product.name,
                     smallSize: true,
                   ),
 
@@ -123,7 +125,7 @@ class ProductCardVertical extends StatelessWidget {
                     children: [
                       // Price
                       ProductPriceText(
-                        price: '35.0',
+                        price: product.price.toString(),
                       ),
 
                       // Add To Cart Button

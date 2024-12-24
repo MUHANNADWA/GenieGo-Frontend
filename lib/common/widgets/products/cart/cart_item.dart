@@ -17,7 +17,7 @@ class CartItem extends StatelessWidget {
       children: [
         /// Image
         RoundedImage(
-          imageUrl: AppImages.productImage1,
+          imageUrl: AppImages.productImage22,
           width: 60,
           height: 60,
           padding: EdgeInsets.all(AppSizes.sm),

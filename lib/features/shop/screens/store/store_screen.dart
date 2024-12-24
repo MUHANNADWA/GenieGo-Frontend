@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.dart';
+import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/cart/cart_counter_icon.dart';
 import 'package:geniego/features/shop/models/store.dart';
@@ -54,29 +55,18 @@ class StoreScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(AppSizes.defaultSpace),
                         child: GridLayout(
-                            crossAxisCount: 1,
-                            mainAxisExtent: 80,
-                            itemCount: 4,
-                            itemBuilder: (context, index) {
-                              return StoreCard(
-                                store: Store(
-                                    id: 0,
-                                    name: 'Loading...',
-                                    description: 'Loading...',
-                                    image: 'image',
-                                    tags: ['tags'],
-                                    site: Site(
-                                      address: 'address',
-                                      id: 0,
-                                      name: 'name',
-                                    )),
-                              );
-                            }),
+                          crossAxisCount: 1,
+                          mainAxisExtent: 80,
+                          itemCount: 4,
+                          itemBuilder: (context, index) =>
+                              RoundedContainer(height: 80),
+                        ),
                       ),
                     );
                   } else if (snapshot.hasData) {
                     // Show the actual data
                     final dynamic stores = snapshot.data!;
+
                     return Padding(
                       padding: const EdgeInsets.all(AppSizes.defaultSpace),
                       child: GridLayout(
@@ -84,8 +74,10 @@ class StoreScreen extends StatelessWidget {
                           mainAxisExtent: 80,
                           itemCount: (stores['data'] as List).length,
                           itemBuilder: (context, index) {
-                            final store = stores['data'][index];
-                            return StoreCard(store: Store.fromJson(store));
+                            final Store store =
+                                Store.fromJson(stores['data'][index]);
+
+                            return StoreCard(store: store);
                           }),
                     );
                   } else if (snapshot.hasError) {

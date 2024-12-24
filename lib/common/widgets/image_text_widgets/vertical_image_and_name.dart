@@ -11,9 +11,11 @@ class VerticalImageAndName extends StatelessWidget {
     this.textColor = AppColors.white,
     this.backgrongdColor,
     this.onTap,
+    this.isNetworkImage = false,
   });
 
   final String image, title;
+  final bool isNetworkImage;
   final Color? textColor, backgrongdColor;
   final VoidCallback? onTap;
 
@@ -36,8 +38,10 @@ class VerticalImageAndName extends StatelessWidget {
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(
-              child: Image.asset(
-                image,
+              child: Image(
+                image: isNetworkImage
+                    ? NetworkImage(image)
+                    : AssetImage(image) as ImageProvider,
                 fit: BoxFit.cover,
                 color: backgrongdColor ??
                     (AppHelper.isDarkMode ? AppColors.white : AppColors.dark),

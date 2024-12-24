@@ -71,7 +71,6 @@ class AppTexts {
 
   // Home
   static String get homeAppbarTitle => 'homeAppbarTitle'.tr;
-  static String get homeAppbarSubTitle => 'homeAppbarSubTitle'.tr;
   static String get searchStore => 'searchStore'.tr;
 
   // Settings

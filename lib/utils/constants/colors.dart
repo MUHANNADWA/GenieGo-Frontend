@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // App theme colors
-  static const Color primary = Color.fromARGB(255, 149, 29, 165);
+  static const Color primary = Color(0xFF951DA5);
   static const Color secondary = Color(0xFFFFE24B);
   static const Color accent = Color(0xFFb0c7ff);
 
@@ -30,7 +30,7 @@ class AppColors {
   static const Color borderSecondary = Color(0xFFE6E6E6);
 
   // Error and validation colors
-  static const Color error = Color.fromARGB(255, 165, 55, 36);
+  static const Color error = Color(0xFFA53724);
   static const Color success = Color(0xFF388E3C);
   static const Color warning = Color(0xFFF57C00);
   static const Color info = Color(0xFF1976D2);

@@ -78,7 +78,6 @@ class AppLocale implements Translations {
 
           // Home
           'homeAppbarTitle': 'Good day for shopping',
-          'homeAppbarSubTitle': 'User Name',
           'searchStore': 'Search for Products ...',
 
           // Settings
@@ -174,7 +173,6 @@ class AppLocale implements Translations {
 
           // Home
           'homeAppbarTitle': 'يوم رائع للتسوق',
-          'homeAppbarSubTitle': 'اسم المستخدم',
           'searchStore': '... ابحث عن منتج',
 
           // Settings

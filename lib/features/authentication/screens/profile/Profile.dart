@@ -15,14 +15,6 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final User user = AuthService.currentUser;
-    // User(
-    //   id: 0,
-    //   firstName: 'firstName',
-    //   lastName: 'lastName',
-    //   username: 'username',
-    //   email: 'email',
-    //   phone: 'phone',
-    // );
 
     return Scaffold(
       // User Profile AppBar
