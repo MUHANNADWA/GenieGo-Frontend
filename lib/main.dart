@@ -13,6 +13,7 @@ void main() async {
   // Initialize Get Storage
   await GetStorage.init();
 
+  // To Delete Everything In Storage
   // GetStorage().erase();
 
   // Run App

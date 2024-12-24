@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/cart/cart_counter_icon.dart';
+import 'package:geniego/features/shop/models/store.dart';
 import 'package:geniego/features/shop/screens/store/widgets/store_card.dart';
+import 'package:geniego/features/shop/services/shop_service.dart';
+import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
+import 'package:shimmer/shimmer.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -11,7 +17,7 @@ class StoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppAppBar(
         title: Text(
           'Stores',
           style: Theme.of(context).textTheme.headlineMedium,
@@ -19,27 +25,78 @@ class StoreScreen extends StatelessWidget {
         actions: [CartCounterIcon(onPressed: () {})],
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(AppSizes.defaultSpace),
-          child: Column(
-            children: [
-              AppSearchBar(
-                searchText: 'searchText',
-                showBackground: false,
-                showBorder: true,
-              ),
+        child: Column(
+          children: [
+            SizedBox(height: AppSizes.spaceBtwItems),
 
-              SizedBox(height: AppSizes.spaceBtwItems),
+            AppSearchBar(
+              searchText: 'Search for Shops...',
+              showBackground: false,
+              showBorder: true,
+            ),
 
-              // Stores
-              GridLayout(
-                crossAxisCount: 1,
-                mainAxisExtent: 80,
-                itemCount: 5,
-                itemBuilder: (context, index) => StoreCard(),
-              ),
-            ],
-          ),
+            SizedBox(height: AppSizes.spaceBtwItems),
+
+            // Stores
+            FutureBuilder(
+                future: ShopService.getStores(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    // Show shimmer loading
+                    return Shimmer.fromColors(
+                      period: Duration(seconds: 2),
+                      baseColor: AppHelper.isDarkMode
+                          ? AppColors.dark
+                          : AppColors.light,
+                      highlightColor: AppHelper.isDarkMode
+                          ? AppColors.darkerGrey
+                          : AppColors.darkGrey,
+                      child: Padding(
+                        padding: const EdgeInsets.all(AppSizes.defaultSpace),
+                        child: GridLayout(
+                            crossAxisCount: 1,
+                            mainAxisExtent: 80,
+                            itemCount: 4,
+                            itemBuilder: (context, index) {
+                              return StoreCard(
+                                store: Store(
+                                    id: 0,
+                                    name: 'Loading...',
+                                    description: 'Loading...',
+                                    image: 'image',
+                                    tags: ['tags'],
+                                    site: Site(
+                                      address: 'address',
+                                      id: 0,
+                                      name: 'name',
+                                    )),
+                              );
+                            }),
+                      ),
+                    );
+                  } else if (snapshot.hasData) {
+                    // Show the actual data
+                    final dynamic stores = snapshot.data!;
+                    return Padding(
+                      padding: const EdgeInsets.all(AppSizes.defaultSpace),
+                      child: GridLayout(
+                          crossAxisCount: 1,
+                          mainAxisExtent: 80,
+                          itemCount: (stores['data'] as List).length,
+                          itemBuilder: (context, index) {
+                            final store = stores['data'][index];
+                            return StoreCard(store: Store.fromJson(store));
+                          }),
+                    );
+                  } else if (snapshot.hasError) {
+                    // Show error message
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else {
+                    // Fallback UI
+                    return const SizedBox.shrink();
+                  }
+                }),
+          ],
         ),
       ),
     );

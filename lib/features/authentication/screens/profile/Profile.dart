@@ -15,6 +15,14 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final User user = AuthService.currentUser;
+    // User(
+    //   id: 0,
+    //   firstName: 'firstName',
+    //   lastName: 'lastName',
+    //   username: 'username',
+    //   email: 'email',
+    //   phone: 'phone',
+    // );
 
     return Scaffold(
       // User Profile AppBar
@@ -48,15 +56,11 @@ class ProfileScreen extends StatelessWidget {
             ),
 
             // Details
-            const SizedBox(
-              height: AppSizes.spaceBtwItems / 2,
-            ),
+            const SizedBox(height: AppSizes.spaceBtwItems / 2),
 
             const Divider(),
 
-            const SizedBox(
-              height: AppSizes.spaceBtwItems,
-            ),
+            const SizedBox(height: AppSizes.spaceBtwItems),
 
             // Heading Personal Info
             const SectionHeading(
@@ -64,9 +68,7 @@ class ProfileScreen extends StatelessWidget {
               showActionButton: false,
             ),
 
-            const SizedBox(
-              height: AppSizes.spaceBtwItems,
-            ),
+            const SizedBox(height: AppSizes.spaceBtwItems),
 
             ProfileMenu(
               title: 'Name',
@@ -90,9 +92,7 @@ class ProfileScreen extends StatelessWidget {
 
             const Divider(),
 
-            const SizedBox(
-              height: AppSizes.spaceBtwItems,
-            ),
+            const SizedBox(height: AppSizes.spaceBtwItems),
 
             Center(
               child: TextButton(

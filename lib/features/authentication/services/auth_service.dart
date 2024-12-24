@@ -16,7 +16,7 @@ class AuthService {
   }
 
   static get currentUser => User.fromJson(
-      GetStorage().read('user') ?? AppHttpHelper.get('current-user'));
+      GetStorage().read('user') ?? AppHttpHelper.get('user/current'));
 
   static get authenticated => GetStorage().read('isUserSignedIn') ?? false;
 }

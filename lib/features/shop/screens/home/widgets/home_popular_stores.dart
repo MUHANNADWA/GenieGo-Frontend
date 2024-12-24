@@ -42,8 +42,13 @@ class HomePopularStores extends StatelessWidget {
                       itemCount: 6, // Number of shimmer placeholders
                       itemBuilder: (context, index) {
                         return Shimmer.fromColors(
-                          baseColor: Colors.grey[300]!,
-                          highlightColor: Colors.grey[100]!,
+                          period: Duration(seconds: 2),
+                          baseColor: AppHelper.isDarkMode
+                              ? AppColors.dark
+                              : AppColors.light,
+                          highlightColor: AppHelper.isDarkMode
+                              ? AppColors.darkerGrey
+                              : AppColors.darkGrey,
                           child: VerticalImageAndName(
                             image: AppImages.appLogo,
                             title: 'Loading ...',

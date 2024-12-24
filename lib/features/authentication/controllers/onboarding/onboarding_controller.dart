@@ -59,15 +59,19 @@ class OnBoardingController extends GetxController {
 
   // Get Country Code From Ipify Package
   Future<String?> getCountryCode() async {
+    // TODO: Uncomment Those & Delete The Last Return Statment
+
     // Get The IPV4 From Ipify
-    final ipv4 = await Ipify.ipv4();
+    // final ipv4 = await Ipify.ipv4();
 
     // Get The Geo Location From Ipify
-    final geo = await Ipify.geo(dotenv.env['IPIFY_GEO_KEY']!, ip: ipv4);
+    // final geo = await Ipify.geo(dotenv.env['IPIFY_GEO_KEY']!, ip: ipv4);
 
     // Return The Country Code From Geo Location
-    final countryCode = geo.location!.country.toString();
+    // final countryCode = geo.location!.country.toString();
 
-    return countryCode;
+    // return countryCode;
+
+    return 'SY';
   }
 }

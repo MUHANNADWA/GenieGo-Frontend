@@ -33,7 +33,7 @@ class FavouriteScreen extends StatelessWidget {
             child: Column(
               children: [
                 GridLayout(
-                  itemCount: 4,
+                  itemCount: 12,
                   itemBuilder: (_, index) => ProductCardVertical(),
                 ),
               ],
