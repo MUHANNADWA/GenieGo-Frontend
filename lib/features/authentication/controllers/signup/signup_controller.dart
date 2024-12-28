@@ -13,8 +13,8 @@ class SignupController extends GetxController {
   static SignupController get instance => Get.find();
 
   //* Toggle Password
-  Rx<bool> isPasswordObscured = true.obs;
-  Rx<bool> isPasswordConfirmationObscured = true.obs;
+  RxBool isPasswordObscured = true.obs;
+  RxBool isPasswordConfirmationObscured = true.obs;
   Rx<Icon> passwordIcon = const Icon(Iconsax.eye).obs;
   Rx<Icon> passwordConfirmationIcon = const Icon(Iconsax.eye).obs;
 
@@ -39,7 +39,7 @@ class SignupController extends GetxController {
   final lastName = TextEditingController();
   final username = TextEditingController();
   final email = TextEditingController();
-  Rx<String> phoneNumber = ''.obs;
+  RxString phoneNumber = ''.obs;
   final password = TextEditingController();
   final passwordConfirmation = TextEditingController();
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();

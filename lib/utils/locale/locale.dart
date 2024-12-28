@@ -5,6 +5,11 @@ class AppLocale implements Translations {
   Map<String, Map<String, String>> get keys => {
         'en': {
           // GLOBAL Texts
+          'system': 'System',
+          'english': 'English',
+          'arabic': 'العربية',
+          'light': 'Light',
+          'dark': 'Dark',
           'and': 'and',
           'skip': 'Skip',
           'done': 'Done',
@@ -43,7 +48,9 @@ class AppLocale implements Translations {
           'rememberMe': 'Remember Me',
           'forgotPassword': 'Forgot Password?',
           'signIn': 'Sign In',
+          'logout': 'Logout',
           'createAccount': 'Create Account',
+          'deleteAccount': 'Delete Account',
           'orSignInWith': 'or sign in with',
           'orSignUpWith': 'or sign up with',
           'iAgreeTo': 'I agree to',
@@ -101,6 +108,11 @@ class AppLocale implements Translations {
         },
         'ar': {
           // GLOBAL Texts
+          'system': 'تلقائي',
+          'english': 'English',
+          'arabic': 'العربية',
+          'light': 'الفاتح',
+          'dark': 'الداكن',
           'and': 'و',
           'skip': 'تخطي',
           'done': 'تم',
@@ -139,7 +151,9 @@ class AppLocale implements Translations {
           'rememberMe': 'تذكرني',
           'forgotPassword': 'هل نسيت كلمة المرور؟',
           'signIn': 'تسجيل الدخول',
+          'logout': 'تسجيل الخروج',
           'createAccount': 'إنشاء حساب',
+          'deleteAccount': 'حذف الحساب',
           'orSignInWith': 'أو تسجيل الدخول باستخدام',
           'orSignUpWith': 'أو التسجيل باستخدام',
           'iAgreeTo': 'أوافق على',

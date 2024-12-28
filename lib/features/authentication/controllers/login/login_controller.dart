@@ -15,9 +15,9 @@ class LoginController extends GetxController {
   static LoginController get instance => Get.find();
 
   //* First Control Field Logic
-  Rx<bool> isPhoneNumberScreen = true.obs;
-  Rx<bool> isUsernameScreen = false.obs;
-  Rx<bool> isEmailScreen = false.obs;
+  RxBool isPhoneNumberScreen = true.obs;
+  RxBool isUsernameScreen = false.obs;
+  RxBool isEmailScreen = false.obs;
 
   // Change Screen To Login With Phone Number
   setLoginScreenToPhoneNumber() {
@@ -41,7 +41,7 @@ class LoginController extends GetxController {
   }
 
   //* Toggle Password
-  Rx<bool> isPasswordObscured = true.obs;
+  RxBool isPasswordObscured = true.obs;
   Rx<Icon> passwordIcon = const Icon(Iconsax.eye).obs;
 
   // Toggle Password
@@ -53,7 +53,7 @@ class LoginController extends GetxController {
   }
 
   //* Login Variables
-  Rx<String?> phoneNumber = ''.obs;
+  RxString phoneNumber = ''.obs;
   final username = TextEditingController();
   final email = TextEditingController();
   final password = TextEditingController();
@@ -91,10 +91,11 @@ class LoginController extends GetxController {
 
       User user;
       // Login User
-      if (dotenv.env['ENV'] != 'development') {
+      if (dotenv.env['ENV']?.trim() != 'development') {
         final response = await AuthService.login(userData);
 
         user = User.fromJson(response['data']['user']);
+
         await GetStorage().write('user', user.toJson());
       }
 

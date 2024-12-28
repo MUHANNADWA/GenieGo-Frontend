@@ -10,12 +10,12 @@ class Store {
   final List tags;
 
   Store({
-    required this.tags,
-    required this.image,
+    required this.id,
     required this.name,
     required this.description,
-    required this.id,
     required this.site,
+    required this.image,
+    required this.tags,
   });
 
   factory Store.fromJson(jsonData) {

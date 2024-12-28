@@ -16,59 +16,44 @@ class AppSearchBar extends StatelessWidget {
 
   final String searchText;
   final IconData? icon;
-  final bool? showBackground, showBorder;
+  final bool showBackground, showBorder;
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
-        child: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(AppSizes.xs),
-          decoration: BoxDecoration(
-            color: showBackground!
-                ? AppHelper.isDarkMode
-                    ? AppColors.dark
-                    : AppColors.light
-                : Colors.transparent,
-            borderRadius: BorderRadius.circular(AppSizes.cardRadiusLg),
-            border: showBorder!
-                ? Border.all(
-                    color:
-                        AppHelper.isDarkMode ? AppColors.light : AppColors.dark)
-                : null,
-          ),
-          child: Row(
-            children: [
-              // Search Icon
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  icon,
-                  color: AppHelper.isDarkMode
-                      ? AppColors.lightGrey
-                      : AppColors.darkerGrey,
-                ),
-              ),
+    return SearchBar(
+      padding: const WidgetStatePropertyAll(EdgeInsets.all(AppSizes.xs)),
+      // Background Color
+      backgroundColor: WidgetStatePropertyAll(
+        showBackground
+            ? AppHelper.isDarkMode
+                ? AppColors.dark
+                : AppColors.light
+            : Colors.transparent,
+      ),
 
-              const SizedBox(height: AppSizes.spaceBtwItems),
-
-              // Search Text
-              Text(
-                searchText,
-                style: Theme.of(context).textTheme.bodySmall!.apply(
-                      color: AppHelper.isDarkMode
-                          ? AppColors.grey
-                          : AppColors.darkGrey,
-                    ),
-              ),
-            ],
-          ),
+      // Border Color
+      side: WidgetStatePropertyAll(
+        BorderSide(
+          color: showBorder
+              ? AppHelper.isDarkMode
+                  ? AppColors.light
+                  : AppColors.dark
+              : Colors.transparent,
         ),
       ),
+      // Border Radius
+      shape: WidgetStatePropertyAll(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSizes.cardRadiusLg),
+        ),
+      ),
+
+      // Search Icon
+      leading: IconButton(onPressed: () {}, icon: Icon(icon)),
+
+      // Search Text
+      hintText: searchText,
     );
   }
 }

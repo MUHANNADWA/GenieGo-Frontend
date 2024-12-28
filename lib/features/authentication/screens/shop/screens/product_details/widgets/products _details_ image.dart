@@ -9,34 +9,33 @@ import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductImage extends StatelessWidget {
-  ProductImage({
-    super.key,
-  });
+  const ProductImage({super.key, required this.imageUrl});
 
-  final dark = AppHelper.isDarkMode;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
     return CurvedEdges(
       child: Container(
-        color: dark ? AppColors.darkerGrey : AppColors.light,
+        color: AppHelper.isDarkMode ? AppColors.darkerGrey : AppColors.light,
         child: Stack(
           children: [
-            /// Main Large Image
+            // Main Large Image
             SizedBox(
               height: 400,
               child: Padding(
                 padding: const EdgeInsets.all(AppSizes.productImageRadius * 2),
                 child: Center(
                   child: Image(
-                    image: AssetImage(AppImages.productImage22),
+                    image: imageUrl == AppImages.appLogo
+                        ? AssetImage(imageUrl) as ImageProvider
+                        : NetworkImage(imageUrl),
                   ),
                 ),
               ),
             ),
 
-            /// Appbar Icons
-
+            // Appbar Icons
             AppAppBar(
               showBackArrow: true,
               actions: [

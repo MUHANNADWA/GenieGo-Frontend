@@ -5,7 +5,7 @@ import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.d
 import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
-import 'package:geniego/common/widgets/products/product_Cards/product_card_vertical.dart';
+import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/shop/models/product.dart';
 import 'package:geniego/features/shop/screens/home/widgets/home_app_bar.dart';
@@ -82,28 +82,32 @@ class HomeScreen extends StatelessWidget {
                           final dynamic products = snapshot.data!;
 
                           return GridLayout(
-                              itemCount: (products['data'] as List).length,
-                              itemBuilder: (_, index) {
-                                final Product product =
-                                    Product.fromJson(products['data'][index]);
+                            itemCount: (products['data'] as List).length,
+                            itemBuilder: (_, index) {
+                              final Product product =
+                                  Product.fromJson(products['data'][index]);
 
-                                return ProductCardVertical(product: product);
-                              });
+                              return ProductCard(product: product);
+                            },
+                          );
                         } else if (snapshot.hasError) {
+                          return GridLayout(
+                            itemCount: 4,
+                            itemBuilder: (_, index) {
+                              final Product product = AppHelper.exampleProduct;
+
+                              return ProductCard(product: product);
+                            },
+                          );
                           // Show error message
-                          return Center(
-                              child: Text('Error: ${snapshot.error}'));
+                          // return Center(
+                          //   child: Text('Error: ${snapshot.error}'),
+                          // );
                         } else {
                           // Fallback UI
                           return const SizedBox.shrink();
                         }
                       }),
-
-                  // Popular Products
-                  // GridLayout(
-                  //   itemCount: 12,
-                  //   itemBuilder: (_, index) => const ProductCardVertical(),
-                  // ),
                 ],
               ),
             ),

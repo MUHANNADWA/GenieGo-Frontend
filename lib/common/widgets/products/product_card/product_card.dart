@@ -8,20 +8,21 @@ import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details.dart';
 import 'package:geniego/features/shop/models/product.dart';
 import 'package:geniego/utils/constants/colors.dart';
+import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class ProductCardVertical extends StatelessWidget {
-  const ProductCardVertical({super.key, required this.product});
+class ProductCard extends StatelessWidget {
+  const ProductCard({super.key, required this.product});
 
   final Product product;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(() => const ProductDetails()),
+      onTap: () => Get.to(() => ProductDetails(product: product)),
       child: Container(
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
@@ -30,6 +31,7 @@ class ProductCardVertical extends StatelessWidget {
           color: AppHelper.isDarkMode ? AppColors.darkerGrey : AppColors.white,
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             //* Thumbnail, Wishlist Button, Discount Tag
             RoundedContainer(
@@ -40,34 +42,18 @@ class ProductCardVertical extends StatelessWidget {
               child: Stack(
                 children: [
                   // Thumbnail Image
-                  RoundedImage(
-                    width: double.infinity,
-                    height: double.infinity,
-                    isNetworkImage: true,
-                    imageUrl: product.image,
-                    backgroundColor:
-                        AppHelper.isDarkMode ? AppColors.dark : AppColors.light,
-                  ),
-
-                  // Sale Tag
-                  Positioned(
-                    top: 12,
-                    left: 0,
-                    child: RoundedContainer(
-                      radius: AppSizes.sm,
-                      backgroundColor: AppColors.secondary.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: AppSizes.sm, vertical: AppSizes.xs),
-                      child: Text(
-                        '25%',
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .apply(color: AppColors.black),
-                      ),
+                  Hero(
+                    tag: product.id,
+                    child: RoundedImage(
+                      width: double.infinity,
+                      height: double.infinity,
+                      isNetworkImage: product.image != AppImages.appLogo,
+                      imageUrl: product.image,
+                      backgroundColor: AppHelper.isDarkMode
+                          ? AppColors.dark
+                          : AppColors.light,
                     ),
                   ),
-
                   // Favourite Icon Button
                   const Positioned(
                     top: 0,
@@ -120,6 +106,7 @@ class ProductCardVertical extends StatelessWidget {
                     ],
                   ),
 
+                  // Price & Add To Cart
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

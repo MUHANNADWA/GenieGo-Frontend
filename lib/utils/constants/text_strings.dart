@@ -3,6 +3,11 @@ import 'package:get/get.dart';
 /// This class contains all the App Text in String formats.
 class AppTexts {
   // GLOBAL Texts
+  static String get system => 'system'.tr;
+  static String get english => 'english'.tr;
+  static String get arabic => 'arabic'.tr;
+  static String get light => 'light'.tr;
+  static String get dark => 'dark'.tr;
   static String get and => 'and'.tr;
   static String get skip => 'skip'.tr;
   static String get done => 'done'.tr;
@@ -10,7 +15,7 @@ class AppTexts {
   static String get appName => 'appName'.tr;
   static String get tContinue => 'tContinue'.tr;
 
-  // Screens
+  // Main Screens
   static String get home => 'home'.tr;
   static String get shop => 'shop'.tr;
   static String get wishlist => 'wishlist'.tr;
@@ -40,7 +45,9 @@ class AppTexts {
   static String get rememberMe => 'rememberMe'.tr;
   static String get forgotPassword => 'forgotPassword'.tr;
   static String get signIn => 'signIn'.tr;
+  static String get logout => 'logout'.tr;
   static String get createAccount => 'createAccount'.tr;
+  static String get deleteAccount => 'deleteAccount'.tr;
   static String get orSignInWith => 'orSignInWith'.tr;
   static String get orSignUpWith => 'orSignUpWith'.tr;
   static String get iAgreeTo => 'iAgreeTo'.tr;

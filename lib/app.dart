@@ -11,26 +11,36 @@ import 'package:geniego/features/shop/screens/home/home_screen.dart';
 import 'package:geniego/features/shop/screens/order/order.dart';
 import 'package:geniego/navigation_menu.dart';
 import 'package:geniego/utils/constants/pages.dart';
+import 'package:geniego/utils/theme/theme_controller.dart';
 import 'package:get/get.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/locale/locale.dart';
 import 'package:geniego/utils/locale/locale_controller.dart';
 import 'package:geniego/utils/theme/theme.dart';
+import 'package:get_storage/get_storage.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AppLocaleController langController = Get.put(AppLocaleController());
+    Get.put(AppThemeController());
+    Get.put(AppLocaleController());
+
+    final keys = GetStorage().getKeys();
+    final values = GetStorage().getValues();
+
+    print(keys);
+    print(values);
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppTexts.appName,
-      themeMode: ThemeMode.system,
+      themeMode: AppThemeController.instance.initialTheme,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       initialBinding: GeneralBindings(),
-      locale: langController.initialLang(),
+      locale: AppLocaleController.instance.initialLang,
       translations: AppLocale(),
       initialRoute: '/',
       unknownRoute: GetPage(name: notFound, page: () => NotFoundScreen()),

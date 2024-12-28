@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-class ThemeController extends GetxController {
-  static ThemeController get instance => Get.find();
+class AppThemeController extends GetxController {
+  static AppThemeController get instance => Get.find();
   final localStorage = GetStorage();
 
-  Locale initialTheme() {
-    return localStorage.read('theme') == null
-        ? Get.deviceLocale!
-        : Locale(localStorage.read('theme'));
-  }
+  final storedTheme = GetStorage().read('theme');
+
+  ThemeMode get initialTheme =>
+      storedTheme == null || storedTheme == AppTexts.system
+          ? ThemeMode.system
+          : storedTheme == AppTexts.dark
+              ? ThemeMode.dark
+              : ThemeMode.light;
 
   void toggleTheme() {
-    // AppHelper.currentTheme == 'ar' ? changeTheme('en') : changeTheme('ar');
+    AppHelper.currentTheme == AppTexts.dark
+        ? changeTheme(AppTexts.light)
+        : changeTheme(AppTexts.dark);
   }
 
-  void changeTheme(String themeName) {
-    themeName = themeName.toLowerCase();
-    if (themeName == 'system') {
-      Get.updateLocale(Get.deviceLocale!);
-      localStorage.write('theme', Get.deviceLocale!.toString());
-    } else {
-      Locale locale = Locale(themeName);
-      localStorage.write('theme', themeName);
-      Get.updateLocale(locale);
-    }
+  void changeTheme(String theme) {
+    theme == AppTexts.system
+        ? Get.changeThemeMode(ThemeMode.system)
+        : theme == AppTexts.dark
+            ? Get.changeThemeMode(ThemeMode.dark)
+            : Get.changeThemeMode(ThemeMode.light);
+
+    localStorage.write('theme', theme);
   }
 }

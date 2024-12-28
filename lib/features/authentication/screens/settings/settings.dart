@@ -5,6 +5,7 @@ import 'package:geniego/features/authentication/screens/login/widgets/list_tiles
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
 import 'package:geniego/features/shop/controllers/settings/settings_controller.dart';
 import 'package:geniego/features/shop/screens/address/address.dart';
+import 'package:geniego/features/shop/screens/cart/widgets/cart.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/sizes.dart';
@@ -38,16 +39,12 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(
-                    height: AppSizes.spaceBtwSections,
-                  ),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
 
                   // User Profile Card
                   UserProfileTile(),
 
-                  const SizedBox(
-                    height: AppSizes.spaceBtwSections,
-                  ),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
                 ],
               ),
             ),
@@ -60,14 +57,9 @@ class SettingsScreen extends StatelessWidget {
                   //* Account Settings
 
                   // Account Settings Heading
-                  SectionHeading(
-                    title: AppTexts.accountSettings,
-                    showActionButton: false,
-                  ),
+                  SectionHeading(title: AppTexts.accountSettings),
 
-                  const SizedBox(
-                    height: AppSizes.spaceBtwItems,
-                  ),
+                  const SizedBox(height: AppSizes.spaceBtwItems),
 
                   // My Adresses
                   SettingsMenuTile(
@@ -82,7 +74,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.shopping_cart,
                     title: AppTexts.cart,
                     subTitle: AppTexts.cartSub,
-                    onTap: () {},
+                    onTap: () => Get.to(() => const CartScreen()),
                   ),
 
                   // My Orders
@@ -93,45 +85,40 @@ class SettingsScreen extends StatelessWidget {
                     onTap: () => Get.toNamed(ordersScreen),
                   ),
 
-                  const SizedBox(
-                    height: AppSizes.spaceBtwSections,
-                  ),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
 
                   //* App Settings
 
                   // App Settings Heading
-                  SectionHeading(
-                    title: AppTexts.appSettings,
-                    showActionButton: false,
-                  ),
+                  SectionHeading(title: AppTexts.appSettings),
 
-                  const SizedBox(
-                    height: AppSizes.spaceBtwItems,
-                  ),
+                  const SizedBox(height: AppSizes.spaceBtwItems),
 
                   // Change Lang
-                  SettingsMenuTile(
-                    icon: Iconsax.language_square,
-                    title: AppTexts.language,
-                    subTitle: AppTexts.languageSub,
-                    trailing: DropdownButton<String>(
-                      value: controller.languages.value,
-                      items: [
-                        DropdownMenuItem(
-                          value: 'System',
-                          child: Text('System'),
-                        ),
-                        DropdownMenuItem(
-                          value: 'En',
-                          child: Text('En'),
-                        ),
-                        DropdownMenuItem(
-                          value: 'Ar',
-                          child: Text('Ar'),
-                        ),
-                      ],
-                      onChanged: (Object? value) =>
-                          controller.chnageLang(value),
+                  Obx(
+                    () => SettingsMenuTile(
+                      icon: Iconsax.language_square,
+                      title: AppTexts.language,
+                      subTitle: AppTexts.languageSub,
+                      trailing: DropdownButton<String>(
+                        value: controller.languages.value,
+                        items: [
+                          DropdownMenuItem(
+                            value: AppTexts.system,
+                            child: Text(AppTexts.system),
+                          ),
+                          DropdownMenuItem(
+                            value: AppTexts.english,
+                            child: Text(AppTexts.english),
+                          ),
+                          DropdownMenuItem(
+                            value: AppTexts.arabic,
+                            child: Text(AppTexts.arabic),
+                          ),
+                        ],
+                        onChanged: (String? value) =>
+                            controller.chnageLang(value!),
+                      ),
                     ),
                   ),
 
@@ -144,20 +131,20 @@ class SettingsScreen extends StatelessWidget {
                       value: controller.themes.value,
                       items: [
                         DropdownMenuItem(
-                          value: 'System',
-                          child: Text('System'),
+                          value: AppTexts.system,
+                          child: Text(AppTexts.system),
                         ),
                         DropdownMenuItem(
-                          value: 'Light',
-                          child: Text('Light'),
+                          value: AppTexts.light,
+                          child: Text(AppTexts.light),
                         ),
                         DropdownMenuItem(
-                          value: 'Dark',
-                          child: Text('Dark'),
+                          value: AppTexts.dark,
+                          child: Text(AppTexts.dark),
                         ),
                       ],
-                      onChanged: (Object? value) =>
-                          controller.chnageTheme(value),
+                      onChanged: (String? value) =>
+                          controller.chnageTheme(value!),
                     ),
                   ),
 
@@ -189,22 +176,18 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(
-                    height: AppSizes.spaceBtwSections,
-                  ),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
 
                   // Logout Button
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () {},
-                      child: const Text('Logout'),
+                      onPressed: () => controller.logout(),
+                      child: Text(AppTexts.logout),
                     ),
                   ),
 
-                  const SizedBox(
-                    height: AppSizes.spaceBtwSections,
-                  ),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
                 ],
               ),
             ),

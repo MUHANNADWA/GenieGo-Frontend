@@ -10,8 +10,8 @@ class OnBoardingController extends GetxController {
 
   // Variables
   final pageController = PageController();
-  Rx<int> currentPageIndex = 0.obs;
-  Rx<String> countryCode = 'SY'.obs;
+  RxInt currentPageIndex = 0.obs;
+  RxString countryCode = 'SY'.obs;
 
   // Update Current Index When Page Scrolled
   void updatePageIndicator(index) => currentPageIndex.value = index;

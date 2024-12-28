@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/icons/app_circular_icons.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
-import 'package:geniego/common/widgets/products/product_Cards/product_card_vertical.dart';
-import 'package:geniego/features/shop/models/product.dart';
-import 'package:geniego/utils/constants/image_strings.dart';
+import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 
 import 'package:iconsax/iconsax.dart';
@@ -36,16 +35,8 @@ class FavouriteScreen extends StatelessWidget {
               children: [
                 GridLayout(
                   itemCount: 12,
-                  itemBuilder: (_, index) => ProductCardVertical(
-                    product: Product(
-                      id: 0,
-                      name: 'name',
-                      description: 'description',
-                      price: 100,
-                      image: '',
-                      tags: ['tags'],
-                    ),
-                  ),
+                  itemBuilder: (_, index) =>
+                      ProductCard(product: AppHelper.exampleProduct),
                 ),
               ],
             )),
