@@ -6,6 +6,7 @@ import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/checkout/widgets/checkout.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 
 class CartScreen extends StatelessWidget {
@@ -28,7 +29,9 @@ class CartScreen extends StatelessWidget {
             itemBuilder: (_, index) => Column(
                   children: [
                     // Item
-                    CartItem(),
+                    CartItem(
+                      product: AppHelper.exampleProduct,
+                    ),
 
                     SizedBox(
                       height: AppSizes.spaceBtwItems,

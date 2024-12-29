@@ -3,7 +3,6 @@ import 'package:geniego/common/widgets/custom_shapes/containers/app_rounded_imag
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/features/shop/models/product.dart';
 import 'package:geniego/utils/constants/colors.dart';
-import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
@@ -25,9 +24,7 @@ class CartItem extends StatelessWidget {
           backgroundColor:
               AppHelper.isDarkMode ? AppColors.darkerGrey : AppColors.light,
         ),
-        const SizedBox(
-          width: AppSizes.spaceBtwItems,
-        ),
+        const SizedBox(width: AppSizes.spaceBtwItems),
 
         /// Title,Price,& Size
         Expanded(
