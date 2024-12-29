@@ -9,9 +9,10 @@ import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductImage extends StatelessWidget {
-  const ProductImage({super.key, required this.imageUrl});
+  const ProductImage({super.key, required this.imageUrl, this.height = 400});
 
   final String imageUrl;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class ProductImage extends StatelessWidget {
           children: [
             // Main Large Image
             SizedBox(
-              height: 400,
+              height: height,
               child: Padding(
                 padding: const EdgeInsets.all(AppSizes.productImageRadius * 2),
                 child: Center(

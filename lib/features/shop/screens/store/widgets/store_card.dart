@@ -19,9 +19,7 @@ class StoreCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(() => StoreDetailsScreen(
-            store: store,
-          )),
+      onTap: () => Get.to(() => StoreDetailsScreen(store: store)),
       child: RoundedContainer(
         padding: EdgeInsets.all(AppSizes.sm),
         showBorder: true,
@@ -29,13 +27,16 @@ class StoreCard extends StatelessWidget {
         child: Row(
           children: [
             // Store Icon
-            AppCircularImage(
-              backgroundColor: Colors.transparent,
-              isNetworkImage: store.image != AppImages.appLogo,
-              image: store.image,
-              overlayColor:
-                  AppHelper.isDarkMode ? AppColors.light : AppColors.dark,
-              boxFit: BoxFit.contain,
+            Hero(
+              tag: 'Store ${store.id}',
+              child: AppCircularImage(
+                backgroundColor: Colors.transparent,
+                isNetworkImage: store.image != AppImages.appLogo,
+                image: store.image,
+                overlayColor:
+                    AppHelper.isDarkMode ? AppColors.light : AppColors.dark,
+                boxFit: BoxFit.contain,
+              ),
             ),
 
             const SizedBox(width: AppSizes.spaceBtwItems / 2),

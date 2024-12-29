@@ -6,7 +6,6 @@ import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/products%20_details_%20image.dart';
-import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/rating_and_share.dart';
 import 'package:geniego/features/shop/models/product.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
@@ -14,8 +13,8 @@ import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:readmore/readmore.dart';
 
-class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key, required this.product});
+class ProductDetailsScreen extends StatelessWidget {
+  const ProductDetailsScreen({super.key, required this.product});
 
   final Product product;
 
@@ -36,21 +35,17 @@ class ProductDetails extends StatelessWidget {
                 bottom: AppSizes.defaultSpace,
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Rating & Share Button
-                  RatingAndShare(),
+                  // Title
+                  ProductStoreTitleText(title: product.name, bigSize: true),
+
+                  const SizedBox(height: AppSizes.spaceBtwItems),
 
                   // Price
                   ProductPriceText(
-                    price: '175',
-                    isLarge: true,
-                  ),
+                      price: product.price.toString(), isLarge: true),
 
-                  // Title
-                  ProductStoreTitleText(title: product.name),
-
-                  const SizedBox(height: AppSizes.spaceBtwItems / 1.5),
+                  const SizedBox(height: AppSizes.spaceBtwSections),
 
                   // Stock Status
                   Row(
@@ -74,6 +69,7 @@ class ProductDetails extends StatelessWidget {
                         overlayColor: AppHelper.isDarkMode
                             ? AppColors.white
                             : AppColors.black,
+                        boxFit: BoxFit.contain,
                       ),
 
                       const SizedBox(width: AppSizes.sm),
