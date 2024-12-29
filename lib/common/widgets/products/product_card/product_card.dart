@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/styles/shadows.dart';
-import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_rounded_image.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:geniego/common/widgets/icons/app_circular_icons.dart';
+import 'package:geniego/common/widgets/products/product_card/favourite_button.dart';
+import 'package:geniego/common/widgets/products/product_card/store_icon_with_name.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
-import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
@@ -78,26 +77,8 @@ class ProductCard extends StatelessWidget {
 
                   const SizedBox(height: AppSizes.spaceBtwItems / 2),
 
-                  // Product Store
-                  Row(
-                    children: [
-                      Text(
-                        product.store.name,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-
-                      const SizedBox(width: AppSizes.xs),
-
-                      // Verified Icon
-                      const Icon(
-                        Iconsax.verify5,
-                        color: AppColors.primary,
-                        size: AppSizes.iconXs,
-                      ),
-                    ],
-                  ),
+                  // Brand
+                  StoreIconWithName(store: product.store),
 
                   // Price & Add To Cart
                   Row(
@@ -142,58 +123,6 @@ class ProductCard extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class FavouriteButton extends StatelessWidget {
-  const FavouriteButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Positioned(
-      top: 0,
-      right: 0,
-      child: CircularIcon(
-        icon: Iconsax.heart5,
-        color: AppColors.error,
-      ),
-    );
-  }
-}
-
-class StoreIconWithName extends StatelessWidget {
-  const StoreIconWithName({
-    super.key,
-    required this.store,
-  });
-
-  final Store store;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        AppCircularImage(
-          image: store.image,
-          isNetworkImage: true,
-          width: 32,
-          height: 32,
-          overlayColor:
-              AppHelper.isDarkMode ? AppColors.white : AppColors.black,
-          boxFit: BoxFit.contain,
-        ),
-
-        const SizedBox(width: AppSizes.sm),
-
-        // Store Name
-        ProductStoreTitleText(
-          title: store.name,
-          smallSize: true,
-        ),
-      ],
     );
   }
 }
