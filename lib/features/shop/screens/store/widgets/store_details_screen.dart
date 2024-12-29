@@ -27,10 +27,19 @@ class StoreDetailsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+<<<<<<< HEAD
             // Store Image
             Hero(
                 tag: 'Store ${store.id}',
                 child: ProductImage(imageUrl: store.image, height: 200)),
+=======
+            // Product Image
+            Hero(
+                tag: store.id,
+                child: ProductImage(
+                  imageUrl: store.image,
+                )),
+>>>>>>> db8570f (added Edit Profile)
 
             // Store Details
             Padding(
