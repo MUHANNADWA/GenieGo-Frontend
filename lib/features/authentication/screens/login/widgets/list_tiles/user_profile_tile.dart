@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
 import 'package:geniego/features/authentication/models/user.dart';
+import 'package:geniego/features/authentication/screens/profile/widgets/Edit_profile.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
@@ -49,7 +50,7 @@ class UserProfileTile extends StatelessWidget {
       // Edit Button
       trailing: showEditButton
           ? IconButton(
-              onPressed: () {},
+              onPressed: () => Get.to(() => EditProfileScreen()),
               icon: const Icon(
                 Iconsax.edit,
                 color: AppColors.white,

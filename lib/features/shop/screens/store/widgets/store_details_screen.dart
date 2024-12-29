@@ -29,7 +29,11 @@ class StoreDetailsScreen extends StatelessWidget {
         child: Column(
           children: [
             // Product Image
-            Hero(tag: store.id, child: ProductImage(imageUrl: store.image)),
+            Hero(
+                tag: store.id,
+                child: ProductImage(
+                  imageUrl: store.image,
+                )),
 
             // Product Details
             Padding(

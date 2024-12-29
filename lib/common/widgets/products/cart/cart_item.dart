@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_rounded_image.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
+import 'package:geniego/features/shop/models/product.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
+  final Product product;
+
+  const CartItem({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class CartItem extends StatelessWidget {
       children: [
         /// Image
         RoundedImage(
-          imageUrl: AppImages.productImage22,
+          imageUrl: product.image,
           width: 60,
           height: 60,
           padding: EdgeInsets.all(AppSizes.sm),
@@ -32,10 +35,10 @@ class CartItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Nike'),
+                Text(product.storeId.toString()),
                 Flexible(
                     child: ProductStoreTitleText(
-                        title: 'Black Sports Shoes', maxLines: 1)),
+                        title: product.name, maxLines: 1)),
 
                 /// Attributes
                 Text.rich(
