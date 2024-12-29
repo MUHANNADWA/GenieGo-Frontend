@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:geniego/features/authentication/models/user.dart';
+import 'package:geniego/features/authentication/models/user_model.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/pages.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/network_manager.dart';
 import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
@@ -69,8 +70,8 @@ class LoginController extends GetxController {
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
         AppLoaders.errorSnackBar(
-          title: 'No Internet',
-          message: 'Please Check Your internet connection',
+          title: AppTexts.noInternetSnackBarTitle,
+          message: AppTexts.noInternetSnackBarTitle,
         );
         return;
       }

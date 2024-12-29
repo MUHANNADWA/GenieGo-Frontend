@@ -9,6 +9,7 @@ import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +23,7 @@ class FavouriteScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppAppBar(
         title: Text(
-          'Wishlist',
+          AppTexts.wishlist,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         actions: [

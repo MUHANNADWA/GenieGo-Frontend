@@ -4,6 +4,7 @@ import 'package:geniego/features/shop/screens/address/widgets/add_new_address.da
 import 'package:geniego/features/shop/screens/address/widgets/single_address.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -15,8 +16,8 @@ class UserAddressScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppAppBar(
         showBackArrow: true,
-        title:
-            Text('Addresses', style: Theme.of(context).textTheme.headlineSmall),
+        title: Text(AppTexts.addresses,
+            style: Theme.of(context).textTheme.headlineSmall),
       ),
       body: SingleChildScrollView(
         child: Padding(

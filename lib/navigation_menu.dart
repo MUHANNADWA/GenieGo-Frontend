@@ -36,7 +36,7 @@ class NavigationMenu extends StatelessWidget {
                   ),
                   NavigationDestination(
                     icon: Icon(Iconsax.shop),
-                    label: AppTexts.shop,
+                    label: AppTexts.stores,
                   ),
                   NavigationDestination(
                     icon: Icon(Iconsax.heart),
@@ -80,7 +80,7 @@ class NavigationMenu extends StatelessWidget {
                       ),
                       NavigationRailDestination(
                         icon: Icon(Iconsax.shop),
-                        label: Text(AppTexts.shop),
+                        label: Text(AppTexts.stores),
                       ),
                       NavigationRailDestination(
                         icon: Icon(Iconsax.heart),

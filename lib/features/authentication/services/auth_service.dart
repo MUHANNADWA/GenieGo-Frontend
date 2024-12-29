@@ -1,4 +1,4 @@
-import 'package:geniego/features/authentication/models/user.dart';
+import 'package:geniego/features/authentication/models/user_model.dart';
 import 'package:geniego/utils/http/http_client.dart';
 import 'package:get_storage/get_storage.dart';
 

@@ -6,7 +6,7 @@ import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
-import 'package:geniego/features/shop/models/product.dart';
+import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/screens/home/widgets/home_app_bar.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/constants/sizes.dart';
@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
                   // Search Bar
-                  AppSearchBar(searchText: AppTexts.searchStore),
+                  AppSearchBar(searchText: AppTexts.searchProducts),
 
                   const SizedBox(height: AppSizes.spaceBtwSections * 2),
 
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // Heading
-                  SectionHeading(title: 'Popular Products'),
+                  SectionHeading(title: AppTexts.popularProducts),
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
 

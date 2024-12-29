@@ -14,10 +14,11 @@ class AppTexts {
   static String get submit => 'submit'.tr;
   static String get appName => 'appName'.tr;
   static String get tContinue => 'tContinue'.tr;
+  static String get loading => 'loading'.tr;
 
-  // Main Screens
+  // Screens Titles
   static String get home => 'home'.tr;
-  static String get shop => 'shop'.tr;
+  static String get stores => 'stores'.tr;
   static String get wishlist => 'wishlist'.tr;
   static String get profile => 'profile'.tr;
 
@@ -57,6 +58,17 @@ class AppTexts {
   static String get resendEmail => 'resendEmail'.tr;
   static String get resendEmailIn => 'resendEmailIn'.tr;
 
+  // Loaders & Popups
+  static String get noInternetTitle => 'noInternetTitle'.tr;
+  static String get noInternetSubTitle => 'noInternetSubTitle'.tr;
+  static String get retryConnect => 'retryConnect'.tr;
+  static String get noInternetSnackBarTitle => 'noInternetSnackBarTitle'.tr;
+  static String get noInternetSnackBarMessage => 'noInternetSnackBarMessage'.tr;
+
+  static String get notFoundTitle => 'notFoundTitle'.tr;
+  static String get notFoundSubTitle => 'notFoundSubTitle'.tr;
+  static String get returnHome => 'returnHome'.tr;
+
   // Authentication Headings
   static String get loginTitle => 'loginTitle'.tr;
   static String get loginSubTitle => 'loginSubTitle'.tr;
@@ -73,12 +85,12 @@ class AppTexts {
   static String get yourAccountCreatedSubTitle =>
       'yourAccountCreatedSubTitle'.tr;
 
-  // Product
-  static String get popularProducts => 'popularProducts'.tr;
-
   // Home
   static String get homeAppbarTitle => 'homeAppbarTitle'.tr;
-  static String get searchStore => 'searchStore'.tr;
+  static String get searchStores => 'searchStores'.tr;
+  static String get searchProducts => 'searchProducts'.tr;
+  static String get popularStores => 'popularStores'.tr;
+  static String get popularProducts => 'popularProducts'.tr;
 
   // Settings
   static String get accountSettings => 'accountSettings'.tr;
