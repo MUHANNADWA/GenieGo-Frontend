@@ -98,4 +98,6 @@ class AppTexts {
   static String get geolocationSub => 'geolocationSub'.tr;
   static String get notifications => 'notifications'.tr;
   static String get notificationsSub => 'notificationsSub'.tr;
+  static String get fullscreen => 'fullscreen'.tr;
+  static String get fullscreenSub => 'fullscreenSub'.tr;
 }

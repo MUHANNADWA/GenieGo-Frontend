@@ -42,6 +42,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   capped_progress_indicator: ^0.0.2
   shimmer: ^3.0.0
+  custom_refresh_indicator: ^4.0.1
 
 
   #--------------- ./ PACKAGES END ------------------#

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_container.dart';

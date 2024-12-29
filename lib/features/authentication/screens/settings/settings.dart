@@ -176,6 +176,20 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   ),
 
+                  // Full Screen
+                  Obx(
+                    () => SettingsMenuTile(
+                      icon: Iconsax.screenmirroring,
+                      title: AppTexts.fullscreen,
+                      subTitle: AppTexts.fullscreenSub,
+                      trailing: Switch(
+                        value: controller.fullscreen.value,
+                        onChanged: (value) =>
+                            controller.toggleFullscreen(value),
+                      ),
+                    ),
+                  ),
+
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
                   // Logout Button

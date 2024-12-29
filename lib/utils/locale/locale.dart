@@ -105,6 +105,8 @@ class AppLocale implements Translations {
           'geolocationSub': 'Set recommendation based on location',
           'notifications': 'Notifications',
           'notificationsSub': 'Enable or Disable app notifications',
+          'fullscreen': 'Fullscreen',
+          'fullscreenSub': 'Set App To Fullscreen or Not',
         },
         'ar': {
           // GLOBAL Texts
@@ -207,6 +209,8 @@ class AppLocale implements Translations {
           'geolocationSub': 'عرض الاقتراحات بناء على الموقع',
           'notifications': 'الإشعارات',
           'notificationsSub': 'تفعيل الإشعارات أو إلغاء تفعيلها',
+          'fullscreen': 'ملئ الشاشة',
+          'fullscreenSub': 'تفعيل ملئ الشاشة أو إلغاء تفعيلها',
         },
       };
 }

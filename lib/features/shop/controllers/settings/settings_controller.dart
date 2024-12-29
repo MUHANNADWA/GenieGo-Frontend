@@ -1,8 +1,7 @@
-import 'dart:developer';
-
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:geniego/utils/locale/locale_controller.dart';
 import 'package:geniego/utils/theme/theme_controller.dart';
 import 'package:get/get.dart';
@@ -18,26 +17,16 @@ class SettingsController extends GetxController {
   RxString themes = AppTexts.system.obs;
   RxBool geoLocation = true.obs;
   RxBool notification = true.obs;
+  RxBool fullscreen = true.obs;
 
   @override
   void onInit() {
-    log(languages.value.toString());
-    log(localStorage.read('lang') ?? 'hi');
-
-    log(themes.value.toString());
-    log(localStorage.read('theme') ?? 'hi');
-
+    super.onInit();
     geoLocation.value = localStorage.read('geoLocation') ?? true;
     notification.value = localStorage.read('notification') ?? true;
+    notification.value = localStorage.read('fullscreen') ?? true;
     languages.value = localStorage.read('lang') ?? AppTexts.system;
     themes.value = localStorage.read('theme') ?? AppTexts.system;
-
-    log(languages.value.toString());
-    log(localStorage.read('lang') ?? 'hi');
-
-    log(themes.value.toString());
-    log(localStorage.read('theme') ?? 'hi');
-    super.onInit();
   }
 
   void chnageLang(String lang) {
@@ -58,6 +47,12 @@ class SettingsController extends GetxController {
   void toggleNotification(value) {
     localStorage.write('notification', value);
     notification.toggle();
+  }
+
+  void toggleFullscreen(value) {
+    AppHelper.setFullScreen(value);
+    localStorage.write('fullscreen', value);
+    fullscreen.toggle();
   }
 
   void logout() {

@@ -18,36 +18,17 @@ class CartCounterIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        IconButton(
-          onPressed: () => Get.to(() => CartScreen()),
-          icon: const Icon(
-            Iconsax.shopping_bag,
-            color: AppColors.white,
-          ),
+    return Badge(
+      label: Text('2'),
+      alignment: Alignment(0.5, -0.5),
+      backgroundColor: AppColors.light,
+      child: IconButton(
+        onPressed: () => Get.to(() => CartScreen()),
+        icon: const Icon(
+          Iconsax.shopping_bag,
+          color: AppColors.white,
         ),
-        Positioned(
-          right: 0,
-          child: Container(
-            height: 18,
-            width: 18,
-            decoration: BoxDecoration(
-              color: AppColors.black,
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child: Center(
-              child: Text(
-                '2',
-                style: Theme.of(context).textTheme.labelLarge!.apply(
-                      color: AppColors.white,
-                      fontSizeFactor: 0.8,
-                    ),
-              ),
-            ),
-          ),
-        )
-      ],
+      ),
     );
   }
 }

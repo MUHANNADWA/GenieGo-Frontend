@@ -1,6 +1,6 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:geniego/features/authentication/models/user.dart';
 import 'package:geniego/features/shop/models/product.dart';
 import 'package:geniego/features/shop/models/site.dart';
@@ -31,7 +31,7 @@ class AppHelper {
         description: 'This is Store Descreption',
         site: exampleSite,
         image: AppImages.appLogo,
-        tags: ['tags'],
+        tags: ['good', 'potato', 'margin'],
       );
 
   static Product get exampleProduct => Product(
@@ -40,8 +40,18 @@ class AppHelper {
         description: 'This is Product Descreption',
         price: 1000,
         image: AppImages.appLogo,
-        tags: ['tags'],
+        tags: ['good', 'product', 'padding'],
       );
+
+  static void setFullScreen(bool enable) {
+    SystemChrome.setEnabledSystemUIMode(
+        enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
+  }
+
+  static void hideKeyboard() {
+    // FocusScope.of(context).requestFocus(FocusNode());
+    Get.focusScope?.requestFocus(FocusNode());
+  }
 
   static bool get isDarkMode => Get.isDarkMode;
 

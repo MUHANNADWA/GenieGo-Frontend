@@ -21,39 +21,66 @@ class AppSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SearchBar(
-      padding: const WidgetStatePropertyAll(EdgeInsets.all(AppSizes.xs)),
-      // Background Color
-      backgroundColor: WidgetStatePropertyAll(
-        showBackground
-            ? AppHelper.isDarkMode
-                ? AppColors.dark
-                : AppColors.light
-            : Colors.transparent,
-      ),
-
-      // Border Color
-      side: WidgetStatePropertyAll(
-        BorderSide(
-          color: showBorder
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
+      child: SearchAnchor.bar(
+        isFullScreen: false,
+        barPadding: const WidgetStatePropertyAll(EdgeInsets.all(AppSizes.xs)),
+        // Background Color
+        barBackgroundColor: WidgetStatePropertyAll(
+          showBackground
               ? AppHelper.isDarkMode
-                  ? AppColors.light
-                  : AppColors.dark
+                  ? AppColors.dark
+                  : AppColors.light
               : Colors.transparent,
         ),
-      ),
-      // Border Radius
-      shape: WidgetStatePropertyAll(
-        RoundedRectangleBorder(
+
+        viewBackgroundColor:
+            AppHelper.isDarkMode ? AppColors.dark : AppColors.light,
+
+        viewShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSizes.cardRadiusLg),
         ),
+
+        // Border Color
+        barSide: WidgetStatePropertyAll(
+          BorderSide(
+            color: showBorder
+                ? AppHelper.isDarkMode
+                    ? AppColors.light
+                    : AppColors.dark
+                : Colors.transparent,
+          ),
+        ),
+
+        // Border Radius
+        barShape: WidgetStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppSizes.cardRadiusLg),
+          ),
+        ),
+
+        // Search Icon
+        barLeading: IconButton(onPressed: () {}, icon: Icon(icon)),
+
+        // Search Text
+        barHintText: searchText,
+
+        onTap: () => AppHelper.hideKeyboard(),
+
+        suggestionsBuilder:
+            (BuildContext context, SearchController controller) {
+          final String input = controller.value.text;
+          return [
+            ListTile(leading: Text(input)),
+            ListTile(leading: Text('hi')),
+            ListTile(leading: Text('hi')),
+            ListTile(leading: Text('hi')),
+            ListTile(leading: Text('hi')),
+            ListTile(leading: Text('hi')),
+          ];
+        },
       ),
-
-      // Search Icon
-      leading: IconButton(onPressed: () {}, icon: Icon(icon)),
-
-      // Search Text
-      hintText: searchText,
     );
   }
 }
