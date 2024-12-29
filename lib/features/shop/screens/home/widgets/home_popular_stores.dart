@@ -69,11 +69,13 @@ class HomePopularStores extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final store = stores['data'][index];
 
-                        return VerticalImageAndName(
-                          isNetworkImage: true,
-                          image: store['icon_url'],
-                          title: store['translations']
-                              [AppHelper.currentLang.substring(0, 2)]['name'],
+                        return GestureDetector(
+                          child: VerticalImageAndName(
+                            isNetworkImage: true,
+                            image: store['icon_url'],
+                            title: store['translations']
+                                [AppHelper.currentLang.substring(0, 2)]['name'],
+                          ),
                         );
                       },
                     ),

@@ -4,6 +4,7 @@ import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.d
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/cart/cart_counter_icon.dart';
+import 'package:geniego/features/shop/models/product.dart';
 import 'package:geniego/features/shop/models/store.dart';
 import 'package:geniego/features/shop/screens/store/widgets/store_card.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
 import 'package:geniego/features/authentication/screens/settings/settings.dart';
 import 'package:geniego/features/shop/screens/wishlist/wishlist.dart';
-import 'package:geniego/features/shop/screens/store/store_screen.dart';
+import 'package:geniego/features/shop/screens/store/stores_screen.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';

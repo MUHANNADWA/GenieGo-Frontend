@@ -3,10 +3,13 @@ import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_ima
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/features/shop/models/store.dart';
+import 'package:geniego/features/shop/screens/store/widgets/store_details_screen.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class StoreCard extends StatelessWidget {
   const StoreCard({super.key, required this.store});
@@ -16,7 +19,9 @@ class StoreCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => StoreDetailsScreen(
+            store: store,
+          )),
       child: RoundedContainer(
         padding: EdgeInsets.all(AppSizes.sm),
         showBorder: true,
