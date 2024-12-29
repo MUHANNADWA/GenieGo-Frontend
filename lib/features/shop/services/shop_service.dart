@@ -9,6 +9,10 @@ class ShopService {
     return AppHttpHelper.get('stores/$id');
   }
 
+  static getStoreProductsByStoreId(id) {
+    return AppHttpHelper.get('stores/$id/products');
+  }
+
   static deleteStoreById(id) {
     return AppHttpHelper.delete('stores/$id');
   }

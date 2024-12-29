@@ -4,16 +4,15 @@ import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_c
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_card/product_card.dart';
+import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/shop/models/product.dart';
 import 'package:geniego/features/shop/screens/home/widgets/home_app_bar.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
-import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/features/shop/screens/home/widgets/home_popular_stores.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
-import 'package:shimmer/shimmer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -54,21 +53,14 @@ class HomeScreen extends StatelessWidget {
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
-                  // Stores
+                  // Products
                   FutureBuilder(
                       future: ShopService.getProducts(),
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
                           // Show shimmer loading
-                          return Shimmer.fromColors(
-                            period: Duration(seconds: 2),
-                            baseColor: AppHelper.isDarkMode
-                                ? AppColors.dark
-                                : AppColors.light,
-                            highlightColor: AppHelper.isDarkMode
-                                ? AppColors.darkerGrey
-                                : AppColors.darkGrey,
+                          return AppShimmer(
                             child: GridLayout(
                               itemCount: 4,
                               itemBuilder: (_, index) =>

@@ -5,9 +5,18 @@ class AppHttpHelper {
   static const String _baseUrl = 'http://172.26.1.1:4567/api';
   // static const String _baseUrl = 'http://192.168.0.150:4567/api';
 
+  static const Map<String, String> _headers = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  };
+
   // Helper method to make a GET request
-  static Future<Map<String, dynamic>> get(String endpoint) async {
-    final response = await http.get(Uri.parse('$_baseUrl/$endpoint'));
+  static Future<Map<String, dynamic>> get(String endpoint,
+      {String? token}) async {
+    final response = await http.get(
+      Uri.parse('$_baseUrl/$endpoint'),
+      headers: _headers,
+    );
     return _handleResponse(response);
   }
 
@@ -16,10 +25,7 @@ class AppHttpHelper {
       String endpoint, dynamic data) async {
     final response = await http.post(
       Uri.parse('$_baseUrl/$endpoint'),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
+      headers: _headers,
       body: json.encode(data),
     );
     return _handleResponse(response);
@@ -29,7 +35,7 @@ class AppHttpHelper {
   static Future<Map<String, dynamic>> put(String endpoint, dynamic data) async {
     final response = await http.put(
       Uri.parse('$_baseUrl/$endpoint'),
-      headers: {'Content-Type': 'application/json'},
+      headers: _headers,
       body: json.encode(data),
     );
     return _handleResponse(response);
@@ -37,7 +43,10 @@ class AppHttpHelper {
 
   // Helper method to make a DELETE request
   static Future<Map<String, dynamic>> delete(String endpoint) async {
-    final response = await http.delete(Uri.parse('$_baseUrl/$endpoint'));
+    final response = await http.delete(
+      Uri.parse('$_baseUrl/$endpoint'),
+      headers: _headers,
+    );
     return _handleResponse(response);
   }
 

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:geniego/common/widgets/texts/product_price_text.dart';
+import 'package:geniego/common/widgets/layouts/grid_layout.dart';
+import 'package:geniego/common/widgets/products/product_card/product_card.dart';
+import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
-import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/products%20_details_%20image.dart';
-import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/rating_and_share.dart';
 import 'package:geniego/features/shop/models/product.dart';
 import 'package:geniego/features/shop/models/store.dart';
+import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/constants/colors.dart';
-import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:readmore/readmore.dart';
@@ -28,14 +27,12 @@ class StoreDetailsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Product Image
+            // Store Image
             Hero(
-                tag: store.id,
-                child: ProductImage(
-                  imageUrl: store.image,
-                )),
+                tag: 'Store ${store.id}',
+                child: ProductImage(imageUrl: store.image, height: 200)),
 
-            // Product Details
+            // Store Details
             Padding(
               padding: const EdgeInsets.only(
                 right: AppSizes.defaultSpace,
@@ -43,34 +40,9 @@ class StoreDetailsScreen extends StatelessWidget {
                 bottom: AppSizes.defaultSpace,
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Rating & Share Button
-                  const RatingAndShare(),
-
                   // Title
-                  ProductStoreTitleText(title: store.name),
-
-                  const SizedBox(height: AppSizes.spaceBtwItems / 1.5),
-
-                  // Brand
-                  Row(
-                    children: [
-                      AppCircularImage(
-                        image: AppImages.appLogo,
-                        width: 32,
-                        height: 32,
-                        overlayColor: AppHelper.isDarkMode
-                            ? AppColors.white
-                            : AppColors.black,
-                      ),
-
-                      const SizedBox(width: AppSizes.sm),
-
-                      // Store Name
-                      const ProductStoreTitleText(title: 'Nike'),
-                    ],
-                  ),
+                  ProductStoreTitleText(title: store.name, bigSize: true),
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
@@ -105,6 +77,58 @@ class StoreDetailsScreen extends StatelessWidget {
                   const SizedBox(height: AppSizes.spaceBtwSections),
                 ],
               ),
+            ),
+
+            // Products
+            Padding(
+              padding: const EdgeInsets.only(
+                right: AppSizes.defaultSpace,
+                left: AppSizes.defaultSpace,
+                bottom: AppSizes.defaultSpace,
+              ),
+              child: FutureBuilder(
+                  future: ShopService.getStoreProductsByStoreId(store.id),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      // Show shimmer loading
+                      return AppShimmer(
+                        child: GridLayout(
+                          itemCount: 4,
+                          itemBuilder: (_, index) =>
+                              RoundedContainer(height: 282),
+                        ),
+                      );
+                    } else if (snapshot.hasData) {
+                      // Show the actual data
+                      final dynamic products = snapshot.data!;
+
+                      return GridLayout(
+                        itemCount: (products['data'] as List).length,
+                        itemBuilder: (_, index) {
+                          final Product product =
+                              Product.fromJson(products['data'][index]);
+
+                          return ProductCard(product: product);
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      return GridLayout(
+                        itemCount: 4,
+                        itemBuilder: (_, index) {
+                          final Product product = AppHelper.exampleProduct;
+
+                          return ProductCard(product: product);
+                        },
+                      );
+                      // Show error message
+                      // return Center(
+                      //   child: Text('Error: ${snapshot.error}'),
+                      // );
+                    } else {
+                      // Fallback UI
+                      return const SizedBox.shrink();
+                    }
+                  }),
             ),
           ],
         ),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:geniego/utils/constants/colors.dart';
-import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class AppCircularImage extends StatelessWidget {
   const AppCircularImage({
@@ -11,7 +9,7 @@ class AppCircularImage extends StatelessWidget {
     this.boxFit = BoxFit.cover,
     this.padding = 0,
     this.overlayColor,
-    this.backgroundColor,
+    this.backgroundColor = Colors.transparent,
     this.isNetworkImage = false,
   });
 
@@ -28,8 +26,7 @@ class AppCircularImage extends StatelessWidget {
       width: width,
       padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
-        color: backgroundColor ??
-            (AppHelper.isDarkMode ? AppColors.dark : AppColors.white),
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(100),
       ),
       child: Image(

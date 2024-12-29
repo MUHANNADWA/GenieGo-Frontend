@@ -5,12 +5,14 @@ class ProductStoreTitleText extends StatelessWidget {
     super.key,
     required this.title,
     this.smallSize = false,
+    this.bigSize = false,
     this.maxLines = 2,
     this.textAlign = TextAlign.start,
   });
 
   final String title;
   final bool smallSize;
+  final bool bigSize;
   final int maxLines;
   final TextAlign? textAlign;
 
@@ -20,7 +22,9 @@ class ProductStoreTitleText extends StatelessWidget {
       title,
       style: smallSize
           ? Theme.of(context).textTheme.labelLarge
-          : Theme.of(context).textTheme.titleSmall,
+          : bigSize
+              ? Theme.of(context).textTheme.headlineLarge
+              : Theme.of(context).textTheme.titleSmall,
       overflow: TextOverflow.ellipsis,
       maxLines: maxLines,
       textAlign: textAlign,

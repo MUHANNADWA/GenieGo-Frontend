@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/image_text_widgets/vertical_image_and_name.dart';
+import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
-import 'package:shimmer/shimmer.dart';
 
 class HomePopularStores extends StatelessWidget {
   const HomePopularStores({super.key});
@@ -39,14 +39,7 @@ class HomePopularStores extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: 6,
                       itemBuilder: (context, index) {
-                        return Shimmer.fromColors(
-                          period: Duration(seconds: 2),
-                          baseColor: AppHelper.isDarkMode
-                              ? AppColors.dark
-                              : AppColors.light,
-                          highlightColor: AppHelper.isDarkMode
-                              ? AppColors.darkerGrey
-                              : AppColors.darkGrey,
+                        return AppShimmer(
                           child: VerticalImageAndName(
                             image: AppImages.appLogo,
                             title: 'Loading ...',

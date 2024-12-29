@@ -4,14 +4,11 @@ import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.d
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/cart/cart_counter_icon.dart';
-import 'package:geniego/features/shop/models/product.dart';
+import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/features/shop/models/store.dart';
 import 'package:geniego/features/shop/screens/store/widgets/store_card.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
-import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
-import 'package:geniego/utils/helpers/helper_functions.dart';
-import 'package:shimmer/shimmer.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -45,14 +42,7 @@ class StoreScreen extends StatelessWidget {
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     // Show shimmer loading
-                    return Shimmer.fromColors(
-                      period: Duration(seconds: 2),
-                      baseColor: AppHelper.isDarkMode
-                          ? AppColors.dark
-                          : AppColors.light,
-                      highlightColor: AppHelper.isDarkMode
-                          ? AppColors.darkerGrey
-                          : AppColors.darkGrey,
+                    return AppShimmer(
                       child: Padding(
                         padding: const EdgeInsets.all(AppSizes.defaultSpace),
                         child: GridLayout(
