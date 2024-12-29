@@ -5,10 +5,11 @@ import 'package:geniego/common/widgets/custom_shapes/containers/rounded_containe
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/cart/cart_counter_icon.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
-import 'package:geniego/features/shop/models/store.dart';
+import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/features/shop/screens/store/widgets/store_card.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -18,7 +19,7 @@ class StoreScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppAppBar(
         title: Text(
-          'Stores',
+          AppTexts.stores,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         actions: [CartCounterIcon(onPressed: () {})],
@@ -29,7 +30,7 @@ class StoreScreen extends StatelessWidget {
             SizedBox(height: AppSizes.spaceBtwItems),
 
             AppSearchBar(
-              searchText: 'Search for Shops...',
+              searchText: AppTexts.searchStores,
               showBackground: false,
               showBorder: true,
             ),

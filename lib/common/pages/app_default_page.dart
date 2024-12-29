@@ -11,14 +11,14 @@ class AppDefaultPage extends StatelessWidget {
     required this.title,
     required this.subTitle,
     this.showActionButton,
-    this.actionButtonText,
+    this.actionButtonText = 'Click',
     this.onPressedActionButton,
   });
 
   final String image;
   final String title, subTitle;
   final bool? showActionButton;
-  final String? actionButtonText;
+  final String actionButtonText;
   final VoidCallback? onPressedActionButton;
 
   @override
@@ -77,7 +77,7 @@ class AppDefaultPage extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: onPressedActionButton,
-                    child: Text(actionButtonText ?? 'Click'),
+                    child: Text(actionButtonText),
                   ),
                 )
               ],

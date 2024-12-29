@@ -6,6 +6,7 @@ import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class HomePopularStores extends StatelessWidget {
@@ -18,8 +19,8 @@ class HomePopularStores extends StatelessWidget {
       child: Column(
         children: [
           // Popular Stores Heading
-          const SectionHeading(
-            title: 'Popular Stores',
+          SectionHeading(
+            title: AppTexts.popularStores,
             showActionButton: false,
             textColor: AppColors.lightGrey,
           ),
@@ -42,7 +43,7 @@ class HomePopularStores extends StatelessWidget {
                         return AppShimmer(
                           child: VerticalImageAndName(
                             image: AppImages.appLogo,
-                            title: 'Loading ...',
+                            title: AppTexts.loading,
                           ),
                         );
                       },

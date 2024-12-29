@@ -1,10 +1,10 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:geniego/features/authentication/models/user.dart';
-import 'package:geniego/features/shop/models/product.dart';
-import 'package:geniego/features/shop/models/site.dart';
-import 'package:geniego/features/shop/models/store.dart';
+import 'package:geniego/features/authentication/models/user_model.dart';
+import 'package:geniego/features/shop/models/product_model.dart';
+import 'package:geniego/features/shop/models/site_model.dart';
+import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -41,7 +41,7 @@ class AppHelper {
         price: 1000,
         image: AppImages.appLogo,
         tags: ['good', 'product', 'padding'],
-        storeId: 0,
+        store: exampleStore,
       );
 
   static void setFullScreen(bool enable) {

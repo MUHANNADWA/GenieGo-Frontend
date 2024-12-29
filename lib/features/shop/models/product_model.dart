@@ -1,44 +1,49 @@
-import 'package:geniego/features/shop/models/site.dart';
+import 'package:geniego/features/shop/models/store_model.dart';
+import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
-class Store {
+class Product {
   final int id;
+  final Store store;
   final String name;
   final String description;
-  final Site site;
+  final double price;
   final String image;
   final List tags;
 
-  Store({
+  Product({
+    required this.store,
     required this.id,
     required this.name,
     required this.description,
-    required this.site,
+    required this.price,
     required this.image,
     required this.tags,
   });
 
-  factory Store.fromJson(jsonData) {
-    return Store(
+  factory Product.fromJson(jsonData) {
+    return Product(
       id: jsonData['id'],
-      site: Site.fromJson(jsonData['site']),
-      tags: jsonData['tags'],
-      image: jsonData['icon_url'],
+      store: Store.fromJson(jsonData['store']),
       name: jsonData['translations'][AppHelper.currentLang.substring(0, 2)]
           ['name'],
       description: jsonData['translations']
           [AppHelper.currentLang.substring(0, 2)]['description'],
+      price: jsonData['price'].toDouble(),
+      image: jsonData['icon_url'] ?? AppImages.appLogo,
+      tags: jsonData['tags'],
     );
   }
 
   toJson() {
     return {
       'id': id,
-      'site': site,
-      'tags': tags,
-      'image': image,
+      'store': store,
       'name': name,
       'description': description,
+      'price': price,
+      'image': image,
+      'tags': tags,
     };
   }
 }

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:geniego/common/widgets/products/product_card/store_icon_with_name.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/products%20_details_%20image.dart';
-import 'package:geniego/features/shop/models/product.dart';
+import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
-import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:readmore/readmore.dart';
@@ -57,27 +56,10 @@ class ProductDetailsScreen extends StatelessWidget {
                     ],
                   ),
 
-                  const SizedBox(height: AppSizes.spaceBtwItems / 1.5),
+                  const SizedBox(height: AppSizes.spaceBtwItems),
 
                   // Brand
-                  Row(
-                    children: [
-                      AppCircularImage(
-                        image: AppImages.appLogo,
-                        width: 32,
-                        height: 32,
-                        overlayColor: AppHelper.isDarkMode
-                            ? AppColors.white
-                            : AppColors.black,
-                        boxFit: BoxFit.contain,
-                      ),
-
-                      const SizedBox(width: AppSizes.sm),
-
-                      // Store Name
-                      ProductStoreTitleText(title: product.storeId.toString()),
-                    ],
-                  ),
+                  StoreIconWithName(store: product.store),
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
 

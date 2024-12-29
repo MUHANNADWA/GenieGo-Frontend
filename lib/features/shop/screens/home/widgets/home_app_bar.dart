@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/products/cart/cart_counter_icon.dart';
-import 'package:geniego/features/authentication/models/user.dart';
+import 'package:geniego/features/authentication/models/user_model.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/text_strings.dart';

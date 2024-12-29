@@ -16,12 +16,13 @@ class AppLocale implements Translations {
           'submit': 'Submit',
           'appName': 'App-Store',
           'tContinue': 'Continue',
+          'loading': 'Loading ..',
           'changeLang': 'Change Language',
           'searchCountry': 'Search by country name or dial code',
 
           // Screens
           'home': 'Home',
-          'shop': 'Shop',
+          'stores': 'Stores',
           'wishlist': 'Wishlist',
           'profile': 'Profile',
 
@@ -60,6 +61,20 @@ class AppLocale implements Translations {
           'resendEmail': 'Resend Email',
           'resendEmailIn': 'Resend email in',
 
+          // Loaders & Popups
+          'noInternetTitle': 'Uh-oh! You\'re Offline.',
+          'noInternetSubTitle':
+              'It seems like there\'s no internet. Reconnect to continue.',
+          'retryConnect': 'Retry to connect',
+          'noInternetSnackBarTitle': 'Can\'t connect to network',
+          'noInternetSnackBarMessage':
+              'Please check your network connection again',
+
+          'notFoundTitle': 'Page Not Found.',
+          'notFoundSubTitle':
+              'It seems like there\'s no page like this. Return to home.',
+          'returnHome': 'Return to home',
+
           // Authentication Headings
           'loginTitle': 'Welcome back',
           'loginSubTitle':
@@ -80,12 +95,12 @@ class AppLocale implements Translations {
           'yourAccountCreatedSubTitle':
               'Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!',
 
-          // Product
-          'popularProducts': 'Popular Products',
-
           // Home
           'homeAppbarTitle': 'Good day for shopping',
-          'searchStore': 'Search for Products ...',
+          'searchStores': 'Search for Stores ..',
+          'searchProducts': 'Search for Products ..',
+          'popularStores': 'Popular Stores',
+          'popularProducts': 'Popular Products',
 
           // Settings
           'accountSettings': 'Account Settings',
@@ -121,12 +136,13 @@ class AppLocale implements Translations {
           'submit': 'إرسال',
           'appName': 'متجر التطبيقات',
           'tContinue': 'متابعة',
+          'loading': 'جاري التحميل ..',
           'changeLang': ' تغيير اللغة',
           'searchCountry': 'البحث حسب اسم الدولة أو رمز الاتصال',
 
           // Screens
           'home': 'الرئيسية',
-          'shop': 'المتاجر',
+          'stores': 'المتاجر',
           'wishlist': 'المفضلة',
           'profile': 'الملف الشخصي',
 
@@ -165,6 +181,19 @@ class AppLocale implements Translations {
           'resendEmail': 'إعادة إرسال البريد الإلكتروني',
           'resendEmailIn': 'إعادة إرسال البريد الإلكتروني بعد',
 
+          // Loaders & Popups
+          'noInternetTitle': 'أنت غير متصل',
+          'noInternetSubTitle':
+              'يبدو أن اتصالك بالإنترنت قد انقطع، أعد الاتصال بالإنترنت لاستخدام التطبيق',
+          'retryConnect': 'إعادة المحاولة',
+          'noInternetSnackBarTitle': 'لا يمكن الوصول إلى الشبكة',
+          'noInternetSnackBarMessage': 'يرجى التأكد مجددا من اتصالك بالإنترنت',
+
+          'notFoundTitle': 'الصفحة غير موجودة.',
+          'notFoundSubTitle':
+              'يبدو أنه لايوجد صفحة بهذا الاسم، يمكنك العودة إلى الصفحة الرئيسية.',
+          'returnHome': 'العودة إلى الصفحة الرئيسية',
+
           // Authentication Headings
           'loginTitle': 'مرحبًا بك مجددًا',
           'loginSubTitle': 'اكتشف خيارات لا حدود لها وراحة لا مثيل لها.',
@@ -184,12 +213,12 @@ class AppLocale implements Translations {
           'yourAccountCreatedSubTitle':
               'مرحبًا بك في وجهة التسوق المثالية: تم إنشاء حسابك، استمتع بالتسوق عبر الإنترنت بكل سهولة!',
 
-          // Product
-          'popularProducts': 'المنتجات الشائعة',
-
           // Home
           'homeAppbarTitle': 'يوم رائع للتسوق',
-          'searchStore': '... ابحث عن منتج',
+          'searchStore': 'ابحث عن متجر ..',
+          'searchProducts': 'ابحث عن منتج ..',
+          'popularStores': 'المتاجر الشائعة',
+          'popularProducts': 'المنتجات الشائعة',
 
           // Settings
           'accountSettings': 'إعدادات الحساب',
