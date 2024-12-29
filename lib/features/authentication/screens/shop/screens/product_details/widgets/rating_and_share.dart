@@ -3,9 +3,7 @@ import 'package:geniego/utils/constants/sizes.dart';
 import 'package:iconsax/iconsax.dart';
 
 class RatingAndShare extends StatelessWidget {
-  const RatingAndShare({
-    super.key,
-  });
+  const RatingAndShare({super.key});
 
   @override
   Widget build(BuildContext context) {

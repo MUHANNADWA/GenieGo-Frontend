@@ -59,7 +59,6 @@ class BottomAddToCart extends StatelessWidget {
             ),
             child: const Text('Add To Cart'),
           ),
-          SizedBox(height: AppSizes.spaceBtwSections * 4),
         ],
       ),
     );

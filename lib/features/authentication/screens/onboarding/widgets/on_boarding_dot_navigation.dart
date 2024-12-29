@@ -7,9 +7,7 @@ import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingDotNavigation extends StatelessWidget {
-  const OnBoardingDotNavigation({
-    super.key,
-  });
+  const OnBoardingDotNavigation({super.key});
 
   @override
   Widget build(BuildContext context) {

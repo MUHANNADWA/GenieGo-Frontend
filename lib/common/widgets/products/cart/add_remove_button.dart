@@ -6,9 +6,7 @@ import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductQuantityWithAddRemoveButton extends StatelessWidget {
-  const ProductQuantityWithAddRemoveButton({
-    super.key,
-  });
+  const ProductQuantityWithAddRemoveButton({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -5,9 +5,7 @@ import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 
 class AppCircularLoader extends StatelessWidget {
-  const AppCircularLoader({
-    super.key,
-  });
+  const AppCircularLoader({super.key});
 
   @override
   Widget build(BuildContext context) {

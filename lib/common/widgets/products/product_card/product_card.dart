@@ -89,7 +89,7 @@ class ProductCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Nike',
+                        product.storeId.toString(),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: Theme.of(context).textTheme.labelMedium,
