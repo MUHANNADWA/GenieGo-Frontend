@@ -9,9 +9,7 @@ import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:shimmer/shimmer.dart';
 
 class HomePopularStores extends StatelessWidget {
-  const HomePopularStores({
-    super.key,
-  });
+  const HomePopularStores({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +37,7 @@ class HomePopularStores extends StatelessWidget {
                     child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      itemCount: 6, // Number of shimmer placeholders
+                      itemCount: 6,
                       itemBuilder: (context, index) {
                         return Shimmer.fromColors(
                           period: Duration(seconds: 2),
@@ -69,13 +67,11 @@ class HomePopularStores extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final store = stores['data'][index];
 
-                        return GestureDetector(
-                          child: VerticalImageAndName(
-                            isNetworkImage: true,
-                            image: store['icon_url'],
-                            title: store['translations']
-                                [AppHelper.currentLang.substring(0, 2)]['name'],
-                          ),
+                        return VerticalImageAndName(
+                          isNetworkImage: store['icon_url'] != null,
+                          image: store['icon_url'] ?? AppImages.appLogo,
+                          title: store['translations']
+                              [AppHelper.currentLang.substring(0, 2)]['name'],
                         );
                       },
                     ),

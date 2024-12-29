@@ -18,10 +18,7 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       // User Profile AppBar
-      appBar: AppAppBar(
-        showBackArrow: true,
-        title: Text(AppTexts.profile),
-      ),
+      appBar: AppAppBar(title: Text(AppTexts.profile)),
 
       // Body
       body: SingleChildScrollView(
@@ -55,24 +52,14 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: AppSizes.spaceBtwItems),
 
             // Heading Personal Info
-            const SectionHeading(
-              title: 'Profile Information',
-              showActionButton: false,
-            ),
+            const SectionHeading(title: 'Profile Information'),
 
             const SizedBox(height: AppSizes.spaceBtwItems),
 
-            ProfileMenu(
-              title: 'Name',
-              value: user.fullName,
-              onPressed: () {},
-            ),
+            ProfileMenu(title: 'Name', value: user.fullName, onPressed: () {}),
 
             ProfileMenu(
-              title: 'Username',
-              value: user.username,
-              onPressed: () {},
-            ),
+                title: 'Username', value: user.username, onPressed: () {}),
 
             ProfileMenu(
                 title: 'User ID', value: user.id.toString(), onPressed: () {}),

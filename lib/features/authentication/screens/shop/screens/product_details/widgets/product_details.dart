@@ -79,7 +79,7 @@ class ProductDetails extends StatelessWidget {
                       const SizedBox(width: AppSizes.sm),
 
                       // Store Name
-                      ProductStoreTitleText(title: 'Nike'),
+                      ProductStoreTitleText(title: product.storeId.toString()),
                     ],
                   ),
 

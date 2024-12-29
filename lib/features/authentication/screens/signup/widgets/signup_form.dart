@@ -8,9 +8,7 @@ import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 
 class SignupForm extends StatelessWidget {
-  const SignupForm({
-    super.key,
-  });
+  const SignupForm({super.key});
 
   @override
   Widget build(BuildContext context) {

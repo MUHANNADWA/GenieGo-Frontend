@@ -6,9 +6,7 @@ import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 
 class OtherWaysToLoginButtons extends StatelessWidget {
-  const OtherWaysToLoginButtons({
-    super.key,
-  });
+  const OtherWaysToLoginButtons({super.key});
 
   @override
   Widget build(BuildContext context) {

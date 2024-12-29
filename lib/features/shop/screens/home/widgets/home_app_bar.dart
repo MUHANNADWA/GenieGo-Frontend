@@ -7,9 +7,7 @@ import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({
-    super.key,
-  });
+  const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {

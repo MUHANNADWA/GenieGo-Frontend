@@ -5,8 +5,8 @@ import 'package:geniego/utils/constants/sizes.dart';
 
 class ProfileMenu extends StatelessWidget {
   const ProfileMenu({
-    required this.title,
     super.key,
+    required this.title,
     this.icon = Iconsax.arrow_right_34,
     required this.onPressed,
     required this.value,

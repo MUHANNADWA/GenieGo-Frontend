@@ -7,9 +7,7 @@ import 'package:geniego/utils/device/device_utility.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class OnBoardingNextButton extends StatelessWidget {
-  const OnBoardingNextButton({
-    super.key,
-  });
+  const OnBoardingNextButton({super.key});
 
   @override
   Widget build(BuildContext context) {

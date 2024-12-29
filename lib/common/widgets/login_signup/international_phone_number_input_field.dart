@@ -11,9 +11,7 @@ import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class InternationalPhoneNumberInputField<T extends GetxController>
     extends StatelessWidget {
-  const InternationalPhoneNumberInputField({
-    super.key,
-  });
+  const InternationalPhoneNumberInputField({super.key});
 
   @override
   Widget build(BuildContext context) {
