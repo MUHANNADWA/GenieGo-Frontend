@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class AppCircularImage extends StatelessWidget {
   const AppCircularImage({
@@ -31,9 +32,11 @@ class AppCircularImage extends StatelessWidget {
       ),
       child: Image(
         color: overlayColor,
-        image: isNetworkImage
+        image: AppHelper.isNetworkImage(image)
             ? NetworkImage(image)
             : AssetImage(image) as ImageProvider,
+        loadingBuilder: (context, child, loadingProgress) =>
+            loadingProgress == null ? child : CircularProgressIndicator(),
         fit: boxFit,
       ),
     );

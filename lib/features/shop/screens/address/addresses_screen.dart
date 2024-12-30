@@ -16,16 +16,18 @@ class UserAddressScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppAppBar(
         showBackArrow: true,
-        title: Text(AppTexts.addresses,
-            style: Theme.of(context).textTheme.headlineSmall),
+        title: Text(
+          AppTexts.addresses,
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(AppSizes.defaultSpace),
           child: Column(
             children: [
-              SingleAddress(selectedAddress: false),
-              SingleAddress(selectedAddress: true),
+              SingleAddress(selected: false),
+              SingleAddress(selected: true),
             ],
           ),
         ),

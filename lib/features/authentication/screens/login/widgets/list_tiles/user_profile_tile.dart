@@ -10,10 +10,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class UserProfileTile extends StatelessWidget {
-  const UserProfileTile({
-    super.key,
-    this.showEditButton = true,
-  });
+  const UserProfileTile({super.key, this.showEditButton = true});
 
   final bool showEditButton;
 

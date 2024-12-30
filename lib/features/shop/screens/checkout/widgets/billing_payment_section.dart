@@ -17,9 +17,7 @@ class BillingPaymentSection extends StatelessWidget {
           onPressed: () {},
         ),
 
-        const SizedBox(
-          height: AppSizes.spaceBtwItems / 2,
-        ),
+        const SizedBox(height: AppSizes.spaceBtwItems),
 
         // // Paypal
         // Row(

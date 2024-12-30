@@ -25,7 +25,7 @@ class ProductDetailsScreen extends StatelessWidget {
         child: Column(
           children: [
             // Product Image
-            Hero(tag: product.id, child: ProductImage(imageUrl: product.image)),
+            Hero(tag: product.id, child: ProductImage(image: product.image)),
 
             // Product Details
             Padding(
@@ -42,8 +42,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   const SizedBox(height: AppSizes.spaceBtwItems),
 
                   // Price
-                  ProductPriceText(
-                      price: product.price.toString(), isLarge: true),
+                  ProductPriceText(price: product.price, isLarge: true),
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
 

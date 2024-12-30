@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class RoundedImage extends StatelessWidget {
   const RoundedImage({
@@ -11,14 +12,14 @@ class RoundedImage extends StatelessWidget {
     this.width,
     this.height,
     this.applyImageRadius = true,
-    required this.imageUrl,
+    required this.image,
     this.fit = BoxFit.contain,
     this.backgroundColor = AppColors.light,
     this.isNetworkImage = false,
     this.borderRadius = AppSizes.md,
   });
   final double? width, height;
-  final String imageUrl;
+  final String image;
   final bool applyImageRadius;
   final BoxBorder? border;
   final Color backgroundColor;
@@ -46,9 +47,11 @@ class RoundedImage extends StatelessWidget {
                 : BorderRadius.zero,
             child: Image(
               fit: fit,
-              image: isNetworkImage
-                  ? NetworkImage(imageUrl)
-                  : AssetImage(imageUrl) as ImageProvider,
+              image: AppHelper.isNetworkImage(image)
+                  ? NetworkImage(image)
+                  : AssetImage(image) as ImageProvider,
+              loadingBuilder: (context, child, loadingProgress) =>
+                  loadingProgress == null ? child : CircularProgressIndicator(),
             ),
           ),
         ),

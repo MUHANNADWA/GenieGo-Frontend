@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:geniego/common/pages/app_default_page.dart';
 import 'package:geniego/common/pages/no_internet_connention_page.dart';
 import 'package:geniego/features/authentication/screens/signup/success_screen.dart';
-import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:geniego/utils/popups_loaders/circular_loader.dart';
 import 'package:get/get.dart';
 import '../constants/colors.dart';
@@ -20,7 +19,7 @@ class AppDialogs {
       builder: (_) => PopScope(
         canPop: false,
         child: Container(
-          color: AppHelper.isDarkMode ? AppColors.dark : AppColors.white,
+          color: AppColors.darkLight,
           child: Column(
             children: [
               AppDefaultPage(
@@ -56,7 +55,7 @@ class AppDialogs {
       builder: (_) => PopScope(
         canPop: false,
         child: Container(
-          color: AppHelper.isDarkMode ? AppColors.dark : AppColors.white,
+          color: AppColors.darkLight,
           child: const NoInternetConnentionPage(),
         ),
       ),
@@ -75,7 +74,7 @@ class AppDialogs {
       builder: (_) => PopScope(
         canPop: false,
         child: Container(
-          color: AppHelper.isDarkMode ? AppColors.dark : AppColors.white,
+          color: AppColors.darkLight,
           child: SuccessScreen(
             title: title,
             subTitle: subTitle,

@@ -51,7 +51,7 @@ class AppImages {
   static const String onBoardingImage3 = 'assets/images/animated/delivery.gif';
 
   // Products
-  static const String productImage22 =
+  static const String productImage =
       'assets/images/content/NikeBasketballShoeGreenBlack.png';
 
   //Profile

@@ -35,8 +35,7 @@ class AppSearchBar extends StatelessWidget {
               : Colors.transparent,
         ),
 
-        viewBackgroundColor:
-            AppHelper.isDarkMode ? AppColors.dark : AppColors.light,
+        viewBackgroundColor: AppColors.darkLight,
 
         viewShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSizes.cardRadiusLg),

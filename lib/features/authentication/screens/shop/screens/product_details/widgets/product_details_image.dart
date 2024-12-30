@@ -3,14 +3,13 @@ import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/curved_edges/curved_edge.dart';
 import 'package:geniego/common/widgets/products/product_card/favourite_button.dart';
 import 'package:geniego/utils/constants/colors.dart';
-import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class ProductImage extends StatelessWidget {
-  const ProductImage({super.key, required this.imageUrl, this.height = 400});
+  const ProductImage({super.key, required this.image, this.height = 400});
 
-  final String imageUrl;
+  final String image;
   final double height;
 
   @override
@@ -27,9 +26,13 @@ class ProductImage extends StatelessWidget {
                 padding: const EdgeInsets.all(AppSizes.productImageRadius * 2),
                 child: Center(
                   child: Image(
-                    image: imageUrl == AppImages.appLogo
-                        ? AssetImage(imageUrl) as ImageProvider
-                        : NetworkImage(imageUrl),
+                    image: AppHelper.isNetworkImage(image)
+                        ? NetworkImage(image)
+                        : AssetImage(image) as ImageProvider,
+                    loadingBuilder: (context, child, loadingProgress) =>
+                        loadingProgress == null
+                            ? child
+                            : CircularProgressIndicator(),
                   ),
                 ),
               ),

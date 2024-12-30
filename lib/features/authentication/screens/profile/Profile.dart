@@ -18,10 +18,7 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       // User Profile AppBar
-      appBar: AppAppBar(
-        title: Text(AppTexts.profile),
-        showBackArrow: true,
-      ),
+      appBar: AppAppBar(title: Text(AppTexts.profile), showBackArrow: true),
 
       // Body
       body: SingleChildScrollView(

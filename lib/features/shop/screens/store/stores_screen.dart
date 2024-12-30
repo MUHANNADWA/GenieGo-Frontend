@@ -22,7 +22,7 @@ class StoreScreen extends StatelessWidget {
           AppTexts.stores,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
-        actions: [CartCounterIcon(onPressed: () {})],
+        actions: [CartCounterIcon()],
       ),
       body: SingleChildScrollView(
         child: Column(

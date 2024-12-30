@@ -1,4 +1,5 @@
 import 'package:geniego/features/shop/models/site_model.dart';
+import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class Store {
@@ -23,10 +24,10 @@ class Store {
       id: jsonData['id'],
       site: Site.fromJson(jsonData['site']),
       tags: jsonData['tags'],
-      image: jsonData['icon_url'],
+      image: jsonData['icon_url'] ?? AppImages.appLogo,
       name: jsonData['translations'][AppHelper.currentLang]['name'],
-      description: jsonData['translations'][AppHelper.currentLang]
-          ['description'],
+      description:
+          jsonData['translations'][AppHelper.currentLang]['description'] ?? '',
     );
   }
 

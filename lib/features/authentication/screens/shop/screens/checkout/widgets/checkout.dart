@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:geniego/common/widgets/products/cart/cart_item.dart';
 import 'package:geniego/features/authentication/screens/signup/success_screen.dart';
-import 'package:geniego/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_payment_section.dart';
@@ -18,7 +18,6 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelper.isDarkMode;
     return Scaffold(
       appBar: AppAppBar(
         showBackArrow: true,
@@ -33,42 +32,28 @@ class CheckoutScreen extends StatelessWidget {
           child: Column(
             children: [
               // Items In Cart
-              const CartItems(showAddRemoveButtons: false),
+              CartItem(product: AppHelper.exampleProduct),
 
-              const SizedBox(
-                height: AppSizes.spaceBtwSections,
-              ),
-
-              const SizedBox(
-                height: AppSizes.spaceBtwSections,
-              ),
+              const SizedBox(height: AppSizes.spaceBtwSections),
 
               // Billing Section
               RoundedContainer(
                 padding: EdgeInsets.all(AppSizes.md),
                 showBorder: true,
-                backgroundColor: dark ? AppColors.black : AppColors.white,
+                backgroundColor: AppColors.darkLight,
                 child: Column(
                   children: [
                     // Pricing
                     BillingAmountSection(),
 
-                    const SizedBox(
-                      height: AppSizes.spaceBtwItems,
-                    ),
+                    const SizedBox(height: AppSizes.spaceBtwItems),
 
                     const Divider(),
-
-                    const SizedBox(
-                      height: AppSizes.spaceBtwItems,
-                    ),
 
                     // Payment Methods
                     BillingPaymentSection(),
 
-                    SizedBox(
-                      height: AppSizes.spaceBtwItems,
-                    ),
+                    SizedBox(height: AppSizes.spaceBtwItems),
 
                     const Divider(),
 

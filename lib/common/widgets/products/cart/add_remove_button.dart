@@ -18,7 +18,7 @@ class ProductQuantityWithAddRemoveButton extends StatelessWidget {
           width: 32,
           height: 32,
           size: AppSizes.md,
-          color: AppHelper.isDarkMode ? AppColors.white : AppColors.black,
+          color: AppColors.darkLightInvert,
           backgroundColor:
               AppHelper.isDarkMode ? AppColors.darkerGrey : AppColors.light,
         ),

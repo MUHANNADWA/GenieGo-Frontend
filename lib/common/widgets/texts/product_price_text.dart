@@ -10,15 +10,15 @@ class ProductPriceText extends StatelessWidget {
     this.lineThrough = false,
   });
 
-  final String currencySign, price;
+  final double price;
+  final String currencySign;
   final int maxLines;
-  final bool isLarge;
-  final bool lineThrough;
+  final bool isLarge, lineThrough;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      currencySign + price,
+      currencySign + price.toString(),
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
       style: isLarge

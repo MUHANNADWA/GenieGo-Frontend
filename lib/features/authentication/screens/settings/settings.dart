@@ -4,7 +4,7 @@ import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
 import 'package:geniego/features/shop/controllers/settings/settings_controller.dart';
-import 'package:geniego/features/shop/screens/address/address.dart';
+import 'package:geniego/features/shop/screens/address/addresses_screen.dart';
 import 'package:geniego/features/shop/screens/cart/widgets/cart.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/pages.dart';
@@ -54,8 +54,6 @@ class SettingsScreen extends StatelessWidget {
               padding: const EdgeInsets.all(AppSizes.defaultSpace),
               child: Column(
                 children: [
-                  //* Account Settings
-
                   // Account Settings Heading
                   SectionHeading(title: AppTexts.accountSettings),
 
@@ -86,8 +84,6 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
-
-                  //* App Settings
 
                   // App Settings Heading
                   SectionHeading(title: AppTexts.appSettings),

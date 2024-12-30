@@ -42,7 +42,7 @@ class FavouriteScreen extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(6.0),
             child: CircularProgressIndicator(
-              color: AppHelper.isDarkMode ? AppColors.dark : AppColors.light,
+              color: AppColors.darkLight,
               value: controller.state.isLoading
                   ? null
                   : min(controller.value, 1.0),

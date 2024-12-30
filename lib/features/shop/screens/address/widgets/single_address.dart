@@ -6,22 +6,20 @@ import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SingleAddress extends StatelessWidget {
-  const SingleAddress({super.key, required this.selectedAddress});
+  const SingleAddress({super.key, required this.selected});
 
-  final bool selectedAddress;
+  final bool selected;
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelper.isDarkMode;
     return RoundedContainer(
       padding: const EdgeInsets.all(AppSizes.md),
       width: double.infinity,
       showBorder: true,
-      backgroundColor: selectedAddress
-          ? AppColors.primary.withOpacity(0.5)
-          : Colors.transparent,
-      borderColor: selectedAddress
+      backgroundColor:
+          selected ? AppColors.primary.withOpacity(0.5) : Colors.transparent,
+      borderColor: selected
           ? Colors.transparent
-          : dark
+          : AppHelper.isDarkMode
               ? AppColors.darkerGrey
               : AppColors.dark,
       margin: EdgeInsets.only(bottom: AppSizes.spaceBtwItems),
@@ -30,9 +28,9 @@ class SingleAddress extends StatelessWidget {
           Positioned(
             right: 5,
             top: 0,
-            child: Icon(selectedAddress ? Iconsax.tick_circle5 : null,
-                color: selectedAddress
-                    ? dark
+            child: Icon(selected ? Iconsax.tick_circle5 : null,
+                color: selected
+                    ? AppHelper.isDarkMode
                         ? AppColors.light
                         : AppColors.dark.withOpacity(0.6)
                     : null),

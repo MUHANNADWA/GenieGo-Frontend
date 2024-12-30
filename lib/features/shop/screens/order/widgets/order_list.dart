@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
-import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AppOrderListItems extends StatelessWidget {
@@ -19,8 +18,7 @@ class AppOrderListItems extends StatelessWidget {
       itemBuilder: (_, index) => RoundedContainer(
         padding: const EdgeInsets.all(AppSizes.md),
         showBorder: true,
-        backgroundColor:
-            AppHelper.isDarkMode ? AppColors.dark : AppColors.light,
+        backgroundColor: AppColors.darkLight,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

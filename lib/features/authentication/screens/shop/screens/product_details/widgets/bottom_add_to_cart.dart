@@ -10,14 +10,13 @@ class BottomAddToCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = AppHelper.isDarkMode;
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSizes.defaultSpace,
         vertical: AppSizes.defaultSpace / 2,
       ),
       decoration: BoxDecoration(
-        color: dark ? AppColors.darkerGrey : AppColors.light,
+        color: AppHelper.isDarkMode ? AppColors.darkerGrey : AppColors.light,
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(AppSizes.cardRadiusLg),
           topLeft: Radius.circular(AppSizes.cardRadiusLg),

@@ -37,7 +37,8 @@ class AppHelper {
   static Product get exampleProduct => Product(
         id: Random().nextInt(1000),
         name: 'Product Name',
-        description: 'This is Product Descreption',
+        description:
+            'This is Product Descreption This is Product Descreption This is Product Descreption This is Product Descreption.',
         price: 1000,
         image: AppImages.appLogo,
         tags: ['good', 'product', 'padding'],
@@ -66,6 +67,11 @@ class AppHelper {
   static Size get screenSize => Get.size;
   static double get screenHeight => Get.height;
   static double get screenWidth => Get.width;
+
+  static bool isNetworkImage(String image) =>
+      image != AppImages.appLogo &&
+      image != AppImages.user &&
+      image != AppImages.productImage;
 
   static String getFormattedDate(DateTime date,
       {String format = 'dd MMM yyyy'}) {

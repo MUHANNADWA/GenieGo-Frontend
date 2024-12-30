@@ -9,7 +9,6 @@ import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details_screen.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
-import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
@@ -38,8 +37,7 @@ class ProductCard extends StatelessWidget {
             RoundedContainer(
               height: 178,
               padding: const EdgeInsets.all(AppSizes.sm),
-              backgroundColor:
-                  AppHelper.isDarkMode ? AppColors.dark : AppColors.light,
+              backgroundColor: AppColors.darkLight,
               child: Stack(
                 children: [
                   // Thumbnail Image
@@ -48,8 +46,7 @@ class ProductCard extends StatelessWidget {
                     child: RoundedImage(
                       width: double.infinity,
                       height: double.infinity,
-                      isNetworkImage: product.image != AppImages.appLogo,
-                      imageUrl: product.image,
+                      image: product.image,
                       backgroundColor: AppHelper.isDarkMode
                           ? AppColors.dark
                           : AppColors.light,
@@ -85,7 +82,7 @@ class ProductCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // Price
-                      ProductPriceText(price: product.price.toString()),
+                      ProductPriceText(price: product.price),
 
                       // Add To Cart Button
                       Container(

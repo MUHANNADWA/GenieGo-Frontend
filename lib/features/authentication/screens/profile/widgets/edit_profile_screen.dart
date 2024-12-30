@@ -28,7 +28,7 @@ class EditProfileScreen extends StatelessWidget {
     // final User user = AuthService.currentUser;
     return Scaffold(
       // User Profile AppBar
-      appBar: AppAppBar(title: Text(AppTexts.profile)),
+      appBar: AppAppBar(title: Text(AppTexts.profile), showBackArrow: true),
 
       // Body
       body: SingleChildScrollView(
