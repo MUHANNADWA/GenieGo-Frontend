@@ -1,7 +1,6 @@
-import 'dart:io';
 import 'dart:ui';
 
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 
 class User {
   final int id;
