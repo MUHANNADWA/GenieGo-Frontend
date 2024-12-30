@@ -64,8 +64,8 @@ class HomePopularStores extends StatelessWidget {
                         return VerticalImageAndName(
                           isNetworkImage: store['icon_url'] != null,
                           image: store['icon_url'] ?? AppImages.appLogo,
-                          title: store['translations']
-                              [AppHelper.currentLang.substring(0, 2)]['name'],
+                          title: store['translations'][AppHelper.currentLang]
+                              ['name'],
                         );
                       },
                     ),

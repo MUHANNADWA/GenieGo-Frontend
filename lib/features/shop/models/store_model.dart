@@ -24,10 +24,9 @@ class Store {
       site: Site.fromJson(jsonData['site']),
       tags: jsonData['tags'],
       image: jsonData['icon_url'],
-      name: jsonData['translations'][AppHelper.currentLang.substring(0, 2)]
-          ['name'],
-      description: jsonData['translations']
-          [AppHelper.currentLang.substring(0, 2)]['description'],
+      name: jsonData['translations'][AppHelper.currentLang]['name'],
+      description: jsonData['translations'][AppHelper.currentLang]
+          ['description'],
     );
   }
 

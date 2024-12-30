@@ -25,10 +25,9 @@ class Product {
     return Product(
       id: jsonData['id'],
       store: Store.fromJson(jsonData['store']),
-      name: jsonData['translations'][AppHelper.currentLang.substring(0, 2)]
-          ['name'],
-      description: jsonData['translations']
-          [AppHelper.currentLang.substring(0, 2)]['description'],
+      name: jsonData['translations'][AppHelper.currentLang]['name'],
+      description: jsonData['translations'][AppHelper.currentLang]
+          ['description'],
       price: jsonData['price'].toDouble(),
       image: jsonData['icon_url'] ?? AppImages.appLogo,
       tags: jsonData['tags'],

@@ -215,7 +215,7 @@ class AppLocale implements Translations {
 
           // Home
           'homeAppbarTitle': 'يوم رائع للتسوق',
-          'searchStore': 'ابحث عن متجر ..',
+          'searchStores': 'ابحث عن متجر ..',
           'searchProducts': 'ابحث عن منتج ..',
           'popularStores': 'المتاجر الشائعة',
           'popularProducts': 'المنتجات الشائعة',

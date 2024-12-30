@@ -50,6 +50,8 @@ class StoreCard extends StatelessWidget {
                     maxLines: 1,
                   ),
 
+                  SizedBox(height: AppSizes.xs),
+
                   // Sub Title
                   Text(
                     store.description,
