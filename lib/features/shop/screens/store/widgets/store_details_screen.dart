@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
+import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
-import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/products%20_details_%20image.dart';
+import 'package:geniego/common/widgets/texts/section_heading.dart';
+import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details_image.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
+import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';

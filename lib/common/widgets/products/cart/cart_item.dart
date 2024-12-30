@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_rounded_image.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
-import 'package:geniego/features/shop/models/product.dart';
+import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
@@ -32,7 +32,7 @@ class CartItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(product.storeId.toString()),
+                Text(product.store.name),
                 Flexible(
                     child: ProductStoreTitleText(
                         title: product.name, maxLines: 1)),
