@@ -1,3 +1,7 @@
+import 'dart:ui';
+
+// import 'package:image_picker/image_picker.dart';
+
 class User {
   final int id;
   final String firstName;
@@ -6,9 +10,11 @@ class User {
   final String email;
   // final String password;
   final String phone;
+  Image? image;
   // final int roleId;
 
   User({
+    this.image,
     required this.id,
     required this.firstName,
     required this.lastName,

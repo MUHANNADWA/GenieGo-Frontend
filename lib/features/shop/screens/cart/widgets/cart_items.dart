@@ -3,6 +3,7 @@ import 'package:geniego/common/widgets/products/cart/add_remove_button.dart';
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class CartItems extends StatelessWidget {
   const CartItems({
@@ -17,7 +18,9 @@ class CartItems extends StatelessWidget {
         itemBuilder: (_, index) => Column(
               children: [
                 /// Cart Item
-                CartItem(),
+                CartItem(
+                  product: AppHelper.exampleProduct,
+                ),
                 if (showAddRemoveButtons)
                   SizedBox(
                     height: AppSizes.spaceBtwItems,
