@@ -9,7 +9,6 @@ import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class StoreCard extends StatelessWidget {
   const StoreCard({super.key, required this.store});
