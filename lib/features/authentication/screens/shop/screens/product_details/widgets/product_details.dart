@@ -10,6 +10,7 @@ import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
+
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
