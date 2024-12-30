@@ -6,7 +6,7 @@ import 'package:geniego/common/widgets/products/product_card/favourite_button.da
 import 'package:geniego/common/widgets/products/product_card/store_icon_with_name.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
-import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details.dart';
+import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details_screen.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
