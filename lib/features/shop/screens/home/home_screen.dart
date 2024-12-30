@@ -6,19 +6,22 @@ import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
+import 'package:geniego/features/shop/controllers/products/products_controller.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/screens/home/widgets/home_app_bar.dart';
-import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/features/shop/screens/home/widgets/home_popular_stores.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductsController());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -55,11 +58,10 @@ class HomeScreen extends StatelessWidget {
 
                   // Products
                   FutureBuilder(
-                      future: ShopService.getProducts(),
+                      future: controller.getProducts(),
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
-                          // Show shimmer loading
                           return AppShimmer(
                             child: GridLayout(
                               itemCount: 4,
@@ -68,14 +70,12 @@ class HomeScreen extends StatelessWidget {
                             ),
                           );
                         } else if (snapshot.hasData) {
-                          // Show the actual data
-                          final dynamic products = snapshot.data!;
+                          final List<Product> products = snapshot.data!;
 
                           return GridLayout(
-                            itemCount: (products['data'] as List).length,
+                            itemCount: products.length,
                             itemBuilder: (_, index) {
-                              final Product product =
-                                  Product.fromJson(products['data'][index]);
+                              final Product product = products[index];
 
                               return ProductCard(product: product);
                             },
@@ -89,12 +89,7 @@ class HomeScreen extends StatelessWidget {
                               return ProductCard(product: product);
                             },
                           );
-                          // Show error message
-                          // return Center(
-                          //   child: Text('Error: ${snapshot.error}'),
-                          // );
                         } else {
-                          // Fallback UI
                           return const SizedBox.shrink();
                         }
                       }),

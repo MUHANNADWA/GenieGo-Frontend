@@ -6,12 +6,13 @@ import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details_image.dart';
+import 'package:geniego/features/shop/controllers/stores/stores_controller.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/models/store_model.dart';
-import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
+import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
 
 class StoreDetailsScreen extends StatelessWidget {
@@ -23,6 +24,8 @@ class StoreDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(StoresController());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -75,60 +78,43 @@ class StoreDetailsScreen extends StatelessWidget {
                   ),
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
+
+                  // Store Products
+                  FutureBuilder(
+                      future: controller.getStoreProductsByStoreId(store.id),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return AppShimmer(
+                            child: GridLayout(
+                              itemCount: 4,
+                              itemBuilder: (_, __) =>
+                                  RoundedContainer(height: 282),
+                            ),
+                          );
+                        } else if (snapshot.hasData) {
+                          final products = snapshot.data!;
+
+                          return GridLayout(
+                            itemCount: products.length,
+                            itemBuilder: (_, index) =>
+                                ProductCard(product: products[index]),
+                          );
+                        } else if (snapshot.hasError) {
+                          return GridLayout(
+                            itemCount: 4,
+                            itemBuilder: (_, index) {
+                              final Product product = AppHelper.exampleProduct;
+
+                              return ProductCard(product: product);
+                            },
+                          );
+                        } else {
+                          return const SizedBox.shrink();
+                        }
+                      }),
                 ],
               ),
-            ),
-
-            // Products
-            Padding(
-              padding: const EdgeInsets.only(
-                right: AppSizes.defaultSpace,
-                left: AppSizes.defaultSpace,
-                bottom: AppSizes.defaultSpace,
-              ),
-              child: FutureBuilder(
-                  future: ShopService.getStoreProductsByStoreId(store.id),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      // Show shimmer loading
-                      return AppShimmer(
-                        child: GridLayout(
-                          itemCount: 4,
-                          itemBuilder: (_, index) =>
-                              RoundedContainer(height: 282),
-                        ),
-                      );
-                    } else if (snapshot.hasData) {
-                      // Show the actual data
-                      final dynamic products = snapshot.data!;
-
-                      return GridLayout(
-                        itemCount: (products['data'] as List).length,
-                        itemBuilder: (_, index) {
-                          final Product product =
-                              Product.fromJson(products['data'][index]);
-
-                          return ProductCard(product: product);
-                        },
-                      );
-                    } else if (snapshot.hasError) {
-                      return GridLayout(
-                        itemCount: 4,
-                        itemBuilder: (_, index) {
-                          final Product product = AppHelper.exampleProduct;
-
-                          return ProductCard(product: product);
-                        },
-                      );
-                      // Show error message
-                      // return Center(
-                      //   child: Text('Error: ${snapshot.error}'),
-                      // );
-                    } else {
-                      // Fallback UI
-                      return const SizedBox.shrink();
-                    }
-                  }),
             ),
           ],
         ),

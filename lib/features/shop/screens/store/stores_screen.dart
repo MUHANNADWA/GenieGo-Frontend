@@ -5,17 +5,19 @@ import 'package:geniego/common/widgets/custom_shapes/containers/rounded_containe
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/cart/cart_counter_icon.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
-import 'package:geniego/features/shop/models/store_model.dart';
+import 'package:geniego/features/shop/controllers/stores/stores_controller.dart';
 import 'package:geniego/features/shop/screens/store/widgets/store_card.dart';
-import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
+import 'package:get/get.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(StoresController());
+
     return Scaffold(
       appBar: AppAppBar(
         title: Text(
@@ -39,10 +41,9 @@ class StoreScreen extends StatelessWidget {
 
             // Stores
             FutureBuilder(
-                future: ShopService.getStores(),
+                future: controller.getStores(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    // Show shimmer loading
                     return AppShimmer(
                       child: Padding(
                         padding: const EdgeInsets.all(AppSizes.defaultSpace),
@@ -50,33 +51,26 @@ class StoreScreen extends StatelessWidget {
                           crossAxisCount: 1,
                           mainAxisExtent: 80,
                           itemCount: 4,
-                          itemBuilder: (context, index) =>
-                              RoundedContainer(height: 80),
+                          itemBuilder: (_, __) => RoundedContainer(height: 80),
                         ),
                       ),
                     );
                   } else if (snapshot.hasData) {
-                    // Show the actual data
-                    final dynamic stores = snapshot.data!;
+                    final stores = snapshot.data!;
 
                     return Padding(
                       padding: const EdgeInsets.all(AppSizes.defaultSpace),
                       child: GridLayout(
-                          crossAxisCount: 1,
-                          mainAxisExtent: 80,
-                          itemCount: (stores['data'] as List).length,
-                          itemBuilder: (context, index) {
-                            final Store store =
-                                Store.fromJson(stores['data'][index]);
-
-                            return StoreCard(store: store);
-                          }),
+                        crossAxisCount: 1,
+                        mainAxisExtent: 80,
+                        itemCount: stores.length,
+                        itemBuilder: (_, index) =>
+                            StoreCard(store: stores[index]),
+                      ),
                     );
                   } else if (snapshot.hasError) {
-                    // Show error message
                     return Center(child: Text('Error: ${snapshot.error}'));
                   } else {
-                    // Fallback UI
                     return const SizedBox.shrink();
                   }
                 }),

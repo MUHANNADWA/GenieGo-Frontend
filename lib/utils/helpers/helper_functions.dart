@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geniego/features/authentication/models/user_model.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
@@ -8,6 +7,7 @@ import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+// import 'package:universal_html/html.dart';
 
 class AppHelper {
   static User get exampleUser => User(
@@ -48,11 +48,15 @@ class AppHelper {
   static void setFullScreen(bool enable) {
     SystemChrome.setEnabledSystemUIMode(
         enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
+    // enable
+    //     ? document.documentElement?.requestFullscreen()
+    //     : document.exitFullscreen();
   }
 
   static void hideKeyboard() {
     // FocusScope.of(context).requestFocus(FocusNode());
-    Get.focusScope?.requestFocus(FocusNode());
+    // Get.focusScope?.requestFocus(FocusNode());
+    Get.focusScope?.unfocus();
   }
 
   static bool get isDarkMode => Get.isDarkMode;
