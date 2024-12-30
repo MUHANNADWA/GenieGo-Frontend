@@ -1,37 +1,31 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
-import 'package:geniego/features/authentication/models/user_model.dart';
 import 'package:geniego/features/authentication/screens/profile/widgets/edit_profile_menu.dart';
-import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
-import 'package:image_picker/image_picker.dart';
 
 class EditProfileScreen extends StatelessWidget {
-  EditProfileScreen({super.key});
-  File? image;
-  Future pickImage() async {
-    try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (image == null) return;
-      final imageTemporary = File(image.path);
-      // setState(() => this.image = imageTemporary);
-      this.image = imageTemporary;
-    } on PlatformException catch (e) {
-      print('failed to pick image:$e');
-    }
-  }
+  const EditProfileScreen({super.key});
+  // File? image;
+  // Future pickImage() async {
+  //   try {
+  //     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+  //     if (image == null) return;
+  //     final imageTemporary = File(image.path);
+  //     // setState(() => this.image = imageTemporary);
+  //     this.image = imageTemporary;
+  //   } on PlatformException catch (e) {
+  //     print('failed to pick image:$e');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
-    final User user = AuthService.currentUser;
+    // final User user = AuthService.currentUser;
     return Scaffold(
       // User Profile AppBar
       appBar: AppAppBar(title: Text(AppTexts.profile)),
@@ -53,7 +47,7 @@ class EditProfileScreen extends StatelessWidget {
                   ),
 
                   TextButton(
-                    onPressed: () => pickImage(),
+                    onPressed: () {},
                     child: const Text('Change Profile Picture'),
                   ),
                 ],
