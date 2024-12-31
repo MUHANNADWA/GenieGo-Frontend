@@ -41,7 +41,8 @@ class ProductImage extends StatelessWidget {
             // Appbar Icons
             AppAppBar(
               showBackArrow: true,
-              actions: [FavouriteButton()],
+              // TODO productId هبد
+              actions: [FavouriteButton(productId: 1)],
             ),
           ],
         ),

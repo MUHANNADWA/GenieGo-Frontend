@@ -21,7 +21,7 @@ class FavouriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = FavouritesController.instance;
+    final controller = Get.put(FavouritesController());
     return Scaffold(
       appBar: AppAppBar(
         title: Text(
@@ -55,8 +55,8 @@ class FavouriteScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Obx(
-                    () => FutureBuilder<Object>(
-                        future: controller.favouriteProducts(),
+                    () => StreamBuilder(
+                        stream: controller.favouriteProducts(),
                         builder: (context, snapshot) {
                           return GridLayout(
                             itemCount: 12,

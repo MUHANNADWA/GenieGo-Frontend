@@ -102,7 +102,7 @@ class LoginController extends GetxController {
 
       // Store User Status
       final localStorage = GetStorage();
-      localStorage.write('isUserSignedIn', true);
+      localStorage.write('token', true);
 
       // Stop Loading
       await AppDialogs.hideDialog();

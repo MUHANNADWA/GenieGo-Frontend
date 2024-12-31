@@ -20,5 +20,5 @@ class AuthService {
 
   static get currentUser => User.fromJson(GetStorage().read('user'));
 
-  static get authenticated => GetStorage().read('isUserSignedIn') ?? false;
+  static get authenticated => GetStorage().read('token') ?? false;
 }
