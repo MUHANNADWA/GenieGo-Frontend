@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/icons/app_circular_icons.dart';
+import 'package:geniego/features/shop/controllers/favourites_controller.dart';
 import 'package:geniego/utils/constants/colors.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 class FavouriteButton extends StatelessWidget {
-  const FavouriteButton({super.key});
-
+  const FavouriteButton({super.key, this.productId});
+  final String? productId;
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(FavouritesController());
     return GestureDetector(
       onTap: () {},
-      child: const Positioned(
+      child: Positioned(
         top: 0,
         right: 0,
-        child: CircularIcon(
-          icon: Iconsax.heart5,
-          color: AppColors.error,
+        child: Obx(
+          () => CircularIcon(
+            icon: controller.isFavourite(productId!)
+                ? Iconsax.heart5
+                : Iconsax.heart,
+            color: controller.isFavourite(productId!) ? AppColors.error : null,
+            onPressed: () => controller.toggleFavouriteProduct(productId!),
+          ),
         ),
       ),
     );
