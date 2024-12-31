@@ -6,6 +6,7 @@ import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/icons/app_circular_icons.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_card/product_card.dart';
+import 'package:geniego/features/shop/controllers/favourites_controller.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/sizes.dart';
@@ -20,6 +21,7 @@ class FavouriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = FavouritesController.instance;
     return Scaffold(
       appBar: AppAppBar(
         title: Text(
@@ -54,10 +56,16 @@ class FavouriteScreen extends StatelessWidget {
               padding: EdgeInsets.all(AppSizes.defaultSpace),
               child: Column(
                 children: [
-                  GridLayout(
-                    itemCount: 12,
-                    itemBuilder: (_, index) =>
-                        ProductCard(product: AppHelper.exampleProduct),
+                  Obx(
+                    () => FutureBuilder<Object>(
+                        future: controller.favouriteProducts(),
+                        builder: (context, snapshot) {
+                          return GridLayout(
+                            itemCount: 12,
+                            itemBuilder: (_, index) =>
+                                ProductCard(product: AppHelper.exampleProduct),
+                          );
+                        }),
                   ),
                 ],
               )),
