@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/widgets.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
@@ -6,42 +9,80 @@ import 'package:get/get.dart';
 class StoresController extends GetxController {
   static StoresController get instance => Get.find();
 
-  RxList<Store> stores = <Store>[].obs;
-  RxMap<int, RxList<Product>> storeProducts = <int, RxList<Product>>{}.obs;
+  final RxBool isLoading = true.obs;
+  final RxBool hasError = false.obs;
+  final RxString errorMessage = ''.obs;
+  final RxList<Store> stores = <Store>[].obs;
+  final Map<int, RxList<Product>> storeProducts = <int, RxList<Product>>{};
 
-  Future<List<Store>> getStores() async {
-    if (stores.firstRebuild) {
+  @override
+  onInit() {
+    getStores();
+    getStoreProductsByStoreId(1);
+    super.onInit();
+  }
+
+  Future<void> getStores() async =>
+      stores.firstRebuild ? await fetchStores() : DoNothingAction();
+
+  Future<void> refreshStores() async => await fetchStores();
+
+  Future<void> getStoreProductsByStoreId(id) async =>
+      storeProducts[id] == null || storeProducts[id]?.value == null
+          ? await fetchStoreProductsByStoreId(id)
+          : DoNothingAction();
+
+  Future<void> refreshStoreProductsByStoreId(id) async =>
+      await fetchStoreProductsByStoreId(id);
+
+  Future<void> fetchStores() async {
+    try {
+      log('Fetching Stores 🔄');
+      isLoading.value = true;
+      hasError.value = false;
+
       final data = await ShopService.getStores();
       final storesData = data['data'];
+
       stores.value = List.generate(
-          storesData.length, (index) => Store.fromJson(storesData[index]));
+        storesData.length,
+        (index) => Store.fromJson(storesData[index]),
+      );
+
+      log('Stores Fetched Successfully ✅');
+    } catch (e) {
+      log('Error Fetching Stores ❌');
+
+      hasError.value = true;
+      errorMessage.value = e.toString();
+    } finally {
+      isLoading.value = false;
     }
-    return stores.value;
   }
 
-  Future<List<Store>> refreshStores() async {
-    final data = await ShopService.getStores();
-    final storesData = data['data'];
-    stores.value = List.generate(
-        storesData.length, (index) => Store.fromJson(storesData[index]));
-    return stores.value;
-  }
+  Future<void> fetchStoreProductsByStoreId(id) async {
+    try {
+      log('Fetching Products For The Store With Id: $id 🔄');
 
-  Future<List<Product>> getStoreProductsByStoreId(id) async {
-    if (storeProducts[id]!.firstRebuild) {
+      isLoading.value = true;
+      hasError.value = false;
+
       final data = await ShopService.getStoreProductsByStoreId(id);
       final storeProductsData = data['data'];
-      storeProducts[id]!.value = List.generate(storeProductsData.length,
-          (index) => Product.fromJson(storeProductsData[index]));
-    }
-    return storeProducts[id]!.value;
-  }
 
-  Future<List<Product>> refreshStoreProductsByStoreId(id) async {
-    final data = await ShopService.getStoreProductsByStoreId(id);
-    final storeProductsData = data['data'];
-    storeProducts[id]!.value = List.generate(storeProductsData.length,
-        (index) => Product.fromJson(storeProductsData[index]));
-    return storeProducts[id]!.value;
+      storeProducts[id]?.value = List.generate(
+        storeProductsData.length,
+        (index) => Product.fromJson(storeProductsData[index]),
+      );
+
+      log('Products For The Store With Id: $id Fetched Successfully ✅');
+    } catch (e) {
+      log('Error Fetching Products For The Store With Id: $id ❌');
+
+      hasError.value = true;
+      errorMessage.value = e.toString();
+    } finally {
+      isLoading.value = false;
+    }
   }
 }

@@ -28,8 +28,8 @@ class Product {
       name: jsonData['translations'][AppHelper.currentLang]['name'],
       description: jsonData['translations'][AppHelper.currentLang]
           ['description'],
-      price: jsonData['price'].toDouble(),
-      image: jsonData['icon_url'] ?? AppImages.appLogo,
+      price: double.parse(jsonData['price']),
+      image: jsonData['icon_url'] ?? AppImages.productImage,
       tags: jsonData['tags'],
     );
   }

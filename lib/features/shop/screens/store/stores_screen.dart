@@ -1,3 +1,4 @@
+import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.dart';
@@ -40,10 +41,11 @@ class StoreScreen extends StatelessWidget {
             SizedBox(height: AppSizes.spaceBtwItems),
 
             // Stores
-            FutureBuilder(
-                future: controller.getStores(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
+            CustomMaterialIndicator(
+              onRefresh: () => controller.refreshStores(),
+              child: Obx(
+                () {
+                  if (controller.isLoading.value) {
                     return AppShimmer(
                       child: Padding(
                         padding: const EdgeInsets.all(AppSizes.defaultSpace),
@@ -55,9 +57,11 @@ class StoreScreen extends StatelessWidget {
                         ),
                       ),
                     );
-                  } else if (snapshot.hasData) {
-                    final stores = snapshot.data!;
-
+                  } else if (controller.hasError.value) {
+                    return AppShimmer(
+                        child: Text(controller.errorMessage.value));
+                  } else {
+                    final stores = controller.stores.value;
                     return Padding(
                       padding: const EdgeInsets.all(AppSizes.defaultSpace),
                       child: GridLayout(
@@ -68,12 +72,10 @@ class StoreScreen extends StatelessWidget {
                             StoreCard(store: stores[index]),
                       ),
                     );
-                  } else if (snapshot.hasError) {
-                    return Center(child: Text('Error: ${snapshot.error}'));
-                  } else {
-                    return const SizedBox.shrink();
                   }
-                }),
+                },
+              ),
+            ),
           ],
         ),
       ),

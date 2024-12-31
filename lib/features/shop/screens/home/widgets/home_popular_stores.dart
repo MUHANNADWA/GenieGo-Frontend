@@ -1,3 +1,4 @@
+import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/image_text_widgets/vertical_store_card.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
@@ -22,36 +23,39 @@ class HomePopularStores extends StatelessWidget {
         children: [
           // Popular Stores Heading
           SectionHeading(
-            title: AppTexts.popularStores,
-            textColor: AppColors.lightGrey,
-          ),
+              title: AppTexts.popularStores, textColor: AppColors.lightGrey),
 
           const SizedBox(height: AppSizes.spaceBtwItems),
 
           // Popular Stores List
-          FutureBuilder(
-            future: controller.getStores(),
-            builder: (context, snapshot) {
-              return SizedBox(
-                height: 90,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 6,
-                  itemBuilder: (context, index) {
-                    if (snapshot.hasData) {
-                      final stores = snapshot.data!;
-                      return VerticalStoreCard(store: stores[index]);
-                    } else {
-                      return AppShimmer(
-                        child: VerticalStoreCard(store: AppHelper.exampleStore),
-                      );
-                    }
-                  },
-                ),
-              );
-            },
-          )
+          CustomMaterialIndicator(
+            onRefresh: () => controller.refreshStores(),
+            child: SizedBox(
+              height: 90,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  return Obx(
+                    () {
+                      if (controller.isLoading.value) {
+                        return AppShimmer(
+                          child:
+                              VerticalStoreCard(store: AppHelper.exampleStore),
+                        );
+                      } else if (controller.hasError.value) {
+                        return Text(controller.errorMessage.value);
+                      } else {
+                        final stores = controller.stores.value;
+                        return VerticalStoreCard(store: stores[index]);
+                      }
+                    },
+                  );
+                },
+              ),
+            ),
+          ),
         ],
       ),
     );

@@ -34,9 +34,7 @@ class FavouriteScreen extends StatelessWidget {
         ],
       ),
       body: CustomMaterialIndicator(
-        onRefresh: () {
-          return Future.delayed(Duration(seconds: 5));
-        }, // Your refresh logic
+        onRefresh: () => Future.delayed(Duration(seconds: 5)),
         backgroundColor: AppColors.light,
         indicatorBuilder: (context, controller) {
           return Padding(

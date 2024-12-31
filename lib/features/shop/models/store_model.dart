@@ -22,7 +22,9 @@ class Store {
   factory Store.fromJson(jsonData) {
     return Store(
       id: jsonData['id'],
-      site: Site.fromJson(jsonData['site']),
+      site: jsonData['site'] == null
+          ? AppHelper.exampleSite
+          : Site.fromJson(jsonData['site']),
       tags: jsonData['tags'],
       image: jsonData['icon_url'] ?? AppImages.appLogo,
       name: jsonData['translations'][AppHelper.currentLang]['name'],
