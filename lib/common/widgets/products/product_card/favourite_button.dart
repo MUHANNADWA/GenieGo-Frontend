@@ -7,8 +7,8 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 class FavouriteButton extends StatelessWidget {
-  const FavouriteButton({super.key, this.productId});
-  final String? productId;
+  const FavouriteButton({super.key, required this.productId});
+  final int productId;
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(FavouritesController());
@@ -19,11 +19,11 @@ class FavouriteButton extends StatelessWidget {
         right: 0,
         child: Obx(
           () => CircularIcon(
-            icon: controller.isFavourite(productId!)
+            icon: controller.isFavourite(productId)
                 ? Iconsax.heart5
                 : Iconsax.heart,
-            color: controller.isFavourite(productId!) ? AppColors.error : null,
-            onPressed: () => controller.toggleFavouriteProduct(productId!),
+            color: controller.isFavourite(productId) ? AppColors.error : null,
+            onPressed: () => controller.toggleFavouriteProduct(productId),
           ),
         ),
       ),

@@ -1,6 +1,7 @@
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-class AppLocalStorage {
+class AppLocalStorage extends GetxController {
   static final AppLocalStorage instance = AppLocalStorage._internal();
 
   factory AppLocalStorage() => instance;

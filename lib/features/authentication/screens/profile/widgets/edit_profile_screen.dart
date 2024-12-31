@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:geniego/app.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
-import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
+import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/profile/widgets/edit_profile_menu.dart';
 import 'package:geniego/features/shop/controllers/settings/image_picker_controller.dart';
@@ -10,8 +9,6 @@ import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:image_picker/image_picker.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -36,12 +33,14 @@ class EditProfileScreen extends StatelessWidget {
                   // Profile Picturep
                   Center(
                     child: Obx(
-                      () => Container(
-                        child: controller.image.value.path == ''
-                            ? Image.asset(AppImages.user)
-                            : Image.file(controller.image.value),
+                      () => RoundedContainer(
+                        radius: 1000,
                         height: 80,
                         width: 80,
+                        child: controller.image.value.path == ''
+                            ? Image.asset(AppImages.user)
+                            : Image.file(controller.image.value,
+                                fit: BoxFit.cover),
                       ),
                     ),
                   ),

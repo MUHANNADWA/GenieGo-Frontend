@@ -54,7 +54,7 @@ class ProductCard extends StatelessWidget {
                   ),
 
                   // Favourite Icon Button
-                  FavouriteButton(),
+                  FavouriteButton(productId: product.id),
                 ],
               ),
             ),

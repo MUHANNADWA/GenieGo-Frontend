@@ -57,7 +57,7 @@ class SettingsController extends GetxController {
 
   void logout() {
     AuthService.logout();
-    GetStorage().remove('isUserSignedIn');
+    GetStorage().remove('token');
     Get.offAllNamed(loginScreen);
   }
 }
