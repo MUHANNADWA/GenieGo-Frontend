@@ -6,9 +6,13 @@ class EditProfileMenu extends StatelessWidget {
   const EditProfileMenu({
     super.key,
     required this.title,
+    required this.icon,
+    required this.hint,
   });
 
   final String title;
+  final IconData icon;
+  final String hint;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -28,7 +32,11 @@ class EditProfileMenu extends StatelessWidget {
             ),
             Expanded(
               flex: 5,
-              child: TextField(
+              child: TextFormField(
+                decoration: InputDecoration(
+                  hintText: hint,
+                  prefixIcon: Icon(icon),
+                ),
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),

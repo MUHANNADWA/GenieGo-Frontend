@@ -11,6 +11,7 @@ import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditProfileScreen extends StatelessWidget {
@@ -68,15 +69,40 @@ class EditProfileScreen extends StatelessWidget {
 
             const SizedBox(height: AppSizes.spaceBtwItems),
 
-            EditProfileMenu(title: 'First Name'),
+            EditProfileMenu(
+              title: 'First Name',
+              icon: Iconsax.user_edit,
+              hint: 'First Name',
+            ),
 
-            EditProfileMenu(title: 'Last Name'),
+            EditProfileMenu(
+              title: 'Last Name',
+              icon: Iconsax.user_edit,
+              hint: 'Last Name',
+            ),
 
-            EditProfileMenu(title: 'User Name'),
+            EditProfileMenu(
+              title: 'User Name',
+              icon: Iconsax.user_edit,
+              hint: 'User Name',
+            ),
 
-            EditProfileMenu(title: 'E-mail'),
+            EditProfileMenu(
+              title: 'E-mail',
+              icon: Iconsax.direct,
+              hint: 'E-mail',
+            ),
 
-            EditProfileMenu(title: 'Phone Number'),
+            EditProfileMenu(
+              title: 'Phone Number',
+              icon: Iconsax.call,
+              hint: 'Phone Number',
+            ),
+            EditProfileMenu(
+              title: 'Password',
+              icon: Iconsax.password_check,
+              hint: 'Password',
+            ),
 
             const Divider(),
 
