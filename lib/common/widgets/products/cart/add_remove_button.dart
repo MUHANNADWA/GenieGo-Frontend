@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/icons/app_circular_icons.dart';
 import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
+import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
@@ -8,21 +9,20 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductQuantityWithAddRemoveButton extends StatelessWidget {
-  const ProductQuantityWithAddRemoveButton(
-      {super.key, required this.productId});
+  const ProductQuantityWithAddRemoveButton({super.key, required this.product});
 
-  final int productId;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CartController());
+    final controller = Get.put(CartController(), permanent: true);
 
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         // Decrease
         CircularIcon(
-          onPressed: () => controller.decreaseQuantity(productId),
+          onPressed: () => controller.decreaseQuantity(product),
           icon: Iconsax.minus,
           width: 32,
           height: 32,
@@ -36,7 +36,7 @@ class ProductQuantityWithAddRemoveButton extends StatelessWidget {
 
         // Quantity
         Obx(
-          () => Text(controller.getQuantity(productId).toString(),
+          () => Text(controller.getQuantity(product).toString(),
               style: Theme.of(context).textTheme.titleSmall),
         ),
 
@@ -44,7 +44,7 @@ class ProductQuantityWithAddRemoveButton extends StatelessWidget {
 
         // Increase
         CircularIcon(
-          onPressed: () => controller.increaseQuantity(productId),
+          onPressed: () => controller.increaseQuantity(product),
           icon: Iconsax.add,
           width: 32,
           height: 32,

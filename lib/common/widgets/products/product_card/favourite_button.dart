@@ -13,14 +13,11 @@ class FavouriteButton extends StatelessWidget {
     final controller = Get.put(FavouritesController());
     return GestureDetector(
       onTap: () {},
-      child: Obx(
-        () => CircularIcon(
-          icon: controller.isFavourite(productId)
-              ? Iconsax.heart5
-              : Iconsax.heart,
-          color: controller.isFavourite(productId) ? AppColors.error : null,
-          onPressed: () => controller.toggleFavouriteProduct(productId),
-        ),
+      child: CircularIcon(
+        icon:
+            controller.isFavourite(productId) ? Iconsax.heart5 : Iconsax.heart,
+        color: controller.isFavourite(productId) ? AppColors.error : null,
+        onPressed: () => controller.toggleFavouriteProduct(productId),
       ),
     );
   }

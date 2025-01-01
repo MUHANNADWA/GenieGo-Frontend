@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
+import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/checkout/widgets/checkout.dart';
+import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
@@ -12,6 +14,9 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CartController(), permanent: true);
+    controller.fetchCartProducts();
+
     return Scaffold(
       appBar: AppAppBar(
         showBackArrow: true,
@@ -20,12 +25,25 @@ class CartScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(AppSizes.defaultSpace),
-        child: ListView.separated(
-          shrinkWrap: true,
-          itemCount: 10,
-          separatorBuilder: (_, __) =>
-              const SizedBox(height: AppSizes.spaceBtwSections),
-          itemBuilder: (_, __) => CartItem(product: AppHelper.exampleProduct),
+        child: RefreshIndicator(
+          onRefresh: () => controller.fetchCartProducts(),
+          child: Obx(
+            () => ListView.separated(
+              shrinkWrap: true,
+              itemCount: controller.cartItems.value.length,
+              separatorBuilder: (_, __) =>
+                  const SizedBox(height: AppSizes.spaceBtwItems),
+              itemBuilder: (_, index) => controller.isLoading.value
+                  ? AppShimmer(
+                      child: CartItem(product: AppHelper.exampleProduct))
+                  : controller.hasError.value
+                      ? Text(controller.errorMessage.value)
+                      : controller.cartItems.value.isEmpty
+                          ? Text('Empty')
+                          : CartItem(
+                              product: controller.cartItems.value[index]),
+            ),
+          ),
         ),
       ),
       bottomNavigationBar: Padding(

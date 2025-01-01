@@ -19,28 +19,25 @@ class Store {
     required this.tags,
   });
 
-  factory Store.fromJson(jsonData) {
-    return Store(
-      id: jsonData['id'],
-      site: jsonData['site'] == null
-          ? AppHelper.exampleSite
-          : Site.fromJson(jsonData['site']),
-      tags: jsonData['tags'],
-      image: jsonData['icon_url'] ?? AppImages.appLogo,
-      name: jsonData['translations'][AppHelper.currentLang]['name'],
-      description:
-          jsonData['translations'][AppHelper.currentLang]['description'] ?? '',
-    );
-  }
+  factory Store.fromJson(jsonData) => Store(
+        id: jsonData['id'],
+        site: jsonData['site'] == null
+            ? AppHelper.exampleSite
+            : Site.fromJson(jsonData['site']),
+        tags: jsonData['tags'],
+        image: jsonData['icon_url'] ?? AppImages.appLogo,
+        name: jsonData['translations'][AppHelper.currentLang]['name'],
+        description: jsonData['translations'][AppHelper.currentLang]
+                ['description'] ??
+            '',
+      );
 
-  toJson() {
-    return {
-      'id': id,
-      'site': site,
-      'tags': tags,
-      'image': image,
-      'name': name,
-      'description': description,
-    };
-  }
+  toJson() => {
+        'id': id,
+        'site': site,
+        'tags': tags,
+        'image': image,
+        'name': name,
+        'description': description,
+      };
 }

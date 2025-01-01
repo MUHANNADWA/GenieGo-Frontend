@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:isolate';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
@@ -43,26 +44,32 @@ class FavouritesController extends GetxController {
 
       log('Favourites Fetched Successfully ✅');
     } catch (e) {
-      log('Error Fetching Favourites ❌');
-
       hasError.value = true;
       errorMessage.value = e.toString();
+
+      log('Error Fetching Favourites ❌ $e');
     } finally {
       isLoading.value = false;
     }
   }
 
-  bool isFavourite(int productId) => favourites.contains(productId);
+  bool isFavourite(int productId) => false;
 
   void toggleFavouriteProduct(int productId) async {
     if (!isFavourite(productId)) {
-      await Isolate.run(() => ShopService.addToFavourites(productId));
+      await Isolate.run(() async {
+        // Initialize Isolate
+        BackgroundIsolateBinaryMessenger.ensureInitialized(
+            RootIsolateToken.instance!);
+        ShopService.addToFavourites(productId);
+      });
       AppLoaders.successSnackBar(
         title: 'Added',
         message: 'Product Has Been Added To The WishList',
       );
     } else {
-      await Isolate.run(() => ShopService.removeFromFavourites(productId));
+      await Isolate.run(
+          () async => ShopService.removeFromFavourites(productId));
       AppLoaders.errorSnackBar(
         title: 'Removed',
         message: 'Product Has Been Removed From WishList',

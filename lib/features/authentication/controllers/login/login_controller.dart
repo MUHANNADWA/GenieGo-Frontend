@@ -5,7 +5,6 @@ import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
-import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:geniego/utils/helpers/network_manager.dart';
 import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
@@ -97,14 +96,13 @@ class LoginController extends GetxController {
         final response = await AuthService.login(userData);
 
         user = User.fromJson(response['data']['user']);
-        user = User.fromJson(AppHelper.exampleUser.toJson());
+        // user = User.fromJson(AppHelper.exampleUser.toJson());
 
         await GetStorage().write('user', user.toJson());
-      }
 
-      // Store User Status
-      final localStorage = GetStorage();
-      localStorage.write('token', true);
+        // Store User Status
+        GetStorage().write('token', response['data']['token']);
+      }
 
       // Stop Loading
       await AppDialogs.hideDialog();

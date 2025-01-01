@@ -9,9 +9,9 @@ import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class CartItem extends StatelessWidget {
-  final Product product;
-
   const CartItem({super.key, required this.product});
+
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,6 @@ class CartItem extends StatelessWidget {
       children: [
         // Card
         ListTile(
-          // isThreeLine: true,
           leading: RoundedImage(
             image: product.image,
             width: 60,
@@ -52,7 +51,7 @@ class CartItem extends StatelessWidget {
             const SizedBox(width: 20),
 
             /// Add Remove Buttons
-            ProductQuantityWithAddRemoveButton(productId: product.id),
+            ProductQuantityWithAddRemoveButton(product: product),
 
             // Product Price
             ProductPriceText(price: product.price),

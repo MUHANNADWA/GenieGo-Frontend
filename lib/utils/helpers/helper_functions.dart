@@ -43,6 +43,7 @@ class AppHelper {
         image: AppImages.appLogo,
         tags: ['good', 'product', 'padding'],
         storeId: exampleStore.id,
+        stock: Random().nextInt(10),
       );
 
   static void setFullScreen(bool enable) {

@@ -27,25 +27,16 @@ class ProductsController extends GetxController {
   Future<void> fetchProducts() async {
     try {
       log('Fetching Products 🔄');
-      log('debug 1');
       isLoading.value = true;
       hasError.value = false;
-      log('debug 2');
 
-      log('debug 3');
       final data = await ShopService.getProducts();
-      log('debug 4');
-      final productsData = data['data'];
-      log('debug 5');
+      final List<dynamic> productsData = data['data'];
 
-      log(productsData.toString());
-
-      log('debug 6');
       products.value = List.generate(
         productsData.length,
         (index) => Product.fromJson(productsData[index]),
       );
-      log('debug 7');
 
       products.refresh();
 

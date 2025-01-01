@@ -9,21 +9,17 @@ class Site {
     required this.address,
   });
 
-  toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'address': address,
-    };
-  }
+  factory Site.fromJson(jsonData) => Site(
+        id: jsonData['id'],
+        name: jsonData['name'],
+        address: jsonData['address'],
+      );
 
-  factory Site.fromJson(jsonData) {
-    return Site(
-      id: jsonData['id'],
-      name: jsonData['name'],
-      address: jsonData['address'],
-    );
-  }
+  toJson() => {
+        'id': id,
+        'name': name,
+        'address': address,
+      };
 
   @override
   String toString() => 'Site(id: $id, name: $name, address: $address)';

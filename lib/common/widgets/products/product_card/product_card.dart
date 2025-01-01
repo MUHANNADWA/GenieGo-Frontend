@@ -78,7 +78,7 @@ class ProductCard extends StatelessWidget {
                   const SizedBox(height: AppSizes.spaceBtwItems / 2),
 
                   // Brand
-                  // StoreIconWithName(store: product.storeId.toString()),
+                  // StoreIconWithName(store: product.store),
 
                   // Price & Add To Cart
                   Row(

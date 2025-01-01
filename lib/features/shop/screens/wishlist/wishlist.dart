@@ -30,11 +30,11 @@ class FavouriteScreen extends StatelessWidget {
             CircularIcon(
                 icon: Iconsax.add, onPressed: () => Get.toNamed(homeScreen))
           ]),
-      body: Padding(
-        padding: EdgeInsets.all(AppSizes.defaultSpace),
-        child: SingleChildScrollView(
-          child: CustomMaterialIndicator(
-            onRefresh: () => controller.refreshFavourites(),
+      body: CustomMaterialIndicator(
+        onRefresh: () => controller.refreshFavourites(),
+        child: Padding(
+          padding: EdgeInsets.all(AppSizes.defaultSpace),
+          child: SingleChildScrollView(
             child: Obx(
               () => controller.isLoading.value
                   ? AppShimmer(
@@ -45,7 +45,7 @@ class FavouriteScreen extends StatelessWidget {
                     )
                   : controller.hasError.value
                       ? GridLayout(
-                          itemCount: 4,
+                          itemCount: 6,
                           itemBuilder: (_, __) =>
                               ProductCard(product: AppHelper.exampleProduct))
                       : controller.favourites.value.isEmpty

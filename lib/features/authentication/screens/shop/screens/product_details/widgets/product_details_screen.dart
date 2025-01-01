@@ -52,7 +52,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     children: [
                       const ProductStoreTitleText(title: 'Status'),
                       const SizedBox(width: AppSizes.spaceBtwItems),
-                      Text('In Stock',
+                      Text('In Stock ${product.stock}',
                           style: Theme.of(context).textTheme.titleMedium),
                     ],
                   ),
@@ -110,7 +110,7 @@ class ProductDetailsScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAddToCart(),
+      bottomNavigationBar: BottomAddToCart(product: product),
     );
   }
 }

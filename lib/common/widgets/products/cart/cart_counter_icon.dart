@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/products/cart/cart_badge.dart';
-import 'package:geniego/features/shop/screens/cart/widgets/cart.dart';
+import 'package:geniego/features/shop/screens/cart/cart_screen.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:geniego/utils/constants/colors.dart';

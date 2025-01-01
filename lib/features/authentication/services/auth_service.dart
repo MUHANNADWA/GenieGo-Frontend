@@ -20,5 +20,7 @@ class AuthService {
 
   static get currentUser => User.fromJson(GetStorage().read('user'));
 
-  static get authenticated => GetStorage().read('token') ?? false;
+  static get authenticated => GetStorage().read('token') != null;
+
+  static get token => 'Bearer ${GetStorage().read('token')}';
 }
