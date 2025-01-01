@@ -101,6 +101,7 @@ class EditProfileScreen extends StatelessWidget {
               title: 'Password',
               icon: Iconsax.password_check,
               hint: 'Password',
+              showToggle: true,
             ),
 
             const Divider(),

@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-
+import 'package:geniego/features/authentication/controllers/signup/signup_controller.dart';
+import 'package:get/get.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 
 class EditProfileMenu extends StatelessWidget {
-  const EditProfileMenu({
+  EditProfileMenu({
     super.key,
     required this.title,
     required this.icon,
     required this.hint,
+    this.showToggle = false,
   });
-
-  final String title;
+  final controller = Get.put(SignupController());
+  final String title, hint;
+  final bool showToggle;
   final IconData icon;
-  final String hint;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -36,8 +38,14 @@ class EditProfileMenu extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: hint,
                   prefixIcon: Icon(icon),
+                  suffixIcon: showToggle
+                      ? IconButton(
+                          icon: controller.passwordIcon.value,
+                          onPressed: () =>
+                              controller.togglePasswordVisibility(),
+                        )
+                      : null,
                 ),
-                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
           ],
