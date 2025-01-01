@@ -34,7 +34,6 @@ class StoreScreen extends StatelessWidget {
 
             AppSearchBar(
               searchText: AppTexts.searchStores,
-              showBackground: false,
               showBorder: true,
             ),
 
@@ -44,36 +43,34 @@ class StoreScreen extends StatelessWidget {
             CustomMaterialIndicator(
               onRefresh: () => controller.refreshStores(),
               child: Obx(
-                () {
-                  if (controller.isLoading.value) {
-                    return AppShimmer(
-                      child: Padding(
-                        padding: const EdgeInsets.all(AppSizes.defaultSpace),
-                        child: GridLayout(
-                          crossAxisCount: 1,
-                          mainAxisExtent: 80,
-                          itemCount: 4,
-                          itemBuilder: (_, __) => RoundedContainer(height: 80),
+                () => controller.isLoading.value
+                    ? AppShimmer(
+                        child: Padding(
+                          padding: const EdgeInsets.all(AppSizes.defaultSpace),
+                          child: GridLayout(
+                            crossAxisCount: 1,
+                            mainAxisExtent: 80,
+                            itemCount: 4,
+                            itemBuilder: (_, __) =>
+                                RoundedContainer(height: 80),
+                          ),
                         ),
-                      ),
-                    );
-                  } else if (controller.hasError.value) {
-                    return AppShimmer(
-                        child: Text(controller.errorMessage.value));
-                  } else {
-                    final stores = controller.stores.value;
-                    return Padding(
-                      padding: const EdgeInsets.all(AppSizes.defaultSpace),
-                      child: GridLayout(
-                        crossAxisCount: 1,
-                        mainAxisExtent: 80,
-                        itemCount: stores.length,
-                        itemBuilder: (_, index) =>
-                            StoreCard(store: stores[index]),
-                      ),
-                    );
-                  }
-                },
+                      )
+                    : controller.hasError.value
+                        ? Text(controller.errorMessage.value)
+                        : controller.stores.value.isEmpty
+                            ? Text('Empty')
+                            : Padding(
+                                padding:
+                                    const EdgeInsets.all(AppSizes.defaultSpace),
+                                child: GridLayout(
+                                  crossAxisCount: 1,
+                                  mainAxisExtent: 80,
+                                  itemCount: controller.stores.value.length,
+                                  itemBuilder: (_, index) => StoreCard(
+                                      store: controller.stores.value[index]),
+                                ),
+                              ),
               ),
             ),
           ],

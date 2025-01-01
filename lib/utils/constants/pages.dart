@@ -5,6 +5,7 @@ const loginScreen = '/login';
 const signupScreen = '/signup';
 const forgotPasswordScreen = '/forgot-password';
 const profileScreen = '/profile';
+const settingsScreen = '/settings';
 const ordersScreen = '/orders';
 const successScreen = '/success';
 const notFound = '/not-found';

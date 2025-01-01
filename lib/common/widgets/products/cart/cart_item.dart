@@ -28,7 +28,8 @@ class CartItem extends StatelessWidget {
             backgroundColor:
                 AppHelper.isDarkMode ? AppColors.darkerGrey : AppColors.light,
           ),
-          title: Text(product.store.name),
+          // TODO
+          title: Text(product.storeId.toString()),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -51,7 +52,7 @@ class CartItem extends StatelessWidget {
             const SizedBox(width: 20),
 
             /// Add Remove Buttons
-            ProductQuantityWithAddRemoveButton(),
+            ProductQuantityWithAddRemoveButton(productId: product.id),
 
             // Product Price
             ProductPriceText(price: product.price),

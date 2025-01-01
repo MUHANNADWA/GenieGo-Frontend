@@ -3,7 +3,6 @@ import 'package:geniego/common/styles/shadows.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_rounded_image.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/products/product_card/favourite_button.dart';
-import 'package:geniego/common/widgets/products/product_card/store_icon_with_name.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details_screen.dart';
@@ -42,7 +41,7 @@ class ProductCard extends StatelessWidget {
                 children: [
                   // Thumbnail Image
                   Hero(
-                    tag: product.id,
+                    tag: 'Product ${product.id}',
                     child: RoundedImage(
                       width: double.infinity,
                       height: double.infinity,
@@ -54,7 +53,11 @@ class ProductCard extends StatelessWidget {
                   ),
 
                   // Favourite Icon Button
-                  FavouriteButton(productId: product.id),
+                  Positioned(
+                    right: 0,
+                    top: 0,
+                    child: FavouriteButton(productId: product.id),
+                  ),
                 ],
               ),
             ),
@@ -75,7 +78,7 @@ class ProductCard extends StatelessWidget {
                   const SizedBox(height: AppSizes.spaceBtwItems / 2),
 
                   // Brand
-                  StoreIconWithName(store: product.store),
+                  // StoreIconWithName(store: product.storeId.toString()),
 
                   // Price & Add To Cart
                   Row(

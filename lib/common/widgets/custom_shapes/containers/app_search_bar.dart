@@ -24,7 +24,7 @@ class AppSearchBar extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
       child: SearchAnchor.bar(
-        isFullScreen: false,
+        // isFullScreen: false,
         barPadding: const WidgetStatePropertyAll(EdgeInsets.all(AppSizes.xs)),
         // Background Color
         barBackgroundColor: WidgetStatePropertyAll(

@@ -20,6 +20,7 @@ class AppTexts {
   static String get home => 'home'.tr;
   static String get stores => 'stores'.tr;
   static String get wishlist => 'wishlist'.tr;
+  static String get settings => 'settings'.tr;
   static String get profile => 'profile'.tr;
 
   // OnBoarding Texts

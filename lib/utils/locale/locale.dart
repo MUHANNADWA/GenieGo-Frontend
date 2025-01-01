@@ -24,6 +24,7 @@ class AppLocale implements Translations {
           'home': 'Home',
           'stores': 'Stores',
           'wishlist': 'Wishlist',
+          'settings': 'Settings',
           'profile': 'Profile',
 
           // OnBoarding Texts
@@ -144,6 +145,7 @@ class AppLocale implements Translations {
           'home': 'الرئيسية',
           'stores': 'المتاجر',
           'wishlist': 'المفضلة',
+          'settings': 'الإعدادات',
           'profile': 'الملف الشخصي',
 
           // OnBoarding Texts

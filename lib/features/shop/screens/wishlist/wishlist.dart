@@ -1,13 +1,12 @@
-import 'dart:math';
-
 import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
+import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/icons/app_circular_icons.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_card/product_card.dart';
-import 'package:geniego/features/shop/controllers/favourites_controller.dart';
-import 'package:geniego/utils/constants/colors.dart';
+import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
+import 'package:geniego/features/shop/controllers/wishlist/favourites_controller.dart';
 import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
@@ -22,51 +21,42 @@ class FavouriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(FavouritesController());
+
     return Scaffold(
       appBar: AppAppBar(
-        title: Text(
-          AppTexts.wishlist,
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-        actions: [
-          CircularIcon(
-            icon: Iconsax.add,
-            onPressed: () => Get.toNamed(homeScreen),
-          ),
-        ],
-      ),
-      body: CustomMaterialIndicator(
-        onRefresh: () => Future.delayed(Duration(seconds: 5)),
-        backgroundColor: AppColors.light,
-        indicatorBuilder: (context, controller) {
-          return Padding(
-            padding: const EdgeInsets.all(6.0),
-            child: CircularProgressIndicator(
-              color: AppColors.darkLight,
-              value: controller.state.isLoading
-                  ? null
-                  : min(controller.value, 1.0),
-            ),
-          );
-        },
+          title: Text(AppTexts.wishlist,
+              style: Theme.of(context).textTheme.headlineMedium),
+          actions: [
+            CircularIcon(
+                icon: Iconsax.add, onPressed: () => Get.toNamed(homeScreen))
+          ]),
+      body: Padding(
+        padding: EdgeInsets.all(AppSizes.defaultSpace),
         child: SingleChildScrollView(
-          child: Padding(
-              padding: EdgeInsets.all(AppSizes.defaultSpace),
-              child: Column(
-                children: [
-                  Obx(
-                    () => StreamBuilder(
-                        stream: controller.favouriteProducts(),
-                        builder: (context, snapshot) {
-                          return GridLayout(
-                            itemCount: 12,
-                            itemBuilder: (_, index) =>
-                                ProductCard(product: AppHelper.exampleProduct),
-                          );
-                        }),
-                  ),
-                ],
-              )),
+          child: CustomMaterialIndicator(
+            onRefresh: () => controller.refreshFavourites(),
+            child: Obx(
+              () => controller.isLoading.value
+                  ? AppShimmer(
+                      child: GridLayout(
+                        itemCount: 4,
+                        itemBuilder: (_, __) => RoundedContainer(height: 282),
+                      ),
+                    )
+                  : controller.hasError.value
+                      ? GridLayout(
+                          itemCount: 4,
+                          itemBuilder: (_, __) =>
+                              ProductCard(product: AppHelper.exampleProduct))
+                      : controller.favourites.value.isEmpty
+                          ? Text('Empty')
+                          : GridLayout(
+                              itemCount: controller.favourites.value.length,
+                              itemBuilder: (_, index) => ProductCard(
+                                  product: controller.favourites.value[index]),
+                            ),
+            ),
+          ),
         ),
       ),
     );

@@ -6,7 +6,7 @@ import 'package:geniego/features/authentication/screens/signup/success_screen.da
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_payment_section.dart';
-import 'package:geniego/navigation_menu.dart';
+import 'package:geniego/main_screen.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
@@ -77,7 +77,7 @@ class CheckoutScreen extends StatelessWidget {
               title: 'Payment Success!',
               subTitle: 'Your Item Will Be Shipped Soon!',
               onPressed: () => Get.offAll(
-                () => const NavigationMenu(),
+                () => const MainScreen(),
               ),
             ),
           ),

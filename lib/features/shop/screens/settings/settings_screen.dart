@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/settings_menu_tile.dart';
@@ -29,9 +30,9 @@ class SettingsScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // AppBar
-                  AppBar(
+                  AppAppBar(
                     title: Text(
-                      AppTexts.profile,
+                      AppTexts.settings,
                       style: Theme.of(context)
                           .textTheme
                           .headlineMedium!

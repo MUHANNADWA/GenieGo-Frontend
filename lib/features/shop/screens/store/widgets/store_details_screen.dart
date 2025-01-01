@@ -30,7 +30,12 @@ class StoreDetailsScreen extends StatelessWidget {
             // Store Image
             Hero(
                 tag: 'Store ${store.id}',
-                child: ProductImage(image: store.image, height: 200)),
+                child: ProductImage(
+                  image: store.image,
+                  height: 200,
+                  id: store.id,
+                  showFavourite: false,
+                )),
 
             // Store Details
             Padding(
@@ -77,37 +82,30 @@ class StoreDetailsScreen extends StatelessWidget {
                   CustomMaterialIndicator(
                     onRefresh: () =>
                         controller.refreshStoreProductsByStoreId(store.id),
-                    child: Obx(() {
-                      if (controller.isLoading.value) {
-                        return AppShimmer(
-                          child: GridLayout(
-                            itemCount: 4,
-                            itemBuilder: (_, __) =>
-                                RoundedContainer(height: 282),
-                          ),
-                        );
-                      } else if (controller.hasError.value) {
-                        return GridLayout(
-                          itemCount: 4,
-                          itemBuilder: (_, index) {
-                            return ProductCard(
-                                product: AppHelper.exampleProduct);
-                          },
-                        );
-                      } else {
-                        final storeProducts = controller.storeProducts;
-
-                        return GridLayout(
-                          itemCount: storeProducts.length,
-                          itemBuilder: (_, index) => ProductCard(
-                              product: storeProducts[store.id]!.value[index]),
-                        );
-                      }
-                      // else {
-                      //   return const SizedBox.shrink();
-                      // }
-                    }),
-                  )
+                    child: Obx(
+                      () => controller.isLoading.value
+                          ? AppShimmer(
+                              child: GridLayout(
+                                itemCount: 4,
+                                itemBuilder: (_, __) =>
+                                    RoundedContainer(height: 282),
+                              ),
+                            )
+                          : controller.hasError.value
+                              ? GridLayout(
+                                  itemCount: 4,
+                                  itemBuilder: (_, index) => ProductCard(
+                                      product: AppHelper.exampleProduct),
+                                )
+                              : GridLayout(
+                                  itemCount: controller.storeProducts.length,
+                                  itemBuilder: (_, index) => ProductCard(
+                                    product: controller
+                                        .storeProducts[store.id]!.value[index],
+                                  ),
+                                ),
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -54,7 +54,7 @@ class AppImages {
   static const String productImage =
       'assets/images/content/NikeBasketballShoeGreenBlack.png';
 
-  //Profile
+  // Profile
   static const String user = 'assets/images/content/user.png';
 
   // Payment Methods

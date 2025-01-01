@@ -7,10 +7,18 @@ import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class ProductImage extends StatelessWidget {
-  const ProductImage({super.key, required this.image, this.height = 400});
+  const ProductImage({
+    super.key,
+    required this.id,
+    required this.image,
+    this.height = 400,
+    this.showFavourite = true,
+  });
 
   final String image;
   final double height;
+  final int id;
+  final bool showFavourite;
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +49,7 @@ class ProductImage extends StatelessWidget {
             // Appbar Icons
             AppAppBar(
               showBackArrow: true,
-              // TODO productId هبد
-              actions: [FavouriteButton(productId: 1)],
+              actions: [if (showFavourite) FavouriteButton(productId: id)],
             ),
           ],
         ),

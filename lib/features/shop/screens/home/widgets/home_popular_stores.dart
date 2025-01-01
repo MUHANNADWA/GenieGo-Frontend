@@ -36,23 +36,18 @@ class HomePopularStores extends StatelessWidget {
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: 6,
-                itemBuilder: (context, index) {
-                  return Obx(
-                    () {
-                      if (controller.isLoading.value) {
-                        return AppShimmer(
+                itemBuilder: (_, index) => Obx(
+                  () => controller.isLoading.value
+                      ? AppShimmer(
                           child:
-                              VerticalStoreCard(store: AppHelper.exampleStore),
-                        );
-                      } else if (controller.hasError.value) {
-                        return Text(controller.errorMessage.value);
-                      } else {
-                        final stores = controller.stores.value;
-                        return VerticalStoreCard(store: stores[index]);
-                      }
-                    },
-                  );
-                },
+                              VerticalStoreCard(store: AppHelper.exampleStore))
+                      : controller.hasError.value
+                          ? Text(controller.errorMessage.value)
+                          : controller.stores.value.isEmpty
+                              ? Text('Empty')
+                              : VerticalStoreCard(
+                                  store: controller.stores.value[index]),
+                ),
               ),
             ),
           ),

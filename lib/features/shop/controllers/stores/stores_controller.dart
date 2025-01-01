@@ -13,7 +13,8 @@ class StoresController extends GetxController {
   final RxBool hasError = false.obs;
   final RxString errorMessage = ''.obs;
   final RxList<Store> stores = <Store>[].obs;
-  final Map<int, RxList<Product>> storeProducts = <int, RxList<Product>>{};
+  final RxMap<int, RxList<Product>> storeProducts =
+      <int, RxList<Product>>{}.obs;
 
   @override
   onInit() {
@@ -48,6 +49,8 @@ class StoresController extends GetxController {
         storesData.length,
         (index) => Store.fromJson(storesData[index]),
       );
+
+      stores.refresh();
 
       log('Stores Fetched Successfully ✅');
     } catch (e) {

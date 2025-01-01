@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
-import 'package:geniego/features/authentication/screens/settings/settings.dart';
+import 'package:geniego/features/shop/screens/settings/settings_screen.dart';
 import 'package:geniego/features/shop/screens/wishlist/wishlist.dart';
 import 'package:geniego/features/shop/screens/store/stores_screen.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
@@ -10,8 +10,8 @@ import 'package:geniego/features/shop/screens/home/home_screen.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
-class NavigationMenu extends StatelessWidget {
-  const NavigationMenu({super.key});
+class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +43,8 @@ class NavigationMenu extends StatelessWidget {
                     label: AppTexts.wishlist,
                   ),
                   NavigationDestination(
-                    icon: Icon(Iconsax.user),
-                    label: AppTexts.profile,
+                    icon: Icon(Iconsax.setting),
+                    label: AppTexts.settings,
                   ),
                 ],
               ),
@@ -88,7 +88,7 @@ class NavigationMenu extends StatelessWidget {
                       ),
                       NavigationRailDestination(
                         icon: Icon(Iconsax.user),
-                        label: Text(AppTexts.profile),
+                        label: Text(AppTexts.settings),
                       ),
                     ],
                   ),

@@ -42,7 +42,7 @@ class AppHelper {
         price: 1000,
         image: AppImages.appLogo,
         tags: ['good', 'product', 'padding'],
-        store: exampleStore,
+        storeId: exampleStore.id,
       );
 
   static void setFullScreen(bool enable) {

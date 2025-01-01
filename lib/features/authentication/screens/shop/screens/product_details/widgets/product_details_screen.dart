@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:geniego/common/widgets/products/product_card/store_icon_with_name.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
@@ -25,7 +24,9 @@ class ProductDetailsScreen extends StatelessWidget {
         child: Column(
           children: [
             // Product Image
-            Hero(tag: product.id, child: ProductImage(image: product.image)),
+            Hero(
+                tag: 'Product ${product.id}',
+                child: ProductImage(image: product.image, id: product.id)),
 
             // Product Details
             Padding(
@@ -59,7 +60,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   const SizedBox(height: AppSizes.spaceBtwItems),
 
                   // Brand
-                  StoreIconWithName(store: product.store),
+                  // StoreIconWithName(store: product.store),
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
 

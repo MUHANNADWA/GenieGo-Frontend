@@ -69,12 +69,15 @@ class HomeScreen extends StatelessWidget {
                             )
                           : controller.hasError.value
                               ? Text(controller.errorMessage.value)
-                              : GridLayout(
-                                  itemCount: controller.products.value.length,
-                                  itemBuilder: (_, index) => ProductCard(
-                                      product:
-                                          controller.products.value[index]),
-                                ),
+                              : controller.products.value.isEmpty
+                                  ? Text('Empty')
+                                  : GridLayout(
+                                      itemCount:
+                                          controller.products.value.length,
+                                      itemBuilder: (_, index) => ProductCard(
+                                          product:
+                                              controller.products.value[index]),
+                                    ),
                     ),
                   ),
                 ],
