@@ -1,4 +1,3 @@
-import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_container.dart';
@@ -56,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
                   // Products
-                  CustomMaterialIndicator(
+                  RefreshIndicator(
                     onRefresh: () => controller.refreshProducts(),
                     child: Obx(
                       () => controller.isLoading.value

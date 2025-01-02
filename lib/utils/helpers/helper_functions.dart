@@ -34,17 +34,26 @@ class AppHelper {
         tags: ['good', 'potato', 'margin'],
       );
 
-  static Product get exampleProduct => Product(
-        id: Random().nextInt(1000),
-        name: 'Product Name',
-        description:
-            'This is Product Descreption This is Product Descreption This is Product Descreption This is Product Descreption.',
-        price: 1000,
-        image: AppImages.appLogo,
-        tags: ['good', 'product', 'padding'],
-        storeId: exampleStore.id,
-        stock: Random().nextInt(10),
-      );
+  static Product get exampleProduct => Product.fromJson({
+        'id': Random().nextInt(1000),
+        'translations': {
+          'en': {
+            'name': 'Product Name',
+            'description':
+                'This is Product Descreption This is Product Descreption This is Product Descreption This is Product Descreption.',
+          },
+          'ar': {
+            'name': 'اسم منتج عشوائي',
+            'description':
+                'هذا هو وصف المنتج العشوائي هذا هو وصف المنتج العشوائي هذا هو وصف المنتج العشوائي هذا هو وصف المنتج العشوائي .',
+          },
+        },
+        'price': Random().nextInt(1000).toString(),
+        'image': AppImages.appLogo,
+        'tags': ['good', 'product', 'padding'],
+        'store_id': exampleStore.id,
+        'stock': Random().nextInt(10),
+      });
 
   static void setFullScreen(bool enable) {
     SystemChrome.setEnabledSystemUIMode(

@@ -1,26 +1,25 @@
-import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:geniego/common/styles/spacing_styles.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/icons/app_circular_icons.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
-import 'package:geniego/features/shop/controllers/wishlist/favourites_controller.dart';
+import 'package:geniego/features/shop/controllers/wishlist/wishlist_controller.dart';
 import 'package:geniego/utils/constants/pages.dart';
-import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 
 import 'package:iconsax/iconsax.dart';
 
-class FavouriteScreen extends StatelessWidget {
-  const FavouriteScreen({super.key});
+class WishlistScreen extends StatelessWidget {
+  const WishlistScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(FavouritesController());
+    final controller = Get.put(WishlistController());
 
     return Scaffold(
       appBar: AppAppBar(
@@ -30,10 +29,10 @@ class FavouriteScreen extends StatelessWidget {
             CircularIcon(
                 icon: Iconsax.add, onPressed: () => Get.toNamed(homeScreen))
           ]),
-      body: CustomMaterialIndicator(
-        onRefresh: () => controller.refreshFavourites(),
+      body: RefreshIndicator(
+        onRefresh: () => controller.fetchWishlist(),
         child: Padding(
-          padding: EdgeInsets.all(AppSizes.defaultSpace),
+          padding: AppSpacingStyles.paddingWithoutBottom,
           child: SingleChildScrollView(
             child: Obx(
               () => controller.isLoading.value
@@ -47,13 +46,15 @@ class FavouriteScreen extends StatelessWidget {
                       ? GridLayout(
                           itemCount: 6,
                           itemBuilder: (_, __) =>
-                              ProductCard(product: AppHelper.exampleProduct))
+                              ProductCard(product: AppHelper.exampleProduct),
+                        )
                       : controller.favourites.value.isEmpty
                           ? Text('Empty')
                           : GridLayout(
                               itemCount: controller.favourites.value.length,
                               itemBuilder: (_, index) => ProductCard(
-                                  product: controller.favourites.value[index]),
+                                product: controller.favourites.value[index],
+                              ),
                             ),
             ),
           ),

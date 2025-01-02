@@ -1,5 +1,5 @@
-import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:geniego/common/styles/spacing_styles.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_card/product_card.dart';
@@ -41,11 +41,7 @@ class StoreDetailsScreen extends StatelessWidget {
 
             // Store Details
             Padding(
-              padding: const EdgeInsets.only(
-                right: AppSizes.defaultSpace,
-                left: AppSizes.defaultSpace,
-                bottom: AppSizes.defaultSpace,
-              ),
+              padding: AppSpacingStyles.paddingWithoutTop,
               child: Column(
                 children: [
                   // Title
@@ -81,7 +77,7 @@ class StoreDetailsScreen extends StatelessWidget {
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
                   // Store Products
-                  CustomMaterialIndicator(
+                  RefreshIndicator(
                     onRefresh: () =>
                         controller.refreshStoreProductsByStoreId(store.id),
                     child: Obx(

@@ -96,15 +96,13 @@ class ProductCard extends StatelessWidget {
                                   topRight:
                                       Radius.circular(AppSizes.cardRadiusMd),
                                   bottomLeft: Radius.circular(
-                                    AppSizes.productImageRadius,
-                                  ),
+                                      AppSizes.productImageRadius),
                                 )
                               : BorderRadius.only(
                                   topLeft:
                                       Radius.circular(AppSizes.cardRadiusMd),
                                   bottomRight: Radius.circular(
-                                    AppSizes.productImageRadius,
-                                  ),
+                                      AppSizes.productImageRadius),
                                 ),
                         ),
                         child: const SizedBox(

@@ -1,33 +1,32 @@
 import 'dart:developer';
 
 import 'package:geniego/features/shop/models/product_model.dart';
+import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class CartController extends GetxController {
   static CartController get instance => Get.find();
 
-  final RxMap<Product, RxInt> quantity = <Product, RxInt>{}.obs;
+  final RxMap<Product, RxInt> cartItems = <Product, RxInt>{}.obs;
   final RxBool isLoading = true.obs;
   final RxBool hasError = false.obs;
   final RxString errorMessage = ''.obs;
-  final RxList<Product> cartItems = <Product>[].obs;
 
   Future<void> fetchCartProducts() async {
     try {
       log('Fetching Cart Items 🔄');
+
       isLoading.value = true;
       hasError.value = false;
 
-      final productsData = GetStorage().read('cartItems');
-      final quantities = GetStorage().read('cartQuantites');
+      final List items = GetStorage().read('cartItems');
+      final List quantities = GetStorage().read('cartQuantites');
 
-      quantity.value = quantities;
+      final Map quant = Map.fromIterables(items, quantities);
 
-      cartItems.value = List.generate(
-        productsData.length,
-        (index) => Product.fromJson(productsData[index]),
-      );
+      cartItems.value = Map.from(quant.map((product, count) =>
+          MapEntry(Product.fromJson(product), RxInt(count))));
 
       cartItems.refresh();
 
@@ -43,34 +42,52 @@ class CartController extends GetxController {
   }
 
   void increaseQuantity(Product product) async {
-    if (quantity.containsKey(product) &&
-        quantity[product]!.value < product.stock) {
-      quantity[product]!.value++;
-    } else if (!quantity.containsKey(product)) {
-      quantity[product] = 1.obs;
+    print('🔰 increasing .. ${product.toJson().toString()}');
+
+    if (cartItems.containsKey(product) &&
+        getQuantity(product) < product.stock) {
+      cartItems[product]!.value++;
+    } else if (!cartItems.containsKey(product)) {
+      cartItems[product] = 1.obs;
     }
-    await GetStorage().write('cartQuantites', quantity.value.keys.toList());
+
+    await updateCart();
   }
 
   void decreaseQuantity(product) async {
-    if (quantity.containsKey(product) && quantity[product]!.value > 0) {
-      quantity[product]!.value--;
-    } else if (quantity[product]!.value == 0) {
-      quantity.remove(product);
+    print('🔰 decreasing .. ${product.toJson().toString()}');
+    if (cartItems.containsKey(product) && getQuantity(product) > 1) {
+      cartItems[product]!.value--;
+    } else if (cartItems.containsKey(product) && getQuantity(product) == 1) {
+      cartItems.remove(product);
       removeFromCart(product);
     }
-    await GetStorage().write('cartQuantites', quantity.value.keys.toList());
+    await updateCart();
   }
 
-  int getQuantity(product) => quantity[product]?.value ?? 0;
+  int getQuantity(product) => cartItems[product]?.value ?? 0;
 
-  Future<void> addToCart(product) async {
-    cartItems.value.add(product);
-    await GetStorage().write('cartItems', cartItems.value);
+  Future<void> addToCart(Product product) async {
+    print('🔰 adding .. ${product.toJson().toString()}');
+    cartItems.value.addAll({product: RxInt(getQuantity(product))});
+    await updateCart();
+    AppLoaders.infoSnackBar(title: 'added');
   }
 
-  Future<void> removeFromCart(product) async {
+  Future<void> removeFromCart(Product product) async {
+    print('🔰 removing .. ${product.toJson().toString()}');
     cartItems.value.remove(product);
-    await GetStorage().write('cartItems', cartItems.value);
+    await updateCart();
+    AppLoaders.warningSnackBar(title: 'removed');
+  }
+
+  Future<void> updateCart() async {
+    final List items =
+        cartItems.value.keys.map((product) => product.toJson()).toList();
+    final List<int> quantities =
+        cartItems.value.values.map((count) => count.value).toList();
+
+    await GetStorage().write('cartItems', items);
+    await GetStorage().write('cartQuantites', quantities);
   }
 }

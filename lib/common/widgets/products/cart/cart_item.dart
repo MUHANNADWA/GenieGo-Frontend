@@ -29,20 +29,8 @@ class CartItem extends StatelessWidget {
           ),
           // TODO
           title: Text(product.storeId.toString()),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ProductStoreTitleText(title: product.name, maxLines: 1),
-              ProductStoreTitleText(
-                title: product.description,
-                maxLines: 1,
-                smallSize: true,
-              ),
-            ],
-          ),
+          subtitle: ProductStoreTitleText(title: product.name, maxLines: 1),
         ),
-
-        SizedBox(height: AppSizes.spaceBtwItems / 2),
 
         // Quantity & Price
         Row(

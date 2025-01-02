@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
 import 'package:geniego/features/shop/screens/settings/settings_screen.dart';
-import 'package:geniego/features/shop/screens/wishlist/wishlist.dart';
+import 'package:geniego/features/shop/screens/wishlist/wishlist_screen.dart';
 import 'package:geniego/features/shop/screens/store/stores_screen.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
@@ -112,7 +112,7 @@ class NavigationController extends GetxController {
   final screens = [
     const HomeScreen(),
     const StoreScreen(),
-    const FavouriteScreen(),
+    const WishlistScreen(),
     const SettingsScreen(),
   ];
 }

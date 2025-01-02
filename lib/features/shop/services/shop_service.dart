@@ -16,9 +16,9 @@ class ShopService {
 
   static deleteProductById(id) => AppHttpHelper.delete('products/$id');
 
-  static getFavourites() => AppHttpHelper.get('wishlist');
+  static getWishlist() => AppHttpHelper.get('wishlist');
 
-  static addToFavourites(id) => AppHttpHelper.get('wishlist/$id');
+  static addToWishlist(id) => AppHttpHelper.get('wishlist/$id');
 
-  static removeFromFavourites(id) => AppHttpHelper.get('wishlist/$id');
+  static removeFromWishlist(id) => AppHttpHelper.get('wishlist/$id');
 }

@@ -15,9 +15,7 @@ class AppCircularLoader extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: Padding(
         padding: const EdgeInsets.only(top: AppSizes.appBarHeight),
-        child: CircularProgressIndicator(
-          color: color,
-        ),
+        child: CircularProgressIndicator(color: color),
       ),
     );
   }

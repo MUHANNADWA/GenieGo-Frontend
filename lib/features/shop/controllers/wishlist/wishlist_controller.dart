@@ -1,14 +1,13 @@
 import 'dart:developer';
 import 'dart:isolate';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 
-class FavouritesController extends GetxController {
-  static FavouritesController get instance => Get.find();
+class WishlistController extends GetxController {
+  static WishlistController get instance => Get.find();
 
   final RxBool isLoading = true.obs;
   final RxBool hasError = false.obs;
@@ -18,21 +17,16 @@ class FavouritesController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getFavourites();
+    fetchWishlist();
   }
 
-  Future<void> getFavourites() async =>
-      favourites.firstRebuild ? await fetchFavourites() : DoNothingAction();
-
-  Future<void> refreshFavourites() async => await fetchFavourites();
-
-  Future<void> fetchFavourites() async {
+  Future<void> fetchWishlist() async {
     try {
-      log('Fetching Favourites 🔄');
+      log('Fetching Wishlist 🔄');
       isLoading.value = true;
       hasError.value = false;
 
-      final data = await ShopService.getFavourites();
+      final data = await ShopService.getWishlist();
       final favouritesData = data['data'];
 
       favourites.value = List.generate(
@@ -42,12 +36,12 @@ class FavouritesController extends GetxController {
 
       favourites.refresh();
 
-      log('Favourites Fetched Successfully ✅');
+      log('Wishlist Fetched Successfully ✅');
     } catch (e) {
       hasError.value = true;
       errorMessage.value = e.toString();
 
-      log('Error Fetching Favourites ❌ $e');
+      log('Error Fetching Wishlist ❌ $e');
     } finally {
       isLoading.value = false;
     }
@@ -61,15 +55,14 @@ class FavouritesController extends GetxController {
         // Initialize Isolate
         BackgroundIsolateBinaryMessenger.ensureInitialized(
             RootIsolateToken.instance!);
-        ShopService.addToFavourites(productId);
+        ShopService.addToWishlist(productId);
       });
       AppLoaders.successSnackBar(
         title: 'Added',
         message: 'Product Has Been Added To The WishList',
       );
     } else {
-      await Isolate.run(
-          () async => ShopService.removeFromFavourites(productId));
+      await Isolate.run(() async => ShopService.removeFromWishlist(productId));
       AppLoaders.errorSnackBar(
         title: 'Removed',
         message: 'Product Has Been Removed From WishList',

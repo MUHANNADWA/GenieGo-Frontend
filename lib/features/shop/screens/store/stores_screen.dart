@@ -1,4 +1,3 @@
-import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.dart';
@@ -40,7 +39,7 @@ class StoreScreen extends StatelessWidget {
             SizedBox(height: AppSizes.spaceBtwItems),
 
             // Stores
-            CustomMaterialIndicator(
+            RefreshIndicator(
               onRefresh: () => controller.refreshStores(),
               child: Obx(
                 () => controller.isLoading.value

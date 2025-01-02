@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/styles/spacing_styles.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
@@ -32,7 +33,7 @@ class CartScreen extends StatelessWidget {
               shrinkWrap: true,
               itemCount: controller.cartItems.value.length,
               separatorBuilder: (_, __) =>
-                  const SizedBox(height: AppSizes.spaceBtwItems),
+                  const Divider(height: AppSizes.spaceBtwItems),
               itemBuilder: (_, index) => controller.isLoading.value
                   ? AppShimmer(
                       child: CartItem(product: AppHelper.exampleProduct))
@@ -41,17 +42,14 @@ class CartScreen extends StatelessWidget {
                       : controller.cartItems.value.isEmpty
                           ? Text('Empty')
                           : CartItem(
-                              product: controller.cartItems.value[index]),
+                              product:
+                                  controller.cartItems.keys.elementAt(index)),
             ),
           ),
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(
-          left: AppSizes.defaultSpace,
-          right: AppSizes.defaultSpace,
-          bottom: AppSizes.defaultSpace,
-        ),
+        padding: AppSpacingStyles.paddingWithoutTop,
         child: ElevatedButton(
           onPressed: () => Get.to(() => CheckoutScreen()),
           child: Text('Checkout \$256.0'),

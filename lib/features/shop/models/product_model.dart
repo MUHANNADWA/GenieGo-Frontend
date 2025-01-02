@@ -15,6 +15,10 @@ class Product {
   final List tags;
   final int storeId;
   Store? store;
+  String? arabicName;
+  String? englishName;
+  String? arabicDescription;
+  String? englishDescription;
 
   Product({
     required this.id,
@@ -26,20 +30,29 @@ class Product {
     required this.tags,
     required this.storeId,
     this.store,
+    this.arabicName,
+    this.englishName,
+    this.arabicDescription,
+    this.englishDescription,
   });
 
-  factory Product.fromJson(jsonData) => Product(
-        id: jsonData['id'],
-        price: double.parse(jsonData['price']),
-        name: jsonData['name'] ??
-            jsonData['translations'][AppHelper.currentLang]['name'],
-        description: jsonData['description'] ??
-            jsonData['translations'][AppHelper.currentLang]['description'],
-        image: jsonData['icon_url'] ?? AppImages.productImage,
-        stock: jsonData['stock'] ?? Random().nextInt(10),
-        tags: jsonData['tags'],
-        storeId: jsonData['store_id'],
-      );
+  factory Product.fromJson(jsonData) {
+    return Product(
+      id: jsonData['id'],
+      price: double.parse(jsonData['price']),
+      name: jsonData['translations'][AppHelper.currentLang]['name'],
+      description: jsonData['translations'][AppHelper.currentLang]
+          ['description'],
+      image: jsonData['icon_url'] ?? AppImages.productImage,
+      stock: jsonData['stock'] ?? Random().nextInt(10),
+      tags: jsonData['tags'],
+      storeId: jsonData['store_id'],
+      arabicName: jsonData['translations']['ar']['name'],
+      englishName: jsonData['translations']['en']['name'],
+      arabicDescription: jsonData['translations']['ar']['description'],
+      englishDescription: jsonData['translations']['en']['description'],
+    );
+  }
 
   Future<void> loadStore() async =>
       store = Store.fromJson(await ShopService.getStoreById(storeId));
@@ -47,9 +60,17 @@ class Product {
   toJson() => {
         'id': id,
         'price': price.toString(),
-        'name': name,
-        'description': description,
-        'image': image,
+        'translations': {
+          'en': {
+            'name': englishName,
+            'description': englishDescription,
+          },
+          'ar': {
+            'name': arabicName,
+            'description': arabicDescription,
+          },
+        },
+        'icon_url': image,
         'stock': stock,
         'tags': tags,
         'store_id': storeId,

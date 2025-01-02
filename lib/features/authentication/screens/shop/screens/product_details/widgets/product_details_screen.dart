@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/styles/spacing_styles.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
@@ -30,11 +31,7 @@ class ProductDetailsScreen extends StatelessWidget {
 
             // Product Details
             Padding(
-              padding: EdgeInsets.only(
-                right: AppSizes.defaultSpace,
-                left: AppSizes.defaultSpace,
-                bottom: AppSizes.defaultSpace,
-              ),
+              padding: AppSpacingStyles.paddingWithoutTop,
               child: Column(
                 children: [
                   // Title

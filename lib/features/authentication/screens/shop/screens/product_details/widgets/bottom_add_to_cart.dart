@@ -46,9 +46,11 @@ class BottomAddToCart extends StatelessWidget {
               const SizedBox(width: AppSizes.spaceBtwItems),
 
               // Quantity
-              Text(
-                controller.getQuantity(product).toString(),
-                style: Theme.of(context).textTheme.titleSmall,
+              Obx(
+                () => Text(
+                  controller.getQuantity(product).toString(),
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
               ),
 
               const SizedBox(width: AppSizes.spaceBtwItems),
@@ -63,16 +65,19 @@ class BottomAddToCart extends StatelessWidget {
               ),
             ],
           ),
-          ElevatedButton(
-            onPressed: product.stock > 0 && controller.getQuantity(product) > 0
-                ? () => controller.addToCart(product)
-                : null,
-            style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.all(AppSizes.md),
-              backgroundColor: AppColors.black,
-              side: const BorderSide(color: AppColors.black),
+          Obx(
+            () => ElevatedButton(
+              onPressed:
+                  product.stock > 0 && controller.getQuantity(product) > 0
+                      ? () => controller.addToCart(product)
+                      : null,
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.all(AppSizes.md),
+                backgroundColor: AppColors.black,
+                side: const BorderSide(color: AppColors.black),
+              ),
+              child: const Text('Add To Cart'),
             ),
-            child: const Text('Add To Cart'),
           ),
         ],
       ),
