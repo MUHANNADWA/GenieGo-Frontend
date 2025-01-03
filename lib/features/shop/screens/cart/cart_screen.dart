@@ -15,7 +15,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CartController(), permanent: true);
+    final controller = CartController.instance;
     controller.fetchCartProducts();
 
     return Scaffold(

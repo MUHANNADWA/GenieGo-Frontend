@@ -26,6 +26,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(AppThemeController());
     Get.put(AppLocaleController());
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppTexts.appName,

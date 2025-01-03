@@ -15,7 +15,7 @@ class ProductQuantityWithAddRemoveButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CartController(), permanent: true);
+    final controller = CartController.instance;
 
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -36,7 +36,7 @@ class ProductQuantityWithAddRemoveButton extends StatelessWidget {
 
         // Quantity
         Obx(
-          () => Text(controller.getQuantity(product).toString(),
+          () => Text(controller.getQuantity(product.id).toString(),
               style: Theme.of(context).textTheme.titleSmall),
         ),
 

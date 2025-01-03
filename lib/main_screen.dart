@@ -29,21 +29,31 @@ class MainScreen extends StatelessWidget {
                 selectedIndex: controller.selectedIndex.value,
                 onDestinationSelected: (index) =>
                     controller.selectedIndex.value = index,
+                labelBehavior:
+                    NavigationDestinationLabelBehavior.onlyShowSelected,
                 destinations: [
                   NavigationDestination(
                     icon: Icon(Iconsax.home),
+                    selectedIcon:
+                        Icon(Iconsax.home_15, color: AppColors.darkLightInvert),
                     label: AppTexts.home,
                   ),
                   NavigationDestination(
                     icon: Icon(Iconsax.shop),
+                    selectedIcon:
+                        Icon(Iconsax.shop5, color: AppColors.darkLightInvert),
                     label: AppTexts.stores,
                   ),
                   NavigationDestination(
                     icon: Icon(Iconsax.heart),
+                    selectedIcon:
+                        Icon(Iconsax.heart5, color: AppColors.darkLightInvert),
                     label: AppTexts.wishlist,
                   ),
                   NavigationDestination(
-                    icon: Icon(Iconsax.setting),
+                    icon: Icon(Iconsax.setting_2),
+                    selectedIcon: Icon(Iconsax.setting_21,
+                        color: AppColors.darkLightInvert),
                     label: AppTexts.settings,
                   ),
                 ],

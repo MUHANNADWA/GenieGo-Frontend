@@ -40,9 +40,9 @@ class ProductsController extends GetxController {
 
       products.refresh();
 
-      log('Products Fetched Successfully ✅');
+      log('Products Fetched Successfully ✅ response = ${products.value}');
     } catch (e) {
-      log('Error Fetching Products ❌');
+      log('Error Fetching Products ❌ error = $e');
 
       hasError.value = true;
       errorMessage.value = e.toString();

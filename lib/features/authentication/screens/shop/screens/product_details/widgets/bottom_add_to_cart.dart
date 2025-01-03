@@ -15,7 +15,7 @@ class BottomAddToCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CartController(), permanent: true);
+    final controller = CartController.instance;
 
     return Container(
       padding: const EdgeInsets.symmetric(
@@ -48,7 +48,7 @@ class BottomAddToCart extends StatelessWidget {
               // Quantity
               Obx(
                 () => Text(
-                  controller.getQuantity(product).toString(),
+                  controller.getQuantity(product.id).toString(),
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
@@ -68,7 +68,7 @@ class BottomAddToCart extends StatelessWidget {
           Obx(
             () => ElevatedButton(
               onPressed:
-                  product.stock > 0 && controller.getQuantity(product) > 0
+                  product.stock > 0 && controller.getQuantity(product.id) > 0
                       ? () => controller.addToCart(product)
                       : null,
               style: ElevatedButton.styleFrom(

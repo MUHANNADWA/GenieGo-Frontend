@@ -13,6 +13,10 @@ class CartController extends GetxController {
   final RxBool hasError = false.obs;
   final RxString errorMessage = ''.obs;
 
+  Future<void> initCart() async {
+    await fetchCartProducts();
+  }
+
   Future<void> fetchCartProducts() async {
     try {
       log('Fetching Cart Items 🔄');
@@ -20,8 +24,8 @@ class CartController extends GetxController {
       isLoading.value = true;
       hasError.value = false;
 
-      final List items = GetStorage().read('cartItems');
-      final List quantities = GetStorage().read('cartQuantites');
+      final List items = GetStorage().read('cartItems') ?? [];
+      final List quantities = GetStorage().read('cartQuantites') ?? [];
 
       final Map quant = Map.fromIterables(items, quantities);
 
@@ -30,47 +34,51 @@ class CartController extends GetxController {
 
       cartItems.refresh();
 
-      log('Cart Items Fetched Successfully ✅');
+      log('Cart Items Fetched Successfully ✅ response = ${cartItems.value}');
     } catch (e) {
       hasError.value = true;
       errorMessage.value = e.toString();
 
-      log('Error Fetching Cart Items ❌ $e');
+      log('Error Fetching Cart Items ❌ error = $e');
     } finally {
       isLoading.value = false;
     }
   }
 
   void increaseQuantity(Product product) async {
-    print('🔰 increasing .. ${product.toJson().toString()}');
-
-    if (cartItems.containsKey(product) &&
-        getQuantity(product) < product.stock) {
+    if (contains(product.id) && getQuantity(product.id) < product.stock) {
+      print('🔰 increasing .. ${product.toJson().toString()}');
       cartItems[product]!.value++;
-    } else if (!cartItems.containsKey(product)) {
+    } else if (!contains(product.id)) {
       cartItems[product] = 1.obs;
     }
-
-    await updateCart();
   }
 
   void decreaseQuantity(product) async {
-    print('🔰 decreasing .. ${product.toJson().toString()}');
-    if (cartItems.containsKey(product) && getQuantity(product) > 1) {
+    if (contains(product.id) && getQuantity(product.id) > 1) {
+      print('🔰 decreasing .. ${product.toJson().toString()}');
       cartItems[product]!.value--;
-    } else if (cartItems.containsKey(product) && getQuantity(product) == 1) {
+    } else if (contains(product.id) && getQuantity(product.id) == 1) {
       cartItems.remove(product);
       removeFromCart(product);
     }
-    await updateCart();
   }
 
-  int getQuantity(product) => cartItems[product]?.value ?? 0;
+  bool contains(productId) => cartItems.isNotEmpty
+      ? cartItems.value.keys.any((product) => product.id == productId)
+      : false;
+  Product? getProductById(productId) => contains(productId)
+      ? cartItems.value.keys.firstWhere((product) => product.id == productId)
+      : null;
+  int getQuantity(int productId) => contains(productId)
+      ? cartItems[getProductById(productId)]?.value ?? 0
+      : 0;
+  // int getQuantity(productId.id) => 0;
 
   Future<void> addToCart(Product product) async {
-    print('🔰 adding .. ${product.toJson().toString()}');
-    cartItems.value.addAll({product: RxInt(getQuantity(product))});
+    cartItems.value.addAll({product: RxInt(getQuantity(product.id))});
     await updateCart();
+    print('🔰 adding .. ${product.toJson().toString()}');
     AppLoaders.infoSnackBar(title: 'added');
   }
 

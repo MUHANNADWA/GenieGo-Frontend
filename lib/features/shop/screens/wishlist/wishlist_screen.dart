@@ -7,9 +7,10 @@ import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/features/shop/controllers/wishlist/wishlist_controller.dart';
+import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
-import 'package:geniego/utils/helpers/helper_functions.dart';
+import 'package:geniego/utils/helpers/temp_products.dart';
 import 'package:get/get.dart';
 
 import 'package:iconsax/iconsax.dart';
@@ -44,9 +45,9 @@ class WishlistScreen extends StatelessWidget {
                     )
                   : controller.hasError.value
                       ? GridLayout(
-                          itemCount: 6,
-                          itemBuilder: (_, __) =>
-                              ProductCard(product: AppHelper.exampleProduct),
+                          itemCount: 5,
+                          itemBuilder: (_, index) => ProductCard(
+                              product: Product.fromJson(tempProducts[index])),
                         )
                       : controller.favourites.value.isEmpty
                           ? Text('Empty')

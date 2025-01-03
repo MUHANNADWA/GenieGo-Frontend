@@ -1,8 +1,8 @@
 import 'dart:developer';
-import 'dart:isolate';
 import 'package:flutter/services.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
+import 'package:geniego/utils/multithreading/Thread.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 
@@ -36,12 +36,12 @@ class WishlistController extends GetxController {
 
       favourites.refresh();
 
-      log('Wishlist Fetched Successfully ✅');
+      log('Wishlist Fetched Successfully ✅ response = ${favourites.value}');
     } catch (e) {
       hasError.value = true;
       errorMessage.value = e.toString();
 
-      log('Error Fetching Wishlist ❌ $e');
+      log('Error Fetching Wishlist ❌ error = $e');
     } finally {
       isLoading.value = false;
     }
@@ -51,18 +51,18 @@ class WishlistController extends GetxController {
 
   void toggleFavouriteProduct(int productId) async {
     if (!isFavourite(productId)) {
-      await Isolate.run(() async {
-        // Initialize Isolate
+      await Thread().run((sendPort) async {
         BackgroundIsolateBinaryMessenger.ensureInitialized(
-            RootIsolateToken.instance!);
-        ShopService.addToWishlist(productId);
+            ServicesBinding.rootIsolateToken!);
+        sendPort.send(await ShopService.addToWishlist(productId));
       });
       AppLoaders.successSnackBar(
         title: 'Added',
         message: 'Product Has Been Added To The WishList',
       );
     } else {
-      await Isolate.run(() async => ShopService.removeFromWishlist(productId));
+      await Thread().run((sendPort) async =>
+          sendPort.send(await ShopService.removeFromWishlist(productId)));
       AppLoaders.errorSnackBar(
         title: 'Removed',
         message: 'Product Has Been Removed From WishList',

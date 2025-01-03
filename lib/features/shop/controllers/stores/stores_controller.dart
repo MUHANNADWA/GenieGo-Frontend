@@ -40,9 +40,9 @@ class StoresController extends GetxController {
 
       stores.refresh();
 
-      log('Stores Fetched Successfully ✅');
+      log('Stores Fetched Successfully ✅ response = ${stores.value}');
     } catch (e) {
-      log('Error Fetching Stores ❌');
+      log('Error Fetching Stores ❌ error = $e');
 
       hasError.value = true;
       errorMessage.value = e.toString();
