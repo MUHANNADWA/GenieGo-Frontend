@@ -47,7 +47,8 @@ class CartController extends GetxController {
 
   void increaseQuantity(Product product) async {
     if (contains(product.id) && getQuantity(product.id) < product.stock) {
-      print('🔰 increasing .. ${product.toJson().toString()}');
+      log('🔰 increasing product with the id: ${product.id} ..');
+      product = getProductById(product.id)!;
       cartItems[product]!.value++;
     } else if (!contains(product.id)) {
       cartItems[product] = 1.obs;
@@ -56,7 +57,8 @@ class CartController extends GetxController {
 
   void decreaseQuantity(product) async {
     if (contains(product.id) && getQuantity(product.id) > 1) {
-      print('🔰 decreasing .. ${product.toJson().toString()}');
+      log('🔰 decreasing product with the id: ${product.id} ..');
+      product = getProductById(product.id)!;
       cartItems[product]!.value--;
     } else if (contains(product.id) && getQuantity(product.id) == 1) {
       cartItems.remove(product);
@@ -67,23 +69,24 @@ class CartController extends GetxController {
   bool contains(productId) => cartItems.isNotEmpty
       ? cartItems.value.keys.any((product) => product.id == productId)
       : false;
+
   Product? getProductById(productId) => contains(productId)
       ? cartItems.value.keys.firstWhere((product) => product.id == productId)
       : null;
+
   int getQuantity(int productId) => contains(productId)
       ? cartItems[getProductById(productId)]?.value ?? 0
       : 0;
-  // int getQuantity(productId.id) => 0;
 
   Future<void> addToCart(Product product) async {
     cartItems.value.addAll({product: RxInt(getQuantity(product.id))});
     await updateCart();
-    print('🔰 adding .. ${product.toJson().toString()}');
+    log('🔰 adding product with the id: ${product.id} ..');
     AppLoaders.infoSnackBar(title: 'added');
   }
 
   Future<void> removeFromCart(Product product) async {
-    print('🔰 removing .. ${product.toJson().toString()}');
+    log('🔰 removing product with the id: ${product.id} ..');
     cartItems.value.remove(product);
     await updateCart();
     AppLoaders.warningSnackBar(title: 'removed');

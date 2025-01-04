@@ -12,9 +12,8 @@ class AppOrderListItems extends StatelessWidget {
     return ListView.separated(
       shrinkWrap: true,
       itemCount: 10,
-      separatorBuilder: (_, __) => const SizedBox(
-        height: AppSizes.spaceBtwItems,
-      ),
+      separatorBuilder: (_, __) =>
+          const SizedBox(height: AppSizes.spaceBtwItems),
       itemBuilder: (_, index) => RoundedContainer(
         padding: const EdgeInsets.all(AppSizes.md),
         showBorder: true,

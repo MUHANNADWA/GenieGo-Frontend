@@ -45,7 +45,7 @@ class StoreDetailsScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // Title
-                  ProductStoreTitleText(title: store.name, bigSize: true),
+                  TitleText(title: store.name, bigSize: true),
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
 

@@ -41,7 +41,7 @@ class StoreCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ProductStoreTitleText(
+                  TitleText(
                     title: store.name,
                     maxLines: 1,
                   ),

@@ -3,6 +3,7 @@ import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
 import 'package:geniego/features/authentication/screens/signup/success_screen.dart';
+import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_payment_section.dart';
@@ -10,11 +11,12 @@ import 'package:geniego/main_screen.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
-import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 
 class CheckoutScreen extends StatelessWidget {
-  const CheckoutScreen({super.key});
+  const CheckoutScreen({super.key, required this.cartItems});
+
+  final Map<Product, RxInt> cartItems;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,16 @@ class CheckoutScreen extends StatelessWidget {
           child: Column(
             children: [
               // Items In Cart
-              CartItem(product: AppHelper.exampleProduct),
+              Container(
+                height: 300,
+                child: ListView.builder(
+                  itemCount: cartItems.length,
+                  itemBuilder: (_, index) => CartItem(
+                    product: cartItems.keys.elementAt(index),
+                    showAddRemoveButtons: false,
+                  ),
+                ),
+              ),
 
               const SizedBox(height: AppSizes.spaceBtwSections),
 
@@ -76,9 +87,7 @@ class CheckoutScreen extends StatelessWidget {
               image: AppImages.successfulPaymentIcon,
               title: 'Payment Success!',
               subTitle: 'Your Item Will Be Shipped Soon!',
-              onPressed: () => Get.offAll(
-                () => const MainScreen(),
-              ),
+              onPressed: () => Get.offAll(() => const MainScreen()),
             ),
           ),
           child: Text('Checkout \$256.0'),

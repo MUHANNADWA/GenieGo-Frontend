@@ -6,6 +6,7 @@ import 'package:geniego/common/widgets/products/product_card/favourite_button.da
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details_screen.dart';
+import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
@@ -73,7 +74,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Product Title
-                  ProductStoreTitleText(title: product.name, smallSize: true),
+                  TitleText(title: product.name, smallSize: true),
 
                   const SizedBox(height: AppSizes.spaceBtwItems / 2),
 
@@ -85,31 +86,43 @@ class ProductCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // Price
-                      ProductPriceText(price: product.price),
+                      PriceText(price: product.price),
 
                       // Add To Cart Button
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.dark,
-                          borderRadius: AppHelper.isRtl
-                              ? BorderRadius.only(
-                                  topRight:
-                                      Radius.circular(AppSizes.cardRadiusMd),
-                                  bottomLeft: Radius.circular(
-                                      AppSizes.productImageRadius),
-                                )
-                              : BorderRadius.only(
-                                  topLeft:
-                                      Radius.circular(AppSizes.cardRadiusMd),
-                                  bottomRight: Radius.circular(
-                                      AppSizes.productImageRadius),
-                                ),
-                        ),
-                        child: const SizedBox(
-                          width: AppSizes.iconLg * 1.2,
-                          height: AppSizes.iconLg * 1.2,
-                          child: Center(
-                            child: Icon(Iconsax.add, color: AppColors.white),
+                      GestureDetector(
+                        onTap: () =>
+                            CartController.instance.increaseQuantity(product),
+                        onLongPress: () =>
+                            CartController.instance.decreaseQuantity(product),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.dark,
+                            borderRadius: AppHelper.isRtl
+                                ? BorderRadius.only(
+                                    topRight:
+                                        Radius.circular(AppSizes.cardRadiusMd),
+                                    bottomLeft: Radius.circular(
+                                        AppSizes.productImageRadius),
+                                  )
+                                : BorderRadius.only(
+                                    topLeft:
+                                        Radius.circular(AppSizes.cardRadiusMd),
+                                    bottomRight: Radius.circular(
+                                        AppSizes.productImageRadius),
+                                  ),
+                          ),
+                          child: SizedBox(
+                            width: AppSizes.iconLg * 1.2,
+                            height: AppSizes.iconLg * 1.2,
+                            child: Center(
+                              child: Obx(() => CartController.instance
+                                          .getQuantity(product.id) ==
+                                      0
+                                  ? Icon(Iconsax.add, color: AppColors.white)
+                                  : Text(CartController.instance
+                                      .getQuantity(product.id)
+                                      .toString())),
+                            ),
                           ),
                         ),
                       ),

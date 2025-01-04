@@ -3,15 +3,21 @@ import 'package:geniego/common/widgets/custom_shapes/containers/app_rounded_imag
 import 'package:geniego/common/widgets/products/cart/add_remove_button.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
+import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key, required this.product});
+  const CartItem({
+    super.key,
+    required this.product,
+    this.showAddRemoveButtons = true,
+  });
 
   final Product product;
+  final bool showAddRemoveButtons;
 
   @override
   Widget build(BuildContext context) {
@@ -29,22 +35,35 @@ class CartItem extends StatelessWidget {
           ),
           // TODO
           title: Text(product.storeId.toString()),
-          subtitle: ProductStoreTitleText(title: product.name, maxLines: 1),
+          subtitle: TitleText(title: product.name, maxLines: 1),
         ),
 
         // Quantity & Price
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const SizedBox(width: 20),
+        showAddRemoveButtons
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const SizedBox(width: 20),
 
-            /// Add Remove Buttons
-            ProductQuantityWithAddRemoveButton(product: product),
+                  /// Add Remove Buttons
+                  ProductQuantityWithAddRemoveButton(product: product),
 
-            // Product Price
-            ProductPriceText(price: product.price),
-          ],
-        ),
+                  // Product Price
+                  PriceText(price: product.price),
+                ],
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const SizedBox(width: 20),
+
+                  Text(
+                      'Quantity: ${CartController.instance.getQuantity(product.id)}'),
+
+                  // Product Price
+                  PriceText(price: product.price),
+                ],
+              ),
       ],
     );
   }

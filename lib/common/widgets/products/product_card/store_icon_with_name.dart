@@ -25,7 +25,7 @@ class StoreIconWithName extends StatelessWidget {
         const SizedBox(width: AppSizes.sm),
 
         // Store Name
-        ProductStoreTitleText(
+        TitleText(
           title: store.name,
           smallSize: true,
         ),

@@ -1,8 +1,6 @@
 import 'dart:developer';
-import 'package:flutter/services.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
-import 'package:geniego/utils/multithreading/Thread.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 
@@ -51,18 +49,15 @@ class WishlistController extends GetxController {
 
   void toggleFavouriteProduct(int productId) async {
     if (!isFavourite(productId)) {
-      await Thread().run((sendPort) async {
-        BackgroundIsolateBinaryMessenger.ensureInitialized(
-            ServicesBinding.rootIsolateToken!);
-        sendPort.send(await ShopService.addToWishlist(productId));
-      });
+      await ShopService.addToWishlist(productId);
+
       AppLoaders.successSnackBar(
         title: 'Added',
         message: 'Product Has Been Added To The WishList',
       );
     } else {
-      await Thread().run((sendPort) async =>
-          sendPort.send(await ShopService.removeFromWishlist(productId)));
+      await ShopService.removeFromWishlist(productId);
+
       AppLoaders.errorSnackBar(
         title: 'Removed',
         message: 'Product Has Been Removed From WishList',

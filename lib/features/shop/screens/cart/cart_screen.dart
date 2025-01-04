@@ -51,8 +51,11 @@ class CartScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: AppSpacingStyles.paddingWithoutTop,
         child: ElevatedButton(
-          onPressed: () => Get.to(() => CheckoutScreen()),
-          child: Text('Checkout \$256.0'),
+          onPressed: controller.cartItems.value.isNotEmpty
+              ? () => Get.to(
+                  () => CheckoutScreen(cartItems: controller.cartItems.value))
+              : null,
+          child: Text('Checkout'),
         ),
       ),
     );

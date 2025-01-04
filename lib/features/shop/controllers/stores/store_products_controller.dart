@@ -31,8 +31,6 @@ class StoreProductsController extends GetxController {
       final data = await ShopService.getStoreProductsByStoreId(id);
       final storeProductsData = data['data'];
 
-      print(storeProductsData);
-
       storeProducts.value[id] = List.generate(
         storeProductsData.length,
         (index) => Product.fromJson(storeProductsData[index]),

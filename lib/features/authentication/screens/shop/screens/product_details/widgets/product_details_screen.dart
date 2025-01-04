@@ -35,19 +35,19 @@ class ProductDetailsScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // Title
-                  ProductStoreTitleText(title: product.name, bigSize: true),
+                  TitleText(title: product.name, bigSize: true),
 
                   const SizedBox(height: AppSizes.spaceBtwItems),
 
                   // Price
-                  ProductPriceText(price: product.price, isLarge: true),
+                  PriceText(price: product.price, isLarge: true),
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
                   // Stock Status
                   Row(
                     children: [
-                      const ProductStoreTitleText(title: 'Status'),
+                      const TitleText(title: 'Status'),
                       const SizedBox(width: AppSizes.spaceBtwItems),
                       Text('In Stock ${product.stock}',
                           style: Theme.of(context).textTheme.titleMedium),
