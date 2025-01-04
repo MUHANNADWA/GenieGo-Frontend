@@ -11,14 +11,11 @@ class FavouriteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(WishlistController());
-    return GestureDetector(
-      onTap: () {},
-      child: CircularIcon(
-        icon:
-            controller.isFavourite(productId) ? Iconsax.heart5 : Iconsax.heart,
-        color: controller.isFavourite(productId) ? AppColors.error : null,
-        onPressed: () => controller.toggleFavouriteProduct(productId),
-      ),
+
+    return CircularIcon(
+      icon: controller.isFavourite(productId) ? Iconsax.heart5 : Iconsax.heart,
+      color: controller.isFavourite(productId) ? AppColors.error : null,
+      onPressed: () => controller.toggleFavouriteProduct(productId),
     );
   }
 }

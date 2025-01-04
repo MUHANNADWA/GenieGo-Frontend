@@ -15,9 +15,6 @@ class AuthService {
     return AppHttpHelper.post('logout', {});
   }
 
-  // TODO HERE EXAMPLE USER
-  // AppHelper.exampleUser.toJson() ??
-
   static get currentUser => User.fromJson(GetStorage().read('user'));
 
   static get authenticated => GetStorage().read('token') != null;

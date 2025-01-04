@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
@@ -6,6 +9,7 @@ import 'package:geniego/utils/locale/locale_controller.dart';
 import 'package:geniego/utils/theme/theme_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 final localStorage = GetStorage();
 
@@ -15,16 +19,16 @@ class SettingsController extends GetxController {
   //* Settings Variables
   RxString languages = AppTexts.system.obs;
   RxString themes = AppTexts.system.obs;
-  RxBool geoLocation = true.obs;
-  RxBool notification = true.obs;
-  RxBool fullscreen = true.obs;
+  RxBool geoLocation = false.obs;
+  RxBool notification = false.obs;
+  RxBool fullscreen = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    geoLocation.value = localStorage.read('geoLocation') ?? true;
-    notification.value = localStorage.read('notification') ?? true;
-    notification.value = localStorage.read('fullscreen') ?? true;
+    geoLocation.value = localStorage.read('geoLocation') ?? false;
+    notification.value = localStorage.read('notification') ?? false;
+    fullscreen.value = localStorage.read('fullscreen') ?? false;
     languages.value = localStorage.read('lang') ?? AppTexts.system;
     themes.value = localStorage.read('theme') ?? AppTexts.system;
   }
@@ -44,7 +48,21 @@ class SettingsController extends GetxController {
     geoLocation.toggle();
   }
 
-  void toggleNotification(value) {
+  void toggleNotification(value) async {
+    if (value) {
+      await Permission.notification.isDenied.then((value) {
+        if (value) {
+          Permission.notification.request();
+        }
+      });
+    }
+
+    value
+        ? FlutterBackgroundService().startService()
+        : FlutterBackgroundService().invoke('stopService');
+
+    log('hello there');
+
     localStorage.write('notification', value);
     notification.toggle();
   }

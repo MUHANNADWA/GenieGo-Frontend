@@ -24,10 +24,12 @@ class AppLocaleController extends GetxController {
   }
 
   Locale langCode(lang) {
-    return Locale(lang == AppTexts.system
-        ? Get.deviceLocale!.languageCode
-        : lang == 'العربية'
-            ? 'ar'
-            : 'en');
+    return Locale(
+      lang == AppTexts.system
+          ? Get.deviceLocale!.languageCode
+          : lang == 'العربية'
+              ? 'ar'
+              : 'en',
+    );
   }
 }

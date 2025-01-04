@@ -18,6 +18,9 @@ class WishlistController extends GetxController {
     fetchWishlist();
   }
 
+  bool isFavourite(int productId) =>
+      favourites.any((product) => product.id == productId);
+
   Future<void> fetchWishlist() async {
     try {
       log('Fetching Wishlist 🔄');
@@ -45,18 +48,48 @@ class WishlistController extends GetxController {
     }
   }
 
-  bool isFavourite(int productId) => false;
+  Future<void> addToWishlist(productId) async {
+    try {
+      isLoading.value = true;
+      hasError.value = false;
+
+      await ShopService.addToWishlist(productId);
+
+      favourites.refresh();
+    } catch (e) {
+      hasError.value = true;
+      errorMessage.value = e.toString();
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> removeFromWishlist(productId) async {
+    try {
+      isLoading.value = true;
+      hasError.value = false;
+
+      await ShopService.removeFromWishlist(productId);
+
+      favourites.refresh();
+    } catch (e) {
+      hasError.value = true;
+      errorMessage.value = e.toString();
+    } finally {
+      isLoading.value = false;
+    }
+  }
 
   void toggleFavouriteProduct(int productId) async {
     if (!isFavourite(productId)) {
-      await ShopService.addToWishlist(productId);
+      await addToWishlist(productId);
 
       AppLoaders.successSnackBar(
         title: 'Added',
         message: 'Product Has Been Added To The WishList',
       );
     } else {
-      await ShopService.removeFromWishlist(productId);
+      await removeFromWishlist(productId);
 
       AppLoaders.errorSnackBar(
         title: 'Removed',

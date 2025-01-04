@@ -34,7 +34,7 @@ class CheckoutScreen extends StatelessWidget {
           child: Column(
             children: [
               // Items In Cart
-              Container(
+              SizedBox(
                 height: 300,
                 child: ListView.builder(
                   itemCount: cartItems.length,
