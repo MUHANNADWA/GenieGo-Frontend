@@ -5,7 +5,6 @@ import 'package:geniego/common/widgets/products/cart/cart_item.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/features/authentication/screens/shop/screens/checkout/widgets/checkout.dart';
 import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
-import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';

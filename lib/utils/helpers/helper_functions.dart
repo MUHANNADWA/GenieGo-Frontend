@@ -17,6 +17,8 @@ class AppHelper {
         username: 'johndoe',
         email: 'GKd3K@example.com',
         phone: '1234567890',
+        role: 'Customer',
+        image: AppImages.user,
       );
 
   static Site get exampleSite => Site(

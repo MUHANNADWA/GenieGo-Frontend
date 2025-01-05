@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
@@ -7,14 +6,11 @@ import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class SignupController extends GetxController {
-  static SignupController get instance => Get.find();
+class ProfileController extends GetxController {
+  static ProfileController get instance => Get.find();
 
-  //* Toggle Password
   RxBool isPasswordObscured = true.obs;
-  RxBool isPasswordConfirmationObscured = true.obs;
   Rx<Icon> passwordIcon = const Icon(Iconsax.eye).obs;
-  Rx<Icon> passwordConfirmationIcon = const Icon(Iconsax.eye).obs;
 
   // Toggle Password
   togglePasswordVisibility() {
@@ -24,34 +20,26 @@ class SignupController extends GetxController {
         : const Icon(Iconsax.eye_slash);
   }
 
-  // Toggle Password
-  togglePasswordConfirmationVisibility() {
-    isPasswordConfirmationObscured.toggle();
-    passwordConfirmationIcon.value = isPasswordConfirmationObscured.value
-        ? const Icon(Iconsax.eye)
-        : const Icon(Iconsax.eye_slash);
-  }
-
-  //* Signup Variables
-  final firstName = TextEditingController();
-  final lastName = TextEditingController();
-  final username = TextEditingController();
-  final email = TextEditingController();
-  RxString phoneNumber = ''.obs;
-  final role = 'Customer'.obs;
+  // Variables
+  final firstName =
+      TextEditingController(text: AuthService.currentUser.firstName);
+  final lastName =
+      TextEditingController(text: AuthService.currentUser.lastName);
+  final username =
+      TextEditingController(text: AuthService.currentUser.username);
+  final email = TextEditingController(text: AuthService.currentUser.email);
+  final phone = TextEditingController(text: AuthService.currentUser.phone);
   final password = TextEditingController();
-  final passwordConfirmation = TextEditingController();
-  GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  //* Signup
-  Future<void> signup() async {
+  Future<void> updateUserInfo() async {
     try {
       // Form Validation
-      if (!signupFormKey.currentState!.validate()) return;
+      if (!formKey.currentState!.validate()) return;
 
       // Start Loading
       AppDialogs.showFullScreenLoadingDialog(
-        'Processing your request..',
+        'Updating your Profile..',
         'Working behind the scenes to get things ready.',
         AppImages.loading,
       );
@@ -61,21 +49,20 @@ class SignupController extends GetxController {
         'last_name': lastName.text.trim(),
         'username': username.text.trim(),
         'email': email.text.trim(),
-        'phone': phoneNumber.value,
-        'role': role.value,
+        'phone': phone.text.trim(),
         'password': password.text.trim(),
-        'password_confirmation': passwordConfirmation.text.trim()
       };
 
-      // Signup User
-      if (dotenv.env['ENV'] != 'development') {
-        await AuthService.signup(userData);
-      }
+      // Update User
+      await AuthService.updateUserById(userData);
 
       // Stop Loading
       AppDialogs.hideDialog();
 
-      // Return To Login Page
+      AppLoaders.infoSnackBar(
+          title: 'Saved!', message: 'Your Info Has Been Updated');
+
+      // Return back
       Get.back();
     } catch (e) {
       await AppDialogs.hideDialog();

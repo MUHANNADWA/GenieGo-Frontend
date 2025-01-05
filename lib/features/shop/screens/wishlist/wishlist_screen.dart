@@ -8,12 +8,9 @@ import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/features/shop/controllers/wishlist/wishlist_controller.dart';
-import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
-import 'package:geniego/utils/helpers/temp_products.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import 'package:iconsax/iconsax.dart';

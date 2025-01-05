@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
+import 'package:geniego/features/shop/controllers/settings/profile_controller.dart';
 import 'package:geniego/features/shop/screens/profile/widgets/edit_profile_menu.dart';
 import 'package:geniego/features/shop/controllers/settings/image_picker_controller.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
+import 'package:geniego/utils/validator/validator.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -15,10 +18,10 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ImagePickerController());
-    // final User user = AuthService.currentUser;
+    final imageController = Get.put(ImagePickerController());
+    final controller = Get.put(ProfileController());
+
     return Scaffold(
-      // User Profile AppBar
       appBar: AppAppBar(title: Text(AppTexts.profile), showBackArrow: true),
 
       // Body
@@ -30,26 +33,26 @@ class EditProfileScreen extends StatelessWidget {
               width: double.infinity,
               child: Column(
                 children: [
-                  // Profile Picturep
+                  // Profile Picture
                   Center(
                     child: Obx(
                       () => RoundedContainer(
-                        radius: 1000,
+                        radius: 100,
                         height: 80,
                         width: 80,
-                        child: controller.image.value.path == ''
+                        child: imageController.image.value.path == ''
                             ? Image.asset(AppImages.user)
-                            : Image.file(controller.image.value,
-                                fit: BoxFit.cover),
+                            : Image.file(
+                                imageController.image.value,
+                                fit: BoxFit.cover,
+                              ),
                       ),
                     ),
                   ),
 
                   TextButton(
-                    onPressed: () {
-                      controller.imagePicker();
-                    },
-                    child: const Text('Change Profile Picture'),
+                    onPressed: () => imageController.imagePicker(),
+                    child: TitleText(title: 'Change Profile Picture'),
                   ),
                 ],
               ),
@@ -68,51 +71,50 @@ class EditProfileScreen extends StatelessWidget {
             const SizedBox(height: AppSizes.spaceBtwItems),
 
             EditProfileMenu(
-              title: 'First Name',
+              title: AppTexts.firstName,
               icon: Iconsax.user_edit,
-              hint: 'First Name',
+              controller: controller.firstName,
             ),
 
             EditProfileMenu(
-              title: 'Last Name',
+              title: AppTexts.lastName,
               icon: Iconsax.user_edit,
-              hint: 'Last Name',
+              controller: controller.lastName,
             ),
 
             EditProfileMenu(
-              title: 'User Name',
+              title: AppTexts.username,
               icon: Iconsax.user_edit,
-              hint: 'User Name',
+              controller: controller.username,
             ),
 
             EditProfileMenu(
-              title: 'E-mail',
+              title: AppTexts.email,
               icon: Iconsax.direct,
-              hint: 'E-mail',
+              controller: controller.email,
             ),
 
             EditProfileMenu(
-              title: 'Phone Number',
+              title: AppTexts.phoneNo,
               icon: Iconsax.call,
-              hint: 'Phone Number',
+              controller: controller.phone,
             ),
             EditProfileMenu(
-              title: 'Password',
+              title: AppTexts.password,
               icon: Iconsax.password_check,
-              hint: 'Password',
+              controller: controller.password,
               showToggle: true,
+              validator: (value) =>
+                  AppValidator.validateEmptyText(AppTexts.password, value),
             ),
 
-            const Divider(),
+            const SizedBox(height: AppSizes.spaceBtwSections),
 
-            const SizedBox(height: AppSizes.spaceBtwItems),
-
-            Center(
+            SizedBox(
+              width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {},
-                child: const Text(
-                  'Save Changes',
-                ),
+                child: const Text('Save Changes'),
               ),
             ),
           ]),

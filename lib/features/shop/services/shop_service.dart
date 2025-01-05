@@ -41,4 +41,6 @@ class ShopService {
   static getSiteById(id) => AppHttpHelper.get('sites/$id');
 
   static deleteSiteById(id) => AppHttpHelper.delete('sites/$id');
+
+  static search(data) => AppHttpHelper.post('search', data);
 }

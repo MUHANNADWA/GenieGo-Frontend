@@ -4,8 +4,6 @@ import 'package:geniego/features/authentication/models/user_model.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/pages.dart';
-import 'package:geniego/utils/constants/text_strings.dart';
-import 'package:geniego/utils/helpers/network_manager.dart';
 import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
@@ -66,16 +64,6 @@ class LoginController extends GetxController {
       // Form Validation
       if (!loginFormKey.currentState!.validate()) return;
 
-      // Check Internet Connectivity
-      final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) {
-        AppLoaders.errorSnackBar(
-          title: AppTexts.noInternetSnackBarTitle,
-          message: AppTexts.noInternetSnackBarTitle,
-        );
-        return;
-      }
-
       // Start Loading
       AppDialogs.showFullScreenLoadingDialog(
         'Processing your request..',
@@ -106,7 +94,7 @@ class LoginController extends GetxController {
       }
 
       // Stop Loading
-      await AppDialogs.hideDialog();
+      AppDialogs.hideDialog();
 
       // Navigate To Navigation Menu
       Get.toNamed(mainScreen);

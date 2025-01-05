@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/features/authentication/controllers/signup/signup_controller.dart';
+import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/validator/validator.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -83,6 +85,45 @@ class SignupForm extends StatelessWidget {
 
           // Phone Number
           const InternationalPhoneNumberInputField<SignupController>(),
+
+          const SizedBox(height: AppSizes.spaceBtwInputFields),
+
+          // Role
+          RoundedContainer(
+            borderColor: AppColors.darkGrey,
+            showBorder: true,
+            child: ListTile(
+              leading: Icon(Iconsax.user_tag),
+              iconColor: AppColors.darkGrey,
+              title: Text('Role'),
+              trailing: Obx(
+                () => DropdownButton<String>(
+                  value: controller.role.value,
+                  items: [
+                    DropdownMenuItem(
+                      value: 'Customer',
+                      child: Text('Customer'),
+                    ),
+                    DropdownMenuItem(
+                      value: 'Owner',
+                      child: Text('Owner'),
+                    ),
+                  ],
+                  onChanged: (String? value) => controller.role.value = value!,
+                ),
+              ),
+            ),
+          ),
+
+          // TextFormField(
+          //   controller: controller.role,
+          //   autovalidateMode: AutovalidateMode.onUserInteraction,
+          //   validator: (value) => AppValidator.validateEmptyText('Role', value),
+          //   decoration: InputDecoration(
+          //     labelText: AppTexts.email,
+          //     prefixIcon: const Icon(Iconsax.user_tag),
+          //   ),
+          // ),
 
           const SizedBox(height: AppSizes.spaceBtwInputFields),
 

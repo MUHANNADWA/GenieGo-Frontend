@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:geniego/utils/constants/image_strings.dart';
 
 class User {
   final int id;
@@ -7,18 +7,18 @@ class User {
   final String username;
   final String email;
   final String phone;
-  Image? image;
-  // final int roleId;
+  final String role;
+  final String image;
 
   User({
-    this.image,
     required this.id,
     required this.firstName,
     required this.lastName,
     required this.username,
     required this.email,
     required this.phone,
-    // required this.roleId,
+    required this.role,
+    required this.image,
   });
 
   factory User.fromJson(jsonData) => User(
@@ -28,7 +28,8 @@ class User {
         username: jsonData['username'],
         email: jsonData['email'],
         phone: jsonData['phone'],
-        // roleId: jsonData['role_id'],
+        role: jsonData['role'] ?? 'Customer',
+        image: jsonData['icon'] ?? AppImages.user,
       );
 
   toJson() => {
@@ -38,25 +39,13 @@ class User {
         'username': username,
         'email': email,
         'phone': phone,
-        // 'roleId': roleId,
+        'role': role,
+        'image': image,
       };
-
-  properties() =>
-      ['First Name', 'Last Name', 'Username', 'Email', 'Phone', 'Role Id'];
-
-  values() => [
-        firstName,
-        lastName,
-        username,
-        email,
-        phone,
-        /*roleId*/
-      ];
 
   String get fullName => '$firstName $lastName';
 
   @override
   String toString() =>
-      'User(id: $id, firstName: $firstName, lastName: $lastName, username: $username, email: $email, phone: $phone)';
-  // , roleId: $roleId
+      'User(id: $id, firstName: $firstName, lastName: $lastName, username: $username, email: $email, phone: $phone, role: $role)';
 }
