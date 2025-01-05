@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/pages/app_default_page.dart';
 import 'package:geniego/common/styles/spacing_styles.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
@@ -39,9 +40,17 @@ class CartScreen extends StatelessWidget {
                   ? AppShimmer(
                       child: CartItem(product: AppHelper.exampleProduct))
                   : controller.hasError.value
-                      ? Text(controller.errorMessage.value)
+                      ? AppDefaultPage(
+                          image: 'assets/images/static/disconnect.svg',
+                          title: 'Oops! Something Went Wrong',
+                          subTitle:
+                              'We encountered an error while fetching the cart items.')
                       : controller.cartItems.value.isEmpty
-                          ? Text('Empty')
+                          ? AppDefaultPage(
+                              image: 'assets/images/static/disconnect.svg',
+                              title: 'There Are No items in cart',
+                              subTitle:
+                                  'It looks like you haven’t added any items to the cart yet.')
                           : CartItem(
                               product:
                                   controller.cartItems.keys.elementAt(index)),

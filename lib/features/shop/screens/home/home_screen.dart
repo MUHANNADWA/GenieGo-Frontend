@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/pages/app_default_page.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
@@ -67,9 +68,18 @@ class HomeScreen extends StatelessWidget {
                               ),
                             )
                           : controller.hasError.value
-                              ? Text(controller.errorMessage.value)
+                              ? AppDefaultPage(
+                                  image: 'assets/images/static/disconnect.svg',
+                                  title: 'Oops! Something Went Wrong ',
+                                  subTitle:
+                                      'We encountered an error while fetching the product details.')
                               : controller.products.value.isEmpty
-                                  ? Text('Empty')
+                                  ? AppDefaultPage(
+                                      image:
+                                          'assets/images/static/disconnect.svg',
+                                      title: 'There Are No Products',
+                                      subTitle:
+                                          'It looks like you haven’t added any Products yet.')
                                   : GridLayout(
                                       itemCount:
                                           controller.products.value.length,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/pages/app_default_page.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
@@ -56,9 +57,17 @@ class StoreScreen extends StatelessWidget {
                         ),
                       )
                     : controller.hasError.value
-                        ? Text(controller.errorMessage.value)
+                        ? AppDefaultPage(
+                            image: 'assets/images/static/disconnect.svg',
+                            title: 'Oops! Something Went Wrong',
+                            subTitle:
+                                'We encountered an error while fetching the Store details.')
                         : controller.stores.value.isEmpty
-                            ? Text('Empty')
+                            ? AppDefaultPage(
+                                image: 'assets/images/static/disconnect.svg',
+                                title: 'There are no stores',
+                                subTitle:
+                                    'It looks like there are no stores yet.')
                             : Padding(
                                 padding:
                                     const EdgeInsets.all(AppSizes.defaultSpace),

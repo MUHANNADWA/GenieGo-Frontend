@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/pages/app_default_page.dart';
 import 'package:geniego/common/styles/spacing_styles.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
@@ -90,19 +91,27 @@ class StoreDetailsScreen extends StatelessWidget {
                               ),
                             )
                           : controller.hasError.value
-                              ? GridLayout(
-                                  itemCount: 4,
-                                  itemBuilder: (_, index) => ProductCard(
-                                      product: AppHelper.exampleProduct),
-                                )
-                              : GridLayout(
-                                  itemCount: controller
-                                      .storeProducts.value[store.id]!.length,
-                                  itemBuilder: (_, index) => ProductCard(
-                                    product: controller
-                                        .storeProducts.value[store.id]![index],
-                                  ),
-                                ),
+                              ? AppDefaultPage(
+                                  image: 'assets/images/static/disconnect.svg',
+                                  title: 'Oops! Something Went Wrong',
+                                  subTitle:
+                                      'We encountered an error while fetching this product from this Store.')
+                              : controller.storeProducts.value.isEmpty
+                                  ? AppDefaultPage(
+                                      image:
+                                          'assets/images/static/disconnect.svg',
+                                      title:
+                                          'There are no products in this store',
+                                      subTitle:
+                                          'It looks like there are no products in this store yet.')
+                                  : GridLayout(
+                                      itemCount: controller.storeProducts
+                                          .value[store.id]!.length,
+                                      itemBuilder: (_, index) => ProductCard(
+                                        product: controller.storeProducts
+                                            .value[store.id]![index],
+                                      ),
+                                    ),
                     ),
                   ),
                 ],
