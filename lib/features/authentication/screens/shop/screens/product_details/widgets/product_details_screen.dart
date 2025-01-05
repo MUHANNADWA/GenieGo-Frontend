@@ -94,17 +94,25 @@ class ProductDetailsScreen extends StatelessWidget {
                   // Tags
                   if (product.tags.isNotEmpty)
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SectionHeading(title: 'Tags'),
+
+                        SizedBox(height: AppSizes.spaceBtwItems),
+
+                        // Tags
                         Wrap(
                           spacing: AppSizes.sm,
                           runSpacing: AppSizes.sm,
                           children: List.generate(
                             product.tags.length,
-                            (index) => RoundedContainer(
-                              padding: EdgeInsets.all(AppSizes.sm),
-                              backgroundColor: AppColors.primary,
-                              child: Text(product.tags[index]['name']),
+                            (index) => GestureDetector(
+                              onTap: () {},
+                              child: RoundedContainer(
+                                padding: EdgeInsets.all(AppSizes.sm),
+                                backgroundColor: AppColors.darkerGrey,
+                                child: Text(product.tags[index]['name']),
+                              ),
                             ),
                           ),
                         ),

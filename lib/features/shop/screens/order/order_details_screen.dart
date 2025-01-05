@@ -4,7 +4,6 @@ import 'package:geniego/common/widgets/custom_shapes/containers/rounded_containe
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
 import 'package:geniego/features/authentication/screens/signup/success_screen.dart';
 import 'package:geniego/features/shop/models/order_model.dart';
-import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_payment_section.dart';
