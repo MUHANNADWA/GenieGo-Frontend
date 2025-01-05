@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/pages/app_default_page.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
@@ -32,9 +33,17 @@ class AddressScreen extends StatelessWidget {
             () => controller.isLoading.value
                 ? AppShimmer(child: RoundedContainer(height: 120))
                 : controller.hasError.value
-                    ? Text(controller.errorMessage.value)
+                    ? AppDefaultPage(
+                        image: 'assets/images/static/disconnect.svg',
+                        title: 'Oops! addresses Fetch Failed',
+                        subTitle:
+                            'There was an issue retrieving your addresses. Please refresh or check back in a few moments.')
                     : controller.addresses.value.isEmpty
-                        ? Text('Empty')
+                        ? AppDefaultPage(
+                            image: 'assets/images/static/disconnect.svg',
+                            title: 'Addresses is Empty',
+                            subTitle:
+                                'It looks like you haven’t added any addresses.')
                         : AddressesListview(
                             addresses: controller.addresses.value),
           ),
