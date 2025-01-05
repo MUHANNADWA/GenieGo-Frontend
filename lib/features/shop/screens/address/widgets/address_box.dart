@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/features/shop/models/site_model.dart';
+import 'package:geniego/features/shop/screens/address/widgets/edit_address_screen.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AddressBox extends StatelessWidget {
@@ -50,7 +53,9 @@ class AddressBox extends StatelessWidget {
               child: Row(
                 children: [
                   // Edit
-                  IconButton(onPressed: () {}, icon: Icon(Iconsax.edit)),
+                  IconButton(
+                      onPressed: () => Get.to(() => EditAddressScreen()),
+                      icon: Icon(Iconsax.edit)),
                   // Delete
                   IconButton(onPressed: () {}, icon: Icon(Iconsax.trash)),
                 ],
