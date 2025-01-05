@@ -31,4 +31,14 @@ class ShopService {
   static getOrderById(id) => AppHttpHelper.get('orders/$id');
 
   static deleteOrderById(id) => AppHttpHelper.delete('orders/$id');
+
+  static getSites() => AppHttpHelper.get('sites');
+
+  static addSite(data) => AppHttpHelper.post('sites', data);
+
+  static updateSiteById(id, data) => AppHttpHelper.put('sites/$id', data);
+
+  static getSiteById(id) => AppHttpHelper.get('sites/$id');
+
+  static deleteSiteById(id) => AppHttpHelper.delete('sites/$id');
 }

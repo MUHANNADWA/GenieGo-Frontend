@@ -26,7 +26,7 @@ class OrdersScreen extends StatelessWidget {
 
         // Orders
         child: RefreshIndicator(
-          onRefresh: () => controller.fetchOrders(),
+          onRefresh: () => controller.refreshOrders(),
           child: Obx(
             () => controller.isLoading.value
                 ? AppShimmer(child: RoundedContainer(height: 150))

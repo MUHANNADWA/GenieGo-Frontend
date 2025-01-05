@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:geniego/features/shop/models/site_model.dart';
+import 'package:geniego/utils/constants/colors.dart';
+import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
+import 'package:iconsax/iconsax.dart';
+
+class AddressBox extends StatelessWidget {
+  const AddressBox({super.key, required this.address});
+
+  final Site address;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {},
+      child: RoundedContainer(
+        padding: const EdgeInsets.all(AppSizes.md),
+        width: double.infinity,
+        showBorder: true,
+        backgroundColor: Colors.transparent,
+        borderColor:
+            AppHelper.isDarkMode ? AppColors.darkerGrey : AppColors.dark,
+        margin: EdgeInsets.only(bottom: AppSizes.spaceBtwItems),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              flex: 11,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    address.name,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(height: AppSizes.sm),
+                  Text(
+                    address.address,
+                    softWrap: true,
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 5,
+              child: Row(
+                children: [
+                  // Edit
+                  IconButton(onPressed: () {}, icon: Icon(Iconsax.edit)),
+                  // Delete
+                  IconButton(onPressed: () {}, icon: Icon(Iconsax.trash)),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

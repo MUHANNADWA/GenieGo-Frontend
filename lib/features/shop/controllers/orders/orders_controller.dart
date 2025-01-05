@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:flutter/material.dart';
 import 'package:geniego/features/shop/models/order_model.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:get/get.dart';
@@ -14,8 +15,13 @@ class OredrsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchOrders();
+    getOrders();
   }
+
+  Future<void> getOrders() async =>
+      orders.firstRebuild ? await fetchOrders() : DoNothingAction();
+
+  Future<void> refreshOrders() async => await fetchOrders();
 
   Future<void> fetchOrders() async {
     try {
