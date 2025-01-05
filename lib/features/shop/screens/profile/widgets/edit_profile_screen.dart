@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
@@ -109,11 +111,10 @@ class EditProfileScreen extends StatelessWidget {
             const SizedBox(height: AppSizes.spaceBtwItems),
 
             Center(
-              child: TextButton(
+              child: ElevatedButton(
                 onPressed: () {},
                 child: const Text(
                   'Save Changes',
-                  style: TextStyle(color: AppColors.success),
                 ),
               ),
             ),

@@ -32,11 +32,8 @@ class AddNewAddressScreen extends StatelessWidget {
                 ),
 
                 //
-                TextFormField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Iconsax.mobile),
-                    labelText: 'Phone Number',
-                  ),
+                Row(
+                  children: [],
                 ),
 
                 SizedBox(
@@ -48,69 +45,16 @@ class AddNewAddressScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: TextFormField(
+                        maxLines: null,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Iconsax.building_31),
-                          labelText: 'Street',
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: AppSizes.spaceBtwInputFields,
-                    ),
-                    Expanded(
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Iconsax.code),
-                          labelText: 'Postal Code',
+                          prefixIcon: Icon(
+                            Iconsax.building,
+                          ),
+                          labelText: 'Address',
                         ),
                       ),
                     ),
                   ],
-                ),
-
-                SizedBox(
-                  height: AppSizes.spaceBtwInputFields,
-                ),
-
-                //
-                Row(
-                  children: [
-                    //
-                    Expanded(
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Iconsax.building),
-                          labelText: 'City',
-                        ),
-                      ),
-                    ),
-
-                    SizedBox(
-                      width: AppSizes.spaceBtwInputFields,
-                    ),
-
-                    //
-                    Expanded(
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Iconsax.activity),
-                          labelText: 'State',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-                SizedBox(
-                  height: AppSizes.spaceBtwInputFields,
-                ),
-
-                //
-                TextFormField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Iconsax.global),
-                    labelText: 'Country',
-                  ),
                 ),
 
                 SizedBox(
