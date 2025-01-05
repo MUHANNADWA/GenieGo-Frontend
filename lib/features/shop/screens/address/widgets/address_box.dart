@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:geniego/features/shop/models/site_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:iconsax/iconsax.dart';
 
-class SingleAddress extends StatelessWidget {
-  const SingleAddress({super.key, required this.selected});
+class AddressBox extends StatelessWidget {
+  const AddressBox({super.key, required this.selected, required this.address});
 
+  final Site address;
   final bool selected;
+
   @override
   Widget build(BuildContext context) {
     return RoundedContainer(
@@ -39,24 +42,14 @@ class SingleAddress extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                ' John Doe ',
+                address.name,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              const SizedBox(
-                height: AppSizes.sm / 2,
-              ),
-              const Text(
-                '(+123) 465 7890',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(
-                height: AppSizes.sm / 2,
-              ),
+              const SizedBox(height: AppSizes.sm),
               Text(
-                ' 82356 Timmy coves, South Liana, Maine, 87665, USA ',
+                address.address,
                 softWrap: true,
               ),
             ],

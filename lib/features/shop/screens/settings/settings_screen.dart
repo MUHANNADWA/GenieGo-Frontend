@@ -65,7 +65,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.safe_home,
                     title: AppTexts.addresses,
                     subTitle: AppTexts.addressesSub,
-                    onTap: () => Get.to(() => const UserAddressScreen()),
+                    onTap: () => Get.to(() => const AddressScreen()),
                   ),
 
                   // My Cart
