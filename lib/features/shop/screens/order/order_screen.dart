@@ -3,6 +3,7 @@ import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
 import 'package:geniego/features/authentication/screens/signup/success_screen.dart';
+import 'package:geniego/features/shop/models/order_model.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_amount_section.dart';
@@ -14,9 +15,9 @@ import 'package:geniego/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 
 class OrderScreen extends StatelessWidget {
-  const OrderScreen({super.key, required this.cartItems});
+  const OrderScreen({super.key, required this.order});
 
-  final Map<Product, RxInt> cartItems;
+  final Order order;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +38,9 @@ class OrderScreen extends StatelessWidget {
               SizedBox(
                 height: 300,
                 child: ListView.builder(
-                  itemCount: cartItems.length,
+                  itemCount: order.products.length,
                   itemBuilder: (_, index) => CartItem(
-                    product: cartItems.keys.elementAt(index),
+                    product: order.products.elementAt(index),
                     showAddRemoveButtons: false,
                   ),
                 ),

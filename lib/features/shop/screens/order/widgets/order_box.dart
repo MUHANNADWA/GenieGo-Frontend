@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/features/shop/models/order_model.dart';
+import 'package:geniego/features/shop/screens/order/order_screen.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 class OrderBox extends StatelessWidget {
@@ -48,7 +51,7 @@ class OrderBox extends StatelessWidget {
 
               // Icon
               IconButton(
-                onPressed: () {},
+                onPressed: () => Get.to(() => OrderScreen(order: order)),
                 icon: const Icon(Iconsax.arrow_right_34),
                 iconSize: AppSizes.iconSm,
               ),
