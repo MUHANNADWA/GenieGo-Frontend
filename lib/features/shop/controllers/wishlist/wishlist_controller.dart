@@ -37,7 +37,7 @@ class WishlistController extends GetxController {
 
       favourites.refresh();
 
-      log('Wishlist Fetched Successfully ✅ response = ${favourites.value}');
+      log('Wishlist Fetched Successfully ✅ response = ${favourites.value.map((product) => product.toJson())}');
     } catch (e) {
       hasError.value = true;
       errorMessage.value = e.toString();

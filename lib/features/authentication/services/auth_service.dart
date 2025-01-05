@@ -15,9 +15,9 @@ class AuthService {
     return AppHttpHelper.post('logout', {});
   }
 
-  static get currentUser => User.fromJson(GetStorage().read('user'));
+  static User get currentUser => User.fromJson(GetStorage().read('user'));
 
-  static get authenticated => GetStorage().read('token') != null;
+  static bool get authenticated => GetStorage().read('token') != null;
 
-  static get token => 'Bearer ${GetStorage().read('token')}';
+  static String get token => 'Bearer ${GetStorage().read('token')}';
 }

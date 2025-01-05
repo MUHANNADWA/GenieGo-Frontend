@@ -40,7 +40,7 @@ class ProductsController extends GetxController {
 
       products.refresh();
 
-      log('Products Fetched Successfully ✅ response = ${products.value}');
+      log('Products Fetched Successfully ✅ response = ${products.value.map((product) => product.toJson())}');
     } catch (e) {
       log('Error Fetching Products ❌ error = $e');
 

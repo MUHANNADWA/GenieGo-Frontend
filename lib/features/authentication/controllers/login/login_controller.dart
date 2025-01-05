@@ -101,7 +101,7 @@ class LoginController extends GetxController {
         await GetStorage().write('user', user.toJson());
 
         // Store User Status
-        GetStorage().write('token', response['data']['token']);
+        await GetStorage().write('token', response['data']['token']);
         // GetStorage().write('token', '12|Qvjk8sdvnioDSVniklnsvda2dvsk');
       }
 

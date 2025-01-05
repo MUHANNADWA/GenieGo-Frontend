@@ -21,4 +21,14 @@ class ShopService {
   static addToWishlist(id) => AppHttpHelper.get('wishlist/$id');
 
   static removeFromWishlist(id) => AppHttpHelper.get('wishlist/$id');
+
+  static getOrders() => AppHttpHelper.get('orders');
+
+  static addOrder(data) => AppHttpHelper.post('orders', data);
+
+  static updateOrderById(id, data) => AppHttpHelper.put('orders/$id', data);
+
+  static getOrderById(id) => AppHttpHelper.get('orders/$id');
+
+  static deleteOrderById(id) => AppHttpHelper.delete('orders/$id');
 }
