@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
@@ -48,7 +49,7 @@ class RoundedImage extends StatelessWidget {
             child: Image(
               fit: fit,
               image: AppHelper.isNetworkImage(image)
-                  ? NetworkImage(image)
+                  ? CachedNetworkImageProvider(image)
                   : AssetImage(image) as ImageProvider,
               loadingBuilder: (context, child, loadingProgress) =>
                   loadingProgress == null ? child : CircularProgressIndicator(),

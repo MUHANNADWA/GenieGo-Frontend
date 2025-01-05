@@ -91,6 +91,23 @@ class ProductDetailsScreen extends StatelessWidget {
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
+                  // Tags
+                  SectionHeading(title: 'Tags'),
+
+                  Wrap(
+                    spacing: AppSizes.sm,
+                    runSpacing: AppSizes.sm,
+                    children: List.generate(
+                        0,
+                        (index) => RoundedContainer(
+                              padding: EdgeInsets.all(AppSizes.sm),
+                              backgroundColor: AppColors.primary,
+                              child: Text(product.tags[index]),
+                            )),
+                  ),
+
+                  const SizedBox(height: AppSizes.spaceBtwSections),
+
                   // Checkout Button
                   SizedBox(
                     width: double.infinity,

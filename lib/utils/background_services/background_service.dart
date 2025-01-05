@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -52,7 +51,6 @@ void onStart(ServiceInstance service) async {
   Timer.periodic(const Duration(seconds: 1), (timer) async {
     if (service is AndroidServiceInstance) {
       if (await service.isForegroundService()) {
-        log('Foreground notifcation running');
         flutterLocalNotificationsPlugin.show(
           0,
           'This is foreground',
@@ -67,9 +65,7 @@ void onStart(ServiceInstance service) async {
           ),
         );
       }
-      log('Background notifcation running');
     }
-    log('Background service running');
     service.invoke('update');
   });
 }

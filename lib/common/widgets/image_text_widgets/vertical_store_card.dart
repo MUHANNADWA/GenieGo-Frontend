@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/features/shop/screens/store/widgets/store_details_screen.dart';
@@ -41,7 +42,7 @@ class VerticalStoreCard extends StatelessWidget {
               child: Center(
                 child: Image(
                   image: AppHelper.isNetworkImage(store.image)
-                      ? NetworkImage(store.image)
+                      ? CachedNetworkImageProvider(store.image)
                       : AssetImage(store.image) as ImageProvider,
                   loadingBuilder: (context, child, loadingProgress) =>
                       loadingProgress == null

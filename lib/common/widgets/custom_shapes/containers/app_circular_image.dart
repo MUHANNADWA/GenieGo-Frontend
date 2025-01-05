@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 
@@ -33,7 +34,7 @@ class AppCircularImage extends StatelessWidget {
       child: Image(
         color: overlayColor,
         image: AppHelper.isNetworkImage(image)
-            ? NetworkImage(image)
+            ? CachedNetworkImageProvider(image)
             : AssetImage(image) as ImageProvider,
         loadingBuilder: (context, child, loadingProgress) =>
             loadingProgress == null ? child : CircularProgressIndicator(),

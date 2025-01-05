@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,6 +17,8 @@ class AppHttpHelper {
 
   // Helper method to make a GET request
   static Future<Json> get(String endpoint) async {
+    log('token = ${AuthService.token}');
+
     final response = await http.get(
       Uri.parse('$_baseUrl/$endpoint'),
       headers: _headers,

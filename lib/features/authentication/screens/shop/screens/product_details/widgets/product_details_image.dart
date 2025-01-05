@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/curved_edges/curved_edge.dart';
@@ -35,7 +36,7 @@ class ProductImage extends StatelessWidget {
                 child: Center(
                   child: Image(
                     image: AppHelper.isNetworkImage(image)
-                        ? NetworkImage(image)
+                        ? CachedNetworkImageProvider(image)
                         : AssetImage(image) as ImageProvider,
                     loadingBuilder: (context, child, loadingProgress) =>
                         loadingProgress == null
