@@ -1,5 +1,6 @@
 import 'package:dotlottie_loader/dotlottie_loader.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:lottie/lottie.dart';
@@ -44,11 +45,17 @@ class AppDefaultPage extends StatelessWidget {
                     }
                   },
                 )
-              : Image(
-                  width: AppHelper.screenWidth * 0.8,
-                  height: AppHelper.screenHeight * 0.6,
-                  image: AssetImage(image),
-                ),
+              : image.endsWith('.svg')
+                  ? SvgPicture.asset(
+                      image,
+                      width: AppHelper.screenWidth * 0.8,
+                      height: AppHelper.screenHeight * 0.6,
+                    )
+                  : Image(
+                      image: AssetImage(image),
+                      width: AppHelper.screenWidth * 0.8,
+                      height: AppHelper.screenHeight * 0.6,
+                    ),
 
           // Title
           Text(

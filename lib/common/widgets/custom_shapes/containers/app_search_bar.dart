@@ -11,23 +11,24 @@ class AppSearchBar extends StatelessWidget {
     this.icon = Iconsax.search_normal,
     this.showBackground = true,
     this.showBorder = false,
-    this.onTap,
+    this.onSubmitted,
   });
 
   final String searchText;
   final IconData? icon;
   final bool showBackground, showBorder;
-  final VoidCallback? onTap;
+  final void Function(String)? onSubmitted;
 
   @override
   Widget build(BuildContext context) {
+    final typingController = TextEditingController();
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
-      child: SearchAnchor.bar(
-        // isFullScreen: false,
-        barPadding: const WidgetStatePropertyAll(EdgeInsets.all(AppSizes.xs)),
+      child: SearchBar(
+        padding: const WidgetStatePropertyAll(EdgeInsets.all(AppSizes.xs)),
         // Background Color
-        barBackgroundColor: WidgetStatePropertyAll(
+        backgroundColor: WidgetStatePropertyAll(
           showBackground
               ? AppHelper.isDarkMode
                   ? AppColors.dark
@@ -35,14 +36,8 @@ class AppSearchBar extends StatelessWidget {
               : Colors.transparent,
         ),
 
-        viewBackgroundColor: AppColors.darkLight,
-
-        viewShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSizes.cardRadiusLg),
-        ),
-
         // Border Color
-        barSide: WidgetStatePropertyAll(
+        side: WidgetStatePropertyAll(
           BorderSide(
             color: showBorder
                 ? AppHelper.isDarkMode
@@ -53,32 +48,26 @@ class AppSearchBar extends StatelessWidget {
         ),
 
         // Border Radius
-        barShape: WidgetStatePropertyAll(
+        shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppSizes.cardRadiusLg),
           ),
         ),
 
         // Search Icon
-        barLeading: IconButton(onPressed: () {}, icon: Icon(icon)),
+        leading: IconButton(onPressed: () {}, icon: Icon(icon)),
+
+        controller: typingController,
+
+        trailing: [
+          if (typingController.text.isNotEmpty)
+            IconButton(onPressed: () {}, icon: Icon(Iconsax.close_circle))
+        ],
+
+        onSubmitted: onSubmitted,
 
         // Search Text
-        barHintText: searchText,
-
-        onTap: () => AppHelper.hideKeyboard(),
-
-        suggestionsBuilder:
-            (BuildContext context, SearchController controller) {
-          final String input = controller.value.text;
-          return [
-            ListTile(leading: Text(input)),
-            ListTile(leading: Text('hi')),
-            ListTile(leading: Text('hi')),
-            ListTile(leading: Text('hi')),
-            ListTile(leading: Text('hi')),
-            ListTile(leading: Text('hi')),
-          ];
-        },
+        hintText: searchText,
       ),
     );
   }
