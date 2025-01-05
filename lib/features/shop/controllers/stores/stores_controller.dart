@@ -40,7 +40,7 @@ class StoresController extends GetxController {
 
       stores.refresh();
 
-      log('Stores Fetched Successfully ✅ response = ${stores.value}');
+      log('Stores Fetched Successfully ✅ response = ${stores.value.map((store) => store.toJson())}');
     } catch (e) {
       log('Error Fetching Stores ❌ error = $e');
 

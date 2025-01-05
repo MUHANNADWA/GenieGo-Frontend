@@ -36,7 +36,7 @@ class StoreProductsController extends GetxController {
         (index) => Product.fromJson(storeProductsData[index]),
       );
 
-      log('Products For The Store With Id: $id Fetched Successfully ✅  response = ${storeProducts.value}');
+      log('Products For The Store With Id: $id Fetched Successfully ✅  response = ${storeProducts.value.map((storeId, products) => MapEntry(storeId, products.map((product) => product.toJson())))}');
     } catch (e) {
       log('Error Fetching Products For The Store With Id: $id ❌ error = $e');
 

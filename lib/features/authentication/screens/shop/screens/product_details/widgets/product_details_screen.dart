@@ -92,19 +92,24 @@ class ProductDetailsScreen extends StatelessWidget {
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
                   // Tags
-                  SectionHeading(title: 'Tags'),
-
-                  Wrap(
-                    spacing: AppSizes.sm,
-                    runSpacing: AppSizes.sm,
-                    children: List.generate(
-                        0,
-                        (index) => RoundedContainer(
+                  if (product.tags.isNotEmpty)
+                    Column(
+                      children: [
+                        SectionHeading(title: 'Tags'),
+                        Wrap(
+                          spacing: AppSizes.sm,
+                          runSpacing: AppSizes.sm,
+                          children: List.generate(
+                            product.tags.length,
+                            (index) => RoundedContainer(
                               padding: EdgeInsets.all(AppSizes.sm),
                               backgroundColor: AppColors.primary,
-                              child: Text(product.tags[index]),
-                            )),
-                  ),
+                              child: Text(product.tags[index]['name']),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
