@@ -24,8 +24,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(AppThemeController());
     Get.put(AppLocaleController());
+    Get.put(AppThemeController());
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,

@@ -3,15 +3,15 @@ import 'package:geniego/utils/http/http_client.dart';
 import 'package:get_storage/get_storage.dart';
 
 class AuthService {
-  static login(data) => AppHttpHelper.post('login', data);
+  static login(data) async => await AppHttpHelper.post('login', data);
 
-  static signup(data) => AppHttpHelper.post('register', data);
+  static signup(data) async => await AppHttpHelper.post('register', data);
 
-  static logout() => AppHttpHelper.post('logout', {});
+  static logout() async => await AppHttpHelper.post('logout', {});
 
-  static updateUserById(data) => AppHttpHelper.put('user', data);
+  static updateUserById(data) async => await AppHttpHelper.put('user', data);
 
-  static deleteUserById(data) => AppHttpHelper.delete('user');
+  static deleteUserById(data) async => await AppHttpHelper.delete('user');
 
   static User get currentUser => User.fromJson(GetStorage().read('user'));
 

@@ -8,14 +8,24 @@ class AppThemeController extends GetxController {
   static AppThemeController get instance => Get.find();
   final localStorage = GetStorage();
 
-  final storedTheme = GetStorage().read('theme');
+  late String? storedTheme;
 
-  ThemeMode get initialTheme =>
-      storedTheme == null || storedTheme == AppTexts.system
-          ? ThemeMode.system
-          : storedTheme == AppTexts.dark
-              ? ThemeMode.dark
-              : ThemeMode.light;
+  ThemeMode get initialTheme => storedTheme == 'Light' || storedTheme == 'فاتح'
+      ? ThemeMode.light
+      : storedTheme == 'Dark' || storedTheme == 'داكن'
+          ? ThemeMode.dark
+          : ThemeMode.system;
+
+  @override
+  void onInit() {
+    super.onInit();
+    storedTheme = GetStorage().read('theme');
+    _applyInitialTheme();
+  }
+
+  void _applyInitialTheme() {
+    Get.changeThemeMode(initialTheme);
+  }
 
   void toggleTheme() {
     AppHelper.currentTheme == AppTexts.dark
@@ -23,13 +33,15 @@ class AppThemeController extends GetxController {
         : changeTheme(AppTexts.dark);
   }
 
-  void changeTheme(String theme) {
+  void changeTheme(String theme) async {
     theme == AppTexts.system
         ? Get.changeThemeMode(ThemeMode.system)
         : theme == AppTexts.dark
             ? Get.changeThemeMode(ThemeMode.dark)
             : Get.changeThemeMode(ThemeMode.light);
 
-    localStorage.write('theme', theme);
+    await localStorage.write('theme', theme);
+
+    update();
   }
 }

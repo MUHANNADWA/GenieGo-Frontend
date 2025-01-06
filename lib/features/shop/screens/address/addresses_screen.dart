@@ -7,6 +7,7 @@ import 'package:geniego/features/shop/controllers/addresses/addresses_controller
 import 'package:geniego/features/shop/screens/address/widgets/add_new_address.dart';
 import 'package:geniego/features/shop/screens/address/widgets/addresses_listview.dart';
 import 'package:geniego/utils/constants/colors.dart';
+import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
@@ -34,13 +35,13 @@ class AddressScreen extends StatelessWidget {
                 ? AppShimmer(child: RoundedContainer(height: 120))
                 : controller.hasError.value
                     ? AppDefaultPage(
-                        image: 'assets/images/static/disconnect.svg',
+                        image: AppImages.disconnected,
                         title: 'Oops! addresses Fetch Failed',
                         subTitle:
                             'There was an issue retrieving your addresses. Please refresh or check back in a few moments.')
                     : controller.addresses.value.isEmpty
                         ? AppDefaultPage(
-                            image: 'assets/images/static/disconnect.svg',
+                            image: AppImages.disconnected,
                             title: 'Addresses is Empty',
                             subTitle:
                                 'It looks like you haven’t added any addresses.')

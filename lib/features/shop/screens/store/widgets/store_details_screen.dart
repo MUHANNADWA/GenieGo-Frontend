@@ -11,6 +11,7 @@ import 'package:geniego/features/authentication/screens/shop/screens/product_det
 import 'package:geniego/features/shop/controllers/stores/store_products_controller.dart';
 import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
+import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
@@ -92,14 +93,13 @@ class StoreDetailsScreen extends StatelessWidget {
                             )
                           : controller.hasError.value
                               ? AppDefaultPage(
-                                  image: 'assets/images/static/disconnect.svg',
+                                  image: AppImages.disconnected,
                                   title: 'Oops! Something Went Wrong',
                                   subTitle:
                                       'We encountered an error while fetching this product from this Store.')
                               : controller.storeProducts.value.isEmpty
                                   ? AppDefaultPage(
-                                      image:
-                                          'assets/images/static/disconnect.svg',
+                                      image: AppImages.disconnected,
                                       title:
                                           'There are no products in this store',
                                       subTitle:

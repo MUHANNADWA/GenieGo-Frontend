@@ -92,31 +92,36 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(height: AppSizes.spaceBtwItems),
 
                   // Change Lang
-                  Obx(
-                    () => SettingsMenuTile(
-                      icon: Iconsax.language_square,
-                      title: AppTexts.language,
-                      subTitle: AppTexts.languageSub,
-                      trailing: DropdownButton<String>(
-                        value: controller.languages.value,
-                        items: [
-                          DropdownMenuItem(
-                            value: AppTexts.system,
-                            child: Text(AppTexts.system),
-                          ),
-                          DropdownMenuItem(
-                            value: AppTexts.english,
-                            child: Text(AppTexts.english),
-                          ),
-                          DropdownMenuItem(
-                            value: AppTexts.arabic,
-                            child: Text(AppTexts.arabic),
+                  SettingsMenuTile(
+                    icon: Iconsax.language_square,
+                    title: AppTexts.language,
+                    subTitle: AppTexts.languageSub,
+                    onTap: () => Get.bottomSheet(BottomSheet(
+                      onClosing: () {},
+                      builder: (_) => Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ListTile(
+                              title:
+                                  SectionHeading(title: AppTexts.changeLang)),
+                          Divider(),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: controller.languages.length,
+                            itemBuilder: (_, index) => ListTile(
+                              title: Text(controller.languages[index]),
+                              trailing: Obx(() => controller.languages[index] ==
+                                      controller.language.value
+                                  ? Icon(Icons.check, color: AppColors.primary)
+                                  : SizedBox()),
+                              onTap: () => controller
+                                  .chnageLang(controller.languages[index]),
+                            ),
                           ),
                         ],
-                        onChanged: (String? value) =>
-                            controller.chnageLang(value!),
                       ),
-                    ),
+                      enableDrag: false,
+                    )),
                   ),
 
                   // Change Theme
@@ -124,24 +129,33 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.colors_square,
                     title: AppTexts.theme,
                     subTitle: AppTexts.themeSub,
-                    trailing: DropdownButton<String>(
-                      value: controller.themes.value,
-                      items: [
-                        DropdownMenuItem(
-                          value: AppTexts.system,
-                          child: Text(AppTexts.system),
+                    onTap: () => Get.bottomSheet(
+                      BottomSheet(
+                        onClosing: () {},
+                        builder: (_) => Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            ListTile(
+                                title: SectionHeading(title: 'Change Theme')),
+                            Divider(),
+                            ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: controller.themes.length,
+                              itemBuilder: (_, index) => ListTile(
+                                title: Text(controller.themes[index]),
+                                trailing: Obx(() => controller.themes[index] ==
+                                        controller.theme.value
+                                    ? Icon(Icons.check,
+                                        color: AppColors.primary)
+                                    : SizedBox()),
+                                onTap: () => controller
+                                    .chnageTheme(controller.themes[index]),
+                              ),
+                            ),
+                          ],
                         ),
-                        DropdownMenuItem(
-                          value: AppTexts.light,
-                          child: Text(AppTexts.light),
-                        ),
-                        DropdownMenuItem(
-                          value: AppTexts.dark,
-                          child: Text(AppTexts.dark),
-                        ),
-                      ],
-                      onChanged: (String? value) =>
-                          controller.chnageTheme(value!),
+                        enableDrag: false,
+                      ),
                     ),
                   ),
 

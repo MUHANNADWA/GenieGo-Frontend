@@ -1,46 +1,50 @@
 import 'package:geniego/utils/http/http_client.dart';
 
 class ShopService {
-  static getStores() => AppHttpHelper.get('stores');
+  static getStores() async => await AppHttpHelper.get('stores');
 
-  static getStoreById(id) => AppHttpHelper.get('stores/$id');
+  static getStoreById(id) async => await AppHttpHelper.get('stores/$id');
 
-  static getStoreProductsByStoreId(id) =>
-      AppHttpHelper.get('stores/$id/products');
+  static getStoreProductsByStoreId(id) async =>
+      await AppHttpHelper.get('stores/$id/products');
 
-  static deleteStoreById(id) => AppHttpHelper.delete('stores/$id');
+  static deleteStoreById(id) async => await AppHttpHelper.delete('stores/$id');
 
-  static getProducts() => AppHttpHelper.get('products');
+  static getProducts() async => await AppHttpHelper.get('products');
 
-  static getProductById(id) => AppHttpHelper.get('products/$id');
+  static getProductById(id) async => await AppHttpHelper.get('products/$id');
 
-  static deleteProductById(id) => AppHttpHelper.delete('products/$id');
+  static deleteProductById(id) async =>
+      await AppHttpHelper.delete('products/$id');
 
-  static getWishlist() => AppHttpHelper.get('wishlist');
+  static getWishlist() async => await AppHttpHelper.get('wishlist');
 
-  static addToWishlist(id) => AppHttpHelper.get('wishlist/$id');
+  static addToWishlist(id) async => await AppHttpHelper.get('wishlist/$id');
 
-  static removeFromWishlist(id) => AppHttpHelper.get('wishlist/$id');
+  static removeFromWishlist(id) async =>
+      await AppHttpHelper.get('wishlist/$id');
 
-  static getOrders() => AppHttpHelper.get('orders');
+  static getOrders() async => await AppHttpHelper.get('orders');
 
-  static addOrder(data) => AppHttpHelper.post('orders', data);
+  static addOrder(data) async => await AppHttpHelper.post('orders', data);
 
-  static updateOrderById(id, data) => AppHttpHelper.put('orders/$id', data);
+  static updateOrderById(id, data) async =>
+      await AppHttpHelper.put('orders/$id', data);
 
-  static getOrderById(id) => AppHttpHelper.get('orders/$id');
+  static getOrderById(id) async => await AppHttpHelper.get('orders/$id');
 
-  static deleteOrderById(id) => AppHttpHelper.delete('orders/$id');
+  static deleteOrderById(id) async => await AppHttpHelper.delete('orders/$id');
 
-  static getSites() => AppHttpHelper.get('sites');
+  static getSites() async => await AppHttpHelper.get('sites');
 
-  static addSite(data) => AppHttpHelper.post('sites', data);
+  static addSite(data) async => await AppHttpHelper.post('sites', data);
 
-  static updateSiteById(id, data) => AppHttpHelper.put('sites/$id', data);
+  static updateSiteById(id, data) async =>
+      await AppHttpHelper.put('sites/$id', data);
 
-  static getSiteById(id) => AppHttpHelper.get('sites/$id');
+  static getSiteById(id) async => await AppHttpHelper.get('sites/$id');
 
-  static deleteSiteById(id) => AppHttpHelper.delete('sites/$id');
+  static deleteSiteById(id) async => await AppHttpHelper.delete('sites/$id');
 
-  static search(data) => AppHttpHelper.post('search', data);
+  static search(data) async => await AppHttpHelper.post('search', data);
 }

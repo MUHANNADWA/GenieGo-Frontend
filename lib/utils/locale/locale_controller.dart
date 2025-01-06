@@ -12,15 +12,13 @@ class AppLocaleController extends GetxController {
       ? Get.deviceLocale!
       : langCode(localStorage.read('lang'));
 
-  void toggleLang() {
-    AppHelper.currentLang == 'ar'
-        ? changeLang(AppTexts.english)
-        : changeLang(AppTexts.arabic);
-  }
+  void toggleLang() => AppHelper.currentLang == 'ar'
+      ? changeLang(AppTexts.english)
+      : changeLang(AppTexts.arabic);
 
-  void changeLang(String lang) {
+  void changeLang(String lang) async {
     Get.updateLocale(langCode(lang));
-    localStorage.write('lang', lang);
+    await localStorage.write('lang', lang);
   }
 
   Locale langCode(lang) {

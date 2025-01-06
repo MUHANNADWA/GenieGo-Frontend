@@ -11,50 +11,49 @@ class OtherWaysToLoginButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(LoginController());
+
     return Obx(
       () => Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // User Name
-          !controller.isUsernameScreen.value
-              ? Expanded(
-                  child: OutlinedButton.icon(
-                    label: Text(AppTexts.username),
-                    onPressed: () => controller.setLoginScreenToUsername(),
-                    icon: const Icon(Iconsax.user),
-                  ),
-                )
-              : const SizedBox(),
+          // Username Button
+          if (controller.currentScreen.value != LoginScreen.username)
+            Expanded(
+              child: OutlinedButton.icon(
+                label: Text(AppTexts.username),
+                onPressed: () =>
+                    controller.setLoginScreen(LoginScreen.username),
+                icon: const Icon(Iconsax.user),
+              ),
+            ),
 
-          controller.isPhoneNumberScreen.value
-              ? const SizedBox(width: AppSizes.spaceBtwItems)
-              : const SizedBox(),
+          if (controller.currentScreen.value != LoginScreen.phoneNumber)
+            const SizedBox(width: AppSizes.spaceBtwItems),
 
-          // Email
-          !controller.isEmailScreen.value
-              ? Expanded(
-                  child: OutlinedButton.icon(
-                    label: Text(AppTexts.email),
-                    onPressed: () => controller.setLoginScreenToEmail(),
-                    icon: const Icon(Iconsax.direct),
-                  ),
-                )
-              : const SizedBox(),
+          // Email Button
+          if (controller.currentScreen.value != LoginScreen.email)
+            Expanded(
+              child: OutlinedButton.icon(
+                label: Text(AppTexts.email),
+                onPressed: () => controller.setLoginScreen(LoginScreen.email),
+                icon: const Icon(Iconsax.direct),
+              ),
+            ),
 
-          controller.isUsernameScreen.value || controller.isEmailScreen.value
-              ? const SizedBox(width: AppSizes.spaceBtwItems)
-              : const SizedBox(),
+          if (controller.currentScreen.value != LoginScreen.username &&
+              controller.currentScreen.value != LoginScreen.email)
+            const SizedBox(width: AppSizes.spaceBtwItems),
 
-          // Phone Number
-          !controller.isPhoneNumberScreen.value
-              ? Expanded(
-                  child: OutlinedButton.icon(
-                    label: Text(AppTexts.phoneNo),
-                    onPressed: () => controller.setLoginScreenToPhoneNumber(),
-                    icon: const Icon(Iconsax.call),
-                  ),
-                )
-              : const SizedBox(),
+          // Phone Number Button
+          if (controller.currentScreen.value != LoginScreen.phoneNumber)
+            Expanded(
+              child: OutlinedButton.icon(
+                label: Text(AppTexts.phoneNo),
+                onPressed: () =>
+                    controller.setLoginScreen(LoginScreen.phoneNumber),
+                icon: const Icon(Iconsax.call),
+              ),
+            ),
         ],
       ),
     );

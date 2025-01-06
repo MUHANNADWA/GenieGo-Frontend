@@ -8,6 +8,7 @@ import 'package:geniego/common/widgets/products/cart/cart_counter_icon.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/features/shop/controllers/stores/stores_controller.dart';
 import 'package:geniego/features/shop/screens/store/widgets/store_card.dart';
+import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
@@ -58,13 +59,13 @@ class StoreScreen extends StatelessWidget {
                       )
                     : controller.hasError.value
                         ? AppDefaultPage(
-                            image: 'assets/images/static/disconnect.svg',
+                            image: AppImages.disconnected,
                             title: 'Oops! Something Went Wrong',
                             subTitle:
                                 'We encountered an error while fetching the Store details.')
                         : controller.stores.value.isEmpty
                             ? AppDefaultPage(
-                                image: 'assets/images/static/disconnect.svg',
+                                image: AppImages.disconnected,
                                 title: 'There are no stores',
                                 subTitle:
                                     'It looks like there are no stores yet.')

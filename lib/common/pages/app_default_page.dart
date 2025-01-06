@@ -28,7 +28,7 @@ class AppDefaultPage extends StatelessWidget {
       padding: const EdgeInsets.all(AppSizes.defaultSpace),
       child: Column(
         children: [
-          // Image Or Lottie Image
+          // Image, Svg Or Lottie Image
           image.endsWith('.lottie')
               ? DotLottieLoader.fromAsset(
                   image,

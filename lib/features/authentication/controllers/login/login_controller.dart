@@ -4,39 +4,24 @@ import 'package:geniego/features/authentication/models/user_model.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/pages.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 
+enum LoginScreen { phoneNumber, username, email }
+
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
 
-  //* First Control Field Logic
-  RxBool isPhoneNumberScreen = true.obs;
-  RxBool isUsernameScreen = false.obs;
-  RxBool isEmailScreen = false.obs;
+  //* Current Screen State
+  final Rx<LoginScreen> currentScreen = LoginScreen.phoneNumber.obs;
 
-  // Change Screen To Login With Phone Number
-  setLoginScreenToPhoneNumber() {
-    isPhoneNumberScreen.value = true;
-    isUsernameScreen.value = false;
-    isEmailScreen.value = false;
-  }
-
-  // Change Screen To Login With User Name
-  setLoginScreenToUsername() {
-    isPhoneNumberScreen.value = false;
-    isUsernameScreen.value = true;
-    isEmailScreen.value = false;
-  }
-
-  // Change Screen To Login With Email
-  setLoginScreenToEmail() {
-    isPhoneNumberScreen.value = false;
-    isUsernameScreen.value = false;
-    isEmailScreen.value = true;
+  // Change Screen
+  void setLoginScreen(LoginScreen screen) {
+    currentScreen.value = screen;
   }
 
   //* Toggle Password
@@ -72,26 +57,29 @@ class LoginController extends GetxController {
       );
 
       final userData = {
-        if (isUsernameScreen.value) 'username': username.text.trim(),
-        if (isEmailScreen.value) 'email': email.text.trim(),
-        if (isPhoneNumberScreen.value) 'phone': phoneNumber.value,
+        if (currentScreen.value == LoginScreen.username)
+          'username': username.text.trim(),
+        if (currentScreen.value == LoginScreen.email)
+          'email': email.text.trim(),
+        if (currentScreen.value == LoginScreen.phoneNumber)
+          'phone': phoneNumber.value,
         'password': password.text.trim()
       };
 
       User user;
       // Login User
-      if (dotenv.env['ENV']?.trim() != 'development') {
-        final response = await AuthService.login(userData);
+      // if (dotenv.env['ENV']?.trim() != 'development') {
+      // final response = await AuthService.login(userData);
 
-        user = User.fromJson(response['data']['user']);
-        // user = User.fromJson(AppHelper.exampleUser.toJson());
+      // user = User.fromJson(response['data']['user']);
+      user = User.fromJson(AppHelper.exampleUser.toJson());
 
-        await GetStorage().write('user', user.toJson());
+      await GetStorage().write('user', user.toJson());
 
-        // Store User Status
-        await GetStorage().write('token', response['data']['token']);
-        // GetStorage().write('token', '12|Qvjk8sdvnioDSVniklnsvda2dvsk');
-      }
+      // Store User Status
+      // await GetStorage().write('token', response['data']['token']);
+      await GetStorage().write('token', '12|Qvjk8sdvnioDSVniklnsvda2dvsk');
+      // }
 
       // Stop Loading
       AppDialogs.hideDialog();

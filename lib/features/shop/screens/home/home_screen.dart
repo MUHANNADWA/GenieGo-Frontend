@@ -9,6 +9,7 @@ import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/shop/controllers/products/products_controller.dart';
 import 'package:geniego/features/shop/screens/home/widgets/home_app_bar.dart';
+import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/features/shop/screens/home/widgets/home_popular_stores.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
@@ -69,14 +70,13 @@ class HomeScreen extends StatelessWidget {
                             )
                           : controller.hasError.value
                               ? AppDefaultPage(
-                                  image: 'assets/images/static/disconnect.svg',
+                                  image: AppImages.disconnected,
                                   title: 'Oops! Something Went Wrong ',
                                   subTitle:
                                       'We encountered an error while fetching the product details.')
                               : controller.products.value.isEmpty
                                   ? AppDefaultPage(
-                                      image:
-                                          'assets/images/static/disconnect.svg',
+                                      image: AppImages.disconnected,
                                       title: 'There Are No Products',
                                       subTitle:
                                           'It looks like you haven’t added any Products yet.')

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/utils/constants/pages.dart';
@@ -17,8 +15,10 @@ class SettingsController extends GetxController {
   static SettingsController get instance => Get.find();
 
   //* Settings Variables
-  RxString languages = AppTexts.system.obs;
-  RxString themes = AppTexts.system.obs;
+  List<String> languages = [AppTexts.system, AppTexts.english, AppTexts.arabic];
+  List<String> themes = [AppTexts.system, AppTexts.dark, AppTexts.light];
+  RxString language = AppTexts.system.obs;
+  RxString theme = AppTexts.system.obs;
   RxBool geoLocation = false.obs;
   RxBool notification = false.obs;
   RxBool fullscreen = false.obs;
@@ -29,22 +29,22 @@ class SettingsController extends GetxController {
     geoLocation.value = localStorage.read('geoLocation') ?? false;
     notification.value = localStorage.read('notification') ?? false;
     fullscreen.value = localStorage.read('fullscreen') ?? false;
-    languages.value = localStorage.read('lang') ?? AppTexts.system;
-    themes.value = localStorage.read('theme') ?? AppTexts.system;
+    language.value = localStorage.read('lang') ?? AppTexts.system;
+    theme.value = localStorage.read('theme') ?? AppTexts.system;
   }
 
   void chnageLang(String lang) {
     AppLocaleController.instance.changeLang(lang);
-    languages.value = lang;
+    language.value = lang;
   }
 
   void chnageTheme(String theme) {
     AppThemeController.instance.changeTheme(theme);
-    themes.value = theme;
+    this.theme.value = theme;
   }
 
-  void toggleGeolocation(value) {
-    localStorage.write('geoLocation', value);
+  void toggleGeolocation(value) async {
+    await localStorage.write('geoLocation', value);
     geoLocation.toggle();
   }
 
@@ -61,20 +61,18 @@ class SettingsController extends GetxController {
         ? FlutterBackgroundService().startService()
         : FlutterBackgroundService().invoke('stopService');
 
-    log('hello there');
-
-    localStorage.write('notification', value);
+    await localStorage.write('notification', value);
     notification.toggle();
   }
 
-  void toggleFullscreen(value) {
+  void toggleFullscreen(value) async {
     AppHelper.setFullScreen(value);
-    localStorage.write('fullscreen', value);
+    await localStorage.write('fullscreen', value);
     fullscreen.toggle();
   }
 
-  void logout() {
-    AuthService.logout();
+  void logout() async {
+    await AuthService.logout();
     GetStorage().remove('token');
     Get.offAllNamed(loginScreen);
   }
