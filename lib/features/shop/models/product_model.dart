@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
@@ -40,17 +38,21 @@ class Product {
     return Product(
       id: jsonData['id'],
       price: double.parse(jsonData['price']),
-      name: jsonData['translations'][AppHelper.currentLang]['name'],
-      description: jsonData['translations'][AppHelper.currentLang]
-          ['description'],
+      name: jsonData['translations'][AppHelper.currentLang]['name'] ?? '',
+      description:
+          jsonData['translations'][AppHelper.currentLang]['description'] ?? '',
       image: jsonData['icon_url'] ?? AppImages.productImage,
-      stock: jsonData['stock'] ?? Random().nextInt(10),
+      stock: jsonData['stock'],
       tags: jsonData['tags'],
       storeId: jsonData['store_id'],
-      arabicName: jsonData['translations']['ar']['name'],
-      englishName: jsonData['translations']['en']['name'],
-      arabicDescription: jsonData['translations']['ar']['description'],
-      englishDescription: jsonData['translations']['en']['description'],
+      arabicName: jsonData['translations']?['ar']?['name'] ??
+          'لا يوجد اسم متوفر باللغة العربية..',
+      englishName: jsonData['translations']?['en']?['name'] ??
+          'No Name Provided in English..',
+      arabicDescription: jsonData['translations']?['ar']?['description'] ??
+          'لا يوجد وصف متوفر باللغة العربية..',
+      englishDescription: jsonData['translations']?['en']?['description'] ??
+          'No Descreption Provided in English..',
     );
   }
 

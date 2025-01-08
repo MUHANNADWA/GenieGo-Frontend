@@ -9,13 +9,15 @@ import 'package:geniego/features/shop/screens/checkout/widgets/billing_payment_s
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 
-class OrderScreen extends StatelessWidget {
-  const OrderScreen({super.key, required this.order});
+class OrderDetailsScreen extends StatelessWidget {
+  const OrderDetailsScreen({super.key, required this.order});
 
   final Order order;
 
   @override
   Widget build(BuildContext context) {
+    // final controller = Get.put(OrderItemsController());
+
     return Scaffold(
       appBar: AppAppBar(
         showBackArrow: true,
@@ -30,6 +32,7 @@ class OrderScreen extends StatelessWidget {
           child: Column(
             children: [
               // Items In Cart
+// TODO
               SizedBox(
                 height: 300,
                 child: ListView.builder(

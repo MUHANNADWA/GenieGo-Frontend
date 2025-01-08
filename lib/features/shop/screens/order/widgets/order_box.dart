@@ -50,7 +50,7 @@ class OrderBox extends StatelessWidget {
 
               // Icon
               IconButton(
-                onPressed: () => Get.to(() => OrderScreen(order: order)),
+                onPressed: () => Get.to(() => OrderDetailsScreen(order: order)),
                 icon: const Icon(Iconsax.arrow_right_34),
                 iconSize: AppSizes.iconSm,
               ),

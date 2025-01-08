@@ -66,8 +66,6 @@ class AppHelper {
   }
 
   static void hideKeyboard() {
-    // FocusScope.of(context).requestFocus(FocusNode());
-    // Get.focusScope?.requestFocus(FocusNode());
     Get.focusScope?.unfocus();
   }
 

@@ -5,7 +5,7 @@ import 'package:geniego/common/widgets/custom_shapes/containers/rounded_containe
 import 'package:geniego/common/widgets/products/product_card/favourite_button.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
-import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details_screen.dart';
+import 'package:geniego/features/shop/screens/product/product_details_screen.dart';
 import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/colors.dart';

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/features/shop/controllers/search/search_controller.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AppSearchBar extends StatelessWidget {
@@ -11,17 +13,15 @@ class AppSearchBar extends StatelessWidget {
     this.icon = Iconsax.search_normal,
     this.showBackground = true,
     this.showBorder = false,
-    this.onSubmitted,
   });
 
   final String searchText;
   final IconData? icon;
   final bool showBackground, showBorder;
-  final void Function(String)? onSubmitted;
 
   @override
   Widget build(BuildContext context) {
-    final typingController = TextEditingController();
+    final controller = Get.put(AppSearchController());
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
@@ -57,14 +57,9 @@ class AppSearchBar extends StatelessWidget {
         // Search Icon
         leading: IconButton(onPressed: () {}, icon: Icon(icon)),
 
-        controller: typingController,
+        onSubmitted: (value) => controller.search(value, []),
 
-        trailing: [
-          if (typingController.text.isNotEmpty)
-            IconButton(onPressed: () {}, icon: Icon(Iconsax.close_circle))
-        ],
-
-        onSubmitted: onSubmitted,
+        onTapOutside: (event) => AppHelper.hideKeyboard(),
 
         // Search Text
         hintText: searchText,

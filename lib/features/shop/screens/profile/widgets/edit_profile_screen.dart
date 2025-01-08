@@ -28,96 +28,99 @@ class EditProfileScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AppSizes.defaultSpace),
-          child: Column(children: [
-            SizedBox(
-              width: double.infinity,
-              child: Column(
-                children: [
-                  // Profile Picture
-                  Center(
-                    child: Obx(
-                      () => RoundedContainer(
-                        radius: 100,
-                        height: 80,
-                        width: 80,
-                        child: imageController.image.value.path == ''
-                            ? Image.asset(AppImages.user)
-                            : Image.file(
-                                imageController.image.value,
-                                fit: BoxFit.cover,
-                              ),
+          child: Form(
+            key: controller.formKey,
+            child: Column(children: [
+              SizedBox(
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    // Profile Picture
+                    Center(
+                      child: Obx(
+                        () => RoundedContainer(
+                          radius: 100,
+                          height: 80,
+                          width: 80,
+                          child: imageController.image.value.path == ''
+                              ? Image.asset(AppImages.user)
+                              : Image.file(
+                                  imageController.image.value,
+                                  fit: BoxFit.cover,
+                                ),
+                        ),
                       ),
                     ),
-                  ),
 
-                  TextButton(
-                    onPressed: () => imageController.imagePicker(),
-                    child: TitleText(title: 'Change Profile Picture'),
-                  ),
-                ],
+                    TextButton(
+                      onPressed: () => imageController.imagePicker(),
+                      child: TitleText(title: 'Change Profile Picture'),
+                    ),
+                  ],
+                ),
               ),
-            ),
 
-            // Details
-            const SizedBox(height: AppSizes.spaceBtwItems / 2),
+              // Details
+              const SizedBox(height: AppSizes.spaceBtwItems / 2),
 
-            const Divider(),
+              const Divider(),
 
-            const SizedBox(height: AppSizes.spaceBtwItems),
+              const SizedBox(height: AppSizes.spaceBtwItems),
 
-            // Heading Personal Info
-            const SectionHeading(title: 'Profile Information'),
+              // Heading Personal Info
+              const SectionHeading(title: 'Profile Information'),
 
-            const SizedBox(height: AppSizes.spaceBtwItems),
+              const SizedBox(height: AppSizes.spaceBtwItems),
 
-            EditProfileMenu(
-              title: AppTexts.firstName,
-              icon: Iconsax.user_edit,
-              controller: controller.firstName,
-            ),
-
-            EditProfileMenu(
-              title: AppTexts.lastName,
-              icon: Iconsax.user_edit,
-              controller: controller.lastName,
-            ),
-
-            EditProfileMenu(
-              title: AppTexts.username,
-              icon: Iconsax.user_edit,
-              controller: controller.username,
-            ),
-
-            EditProfileMenu(
-              title: AppTexts.email,
-              icon: Iconsax.direct,
-              controller: controller.email,
-            ),
-
-            EditProfileMenu(
-              title: AppTexts.phoneNo,
-              icon: Iconsax.call,
-              controller: controller.phone,
-            ),
-            EditProfileMenu(
-              title: AppTexts.password,
-              icon: Iconsax.password_check,
-              controller: controller.password,
-              showToggle: true,
-              validator: (value) =>
-                  AppValidator.validateEmptyText(AppTexts.password, value),
-            ),
-
-            const SizedBox(height: AppSizes.spaceBtwSections),
-
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text('Save Changes'),
+              EditProfileMenu(
+                title: AppTexts.firstName,
+                icon: Iconsax.user_edit,
+                controller: controller.firstName,
               ),
-            ),
-          ]),
+
+              EditProfileMenu(
+                title: AppTexts.lastName,
+                icon: Iconsax.user_edit,
+                controller: controller.lastName,
+              ),
+
+              EditProfileMenu(
+                title: AppTexts.username,
+                icon: Iconsax.user_edit,
+                controller: controller.username,
+              ),
+
+              EditProfileMenu(
+                title: AppTexts.email,
+                icon: Iconsax.direct,
+                controller: controller.email,
+              ),
+
+              EditProfileMenu(
+                title: AppTexts.phoneNo,
+                icon: Iconsax.call,
+                controller: controller.phone,
+              ),
+              EditProfileMenu(
+                title: AppTexts.password,
+                icon: Iconsax.password_check,
+                controller: controller.password,
+                showToggle: true,
+                validator: (value) =>
+                    AppValidator.validateEmptyText(AppTexts.password, value),
+              ),
+
+              const SizedBox(height: AppSizes.spaceBtwSections),
+
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => controller.updateUserInfo(),
+                  child: const Text('Save Changes'),
+                ),
+              ),
+            ]),
+          ),
         ),
       ),
     );

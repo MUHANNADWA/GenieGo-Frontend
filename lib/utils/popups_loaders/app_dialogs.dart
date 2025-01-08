@@ -86,6 +86,25 @@ class AppDialogs {
     );
   }
 
+  // Confirmation Dialog
+  static void showConfirmationDialog({
+    required String title,
+    required String description,
+    required String confirmText,
+    required void Function()? onConfirm,
+  }) {
+    Get.defaultDialog(
+      buttonColor: AppColors.primary,
+      confirmTextColor: AppColors.darkLightInvert,
+      cancelTextColor: AppColors.darkLightInvert,
+      title: confirmText,
+      middleText: description,
+      textCancel: 'Cancel',
+      textConfirm: confirmText,
+      onConfirm: onConfirm,
+    );
+  }
+
   // Hide Current Dialog
   static hideDialog() {
     Navigator.of(Get.overlayContext!).pop();

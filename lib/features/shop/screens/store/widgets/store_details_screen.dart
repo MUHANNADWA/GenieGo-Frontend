@@ -7,7 +7,7 @@ import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
-import 'package:geniego/features/authentication/screens/shop/screens/product_details/widgets/product_details_image.dart';
+import 'package:geniego/features/shop/screens/product/widgets/product_details_image.dart';
 import 'package:geniego/features/shop/controllers/stores/store_products_controller.dart';
 import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/utils/constants/colors.dart';

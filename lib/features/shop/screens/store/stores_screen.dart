@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/pages/app_default_page.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
-import 'package:geniego/common/widgets/custom_shapes/containers/app_search_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/cart/cart_counter_icon.dart';
@@ -31,13 +30,6 @@ class StoreScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: AppSizes.spaceBtwItems),
-
-            AppSearchBar(
-              searchText: AppTexts.searchStores,
-              showBorder: true,
-            ),
-
             SizedBox(height: AppSizes.spaceBtwItems),
 
             // Stores

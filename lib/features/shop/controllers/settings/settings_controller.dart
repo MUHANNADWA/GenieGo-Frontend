@@ -1,6 +1,4 @@
 import 'package:flutter_background_service/flutter_background_service.dart';
-import 'package:geniego/features/authentication/services/auth_service.dart';
-import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:geniego/utils/locale/locale_controller.dart';
@@ -36,11 +34,13 @@ class SettingsController extends GetxController {
   void chnageLang(String lang) {
     AppLocaleController.instance.changeLang(lang);
     language.value = lang;
+    Get.back();
   }
 
   void chnageTheme(String theme) {
     AppThemeController.instance.changeTheme(theme);
     this.theme.value = theme;
+    Get.back();
   }
 
   void toggleGeolocation(value) async {
@@ -69,11 +69,5 @@ class SettingsController extends GetxController {
     AppHelper.setFullScreen(value);
     await localStorage.write('fullscreen', value);
     fullscreen.toggle();
-  }
-
-  void logout() async {
-    await AuthService.logout();
-    GetStorage().remove('token');
-    Get.offAllNamed(loginScreen);
   }
 }

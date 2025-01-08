@@ -4,7 +4,7 @@ import 'package:geniego/common/styles/spacing_styles.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
-import 'package:geniego/features/authentication/screens/shop/screens/checkout/widgets/checkout.dart';
+import 'package:geniego/features/shop/screens/cart/checkout_screen.dart';
 import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';

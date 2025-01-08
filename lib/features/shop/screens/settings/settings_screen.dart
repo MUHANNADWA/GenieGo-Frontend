@@ -4,6 +4,7 @@ import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_c
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
+import 'package:geniego/features/shop/controllers/settings/profile_controller.dart';
 import 'package:geniego/features/shop/controllers/settings/settings_controller.dart';
 import 'package:geniego/features/shop/screens/address/addresses_screen.dart';
 import 'package:geniego/features/shop/screens/cart/cart_screen.dart';
@@ -20,6 +21,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SettingsController());
+    final profileController = Get.put(ProfileController());
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -112,7 +114,8 @@ class SettingsScreen extends StatelessWidget {
                               title: Text(controller.languages[index]),
                               trailing: Obx(() => controller.languages[index] ==
                                       controller.language.value
-                                  ? Icon(Icons.check, color: AppColors.primary)
+                                  ? Icon(Iconsax.tick_circle,
+                                      color: AppColors.primary)
                                   : SizedBox()),
                               onTap: () => controller
                                   .chnageLang(controller.languages[index]),
@@ -145,7 +148,7 @@ class SettingsScreen extends StatelessWidget {
                                 title: Text(controller.themes[index]),
                                 trailing: Obx(() => controller.themes[index] ==
                                         controller.theme.value
-                                    ? Icon(Icons.check,
+                                    ? Icon(Iconsax.tick_circle,
                                         color: AppColors.primary)
                                     : SizedBox()),
                                 onTap: () => controller
@@ -207,7 +210,7 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () => controller.logout(),
+                      onPressed: () => profileController.logout(),
                       child: Text(AppTexts.logout),
                     ),
                   ),

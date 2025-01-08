@@ -13,8 +13,8 @@ import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 
-class OrderScreen extends StatelessWidget {
-  const OrderScreen({super.key, required this.cartItems});
+class OrderDetailsScreen extends StatelessWidget {
+  const OrderDetailsScreen({super.key, required this.cartItems});
 
   final Map<Product, RxInt> cartItems;
 

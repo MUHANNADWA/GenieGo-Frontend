@@ -50,12 +50,16 @@ class OredrsController extends GetxController {
     }
   }
 
-  Future<void> addOrder(productId) async {
+  Future<void> addOrder() async {
     try {
       isLoading.value = true;
       hasError.value = false;
 
-      await ShopService.addOrder(productId);
+      final orderData = {
+        //
+      };
+
+      await ShopService.addOrder(orderData);
 
       orders.refresh();
     } catch (e) {
@@ -66,12 +70,32 @@ class OredrsController extends GetxController {
     }
   }
 
-  Future<void> deleteOrderById(productId) async {
+  Future<void> editOrder(id) async {
     try {
       isLoading.value = true;
       hasError.value = false;
 
-      await ShopService.deleteOrderById(productId);
+      final orderData = {
+        //
+      };
+
+      await ShopService.updateOrderById(id, orderData);
+
+      orders.refresh();
+    } catch (e) {
+      hasError.value = true;
+      errorMessage.value = e.toString();
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> deleteOrderById(id) async {
+    try {
+      isLoading.value = true;
+      hasError.value = false;
+
+      await ShopService.deleteOrderById(id);
 
       orders.refresh();
     } catch (e) {

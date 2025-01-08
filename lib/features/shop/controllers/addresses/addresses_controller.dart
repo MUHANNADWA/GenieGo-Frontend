@@ -50,12 +50,16 @@ class AddressesController extends GetxController {
     }
   }
 
-  Future<void> addSite(productId) async {
+  Future<void> addSite() async {
     try {
       isLoading.value = true;
       hasError.value = false;
 
-      await ShopService.addSite(productId);
+      final siteData = {
+        //
+      };
+
+      await ShopService.addSite(siteData);
 
       addresses.refresh();
     } catch (e) {
@@ -66,12 +70,32 @@ class AddressesController extends GetxController {
     }
   }
 
-  Future<void> deleteSiteById(productId) async {
+  Future<void> editSite(id) async {
     try {
       isLoading.value = true;
       hasError.value = false;
 
-      await ShopService.deleteSiteById(productId);
+      final siteData = {
+        //
+      };
+
+      await ShopService.updateSiteById(id, siteData);
+
+      addresses.refresh();
+    } catch (e) {
+      hasError.value = true;
+      errorMessage.value = e.toString();
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> deleteSiteById(id) async {
+    try {
+      isLoading.value = true;
+      hasError.value = false;
+
+      await ShopService.deleteSiteById(id);
 
       addresses.refresh();
     } catch (e) {
