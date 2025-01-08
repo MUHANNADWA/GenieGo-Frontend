@@ -18,7 +18,7 @@ class LoginForm extends StatelessWidget {
     return Form(
       key: controller.loginFormKey,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 32),
+        padding: const EdgeInsets.symmetric(vertical: AppSizes.xl),
         child: Obx(
           () => Column(
             children: [
