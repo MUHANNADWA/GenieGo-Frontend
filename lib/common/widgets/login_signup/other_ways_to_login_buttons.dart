@@ -27,7 +27,7 @@ class OtherWaysToLoginButtons extends StatelessWidget {
               ),
             ),
 
-          if (controller.currentScreen.value != LoginScreen.phoneNumber)
+          if (controller.currentScreen.value != LoginScreen.username)
             const SizedBox(width: AppSizes.spaceBtwItems),
 
           // Email Button
@@ -40,7 +40,7 @@ class OtherWaysToLoginButtons extends StatelessWidget {
               ),
             ),
 
-          if (controller.currentScreen.value != LoginScreen.username &&
+          if (controller.currentScreen.value != LoginScreen.phoneNumber &&
               controller.currentScreen.value != LoginScreen.email)
             const SizedBox(width: AppSizes.spaceBtwItems),
 
