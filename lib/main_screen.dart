@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
+import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
+import 'package:geniego/features/owner/owner_dashboard.dart';
 import 'package:geniego/features/shop/screens/settings/settings_screen.dart';
 import 'package:geniego/features/shop/screens/wishlist/wishlist_screen.dart';
 import 'package:geniego/features/shop/screens/store/stores_screen.dart';
@@ -124,7 +126,9 @@ class NavigationController extends GetxController {
   final screens = [
     const HomeScreen(),
     const StoreScreen(),
-    const WishlistScreen(),
+    AuthService.currentUser.role == 'Owner'
+        ? const WishlistScreen()
+        : OwnerDashboard(),
     const SettingsScreen(),
   ];
 }
