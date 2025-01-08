@@ -44,18 +44,15 @@ class ProfileScreen extends StatelessWidget {
 
             const SizedBox(height: AppSizes.spaceBtwItems),
 
-            ProfileMenu(title: 'Name', value: user.fullName, onPressed: () {}),
+            ProfileMenu(title: 'Name', value: user.fullName),
 
-            ProfileMenu(
-                title: 'Username', value: user.username, onPressed: () {}),
+            ProfileMenu(title: 'Username', value: user.username),
 
-            ProfileMenu(
-                title: 'User ID', value: user.id.toString(), onPressed: () {}),
+            ProfileMenu(title: 'User ID', value: user.id.toString()),
 
-            ProfileMenu(title: 'E-mail', value: user.email, onPressed: () {}),
+            ProfileMenu(title: 'E-mail', value: user.email),
 
-            ProfileMenu(
-                title: 'Phone Number', value: user.phone, onPressed: () {}),
+            ProfileMenu(title: 'Phone Number', value: user.phone),
 
             Divider(),
 

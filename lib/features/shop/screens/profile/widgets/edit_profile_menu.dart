@@ -40,15 +40,19 @@ class EditProfileMenu extends StatelessWidget {
             Expanded(
               flex: 5,
               child: TextFormField(
+                obscureText:
+                    showToggle ? controller.isPasswordObscured.value : false,
                 controller: this.controller,
                 validator: validator,
                 decoration: InputDecoration(
                   prefixIcon: Icon(icon),
                   suffixIcon: showToggle
-                      ? IconButton(
-                          icon: controller.passwordIcon.value,
-                          onPressed: () =>
-                              controller.togglePasswordVisibility())
+                      ? Obx(
+                          () => IconButton(
+                              icon: controller.passwordIcon.value,
+                              onPressed: () =>
+                                  controller.togglePasswordVisibility()),
+                        )
                       : null,
                 ),
               ),
