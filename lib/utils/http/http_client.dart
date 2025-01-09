@@ -6,8 +6,8 @@ import 'package:http/http.dart' as http;
 typedef Json = Map<String, dynamic>;
 
 class AppHttpHelper {
-  // static const String _baseUrl = 'http://172.26.1.1:4567/api';
-  static const String _baseUrl = 'http://172.26.1.30:4567/api';
+  static const String _baseUrl = 'http://172.26.1.1:4567/api';
+  // static const String _baseUrl = 'http://172.26.1.30:4567/api';
   // static const String _baseUrl = 'http://192.168.0.150:4567/api';
 
   static Map<String, String> getHeaders() => {
