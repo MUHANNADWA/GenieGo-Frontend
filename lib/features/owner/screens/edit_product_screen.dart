@@ -3,24 +3,28 @@ import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
-import 'package:geniego/features/owner/controllers/dashboard_store_controller.dart';
+import 'package:geniego/features/shop/controllers/settings/profile_controller.dart';
 import 'package:geniego/features/shop/screens/profile/widgets/edit_profile_menu.dart';
 import 'package:geniego/features/shop/controllers/settings/image_picker_controller.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
+import 'package:geniego/utils/validator/validator.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class AddStoreScreen extends StatelessWidget {
-  const AddStoreScreen({super.key});
+class EditProductScreen extends StatelessWidget {
+  const EditProductScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final imageController = Get.put(ImagePickerController());
-    final controller = Get.put(DashboardStoreController());
+    final controller = Get.put(ProfileController());
 
     return Scaffold(
-      appBar: AppAppBar(title: Text('Add Stores'), showBackArrow: true),
+      appBar: AppAppBar(title: Text(AppTexts.profile), showBackArrow: true),
+
+      // Body
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AppSizes.defaultSpace),
@@ -31,7 +35,7 @@ class AddStoreScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    // Profile Picture
+                    // Product  Picture
                     Center(
                       child: Obx(
                         () => RoundedContainer(
@@ -50,7 +54,7 @@ class AddStoreScreen extends StatelessWidget {
 
                     TextButton(
                       onPressed: () => imageController.pickImage(),
-                      child: TitleText(title: 'Change Store Picture'),
+                      child: TitleText(title: 'Change Product Picture'),
                     ),
                   ],
                 ),
@@ -64,47 +68,54 @@ class AddStoreScreen extends StatelessWidget {
               const SizedBox(height: AppSizes.spaceBtwItems),
 
               // Heading Personal Info
-              const SectionHeading(title: 'Store Information'),
+              const SectionHeading(title: 'Product Information'),
 
               const SizedBox(height: AppSizes.spaceBtwItems),
 
               EditProfileMenu(
                 title: 'English Name',
-                icon: Iconsax.archive,
+                icon: Iconsax.document,
                 controller: controller.firstName,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Name',
-                icon: Iconsax.archive,
+                icon: Iconsax.document,
                 controller: controller.lastName,
               ),
 
               EditProfileMenu(
                 title: 'English Description',
-                icon: Iconsax.document,
+                icon: Iconsax.archive,
                 controller: controller.username,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Description',
-                icon: Iconsax.document,
+                icon: Iconsax.archive,
                 controller: controller.email,
               ),
 
               EditProfileMenu(
-                title: 'Products',
-                icon: Iconsax.call,
+                title: 'Price',
+                icon: Iconsax.dollar_circle,
                 controller: controller.phone,
               ),
-              SizedBox(
-                height: AppSizes.spaceBtwSections,
+              EditProfileMenu(
+                title: 'Quantity',
+                icon: Iconsax.add_square5,
+                controller: controller.password,
+                showToggle: true,
+                validator: (value) =>
+                    AppValidator.validateEmptyText(AppTexts.password, value),
               ),
+
+              const SizedBox(height: AppSizes.spaceBtwSections),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => controller.addStore(),
-                  child: const Text('Add Store'),
+                  child: const Text('Save Product Info'),
                 ),
               ),
             ]),
