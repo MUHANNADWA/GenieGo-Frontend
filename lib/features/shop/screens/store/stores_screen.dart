@@ -62,8 +62,8 @@ class StoreScreen extends StatelessWidget {
                                 subTitle:
                                     'It looks like there are no stores yet.')
                             : Padding(
-                                padding:
-                                    const EdgeInsets.all(AppSizes.defaultSpace),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: AppSizes.defaultSpace),
                                 child: GridLayout(
                                   crossAxisCount: 1,
                                   mainAxisExtent: 80,

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:http/http.dart' as http;
 
@@ -53,6 +54,34 @@ class AppHttpHelper {
       Uri.parse('$_baseUrl/$endpoint'),
       headers: getHeaders(),
     );
+    return _handleResponse(response);
+  }
+
+  // Helper method to make a POST multipart request
+  static Future<Json> postMultipart(
+      String endpoint, Map<String, String> fields, File? file) async {
+    final uri = Uri.parse('$_baseUrl/$endpoint');
+    final request = http.MultipartRequest('POST', uri)
+      ..headers.addAll(getHeaders());
+
+    // Add form fields
+    fields.forEach((key, value) => request.fields[key] = value);
+
+    // Add file if available
+    if (file != null) {
+      final fileStream = http.MultipartFile.fromBytes(
+        'icon',
+        await file.readAsBytes(),
+        filename: file.path.split('/').last,
+      );
+      request.files.add(fileStream);
+    }
+
+    log('Uploading file to $uri with fields: $fields');
+
+    final streamedResponse = await request.send();
+    final response = await http.Response.fromStream(streamedResponse);
+
     return _handleResponse(response);
   }
 

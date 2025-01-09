@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
-import 'package:geniego/features/owner/owner_dashboard.dart';
+import 'package:geniego/features/owner/screens/owner_dashboard.dart';
 import 'package:geniego/features/shop/screens/settings/settings_screen.dart';
 import 'package:geniego/features/shop/screens/wishlist/wishlist_screen.dart';
 import 'package:geniego/features/shop/screens/store/stores_screen.dart';
@@ -48,12 +48,19 @@ class MainScreen extends StatelessWidget {
                         Icon(Iconsax.shop5, color: AppColors.darkLightInvert),
                     label: AppTexts.stores,
                   ),
-                  NavigationDestination(
-                    icon: Icon(Iconsax.heart),
-                    selectedIcon:
-                        Icon(Iconsax.heart5, color: AppColors.darkLightInvert),
-                    label: AppTexts.wishlist,
-                  ),
+                  AuthService.currentUser.role == 'Owner'
+                      ? NavigationDestination(
+                          icon: Icon(Iconsax.activity),
+                          selectedIcon: Icon(Iconsax.activity5,
+                              color: AppColors.darkLightInvert),
+                          label: 'Dashboard',
+                        )
+                      : NavigationDestination(
+                          icon: Icon(Iconsax.heart),
+                          selectedIcon: Icon(Iconsax.heart5,
+                              color: AppColors.darkLightInvert),
+                          label: AppTexts.wishlist,
+                        ),
                   NavigationDestination(
                     icon: Icon(Iconsax.setting_2),
                     selectedIcon: Icon(Iconsax.setting_21,
@@ -96,10 +103,15 @@ class MainScreen extends StatelessWidget {
                         icon: Icon(Iconsax.shop),
                         label: Text(AppTexts.stores),
                       ),
-                      NavigationRailDestination(
-                        icon: Icon(Iconsax.heart),
-                        label: Text(AppTexts.wishlist),
-                      ),
+                      AuthService.currentUser.role == 'Owner'
+                          ? NavigationRailDestination(
+                              icon: Icon(Iconsax.activity),
+                              label: Text('Dashboard'),
+                            )
+                          : NavigationRailDestination(
+                              icon: Icon(Iconsax.heart),
+                              label: Text(AppTexts.wishlist),
+                            ),
                       NavigationRailDestination(
                         icon: Icon(Iconsax.user),
                         label: Text(AppTexts.settings),
@@ -127,8 +139,8 @@ class NavigationController extends GetxController {
     const HomeScreen(),
     const StoreScreen(),
     AuthService.currentUser.role == 'Owner'
-        ? const WishlistScreen()
-        : OwnerDashboard(),
+        ? const OwnerDashboard()
+        : const WishlistScreen(),
     const SettingsScreen(),
   ];
 }

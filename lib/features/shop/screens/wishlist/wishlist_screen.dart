@@ -45,13 +45,13 @@ class WishlistScreen extends StatelessWidget {
                     )
                   : controller.hasError.value
                       ? AppDefaultPage(
-                          image: AppImages.disconnected,
+                          image: AppImages.canNotDeliver,
                           title: "Oops! Wishlist Fetch Failed",
                           subTitle:
                               "There was an issue retrieving your wishlist items. Please refresh or check back in a few moments.")
                       : controller.favourites.value.isEmpty
                           ? AppDefaultPage(
-                              image: AppImages.disconnected,
+                              image: AppImages.prepairingOrder,
                               title: "Wishlist is Empty",
                               subTitle:
                                   "It looks like you haven’t added any items to your wishlist yet. Browse through our catalog and add your favorite items!")

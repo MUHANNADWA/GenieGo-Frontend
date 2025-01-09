@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:geniego/features/authentication/models/user_model.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
@@ -77,7 +79,7 @@ class ProfileController extends GetxController {
   final password = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  Future<void> updateUserInfo() async {
+  Future<void> updateUserInfo({File? profileImage}) async {
     try {
       // Form Validation
       if (!formKey.currentState!.validate()) return;
@@ -98,8 +100,9 @@ class ProfileController extends GetxController {
         'password': password.text.trim(),
       };
 
-      // Update User
-      final response = await AuthService.updateUserById(userData);
+      final response = profileImage != null
+          ? await AuthService.updateUserWithImage(userData, profileImage)
+          : await AuthService.updateUser(userData);
 
       final user = User.fromJson(response['data']['user']);
 

@@ -6,20 +6,21 @@ import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
-import 'package:geniego/features/owner/owner_products_screen.dart';
-import 'package:geniego/features/owner/owner_stores_screen.dart';
-import 'package:geniego/features/shop/controllers/search/search_controller.dart';
+import 'package:geniego/features/owner/controllers/dashboard_controller.dart';
+import 'package:geniego/features/owner/screens/owner_products_screen.dart';
+import 'package:geniego/features/owner/screens/owner_stores_screen.dart';
 import 'package:geniego/features/shop/screens/store/widgets/store_card.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 
 class OwnerDashboard extends StatelessWidget {
-  final controller = Get.put(AppSearchController());
-  OwnerDashboard({super.key});
+  const OwnerDashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(DashboardController());
+
     return Scaffold(
       appBar: AppAppBar(title: Text('Dashboard')),
       body: Padding(
