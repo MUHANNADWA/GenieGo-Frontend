@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
@@ -18,7 +19,7 @@ class DashboardController extends GetxController {
   final RxBool hasError = false.obs;
   final RxString errorMessage = ''.obs;
   RxList<Product> products = <Product>[].obs;
-  RxList<Store> stores = <Store>[].obs;
+  Store? store;
 
   Future<void> fetchDashboardItems() async {
     try {
@@ -26,22 +27,21 @@ class DashboardController extends GetxController {
       isLoading.value = true;
       hasError.value = false;
 
-      final data = await ShopService.getStoreById(1);
-      final List<dynamic> productsData = data['data']['products'] ?? [];
-      final List<dynamic> storesData = data['data']['stores'] ?? [];
+      final storedata =
+          await ShopService.getStoreById(AuthService.currentUser.storeId);
+      final productsdata = await ShopService.getStoreProductsByStoreId(
+          AuthService.currentUser.storeId);
+      final List<dynamic> productsData = productsdata['data'] ?? [];
+      final storeData = storedata['data'] ?? [];
 
       products.value = List.generate(
         productsData.length,
         (index) => Product.fromJson(productsData[index]),
       );
 
-      stores.value = List.generate(
-        storesData.length,
-        (index) => Store.fromJson(storesData[index]),
-      );
+      store = Store.fromJson(storeData);
 
       products.refresh();
-      stores.refresh();
 
       log('Dashboard for Products and Stores Fetched Successfully ✅ response = ${products.value.map((product) => product.toJson())}');
     } catch (e) {

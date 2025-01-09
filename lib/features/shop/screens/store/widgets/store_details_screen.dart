@@ -89,7 +89,7 @@ class StoreDetailsScreen extends StatelessWidget {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {},
-                            child: Text('Edit Product'),
+                            child: Text('Edit Store'),
                           ),
                         ),
 
@@ -100,7 +100,7 @@ class StoreDetailsScreen extends StatelessWidget {
                           width: double.infinity,
                           child: OutlinedButton(
                             onPressed: () {},
-                            child: Text('Delete Product'),
+                            child: Text('Delete Store'),
                           ),
                         ),
                       ],

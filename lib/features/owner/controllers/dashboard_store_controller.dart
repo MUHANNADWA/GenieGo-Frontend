@@ -74,10 +74,16 @@ class DashboardStoreController extends GetxController {
       );
 
       final data = {
-        'first_name': englishName.text.trim(),
-        'last_name': arabicName.text.trim(),
-        'username': englishDescription.text.trim(),
-        'email': arabicDescription.text.trim(),
+        'translations': {
+          'en': {
+            'name': englishName.text.trim(),
+            'description': englishDescription.text.trim()
+          },
+          'ar': {
+            'name': arabicName.text.trim(),
+            'description': arabicDescription.text.trim()
+          }
+        }
       };
 
       // storeImage != null
@@ -88,7 +94,7 @@ class DashboardStoreController extends GetxController {
       AppDialogs.hideDialog();
 
       AppLoaders.infoSnackBar(
-          title: 'Saved!', message: 'Your Info Has Been Updated');
+          title: 'Saved!', message: 'Your Store Has Been Added Successfully');
     } catch (e) {
       await AppDialogs.hideDialog();
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

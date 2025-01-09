@@ -44,7 +44,7 @@ class User {
         'phone': phone,
         'role': role,
         'image': image,
-        'storeId': storeId,
+        'store_id': storeId,
       };
 
   String get fullName => '$firstName $lastName';
