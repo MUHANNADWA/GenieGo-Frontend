@@ -21,7 +21,7 @@ class AddStoreScreen extends StatelessWidget {
     final controller = Get.put(ProfileController());
 
     return Scaffold(
-      appBar: AppAppBar(title: Text(AppTexts.profile), showBackArrow: true),
+      appBar: AppAppBar(title: Text('Add Stores'), showBackArrow: true),
 
       // Body
       body: SingleChildScrollView(
@@ -106,9 +106,16 @@ class AddStoreScreen extends StatelessWidget {
                 controller: controller.password,
               ),
               EditProfileMenu(
-                title: 'Store',
+                title: 'Products',
                 icon: Iconsax.call,
                 controller: controller.phone,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => controller.addStore(),
+                  child: const Text('Save Changes'),
+                ),
               ),
             ]),
           ),

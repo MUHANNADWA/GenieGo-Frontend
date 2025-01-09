@@ -111,11 +111,10 @@ class AddProductScreen extends StatelessWidget {
               ),
 
               const SizedBox(height: AppSizes.spaceBtwSections),
-
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => controller.updateUserInfo(),
+                  onPressed: () => controller.addStore(),
                   child: const Text('Save Changes'),
                 ),
               ),

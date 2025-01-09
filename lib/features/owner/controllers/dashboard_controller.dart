@@ -14,7 +14,13 @@ class DashboardController extends GetxController {
   RxList<Product> products = <Product>[].obs;
   RxList<Store> stores = <Store>[].obs;
 
-  Future<void> fetchDashboardItems(query, tags) async {
+  @override
+  onInit() {
+    super.onInit();
+    fetchDashboardItems();
+  }
+
+  Future<void> fetchDashboardItems() async {
     try {
       log('Fetching Products and Stores in Dashboard 🔄');
       isLoading.value = true;
@@ -47,4 +53,6 @@ class DashboardController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  addStore() {}
 }
