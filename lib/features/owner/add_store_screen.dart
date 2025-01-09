@@ -73,31 +73,31 @@ class AddStoreScreen extends StatelessWidget {
 
               EditProfileMenu(
                 title: 'English Name',
-                icon: Iconsax.archive,
+                icon: Iconsax.document,
                 controller: controller.firstName,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Name',
-                icon: Iconsax.archive,
+                icon: Iconsax.document,
                 controller: controller.lastName,
               ),
 
               EditProfileMenu(
                 title: 'English Description',
-                icon: Iconsax.document,
+                icon: Iconsax.archive,
                 controller: controller.username,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Description',
-                icon: Iconsax.document,
+                icon: Iconsax.archive,
                 controller: controller.email,
               ),
 
               EditProfileMenu(
                 title: 'Products',
-                icon: Iconsax.call,
+                icon: Iconsax.forward_item,
                 controller: controller.phone,
               ),
               SizedBox(

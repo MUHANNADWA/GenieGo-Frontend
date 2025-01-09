@@ -57,8 +57,6 @@ class OwnerDashboard extends StatelessWidget {
                                   if (controller.products.value.isNotEmpty)
                                     Column(
                                       children: [
-                                        Divider(),
-                                        SizedBox(height: AppSizes.sm),
                                         SectionHeading(
                                           title: 'Products',
                                           showActionButton: true,
@@ -86,10 +84,11 @@ class OwnerDashboard extends StatelessWidget {
                                         Divider(),
                                         SizedBox(height: AppSizes.sm),
                                         SectionHeading(
-                                          title: 'Stores',
+                                          title: 'My Store',
                                           onPressed: () =>
                                               Get.to(() => OwnerStoresScreen()),
                                           showActionButton: true,
+                                          buttonTitle: "View Details",
                                         ),
                                         SizedBox(height: AppSizes.defaultSpace),
                                         GridLayout(
