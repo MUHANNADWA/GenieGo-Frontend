@@ -3,12 +3,11 @@ import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
-import 'package:geniego/features/shop/controllers/settings/profile_controller.dart';
+import 'package:geniego/features/owner/controllers/dashboard_store_controller.dart';
 import 'package:geniego/features/shop/screens/profile/widgets/edit_profile_menu.dart';
 import 'package:geniego/features/shop/controllers/settings/image_picker_controller.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
-import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -18,12 +17,10 @@ class AddStoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imageController = Get.put(ImagePickerController());
-    final controller = Get.put(ProfileController());
+    final controller = Get.put(DashboardStoreController());
 
     return Scaffold(
       appBar: AppAppBar(title: Text('Add Stores'), showBackArrow: true),
-
-      // Body
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AppSizes.defaultSpace),
@@ -73,43 +70,28 @@ class AddStoreScreen extends StatelessWidget {
 
               EditProfileMenu(
                 title: 'English Name',
-                icon: Iconsax.user_edit,
-                controller: controller.firstName,
+                icon: Iconsax.document,
+                controller: controller.englishName,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Name',
-                icon: Iconsax.user_edit,
-                controller: controller.lastName,
+                icon: Iconsax.document,
+                controller: controller.arabicName,
               ),
 
               EditProfileMenu(
                 title: 'English Description',
-                icon: Iconsax.user_edit,
-                controller: controller.username,
+                icon: Iconsax.archive,
+                controller: controller.englishDescription,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Description',
-                icon: Iconsax.direct,
-                controller: controller.email,
+                icon: Iconsax.archive,
+                controller: controller.arabicDescription,
               ),
 
-              EditProfileMenu(
-                title: 'Price',
-                icon: Iconsax.call,
-                controller: controller.phone,
-              ),
-              EditProfileMenu(
-                title: 'Quanitiy',
-                icon: Iconsax.password_check,
-                controller: controller.password,
-              ),
-              EditProfileMenu(
-                title: 'Products',
-                icon: Iconsax.call,
-                controller: controller.phone,
-              ),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(

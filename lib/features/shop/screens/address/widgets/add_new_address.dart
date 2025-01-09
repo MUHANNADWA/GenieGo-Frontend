@@ -31,16 +31,6 @@ class AddNewAddressScreen extends StatelessWidget {
                   height: AppSizes.spaceBtwInputFields,
                 ),
 
-                //
-                Row(
-                  children: [],
-                ),
-
-                SizedBox(
-                  height: AppSizes.spaceBtwInputFields,
-                ),
-
-                //
                 Row(
                   children: [
                     Expanded(
