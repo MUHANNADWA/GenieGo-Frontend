@@ -9,6 +9,7 @@ class User {
   final String phone;
   final String role;
   final String image;
+  final int storeId;
 
   User({
     required this.id,
@@ -19,6 +20,7 @@ class User {
     required this.phone,
     required this.role,
     required this.image,
+    required this.storeId,
   });
 
   factory User.fromJson(jsonData) => User(
@@ -28,8 +30,9 @@ class User {
         username: jsonData['username'],
         email: jsonData['email'],
         phone: jsonData['phone'],
-        role: jsonData['role'] ?? 'Customer',
+        role: jsonData['role'],
         image: jsonData['icon'] ?? AppImages.user,
+        storeId: jsonData['store_id'] ?? -1,
       );
 
   toJson() => {
@@ -41,11 +44,12 @@ class User {
         'phone': phone,
         'role': role,
         'image': image,
+        'storeId': storeId,
       };
 
   String get fullName => '$firstName $lastName';
 
   @override
   String toString() =>
-      'User(id: $id, firstName: $firstName, lastName: $lastName, username: $username, email: $email, phone: $phone, role: $role)';
+      'User(id: $id, firstName: $firstName, lastName: $lastName, username: $username, email: $email, phone: $phone, role: $role, storeId: $storeId,)';
 }

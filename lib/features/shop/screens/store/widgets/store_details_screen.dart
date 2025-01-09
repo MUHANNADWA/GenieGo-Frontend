@@ -7,6 +7,7 @@ import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
+import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/features/shop/screens/product/widgets/product_details_image.dart';
 import 'package:geniego/features/shop/controllers/stores/store_products_controller.dart';
 import 'package:geniego/features/shop/models/store_model.dart';
@@ -78,6 +79,34 @@ class StoreDetailsScreen extends StatelessWidget {
 
                   const SizedBox(height: AppSizes.spaceBtwSections),
 
+                  if (AuthService.currentUser.role == 'Owner' &&
+                      AuthService.currentUser.storeId == store.id)
+                    Column(
+                      children: [
+                        const SizedBox(height: AppSizes.spaceBtwItems),
+                        // Edit Button
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Edit Product'),
+                          ),
+                        ),
+
+                        const SizedBox(height: AppSizes.spaceBtwItems),
+
+                        // Delete Button
+                        SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton(
+                            onPressed: () {},
+                            child: Text('Delete Product'),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                  const SizedBox(height: AppSizes.spaceBtwSections),
                   // Store Products
                   RefreshIndicator(
                     onRefresh: () =>

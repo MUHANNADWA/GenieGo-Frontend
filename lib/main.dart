@@ -17,7 +17,7 @@ void main() async {
   await GetStorage.init();
 
   // To Delete Everything In Storage
-  GetStorage().erase();
+  // GetStorage().erase();
 
   // Run App
   runApp(const App());

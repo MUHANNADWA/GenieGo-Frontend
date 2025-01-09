@@ -4,6 +4,7 @@ import 'package:geniego/common/widgets/custom_shapes/containers/rounded_containe
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
+import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/features/shop/screens/product/widgets/bottom_add_to_cart.dart';
 import 'package:geniego/features/shop/screens/product/widgets/product_details_image.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
@@ -119,17 +120,32 @@ class ProductDetailsScreen extends StatelessWidget {
                       ],
                     ),
 
-                  const SizedBox(height: AppSizes.spaceBtwSections),
+                  if (AuthService.currentUser.role == 'Owner' &&
+                      AuthService.currentUser.storeId == product.storeId)
+                    Column(
+                      children: [
+                        const SizedBox(height: AppSizes.spaceBtwItems),
+                        // Edit Button
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Edit Product'),
+                          ),
+                        ),
 
-                  // Checkout Button
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Checkout'),
+                        const SizedBox(height: AppSizes.spaceBtwItems),
+
+                        // Delete Button
+                        SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton(
+                            onPressed: () {},
+                            child: Text('Delete Product'),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-
                   const SizedBox(height: AppSizes.spaceBtwSections),
                 ],
               ),
@@ -137,7 +153,9 @@ class ProductDetailsScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAddToCart(product: product),
+      bottomNavigationBar: AuthService.currentUser.role != 'Owner'
+          ? BottomAddToCart(product: product)
+          : null,
     );
   }
 }

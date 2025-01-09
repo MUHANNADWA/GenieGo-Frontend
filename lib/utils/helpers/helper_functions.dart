@@ -7,6 +7,7 @@ import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:universal_html/html.dart';
 // import 'package:universal_html/html.dart';
 
 class AppHelper {
@@ -19,6 +20,7 @@ class AppHelper {
         phone: '1234567890',
         role: 'Customer',
         image: AppImages.user,
+        storeId: -1,
       );
 
   static Site get exampleSite => Site(
@@ -60,9 +62,9 @@ class AppHelper {
   static void setFullScreen(bool enable) {
     SystemChrome.setEnabledSystemUIMode(
         enable ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
-    // enable
-    //     ? document.documentElement?.requestFullscreen()
-    //     : document.exitFullscreen();
+    enable
+        ? document.documentElement?.requestFullscreen()
+        : document.exitFullscreen();
   }
 
   static void hideKeyboard() {
