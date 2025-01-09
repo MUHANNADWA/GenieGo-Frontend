@@ -9,7 +9,6 @@ import 'package:geniego/features/shop/controllers/settings/image_picker_controll
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
-import 'package:geniego/utils/validator/validator.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -42,10 +41,10 @@ class AddStoreScreen extends StatelessWidget {
                           radius: 100,
                           height: 80,
                           width: 80,
-                          child: imageController.image.value.path == ''
+                          child: imageController.image.value == null
                               ? Image.asset(AppImages.user)
                               : Image.file(
-                                  imageController.image.value,
+                                  imageController.image.value!,
                                   fit: BoxFit.cover,
                                 ),
                         ),
@@ -53,7 +52,7 @@ class AddStoreScreen extends StatelessWidget {
                     ),
 
                     TextButton(
-                      onPressed: () => imageController.imagePicker(),
+                      onPressed: () => imageController.pickImage(),
                       child: TitleText(title: 'Change Store Picture'),
                     ),
                   ],

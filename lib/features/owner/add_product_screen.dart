@@ -42,10 +42,10 @@ class AddProductScreen extends StatelessWidget {
                           radius: 100,
                           height: 80,
                           width: 80,
-                          child: imageController.image.value.path == ''
+                          child: imageController.image.value == null
                               ? Image.asset(AppImages.user)
                               : Image.file(
-                                  imageController.image.value,
+                                  imageController.image.value!,
                                   fit: BoxFit.cover,
                                 ),
                         ),
@@ -53,7 +53,7 @@ class AddProductScreen extends StatelessWidget {
                     ),
 
                     TextButton(
-                      onPressed: () => imageController.imagePicker(),
+                      onPressed: () => imageController.pickImage(),
                       child: TitleText(title: 'Change Product Picture'),
                     ),
                   ],
