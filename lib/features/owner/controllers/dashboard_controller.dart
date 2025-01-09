@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/models/store_model.dart';
-import 'package:geniego/features/shop/screens/search_results/search_results_screen.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:get/get.dart';
 
