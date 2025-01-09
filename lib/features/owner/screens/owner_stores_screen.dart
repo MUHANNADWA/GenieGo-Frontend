@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
+import 'package:geniego/features/owner/add_store_screen.dart';
 import 'package:geniego/features/shop/controllers/search/search_controller.dart';
 import 'package:geniego/features/shop/screens/store/widgets/store_card.dart';
 import 'package:geniego/utils/constants/sizes.dart';
@@ -35,6 +36,8 @@ class OwnerStoresScreen extends StatelessWidget {
               ],
             )
           : SizedBox()),
+      floatingActionButton: ElevatedButton(
+          onPressed: () => Get.to(() => AddStoreScreen()), child: Text('+')),
     );
   }
 }
