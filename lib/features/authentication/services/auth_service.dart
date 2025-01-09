@@ -9,7 +9,10 @@ class AuthService {
 
   static logout() async => await AppHttpHelper.post('logout', {});
 
-  static updateUserById(data) async => await AppHttpHelper.put('user', data);
+  static updateUser(data) async => await AppHttpHelper.put('user', data);
+
+  static updateUserWithImage(data, image) async =>
+      await AppHttpHelper.postMultipart('users', data, image);
 
   static deleteUserById(data) async => await AppHttpHelper.delete('user');
 

@@ -42,10 +42,10 @@ class EditProfileScreen extends StatelessWidget {
                           radius: 100,
                           height: 80,
                           width: 80,
-                          child: imageController.image.value.path == ''
+                          child: imageController.image.value?.path == null
                               ? Image.asset(AppImages.user)
                               : Image.file(
-                                  imageController.image.value,
+                                  imageController.image.value!,
                                   fit: BoxFit.cover,
                                 ),
                         ),
@@ -53,7 +53,7 @@ class EditProfileScreen extends StatelessWidget {
                     ),
 
                     TextButton(
-                      onPressed: () => imageController.imagePicker(),
+                      onPressed: () => imageController.pickImage(),
                       child: TitleText(title: 'Change Profile Picture'),
                     ),
                   ],
@@ -101,6 +101,7 @@ class EditProfileScreen extends StatelessWidget {
                 icon: Iconsax.call,
                 controller: controller.phone,
               ),
+
               EditProfileMenu(
                 title: AppTexts.password,
                 icon: Iconsax.password_check,
@@ -115,7 +116,8 @@ class EditProfileScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => controller.updateUserInfo(),
+                  onPressed: () => controller.updateUserInfo(
+                      profileImage: imageController.image.value),
                   child: const Text('Save Changes'),
                 ),
               ),
