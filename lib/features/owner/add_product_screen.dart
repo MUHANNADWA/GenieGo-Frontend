@@ -95,23 +95,6 @@ class AddProductScreen extends StatelessWidget {
                 icon: Iconsax.archive,
                 controller: controller.email,
               ),
-
-              EditProfileMenu(
-                title: 'English Description',
-                icon: Iconsax.archive,
-                controller: controller.password,
-                showToggle: true,
-                validator: (value) =>
-                    AppValidator.validateEmptyText(AppTexts.password, value),
-              ),
-              EditProfileMenu(
-                title: 'Arabic Description',
-                icon: Iconsax.archive,
-                controller: controller.password,
-                showToggle: true,
-                validator: (value) =>
-                    AppValidator.validateEmptyText(AppTexts.password, value),
-              ),
               EditProfileMenu(
                 title: 'Price',
                 icon: Iconsax.dollar_circle,

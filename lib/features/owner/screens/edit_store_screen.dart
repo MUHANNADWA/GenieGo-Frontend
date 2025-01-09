@@ -74,48 +74,26 @@ class AddProductScreen extends StatelessWidget {
 
               EditProfileMenu(
                 title: 'English Name',
-                icon: Iconsax.user_edit,
+                icon: Iconsax.document,
                 controller: controller.firstName,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Name',
-                icon: Iconsax.user_edit,
+                icon: Iconsax.document,
                 controller: controller.lastName,
               ),
 
               EditProfileMenu(
                 title: 'English Description',
-                icon: Iconsax.user_edit,
+                icon: Iconsax.archive,
                 controller: controller.username,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Description',
-                icon: Iconsax.document,
+                icon: Iconsax.archive,
                 controller: controller.email,
-              ),
-
-              EditProfileMenu(
-                title: AppTexts.phoneNo,
-                icon: Iconsax.document,
-                controller: controller.phone,
-              ),
-              EditProfileMenu(
-                title: 'English Description',
-                icon: Iconsax.archive,
-                controller: controller.password,
-                showToggle: true,
-                validator: (value) =>
-                    AppValidator.validateEmptyText(AppTexts.password, value),
-              ),
-              EditProfileMenu(
-                title: 'Arabic Description',
-                icon: Iconsax.archive,
-                controller: controller.password,
-                showToggle: true,
-                validator: (value) =>
-                    AppValidator.validateEmptyText(AppTexts.password, value),
               ),
 
               const SizedBox(height: AppSizes.spaceBtwSections),
