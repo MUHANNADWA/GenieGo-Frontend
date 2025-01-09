@@ -8,17 +8,17 @@ import 'package:get/get.dart';
 class DashboardController extends GetxController {
   static DashboardController get instance => Get.find();
 
-  final RxBool isLoading = true.obs;
-  final RxBool hasError = false.obs;
-  final RxString errorMessage = ''.obs;
-  RxList<Product> products = <Product>[].obs;
-  RxList<Store> stores = <Store>[].obs;
-
   @override
   onInit() {
     super.onInit();
     fetchDashboardItems();
   }
+
+  final RxBool isLoading = true.obs;
+  final RxBool hasError = false.obs;
+  final RxString errorMessage = ''.obs;
+  RxList<Product> products = <Product>[].obs;
+  RxList<Store> stores = <Store>[].obs;
 
   Future<void> fetchDashboardItems() async {
     try {

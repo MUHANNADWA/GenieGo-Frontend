@@ -14,48 +14,6 @@ import 'package:iconsax/iconsax.dart';
 class ProfileController extends GetxController {
   static ProfileController get instance => Get.find();
 
-  Future<void> logout() async {
-    try {
-      AppDialogs.showConfirmationDialog(
-        title: 'Confirm Logout',
-        description:
-            'Are you sure you want to Log out? This action will end your session now.',
-        confirmText: 'Logout',
-        onConfirm: () async {
-          await AuthService.logout();
-          GetStorage().remove('token');
-          Get.offAllNamed(loginScreen);
-        },
-      );
-    } catch (e) {
-      await AppDialogs.hideDialog();
-      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    }
-  }
-
-  Future<void> deleteAccount(id) async {
-    try {
-      AppDialogs.showConfirmationDialog(
-        title: 'Confirm Deletion',
-        description:
-            'Are you sure you want to delete your account? This action cannot be undone.',
-        confirmText: 'Delete',
-        onConfirm: () async {
-          Get.back();
-          await AuthService.deleteUserById(id);
-          AppLoaders.errorSnackBar(
-              title: 'Deleted!',
-              message:
-                  'Your Account Has been Deleted Successfully, Your Session Will end soon');
-          Get.offAllNamed(loginScreen);
-        },
-      );
-    } catch (e) {
-      await AppDialogs.hideDialog();
-      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    }
-  }
-
   RxBool isPasswordObscured = true.obs;
   Rx<Icon> passwordIcon = const Icon(Iconsax.eye).obs;
 
@@ -113,6 +71,48 @@ class ProfileController extends GetxController {
 
       AppLoaders.infoSnackBar(
           title: 'Saved!', message: 'Your Info Has Been Updated');
+    } catch (e) {
+      await AppDialogs.hideDialog();
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  Future<void> logout() async {
+    try {
+      AppDialogs.showConfirmationDialog(
+        title: 'Confirm Logout',
+        description:
+            'Are you sure you want to Log out? This action will end your session now.',
+        confirmText: 'Logout',
+        onConfirm: () async {
+          await AuthService.logout();
+          GetStorage().remove('token');
+          Get.offAllNamed(loginScreen);
+        },
+      );
+    } catch (e) {
+      await AppDialogs.hideDialog();
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  Future<void> deleteAccount(id) async {
+    try {
+      AppDialogs.showConfirmationDialog(
+        title: 'Confirm Deletion',
+        description:
+            'Are you sure you want to delete your account? This action cannot be undone.',
+        confirmText: 'Delete',
+        onConfirm: () async {
+          Get.back();
+          await AuthService.deleteUserById(id);
+          AppLoaders.errorSnackBar(
+              title: 'Deleted!',
+              message:
+                  'Your Account Has been Deleted Successfully, Your Session Will end soon');
+          Get.offAllNamed(loginScreen);
+        },
+      );
     } catch (e) {
       await AppDialogs.hideDialog();
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

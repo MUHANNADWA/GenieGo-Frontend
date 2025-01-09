@@ -43,14 +43,14 @@ class OwnerDashboard extends StatelessWidget {
                             image: AppImages.disconnected,
                             title: 'Oops! Something Went Wrong ',
                             subTitle:
-                                'We encountered an error while fetching the product details.')
+                                'We encountered an error while fetching Your Dashboard data.')
                         : controller.products.value.isEmpty &&
                                 controller.stores.value.isEmpty
                             ? AppDefaultPage(
-                                image: AppImages.disconnected,
-                                title: 'There Are No Products',
+                                image: AppImages.forbidden,
+                                title: 'No Store Found',
                                 subTitle:
-                                    'It looks like you haven’t added any Products yet.')
+                                    'It looks like you do not have a store yet, Click the button below to add you first!')
                             : Column(
                                 children: [
                                   // Products
