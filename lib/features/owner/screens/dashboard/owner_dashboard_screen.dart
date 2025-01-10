@@ -6,10 +6,10 @@ import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
-import 'package:geniego/features/owner/add_store_screen.dart';
-import 'package:geniego/features/owner/controllers/dashboard_controller.dart';
-import 'package:geniego/features/owner/screens/owner_products_screen.dart';
-import 'package:geniego/features/owner/screens/owner_stores_screen.dart';
+import 'package:geniego/features/owner/screens/store/add_store_screen.dart';
+import 'package:geniego/features/owner/controllers/dashboard/dashboard_controller.dart';
+import 'package:geniego/features/owner/screens/product/owner_products_screen.dart';
+import 'package:geniego/features/owner/screens/store/owner_stores_screen.dart';
 import 'package:geniego/features/shop/screens/store/widgets/store_card.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
@@ -23,7 +23,9 @@ class OwnerDashboardScreen extends StatelessWidget {
     final controller = Get.put(DashboardController());
 
     return Scaffold(
-        appBar: AppAppBar(title: Text('Dashboard')),
+        appBar: AppAppBar(
+            title: Text('Dashboard',
+                style: Theme.of(context).textTheme.headlineMedium)),
         body: RefreshIndicator(
           onRefresh: () => controller.fetchDashboardItems(),
           child: Padding(

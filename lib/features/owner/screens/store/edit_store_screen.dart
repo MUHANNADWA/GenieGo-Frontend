@@ -3,7 +3,8 @@ import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
-import 'package:geniego/features/owner/controllers/dashboard_store_controller.dart';
+import 'package:geniego/features/owner/controllers/store/dashboard_store_controller.dart';
+import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/features/shop/screens/profile/widgets/edit_profile_menu.dart';
 import 'package:geniego/features/shop/controllers/settings/image_picker_controller.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
@@ -11,8 +12,10 @@ import 'package:geniego/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class AddStoreScreen extends StatelessWidget {
-  const AddStoreScreen({super.key});
+class EditStoreScreen extends StatelessWidget {
+  const EditStoreScreen({super.key, required this.store});
+
+  final Store store;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class AddStoreScreen extends StatelessWidget {
     final controller = Get.put(DashboardStoreController());
 
     return Scaffold(
-      appBar: AppAppBar(title: Text('Add Stores'), showBackArrow: true),
+      appBar: AppAppBar(title: Text('Edit Store'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AppSizes.defaultSpace),
@@ -31,7 +34,7 @@ class AddStoreScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    // Profile Picture
+                    // Product  Picture
                     Center(
                       child: Obx(
                         () => RoundedContainer(
@@ -71,41 +74,33 @@ class AddStoreScreen extends StatelessWidget {
               EditProfileMenu(
                 title: 'English Name',
                 icon: Iconsax.document,
-                controller: controller.englishName,
+                controller: controller.editEnglishName,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Name',
                 icon: Iconsax.document,
-                controller: controller.arabicName,
+                controller: controller.editArabicName,
               ),
 
               EditProfileMenu(
                 title: 'English Description',
                 icon: Iconsax.archive,
-                controller: controller.englishDescription,
+                controller: controller.editEnglishDescription,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Description',
                 icon: Iconsax.archive,
-                controller: controller.arabicDescription,
+                controller: controller.editArabicDescription,
               ),
 
-              EditProfileMenu(
-                title: 'Products',
-                icon: Iconsax.forward_item,
-                controller: controller.phone,
-              ),
-              SizedBox(
-                height: AppSizes.spaceBtwSections,
-              ),
-
+              const SizedBox(height: AppSizes.spaceBtwSections),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => controller.addStore(),
-                  child: const Text('Add Store'),
+                  onPressed: () => controller.updateStore(store.id),
+                  child: const Text('Save Store Info'),
                 ),
               ),
             ]),

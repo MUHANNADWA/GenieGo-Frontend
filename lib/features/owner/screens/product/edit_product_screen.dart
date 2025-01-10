@@ -3,7 +3,8 @@ import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
-import 'package:geniego/features/shop/controllers/settings/profile_controller.dart';
+import 'package:geniego/features/owner/controllers/product/dashboard_product_controller.dart';
+import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/screens/profile/widgets/edit_profile_menu.dart';
 import 'package:geniego/features/shop/controllers/settings/image_picker_controller.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
@@ -14,12 +15,14 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class EditProductScreen extends StatelessWidget {
-  const EditProductScreen({super.key});
+  const EditProductScreen({super.key, required this.product});
+
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
     final imageController = Get.put(ImagePickerController());
-    final controller = Get.put(ProfileController());
+    final controller = Get.put(DashboardProductController());
 
     return Scaffold(
       appBar: AppAppBar(title: Text(AppTexts.profile), showBackArrow: true),
@@ -75,36 +78,37 @@ class EditProductScreen extends StatelessWidget {
               EditProfileMenu(
                 title: 'English Name',
                 icon: Iconsax.document,
-                controller: controller.firstName,
+                controller: controller.editEnglishName,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Name',
                 icon: Iconsax.document,
-                controller: controller.lastName,
+                controller: controller.editArabicName,
               ),
 
               EditProfileMenu(
                 title: 'English Description',
                 icon: Iconsax.archive,
-                controller: controller.username,
+                controller: controller.editEnglishDescription,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Description',
                 icon: Iconsax.archive,
-                controller: controller.email,
+                controller: controller.editArabicDescription,
               ),
 
               EditProfileMenu(
                 title: 'Price',
                 icon: Iconsax.dollar_circle,
-                controller: controller.phone,
+                controller: controller.editPrice,
               ),
+
               EditProfileMenu(
                 title: 'Quantity',
                 icon: Iconsax.add_square5,
-                controller: controller.password,
+                controller: controller.editQuantity,
                 showToggle: true,
                 validator: (value) =>
                     AppValidator.validateEmptyText(AppTexts.password, value),
@@ -114,7 +118,7 @@ class EditProductScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => controller.addStore(),
+                  onPressed: () => controller.updateProduct(product.id),
                   child: const Text('Save Product Info'),
                 ),
               ),

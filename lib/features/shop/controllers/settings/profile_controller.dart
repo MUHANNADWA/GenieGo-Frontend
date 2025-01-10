@@ -118,6 +118,4 @@ class ProfileController extends GetxController {
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
-
-  addStore() {}
 }

@@ -6,13 +6,11 @@ import 'package:geniego/common/widgets/layouts/grid_layout.dart';
 import 'package:geniego/common/widgets/products/product_card/product_card.dart';
 import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
-import 'package:geniego/features/owner/add_product_screen.dart';
+import 'package:geniego/features/owner/screens/product/add_product_screen.dart';
 import 'package:geniego/features/shop/controllers/search/search_controller.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class OwnerProductsScreen extends StatelessWidget {
   const OwnerProductsScreen({super.key});

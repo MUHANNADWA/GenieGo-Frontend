@@ -1,5 +1,5 @@
 name: geniego
-description: A new Flutter project.
+description: Geniego delivery app.
 
 publish_to: 'none'
 version: 1.0.0+1
@@ -50,7 +50,7 @@ dependencies:
   permission_handler: ^11.3.1
   flutter_local_notifications: ^18.0.1
   cached_network_image: ^3.4.1
-
+  flutter_launcher_icons: 0.14.0
 
   #--------------- ./ PACKAGES END ------------------#
 

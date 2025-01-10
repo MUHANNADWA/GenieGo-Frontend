@@ -3,28 +3,24 @@ import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
-import 'package:geniego/features/shop/controllers/settings/profile_controller.dart';
+import 'package:geniego/features/owner/controllers/store/dashboard_store_controller.dart';
 import 'package:geniego/features/shop/screens/profile/widgets/edit_profile_menu.dart';
 import 'package:geniego/features/shop/controllers/settings/image_picker_controller.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
-import 'package:geniego/utils/constants/text_strings.dart';
-import 'package:geniego/utils/validator/validator.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class AddProductScreen extends StatelessWidget {
-  const AddProductScreen({super.key});
+class AddStoreScreen extends StatelessWidget {
+  const AddStoreScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final imageController = Get.put(ImagePickerController());
-    final controller = Get.put(ProfileController());
+    final controller = Get.put(DashboardStoreController());
 
     return Scaffold(
-      appBar: AppAppBar(title: Text(AppTexts.profile), showBackArrow: true),
-
-      // Body
+      appBar: AppAppBar(title: Text('Add Stores'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AppSizes.defaultSpace),
@@ -35,7 +31,7 @@ class AddProductScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    // Product  Picture
+                    // Profile Picture
                     Center(
                       child: Obx(
                         () => RoundedContainer(
@@ -54,7 +50,7 @@ class AddProductScreen extends StatelessWidget {
 
                     TextButton(
                       onPressed: () => imageController.pickImage(),
-                      child: TitleText(title: 'Change Product Picture'),
+                      child: TitleText(title: 'Change Store Picture'),
                     ),
                   ],
                 ),
@@ -68,40 +64,41 @@ class AddProductScreen extends StatelessWidget {
               const SizedBox(height: AppSizes.spaceBtwItems),
 
               // Heading Personal Info
-              const SectionHeading(title: 'Product Information'),
+              const SectionHeading(title: 'Store Information'),
 
               const SizedBox(height: AppSizes.spaceBtwItems),
 
               EditProfileMenu(
                 title: 'English Name',
                 icon: Iconsax.document,
-                controller: controller.firstName,
+                controller: controller.englishName,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Name',
                 icon: Iconsax.document,
-                controller: controller.lastName,
+                controller: controller.arabicName,
               ),
 
               EditProfileMenu(
                 title: 'English Description',
                 icon: Iconsax.archive,
-                controller: controller.username,
+                controller: controller.englishDescription,
               ),
 
               EditProfileMenu(
                 title: 'Arabic Description',
                 icon: Iconsax.archive,
-                controller: controller.email,
+                controller: controller.arabicDescription,
               ),
 
-              const SizedBox(height: AppSizes.spaceBtwSections),
+              SizedBox(height: AppSizes.spaceBtwSections),
+
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => controller.addStore(),
-                  child: const Text('Save Product Info'),
+                  child: const Text('Add Store'),
                 ),
               ),
             ]),

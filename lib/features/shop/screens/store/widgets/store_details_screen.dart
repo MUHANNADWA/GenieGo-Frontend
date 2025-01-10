@@ -8,6 +8,8 @@ import 'package:geniego/common/widgets/shimmer/app_shimmer.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
+import 'package:geniego/features/owner/controllers/store/dashboard_store_controller.dart';
+import 'package:geniego/features/owner/screens/store/edit_store_screen.dart';
 import 'package:geniego/features/shop/screens/product/widgets/product_details_image.dart';
 import 'package:geniego/features/shop/controllers/stores/store_products_controller.dart';
 import 'package:geniego/features/shop/models/store_model.dart';
@@ -26,6 +28,7 @@ class StoreDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(StoreProductsController(), permanent: true);
+    final dashController = Get.put(DashboardStoreController());
     controller.getStoreProductsByStoreId(store.id);
 
     return Scaffold(
@@ -88,7 +91,8 @@ class StoreDetailsScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                Get.to(() => EditStoreScreen(store: store)),
                             child: Text('Edit Store'),
                           ),
                         ),
@@ -99,7 +103,8 @@ class StoreDetailsScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                dashController.deleteStore(store.id),
                             child: Text('Delete Store'),
                           ),
                         ),
