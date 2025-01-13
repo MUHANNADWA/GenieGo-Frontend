@@ -8,10 +8,10 @@ class Product {
   final double price;
   final String name;
   final String description;
-  final String image;
   final int stock;
   final List tags;
   final int storeId;
+  String image;
   Store? store;
   String? arabicName;
   String? englishName;
@@ -42,6 +42,7 @@ class Product {
       description:
           jsonData['translations'][AppHelper.currentLang]['description'] ?? '',
       image: jsonData['icon_url'] ?? AppImages.productImage,
+      // stock: int.parse(jsonData['stock']),
       stock: jsonData['stock'],
       tags: jsonData['tags'],
       storeId: jsonData['store_id'],

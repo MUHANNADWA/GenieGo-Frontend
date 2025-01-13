@@ -1,8 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
-import 'package:geniego/features/owner/screens/dashboard/owner_dashboard_screen.dart';
+import 'package:geniego/features/owner/screens/dashboard/dashboard_screen.dart';
 import 'package:geniego/features/shop/screens/settings/settings_screen.dart';
 import 'package:geniego/features/shop/screens/wishlist/wishlist_screen.dart';
 import 'package:geniego/features/shop/screens/store/stores_screen.dart';
@@ -20,6 +22,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
     CartController.instance.initCart();
+    log('current user = ${AuthService.currentUser}');
 
     return Scaffold(
       bottomNavigationBar: AppHelper.screenWidth <= 800

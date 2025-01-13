@@ -121,8 +121,8 @@ class StoreDetailsScreen extends StatelessWidget {
                           ? AppShimmer(
                               child: GridLayout(
                                 itemCount: 4,
-                                itemBuilder: (_, __) =>
-                                    RoundedContainer(height: 282),
+                                itemBuilder: (_, __) => RoundedContainer(
+                                    height: 282, backgroundColor: Colors.black),
                               ),
                             )
                           : controller.hasError.value
@@ -140,7 +140,8 @@ class StoreDetailsScreen extends StatelessWidget {
                                           'It looks like there are no products in this store yet.')
                                   : GridLayout(
                                       itemCount: controller.storeProducts
-                                          .value[store.id]!.length,
+                                              .value[store.id]?.length ??
+                                          0,
                                       itemBuilder: (_, index) => ProductCard(
                                         product: controller.storeProducts
                                             .value[store.id]![index],

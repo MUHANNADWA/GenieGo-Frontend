@@ -7,8 +7,8 @@ class Store {
   final String name;
   final String description;
   final Site site;
-  final String image;
   final List tags;
+  String image;
 
   Store({
     required this.id,
@@ -21,9 +21,7 @@ class Store {
 
   factory Store.fromJson(jsonData) => Store(
         id: jsonData['id'],
-        site: jsonData['site'] == null
-            ? AppHelper.exampleSite
-            : Site.fromJson(jsonData['site']),
+        site: jsonData?['site'] ?? AppHelper.exampleSite,
         tags: jsonData['tags'],
         image: jsonData['icon_url'] ?? AppImages.appLogo,
         name: jsonData['translations'][AppHelper.currentLang]['name'],

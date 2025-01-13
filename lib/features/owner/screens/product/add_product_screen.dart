@@ -8,7 +8,6 @@ import 'package:geniego/features/shop/screens/profile/widgets/edit_profile_menu.
 import 'package:geniego/features/shop/controllers/settings/image_picker_controller.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
-import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/validator/validator.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -22,7 +21,7 @@ class AddProductScreen extends StatelessWidget {
     final controller = Get.put(DashboardProductController());
 
     return Scaffold(
-      appBar: AppAppBar(title: Text(AppTexts.profile), showBackArrow: true),
+      appBar: AppAppBar(title: Text('Add New Product'), showBackArrow: true),
 
       // Body
       body: SingleChildScrollView(
@@ -43,7 +42,7 @@ class AddProductScreen extends StatelessWidget {
                           height: 80,
                           width: 80,
                           child: imageController.image.value == null
-                              ? Image.asset(AppImages.user)
+                              ? Image.asset(AppImages.productImage)
                               : Image.file(
                                   imageController.image.value!,
                                   fit: BoxFit.cover,
@@ -75,44 +74,51 @@ class AddProductScreen extends StatelessWidget {
               EditProfileMenu(
                 title: 'English Name',
                 icon: Iconsax.document,
-                controller: controller.editEnglishName,
+                controller: controller.englishName,
+                validator: (value) =>
+                    AppValidator.validateEmptyText('English Name', value),
               ),
 
               EditProfileMenu(
                 title: 'Arabic Name',
                 icon: Iconsax.document,
-                controller: controller.editArabicName,
+                controller: controller.arabicName,
+                validator: (value) =>
+                    AppValidator.validateEmptyText('Arabic Name', value),
               ),
 
               EditProfileMenu(
                 title: 'English Description',
                 icon: Iconsax.archive,
-                controller: controller.editEnglishDescription,
+                controller: controller.englishDescription,
+                validator: (value) => AppValidator.validateEmptyText(
+                    'English Description', value),
               ),
 
               EditProfileMenu(
                 title: 'Arabic Description',
                 icon: Iconsax.archive,
-                controller: controller.editArabicDescription,
+                controller: controller.arabicDescription,
+                validator: (value) =>
+                    AppValidator.validateEmptyText('Arabic Description', value),
               ),
               EditProfileMenu(
                 title: 'Price',
-                icon: Iconsax.dollar_circle,
-                controller: controller.editPrice,
-                showToggle: true,
+                icon: Iconsax.dollar_square,
+                controller: controller.price,
                 validator: (value) =>
-                    AppValidator.validateEmptyText(AppTexts.password, value),
+                    AppValidator.validateEmptyText('Price', value),
               ),
               EditProfileMenu(
                 title: 'Quantity',
-                icon: Iconsax.add4,
-                controller: controller.editQuantity,
-                showToggle: true,
+                icon: Iconsax.add_square,
+                controller: controller.quantity,
                 validator: (value) =>
-                    AppValidator.validateEmptyText(AppTexts.password, value),
+                    AppValidator.validateEmptyText('Quantity', value),
               ),
 
               const SizedBox(height: AppSizes.spaceBtwSections),
+
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(

@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
+import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/features/shop/controllers/settings/profile_controller.dart';
 import 'package:geniego/features/shop/screens/profile/widgets/edit_profile_menu.dart';
 import 'package:geniego/features/shop/controllers/settings/image_picker_controller.dart';
@@ -42,12 +44,15 @@ class EditProfileScreen extends StatelessWidget {
                           radius: 100,
                           height: 80,
                           width: 80,
-                          child: imageController.image.value?.path == null
+                          child: AuthService.currentUser.image == AppImages.user
                               ? Image.asset(AppImages.user)
-                              : Image.file(
-                                  imageController.image.value!,
-                                  fit: BoxFit.cover,
-                                ),
+                              : imageController.image.value?.path == null
+                                  ? CachedNetworkImage(
+                                      imageUrl: AuthService.currentUser.image)
+                                  : Image.file(
+                                      imageController.image.value!,
+                                      fit: BoxFit.cover,
+                                    ),
                         ),
                       ),
                     ),

@@ -13,17 +13,24 @@ class AppDefaultPage extends StatelessWidget {
     required this.subTitle,
     this.showActionButton,
     this.actionButtonText = 'Click',
+    this.fullScreen = true,
     this.onPressedActionButton,
   });
 
   final String image;
   final String title, subTitle;
-  final bool? showActionButton;
+  final bool? showActionButton, fullScreen;
   final String actionButtonText;
   final VoidCallback? onPressedActionButton;
 
   @override
   Widget build(BuildContext context) {
+    final width =
+        fullScreen! ? AppHelper.screenWidth * 0.8 : AppHelper.screenWidth * 0.4;
+    final height = fullScreen!
+        ? AppHelper.screenHeight * 0.6
+        : AppHelper.screenHeight * 0.3;
+
     return Padding(
       padding: const EdgeInsets.all(AppSizes.defaultSpace),
       child: Column(
@@ -36,8 +43,8 @@ class AppDefaultPage extends StatelessWidget {
                     if (dotLottie != null) {
                       return Lottie.memory(
                         dotLottie.animations.values.single,
-                        width: AppHelper.screenWidth * 0.8,
-                        height: AppHelper.screenHeight * 0.6,
+                        width: width,
+                        height: height,
                         frameRate: FrameRate.max,
                       );
                     } else {
@@ -48,13 +55,13 @@ class AppDefaultPage extends StatelessWidget {
               : image.endsWith('.svg')
                   ? SvgPicture.asset(
                       image,
-                      width: AppHelper.screenWidth * 0.8,
-                      height: AppHelper.screenHeight * 0.6,
+                      width: width,
+                      height: height,
                     )
                   : Image(
                       image: AssetImage(image),
-                      width: AppHelper.screenWidth * 0.8,
-                      height: AppHelper.screenHeight * 0.6,
+                      width: width,
+                      height: height,
                     ),
 
           // Title

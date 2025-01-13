@@ -26,22 +26,21 @@ class DashboardController extends GetxController {
       log('Fetching Products and Stores in Dashboard 🔄');
       isLoading.value = true;
       hasError.value = false;
+      if (AuthService.currentUser.storeId != -1) {
+        final storedata =
+            await ShopService.getStoreById(AuthService.currentUser.storeId);
+        final productsdata = await ShopService.getStoreProductsByStoreId(
+            AuthService.currentUser.storeId);
+        final List<dynamic> productsData = productsdata['data'] ?? [];
+        final storeData = storedata['data'] ?? [];
 
-      final storedata =
-          await ShopService.getStoreById(AuthService.currentUser.storeId);
-      final productsdata = await ShopService.getStoreProductsByStoreId(
-          AuthService.currentUser.storeId);
-      final List<dynamic> productsData = productsdata['data'] ?? [];
-      final storeData = storedata['data'] ?? [];
+        products.value = List.generate(
+          productsData.length,
+          (index) => Product.fromJson(productsData[index]),
+        );
 
-      products.value = List.generate(
-        productsData.length,
-        (index) => Product.fromJson(productsData[index]),
-      );
-
-      store = Store.fromJson(storeData);
-
-      products.refresh();
+        store = Store.fromJson(storeData);
+      }
 
       log('Dashboard for Products and Stores Fetched Successfully ✅ response = ${products.value.map((product) => product.toJson())}');
     } catch (e) {
@@ -53,6 +52,4 @@ class DashboardController extends GetxController {
       isLoading.value = false;
     }
   }
-
-  addStore() {}
 }

@@ -8,6 +8,7 @@ void main() async {
   // Initialize Widgets Binding
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Background Service
   await initService();
 
   // Initialize Environment Variables
@@ -17,7 +18,9 @@ void main() async {
   await GetStorage.init();
 
   // To Delete Everything In Storage
-  GetStorage().erase();
+  // GetStorage().erase();
+  // GetStorage().remove('cartItems');
+  // GetStorage().remove('cartQuantites');
 
   // Run App
   runApp(const App());

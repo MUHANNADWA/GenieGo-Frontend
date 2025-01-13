@@ -31,7 +31,9 @@ class OrdersScreen extends StatelessWidget {
           onRefresh: () => controller.refreshOrders(),
           child: Obx(
             () => controller.isLoading.value
-                ? AppShimmer(child: RoundedContainer(height: 150))
+                ? AppShimmer(
+                    child: RoundedContainer(
+                        height: 150, backgroundColor: Colors.black))
                 : controller.hasError.value
                     ? AppDefaultPage(
                         image: AppImages.disconnected,

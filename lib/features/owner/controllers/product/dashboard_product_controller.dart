@@ -90,9 +90,17 @@ class DashboardProductController extends GetxController {
         }
       };
 
-      // productImage != null
-      await ShopService.addProduct(data);
-      // await ShopService.updateProductByIdWithImage(id, data, productImage)
+      final response = await ShopService.addProduct(data);
+
+      Map? responseImage;
+      if (productImage != null) {
+        responseImage = await ShopService.updateProductImageById(
+            response['data']['id'], productImage);
+      }
+
+      final product = Product.fromJson(response['data']);
+      product.image =
+          responseImage?['data']['icon_url'] ?? AppImages.productImage;
 
       // Stop Loading
       AppDialogs.hideDialog();
@@ -142,9 +150,17 @@ class DashboardProductController extends GetxController {
         }
       };
 
-      productImage != null
-          ? await ShopService.updateProductByIdWithImage(id, data, productImage)
-          : await ShopService.updateProductById(id, data);
+      Map? responseImage;
+      if (productImage != null) {
+        responseImage =
+            await ShopService.updateProductImageById(id, productImage);
+      }
+
+      final response = await ShopService.updateProductById(id, data);
+
+      final product = Product.fromJson(response['data']);
+      product.image =
+          responseImage?['data']['icon_url'] ?? AppImages.productImage;
 
       // Stop Loading
       AppDialogs.hideDialog();

@@ -1,5 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
+import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/features/authentication/models/user_model.dart';
 import 'package:geniego/features/shop/screens/profile/widgets/edit_profile_screen.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
@@ -20,10 +21,16 @@ class UserProfileTile extends StatelessWidget {
 
     return ListTile(
       onTap: () => Get.toNamed(profileScreen),
-      leading: const AppCircularImage(
-        image: AppImages.user,
+      leading: RoundedContainer(
         width: 50,
         height: 50,
+        radius: 100,
+        child: user.image == AppImages.user
+            ? Image.asset(AppImages.productImage)
+            : CachedNetworkImage(
+                imageUrl: user.image,
+                fit: BoxFit.cover,
+              ),
       ),
 
       // User Email

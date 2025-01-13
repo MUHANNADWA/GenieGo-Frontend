@@ -7,13 +7,13 @@ import 'package:http/http.dart' as http;
 typedef Json = Map<String, dynamic>;
 
 class AppHttpHelper {
-  // static const String _baseUrl = 'http://172.26.1.1:4567/api';
-  static const String _baseUrl = 'http://172.26.1.30:4567/api';
+  static const String _baseUrl = 'http://172.26.1.1:4567/api';
+  // static const String _baseUrl = 'http://172.26.1.30:4567/api';
   // static const String _baseUrl = 'http://192.168.0.150:4567/api';
 
   static Map<String, String> getHeaders() => {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        'Accept': 'application/json ',
         'Authorization': AuthService.token,
       };
 
@@ -62,12 +62,11 @@ class AppHttpHelper {
       String endpoint, Map<String, String> fields, File? file) async {
     final uri = Uri.parse('$_baseUrl/$endpoint');
     final request = http.MultipartRequest('POST', uri)
-      ..headers.addAll(getHeaders());
+      ..headers.addAll(
+          getHeaders()..addAll({'Content-Type': 'multipart/form-data'}));
 
-    // Add form fields
     fields.forEach((key, value) => request.fields[key] = value);
 
-    // Add file if available
     if (file != null) {
       final fileStream = http.MultipartFile.fromBytes(
         'icon',

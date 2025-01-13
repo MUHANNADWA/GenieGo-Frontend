@@ -52,8 +52,8 @@ class CartScreen extends StatelessWidget {
                               subTitle:
                                   'It looks like you haven’t added any items to the cart yet.')
                           : CartItem(
-                              product:
-                                  controller.cartItems.keys.elementAt(index)),
+                              product: controller.cartProducts.keys
+                                  .elementAt(index)),
             ),
           ),
         ),
@@ -67,8 +67,8 @@ class CartScreen extends StatelessWidget {
             ),
           ),
           onPressed: controller.cartItems.value.isNotEmpty
-              ? () => Get.to(
-                  () => CheckoutScreen(cartItems: controller.cartItems.value))
+              ? () => Get.to(() =>
+                  CheckoutScreen(cartItems: controller.cartProducts.value))
               : null,
           child: Text('Checkout'),
         ),

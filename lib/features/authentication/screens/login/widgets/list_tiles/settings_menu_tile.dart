@@ -4,24 +4,29 @@ import 'package:geniego/utils/constants/colors.dart';
 class SettingsMenuTile extends StatelessWidget {
   const SettingsMenuTile({
     super.key,
-    required this.icon,
+    this.icon,
     required this.title,
     required this.subTitle,
     this.trailing,
     this.onTap,
+    this.leadingWidget,
   });
-  final IconData icon;
+
+  final IconData? icon;
+  final Widget? leadingWidget;
   final String title, subTitle;
   final Widget? trailing;
   final VoidCallback? onTap;
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(
-        icon,
-        size: 28,
-        color: AppColors.primary,
-      ),
+      leading: leadingWidget ??
+          Icon(
+            icon,
+            size: 28,
+            color: AppColors.primary,
+          ),
       title: Text(
         title,
         style: Theme.of(context).textTheme.titleMedium,

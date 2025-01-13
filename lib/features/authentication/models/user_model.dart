@@ -8,8 +8,8 @@ class User {
   final String email;
   final String phone;
   final String role;
-  final String image;
-  final int storeId;
+  String image;
+  int storeId;
 
   User({
     required this.id,
@@ -31,7 +31,7 @@ class User {
         email: jsonData['email'],
         phone: jsonData['phone'],
         role: jsonData['role'],
-        image: jsonData['icon'] ?? AppImages.user,
+        image: jsonData['icon_url'] ?? AppImages.user,
         storeId: jsonData['store_id'] ?? -1,
       );
 
@@ -43,7 +43,7 @@ class User {
         'email': email,
         'phone': phone,
         'role': role,
-        'image': image,
+        'icon_url': image,
         'store_id': storeId,
       };
 
@@ -51,5 +51,5 @@ class User {
 
   @override
   String toString() =>
-      'User(id: $id, firstName: $firstName, lastName: $lastName, username: $username, email: $email, phone: $phone, role: $role, storeId: $storeId,)';
+      'User(id: $id, firstName: $firstName, lastName: $lastName, username: $username, email: $email, phone: $phone, role: $role, icon_url: $image, storeId: $storeId)';
 }

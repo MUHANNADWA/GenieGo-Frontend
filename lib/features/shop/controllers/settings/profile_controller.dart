@@ -58,11 +58,14 @@ class ProfileController extends GetxController {
         'password': password.text.trim(),
       };
 
-      final response = profileImage != null
-          ? await AuthService.updateUserWithImage(userData, profileImage)
-          : await AuthService.updateUser(userData);
+      Map? responseImage;
+      if (profileImage != null) {
+        responseImage = await AuthService.updateUserImage(profileImage);
+      }
+      final response = await AuthService.updateUser(userData);
 
       final user = User.fromJson(response['data']['user']);
+      user.image = responseImage?['data']['icon_url'] ?? AppImages.user;
 
       await GetStorage().write('user', user.toJson());
 

@@ -10,7 +10,6 @@ import 'package:geniego/features/shop/controllers/settings/image_picker_controll
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/constants/text_strings.dart';
-import 'package:geniego/utils/validator/validator.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -46,7 +45,7 @@ class EditProductScreen extends StatelessWidget {
                           height: 80,
                           width: 80,
                           child: imageController.image.value == null
-                              ? Image.asset(AppImages.user)
+                              ? Image.asset(AppImages.productImage)
                               : Image.file(
                                   imageController.image.value!,
                                   fit: BoxFit.cover,
@@ -107,18 +106,16 @@ class EditProductScreen extends StatelessWidget {
 
               EditProfileMenu(
                 title: 'Quantity',
-                icon: Iconsax.add_square5,
+                icon: Iconsax.add_square,
                 controller: controller.editQuantity,
-                showToggle: true,
-                validator: (value) =>
-                    AppValidator.validateEmptyText(AppTexts.password, value),
               ),
 
               const SizedBox(height: AppSizes.spaceBtwSections),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => controller.updateProduct(product.id),
+                  onPressed: () => controller.updateProduct(product.id,
+                      productImage: imageController.image.value),
                   child: const Text('Save Product Info'),
                 ),
               ),

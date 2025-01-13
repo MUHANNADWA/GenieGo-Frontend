@@ -28,7 +28,7 @@ class EditAddressScreen extends StatelessWidget {
               children: [
                 //
                 TextFormField(
-                  initialValue: address.name,
+                  controller: controller.editName,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Iconsax.user),
                     labelText: 'Name',
@@ -42,7 +42,7 @@ class EditAddressScreen extends StatelessWidget {
                     Expanded(
                       child: TextFormField(
                         maxLines: null,
-                        initialValue: address.address,
+                        controller: controller.editAddress,
                         decoration: InputDecoration(
                           prefixIcon: Icon(Iconsax.building),
                           labelText: 'Address',

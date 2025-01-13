@@ -5,12 +5,16 @@ import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/services/auth_service.dart';
+import 'package:geniego/features/owner/controllers/product/dashboard_product_controller.dart';
+import 'package:geniego/features/owner/screens/product/edit_product_screen.dart';
+import 'package:geniego/features/shop/controllers/search/search_controller.dart';
 import 'package:geniego/features/shop/screens/product/widgets/bottom_add_to_cart.dart';
 import 'package:geniego/features/shop/screens/product/widgets/product_details_image.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
+import 'package:get/get.dart';
 
 import 'package:readmore/readmore.dart';
 
@@ -21,6 +25,9 @@ class ProductDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(DashboardProductController());
+    final searchController = Get.put(AppSearchController());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -108,7 +115,10 @@ class ProductDetailsScreen extends StatelessWidget {
                           children: List.generate(
                             product.tags.length,
                             (index) => GestureDetector(
-                              onTap: () {},
+                              onTap: () => searchController.search(
+                                '',
+                                [product.tags.elementAt(index)['name']],
+                              ),
                               child: RoundedContainer(
                                 padding: EdgeInsets.all(AppSizes.sm),
                                 backgroundColor: AppColors.darkerGrey,
@@ -129,7 +139,8 @@ class ProductDetailsScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () => Get.to(
+                                () => EditProductScreen(product: product)),
                             child: Text('Edit Product'),
                           ),
                         ),
@@ -140,7 +151,8 @@ class ProductDetailsScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                controller.deleteProduct(product.id),
                             child: Text('Delete Product'),
                           ),
                         ),

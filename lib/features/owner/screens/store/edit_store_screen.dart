@@ -42,7 +42,7 @@ class EditStoreScreen extends StatelessWidget {
                           height: 80,
                           width: 80,
                           child: imageController.image.value == null
-                              ? Image.asset(AppImages.user)
+                              ? Image.asset(AppImages.appLogo)
                               : Image.file(
                                   imageController.image.value!,
                                   fit: BoxFit.cover,

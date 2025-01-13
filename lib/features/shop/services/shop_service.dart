@@ -5,13 +5,12 @@ class ShopService {
   static getStores() async => await AppHttpHelper.get('stores');
   static getStoreById(id) async => await AppHttpHelper.get('stores/$id');
   static addStore(data) async => await AppHttpHelper.post('stores', data);
-  static updateStoreById(id, data) async =>
-      await AppHttpHelper.put('stores/$id', data);
-  static updateStoreByIdWithImage(id, data, image) async =>
-      await AppHttpHelper.postMultipart('stores', data, image);
+  static updateStore(data) async => await AppHttpHelper.put('stores', data);
+  static updateStoreImage(image) async =>
+      await AppHttpHelper.postMultipart('stores/upload-icon', {}, image);
   static getStoreProductsByStoreId(id) async =>
       await AppHttpHelper.get('stores/$id/products');
-  static deleteStoreById(id) async => await AppHttpHelper.delete('stores/$id');
+  static deleteStore() async => await AppHttpHelper.delete('stores');
 
   // Products
   static getProducts() async => await AppHttpHelper.get('products');
@@ -19,16 +18,17 @@ class ShopService {
   static addProduct(data) async => await AppHttpHelper.post('products', data);
   static updateProductById(id, data) async =>
       await AppHttpHelper.put('products/$id', data);
-  static updateProductByIdWithImage(id, data, image) async =>
-      await AppHttpHelper.postMultipart('products', data, image);
+  static updateProductImageById(id, image) async =>
+      await AppHttpHelper.postMultipart('products/$id/upload-icon', {}, image);
   static deleteProductById(id) async =>
       await AppHttpHelper.delete('products/$id');
 
   // Wishlist
   static getWishlist() async => await AppHttpHelper.get('wishlist');
-  static addToWishlist(id) async => await AppHttpHelper.get('wishlist/$id');
+  static addToWishlist(id) async =>
+      await AppHttpHelper.post('wishlist/$id', {});
   static removeFromWishlist(id) async =>
-      await AppHttpHelper.get('wishlist/$id');
+      await AppHttpHelper.delete('wishlist/$id');
 
   // Orders
   static getOrders() async => await AppHttpHelper.get('orders');

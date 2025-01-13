@@ -32,7 +32,9 @@ class AddressScreen extends StatelessWidget {
           onRefresh: () => controller.refreshSites(),
           child: Obx(
             () => controller.isLoading.value
-                ? AppShimmer(child: RoundedContainer(height: 120))
+                ? AppShimmer(
+                    child: RoundedContainer(
+                        height: 120, backgroundColor: Colors.black))
                 : controller.hasError.value
                     ? AppDefaultPage(
                         image: AppImages.disconnected,

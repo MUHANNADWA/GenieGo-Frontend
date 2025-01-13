@@ -88,6 +88,8 @@ class WishlistController extends GetxController {
         title: 'Added',
         message: 'Product Has Been Added To The WishList',
       );
+      fetchWishlist();
+      update();
     } else {
       await removeFromWishlist(productId);
 
@@ -95,6 +97,8 @@ class WishlistController extends GetxController {
         title: 'Removed',
         message: 'Product Has Been Removed From WishList',
       );
+      fetchWishlist();
+      update();
     }
   }
 }

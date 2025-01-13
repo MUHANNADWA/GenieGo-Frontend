@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:geniego/features/shop/models/product_model.dart';
+import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -8,7 +9,8 @@ import 'package:get_storage/get_storage.dart';
 class CartController extends GetxController {
   static CartController get instance => Get.find();
 
-  final RxMap<Product, RxInt> cartItems = <Product, RxInt>{}.obs;
+  final RxMap<int, RxInt> cartItems = <int, RxInt>{}.obs;
+  final RxMap<Product, RxInt> cartProducts = <Product, RxInt>{}.obs;
   final RxBool isLoading = true.obs;
   final RxBool hasError = false.obs;
   final RxString errorMessage = ''.obs;
@@ -24,13 +26,20 @@ class CartController extends GetxController {
       isLoading.value = true;
       hasError.value = false;
 
-      final List items = GetStorage().read('cartItems') ?? [];
+      final List<int> items = GetStorage().read('cartItems') ?? [];
       final List quantities = GetStorage().read('cartQuantites') ?? [];
 
-      final Map quant = Map.fromIterables(items, quantities);
+      List<Product> products = [];
+      for (var i = 0; i < items.length; i++) {
+        final response = await ShopService.getProductById(items[i]);
+        products.add(Product.fromJson(response['data']));
+      }
 
-      cartItems.value = Map.from(quant.map((product, count) =>
-          MapEntry(Product.fromJson(product), RxInt(count))));
+      cartItems.value = Map.fromIterables(
+          items, quantities.map((quantity) => RxInt(quantity)));
+
+      cartProducts.value = Map.fromIterables(
+          products, quantities.map((quantity) => RxInt(quantity)));
 
       cartItems.refresh();
 
@@ -48,30 +57,26 @@ class CartController extends GetxController {
   void increaseQuantity(Product product) async {
     if (contains(product.id) && getQuantity(product.id) < product.stock) {
       log('🔰 increasing product with the id: ${product.id} ..');
-      product = getProductById(product.id)!;
-      cartItems[product]!.value++;
+      cartItems[product.id]!.value++;
     } else if (!contains(product.id)) {
-      cartItems[product] = 1.obs;
+      cartItems[product.id] = 1.obs;
     }
   }
 
-  void decreaseQuantity(product) async {
+  void decreaseQuantity(Product product) async {
     if (contains(product.id) && getQuantity(product.id) > 1) {
       log('🔰 decreasing product with the id: ${product.id} ..');
-      product = getProductById(product.id)!;
-      cartItems[product]!.value--;
+      cartItems[product.id]!.value--;
     } else if (contains(product.id) && getQuantity(product.id) == 1) {
-      cartItems.remove(product);
+      cartItems.remove(product.id);
       removeFromCart(product);
     }
   }
 
-  bool contains(productId) => cartItems.isNotEmpty
-      ? cartItems.value.keys.any((product) => product.id == productId)
-      : false;
+  bool contains(productId) => cartItems.containsKey(productId);
 
-  Product? getProductById(productId) => contains(productId)
-      ? cartItems.value.keys.firstWhere((product) => product.id == productId)
+  int? getProductById(productId) => contains(productId)
+      ? cartItems.value.keys.firstWhere((id) => id == productId)
       : null;
 
   int getQuantity(int productId) => contains(productId)
@@ -79,22 +84,24 @@ class CartController extends GetxController {
       : 0;
 
   Future<void> addToCart(Product product) async {
-    cartItems.value.addAll({product: RxInt(getQuantity(product.id))});
+    cartItems.value.addAll({product.id: RxInt(getQuantity(product.id))});
     await updateCart();
     log('🔰 adding product with the id: ${product.id} ..');
-    AppLoaders.infoSnackBar(title: 'added');
+    AppLoaders.infoSnackBar(
+        title: 'Added', message: 'This product has been added to your cart');
   }
 
   Future<void> removeFromCart(Product product) async {
     log('🔰 removing product with the id: ${product.id} ..');
-    cartItems.value.remove(product);
+    cartItems.value.remove(product.id);
     await updateCart();
-    AppLoaders.warningSnackBar(title: 'removed');
+    AppLoaders.warningSnackBar(
+        title: 'removed',
+        message: 'This product has been removed from your cart');
   }
 
   Future<void> updateCart() async {
-    final List items =
-        cartItems.value.keys.map((product) => product.toJson()).toList();
+    final List items = cartItems.value.keys.toList();
     final List<int> quantities =
         cartItems.value.values.map((count) => count.value).toList();
 

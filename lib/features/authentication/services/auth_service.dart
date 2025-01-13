@@ -11,8 +11,8 @@ class AuthService {
 
   static updateUser(data) async => await AppHttpHelper.put('user', data);
 
-  static updateUserWithImage(data, image) async =>
-      await AppHttpHelper.postMultipart('users', data, image);
+  static updateUserImage(image) async =>
+      await AppHttpHelper.postMultipart('user/upload-icon', {}, image);
 
   static deleteUserById(data) async => await AppHttpHelper.delete('user');
 

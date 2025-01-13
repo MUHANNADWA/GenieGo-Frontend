@@ -32,15 +32,16 @@ class WishlistScreen extends StatelessWidget {
           ]),
       body: RefreshIndicator(
         onRefresh: () => controller.fetchWishlist(),
-        child: Padding(
-          padding: AppSpacingStyles.paddingWithoutBottom,
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: AppSpacingStyles.paddingWithoutBottom,
             child: Obx(
               () => controller.isLoading.value
                   ? AppShimmer(
                       child: GridLayout(
                         itemCount: 4,
-                        itemBuilder: (_, __) => RoundedContainer(height: 282),
+                        itemBuilder: (_, __) => RoundedContainer(
+                            height: 282, backgroundColor: Colors.black),
                       ),
                     )
                   : controller.hasError.value

@@ -19,6 +19,7 @@ class AppLoaders {
       snackPosition: SnackPosition.BOTTOM,
       duration: Duration(seconds: duration),
       margin: const EdgeInsets.all(10),
+      dismissDirection: DismissDirection.horizontal,
       icon: const Icon(Iconsax.check, color: AppColors.white),
     );
   }
@@ -34,6 +35,7 @@ class AppLoaders {
       snackPosition: SnackPosition.BOTTOM,
       duration: const Duration(seconds: 3),
       margin: const EdgeInsets.all(20),
+      dismissDirection: DismissDirection.horizontal,
       icon: const Icon(Iconsax.warning_2, color: AppColors.white),
     );
   }
@@ -49,6 +51,7 @@ class AppLoaders {
       snackPosition: SnackPosition.BOTTOM,
       duration: const Duration(seconds: 3),
       margin: const EdgeInsets.all(20),
+      dismissDirection: DismissDirection.horizontal,
       icon: const Icon(Iconsax.warning_2, color: AppColors.white),
     );
   }
@@ -64,6 +67,7 @@ class AppLoaders {
       snackPosition: SnackPosition.BOTTOM,
       duration: const Duration(seconds: 3),
       margin: const EdgeInsets.all(20),
+      dismissDirection: DismissDirection.horizontal,
       icon: const Icon(Iconsax.warning_2, color: AppColors.white),
     );
   }

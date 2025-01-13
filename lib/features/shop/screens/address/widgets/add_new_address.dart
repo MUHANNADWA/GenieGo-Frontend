@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
+import 'package:geniego/features/shop/controllers/addresses/addresses_controller.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/validator/validator.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AddNewAddressScreen extends StatelessWidget {
@@ -8,6 +11,8 @@ class AddNewAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(AddressesController());
+
     return Scaffold(
       appBar: const AppAppBar(
         showBackArrow: true,
@@ -17,29 +22,34 @@ class AddNewAddressScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(AppSizes.defaultSpace),
           child: Form(
+            key: controller.formKey,
             child: Column(
               children: [
                 //
                 TextFormField(
+                  validator: (value) =>
+                      AppValidator.validateEmptyText('Name', value),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: controller.name,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Iconsax.user),
                     labelText: 'Name',
                   ),
                 ),
 
-                SizedBox(
-                  height: AppSizes.spaceBtwInputFields,
-                ),
+                SizedBox(height: AppSizes.spaceBtwInputFields),
 
                 Row(
                   children: [
                     Expanded(
                       child: TextFormField(
                         maxLines: null,
+                        validator: (value) =>
+                            AppValidator.validateEmptyText('Address', value),
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        controller: controller.address,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(
-                            Iconsax.building,
-                          ),
+                          prefixIcon: Icon(Iconsax.building),
                           labelText: 'Address',
                         ),
                       ),
@@ -47,13 +57,13 @@ class AddNewAddressScreen extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(
-                  height: AppSizes.defaultSpace,
-                ),
+                SizedBox(height: AppSizes.defaultSpace),
 
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(onPressed: () {}, child: Text('Save')),
+                  child: ElevatedButton(
+                      onPressed: () => controller.addSite(),
+                      child: Text('Save')),
                 ),
               ],
             ),

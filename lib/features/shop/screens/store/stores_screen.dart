@@ -27,15 +27,15 @@ class StoreScreen extends StatelessWidget {
         ),
         actions: [CartCounterIcon()],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: AppSizes.spaceBtwItems),
+      body: RefreshIndicator(
+        onRefresh: () => controller.refreshStores(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: AppSizes.spaceBtwItems),
 
-            // Stores
-            RefreshIndicator(
-              onRefresh: () => controller.refreshStores(),
-              child: Obx(
+              // Stores
+              Obx(
                 () => controller.isLoading.value
                     ? AppShimmer(
                         child: Padding(
@@ -44,8 +44,8 @@ class StoreScreen extends StatelessWidget {
                             crossAxisCount: 1,
                             mainAxisExtent: 80,
                             itemCount: 4,
-                            itemBuilder: (_, __) =>
-                                RoundedContainer(height: 80),
+                            itemBuilder: (_, __) => RoundedContainer(
+                                height: 80, backgroundColor: Colors.black),
                           ),
                         ),
                       )
@@ -73,8 +73,8 @@ class StoreScreen extends StatelessWidget {
                                 ),
                               ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

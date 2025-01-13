@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:geniego/features/shop/models/site_model.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
+import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 
 class AddressesController extends GetxController {
@@ -50,16 +51,26 @@ class AddressesController extends GetxController {
     }
   }
 
+  final name = TextEditingController();
+  final address = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   Future<void> addSite() async {
     try {
+      if (!formKey.currentState!.validate()) return;
+
       isLoading.value = true;
       hasError.value = false;
 
       final siteData = {
-        //
+        'name': name.text.trim(),
+        'address': address.text.trim()
       };
 
       await ShopService.addSite(siteData);
+
+      AppLoaders.successSnackBar(
+          title: 'Added', message: 'Your Address has been added successfully!');
 
       addresses.refresh();
     } catch (e) {
@@ -70,16 +81,24 @@ class AddressesController extends GetxController {
     }
   }
 
+  final editName = TextEditingController();
+  final editAddress = TextEditingController();
+
   Future<void> editSite(id) async {
     try {
       isLoading.value = true;
       hasError.value = false;
 
       final siteData = {
-        //
+        'name': editName.text.trim(),
+        'address': editAddress.text.trim()
       };
 
       await ShopService.updateSiteById(id, siteData);
+
+      AppLoaders.successSnackBar(
+          title: 'Updated',
+          message: 'Your Address has been updated successfully!');
 
       addresses.refresh();
     } catch (e) {
@@ -97,6 +116,9 @@ class AddressesController extends GetxController {
 
       await ShopService.deleteSiteById(id);
 
+      AppLoaders.errorSnackBar(
+          title: 'Removed',
+          message: 'Your Address has been Removed successfully!');
       addresses.refresh();
     } catch (e) {
       hasError.value = true;

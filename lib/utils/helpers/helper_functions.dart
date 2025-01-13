@@ -23,37 +23,43 @@ class AppHelper {
         storeId: -1,
       );
 
-  static Site get exampleSite => Site(
-        id: Random().nextInt(1000),
-        name: 'Site Name',
-        address: 'Address, Street, Home',
-      );
+  static Site get exampleSite => Site.fromJson({
+        'id': Random().nextInt(1000),
+        'name': 'Site Name',
+        'address': 'Address, Street, Home',
+      });
 
-  static Store get exampleStore => Store(
-        id: Random().nextInt(1000),
-        name: 'Store Name',
-        description: 'This is Store Descreption',
-        site: exampleSite,
-        image: AppImages.appLogo,
-        tags: ['good', 'potato', 'margin'],
-      );
+  static Store get exampleStore => Store.fromJson({
+        'id': Random().nextInt(1000),
+        'translations': {
+          'en': {
+            'name': 'Loading ..',
+            'description': 'Loading ..',
+          },
+          'ar': {
+            'name': 'جاري التحميل ..',
+            'description': 'جاري التحميل ..',
+          },
+        },
+        'site': exampleSite,
+        'icon_url': AppImages.appLogo,
+        'tags': ['good', 'potato', 'margin'],
+      });
 
   static Product get exampleProduct => Product.fromJson({
         'id': Random().nextInt(1000),
         'translations': {
           'en': {
-            'name': 'Product Name',
-            'description':
-                'This is Product Descreption This is Product Descreption This is Product Descreption This is Product Descreption.',
+            'name': 'Loading ..',
+            'description': 'Loading ..',
           },
           'ar': {
-            'name': 'اسم منتج عشوائي',
-            'description':
-                'هذا هو وصف المنتج العشوائي هذا هو وصف المنتج العشوائي هذا هو وصف المنتج العشوائي هذا هو وصف المنتج العشوائي .',
+            'name': 'جاري التحميل ..',
+            'description': 'جاري التحميل ..',
           },
         },
         'price': Random().nextInt(1000).toString(),
-        'image': AppImages.appLogo,
+        'icon_url': AppImages.appLogo,
         'tags': ['good', 'product', 'padding'],
         'store_id': exampleStore.id,
         'stock': Random().nextInt(10),

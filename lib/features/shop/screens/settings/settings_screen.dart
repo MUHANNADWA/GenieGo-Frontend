@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/primary_header_container.dart';
+import 'package:geniego/common/widgets/products/cart/cart_badge.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:geniego/features/authentication/screens/login/widgets/list_tiles/user_profile_tile.dart';
@@ -72,7 +73,14 @@ class SettingsScreen extends StatelessWidget {
 
                   // My Cart
                   SettingsMenuTile(
-                    icon: Iconsax.shopping_cart,
+                    leadingWidget: CartBadge(
+                      alignment: Alignment(1, -1),
+                      child: Icon(
+                        Iconsax.shopping_cart,
+                        size: 28,
+                        color: AppColors.primary,
+                      ),
+                    ),
                     title: AppTexts.cart,
                     subTitle: AppTexts.cartSub,
                     onTap: () => Get.to(() => const CartScreen()),

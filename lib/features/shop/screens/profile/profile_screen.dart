@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
-import 'package:geniego/common/widgets/custom_shapes/containers/app_circular_image.dart';
+import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
 import 'package:geniego/features/authentication/models/user_model.dart';
 import 'package:geniego/features/shop/controllers/settings/profile_controller.dart';
@@ -26,10 +27,16 @@ class ProfileScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(AppSizes.defaultSpace),
           child: Column(children: [
-            const AppCircularImage(
-              image: AppImages.user,
-              height: 80,
+            RoundedContainer(
               width: 80,
+              height: 80,
+              radius: 100,
+              child: user.image == AppImages.user
+                  ? Image.asset(AppImages.productImage)
+                  : CachedNetworkImage(
+                      imageUrl: user.image,
+                      fit: BoxFit.cover,
+                    ),
             ),
 
             // Details

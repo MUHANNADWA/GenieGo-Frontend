@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
@@ -10,6 +11,7 @@ import 'package:geniego/utils/constants/pages.dart';
 import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class DashboardStoreController extends GetxController {
   static DashboardStoreController get instance => Get.find();
@@ -87,15 +89,26 @@ class DashboardStoreController extends GetxController {
         }
       };
 
-      // storeImage != null
-      await ShopService.addStore(data);
-      // await ShopService.updateStoreByIdWithImage(id, data, storeImage)
+      final response = await ShopService.addStore(data);
+
+      Map? responseImage;
+      if (storeImage != null) {
+        responseImage = await ShopService.updateStoreImage(storeImage);
+      }
+
+      final store = Store.fromJson(response['data']);
+      store.image = responseImage?['data']['icon_url'] ?? AppImages.appLogo;
+
+      final user = AuthService.currentUser;
+      user.storeId = response['data']['id'];
+      await GetStorage().write('user', user.toJson());
 
       // Stop Loading
       AppDialogs.hideDialog();
 
       AppLoaders.infoSnackBar(
-          title: 'Saved!', message: 'Your Store Has Been Added Successfully');
+          title: 'Success!',
+          message: 'Your Store Has Been Added Successfully!');
     } catch (e) {
       await AppDialogs.hideDialog();
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
@@ -134,9 +147,14 @@ class DashboardStoreController extends GetxController {
         }
       };
 
-      storeImage != null
-          ? await ShopService.updateStoreByIdWithImage(id, data, storeImage)
-          : await ShopService.updateStoreById(id, data);
+      Map? responseImage;
+      if (storeImage != null) {
+        responseImage = await ShopService.updateStoreImage(storeImage);
+      }
+      final response = await ShopService.updateStore(data);
+
+      final store = Store.fromJson(response['data']);
+      store.image = responseImage?['data']['icon_url'] ?? AppImages.appLogo;
 
       // Stop Loading
       AppDialogs.hideDialog();
@@ -158,7 +176,9 @@ class DashboardStoreController extends GetxController {
         confirmText: 'Delete',
         onConfirm: () async {
           Get.back();
-          await ShopService.deleteStoreById(id);
+          await ShopService.deleteStore();
+          AuthService.currentUser.storeId = -1;
+          GetStorage().write('user', AuthService.currentUser.toJson());
           AppLoaders.errorSnackBar(
               title: 'Deleted!',
               message: 'Your Store Has been Deleted Successfully');
