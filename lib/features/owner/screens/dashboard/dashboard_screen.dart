@@ -16,6 +16,7 @@ import 'package:geniego/features/shop/screens/store/widgets/store_card.dart';
 import 'package:geniego/features/shop/screens/store/widgets/store_details_screen.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 
 class OwnerDashboardScreen extends StatelessWidget {
@@ -27,7 +28,7 @@ class OwnerDashboardScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppAppBar(
-          title: Text('Dashboard',
+          title: Text(AppTexts.dashboard,
               style: Theme.of(context).textTheme.headlineMedium)),
       body: RefreshIndicator(
         onRefresh: () => controller.fetchDashboardItems(),

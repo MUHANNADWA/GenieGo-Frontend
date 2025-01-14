@@ -3,12 +3,15 @@ import 'package:geniego/features/shop/models/order_model.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 
 class BillingAmountSection extends StatelessWidget {
-  const BillingAmountSection({super.key, this.order});
+  const BillingAmountSection({super.key, this.order, this.totalPrice});
 
   final Order? order;
+  final double? totalPrice;
 
   @override
   Widget build(BuildContext context) {
+    double? pTotalPrice = totalPrice ?? order?.totalPrice;
+
     return Column(
       children: [
         // SubTotal
@@ -21,7 +24,7 @@ class BillingAmountSection extends StatelessWidget {
               ),
             ),
             Text(
-              '\$${order?.totalPrice != null ? (order!.totalPrice - (order!.totalPrice * 0.2)).toStringAsFixed(2) : 80}',
+              '\$${pTotalPrice != null ? (pTotalPrice - (pTotalPrice * 0.2)).toStringAsFixed(2) : 80}',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],
@@ -37,7 +40,7 @@ class BillingAmountSection extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              '\$${order?.totalPrice != null ? (order!.totalPrice * 0.15).toStringAsFixed(2) : 15}',
+              '\$${pTotalPrice != null ? (pTotalPrice * 0.15).toStringAsFixed(2) : 15}',
               style: Theme.of(context).textTheme.labelLarge,
             ),
           ],
@@ -53,7 +56,7 @@ class BillingAmountSection extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              '\$${order?.totalPrice != null ? (order!.totalPrice * 0.05).toStringAsFixed(2) : 5}',
+              '\$${pTotalPrice != null ? (pTotalPrice * 0.05).toStringAsFixed(2) : 5}',
               style: Theme.of(context).textTheme.labelLarge,
             ),
           ],
@@ -69,7 +72,7 @@ class BillingAmountSection extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              '\$${order?.totalPrice ?? 100}',
+              '\$${pTotalPrice ?? 100}',
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ],

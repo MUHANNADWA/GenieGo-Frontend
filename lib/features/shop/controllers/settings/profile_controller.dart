@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -88,7 +89,11 @@ class ProfileController extends GetxController {
             'Are you sure you want to Log out? This action will end your session now.',
         confirmText: 'Logout',
         onConfirm: () async {
-          await AuthService.logout();
+          try {
+            await AuthService.logout();
+          } catch (e) {
+            log('loguot error: $e');
+          }
           GetStorage().remove('token');
           Get.offAllNamed(loginScreen);
         },

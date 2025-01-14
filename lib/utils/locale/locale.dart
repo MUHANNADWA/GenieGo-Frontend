@@ -123,6 +123,9 @@ class AppLocale implements Translations {
           'notificationsSub': 'Enable or Disable app notifications',
           'fullscreen': 'Fullscreen',
           'fullscreenSub': 'Set App To Fullscreen or Not',
+
+          // ilsndld
+          'dashboard': 'Dashboard'
         },
         'ar': {
           // GLOBAL Texts
@@ -242,6 +245,9 @@ class AppLocale implements Translations {
           'notificationsSub': 'تفعيل الإشعارات أو إلغاء تفعيلها',
           'fullscreen': 'ملئ الشاشة',
           'fullscreenSub': 'تفعيل ملئ الشاشة أو إلغاء تفعيلها',
+
+          // ilsndld
+          'dashboard': 'لوحة التحكم'
         },
       };
 }

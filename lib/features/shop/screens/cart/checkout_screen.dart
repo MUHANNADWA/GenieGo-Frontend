@@ -3,6 +3,7 @@ import 'package:geniego/common/styles/spacing_styles.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
+import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_amount_section.dart';
@@ -21,6 +22,8 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CartController());
+
     return Scaffold(
       appBar: AppAppBar(
         showBackArrow: true,
@@ -64,7 +67,7 @@ class CheckoutScreen extends StatelessWidget {
               child: Column(
                 children: [
                   // Pricing
-                  BillingAmountSection(),
+                  BillingAmountSection(totalPrice: controller.getTotalPrice()),
 
                   const SizedBox(height: AppSizes.spaceBtwItems),
 

@@ -108,4 +108,14 @@ class CartController extends GetxController {
     await GetStorage().write('cartItems', items);
     await GetStorage().write('cartQuantites', quantities);
   }
+
+  double getTotalPrice() {
+    double price = 0.0;
+    for (var i = 0; i < cartProducts.length; i++) {
+      final productPrice = cartProducts.keys.elementAt(i).price;
+      final productQuantity = cartProducts.values.elementAt(i).value;
+      price += productPrice * productQuantity;
+    }
+    return price;
+  }
 }
