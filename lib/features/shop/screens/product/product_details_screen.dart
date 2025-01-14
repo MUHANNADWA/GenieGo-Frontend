@@ -13,6 +13,7 @@ import 'package:geniego/features/shop/screens/product/widgets/product_details_im
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 
@@ -55,9 +56,9 @@ class ProductDetailsScreen extends StatelessWidget {
                   // Stock Status
                   Row(
                     children: [
-                      const TitleText(title: 'Status'),
+                      TitleText(title: AppTexts.status),
                       const SizedBox(width: AppSizes.spaceBtwItems),
-                      Text('In Stock ${product.stock}',
+                      Text('${AppTexts.stock} ${product.stock}',
                           style: Theme.of(context).textTheme.titleMedium),
                     ],
                   ),
@@ -78,7 +79,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         // Description
-                        const SectionHeading(title: 'Description'),
+                        SectionHeading(title: AppTexts.description),
 
                         const SizedBox(height: AppSizes.spaceBtwItems),
 
@@ -86,8 +87,8 @@ class ProductDetailsScreen extends StatelessWidget {
                           product.description,
                           trimLines: 2,
                           trimMode: TrimMode.Line,
-                          trimCollapsedText: ' Show More',
-                          trimExpandedText: ' Less',
+                          trimCollapsedText: AppTexts.readMore,
+                          trimExpandedText: AppTexts.readLess,
                           moreStyle: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w800),
                           lessStyle: TextStyle(
@@ -104,7 +105,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SectionHeading(title: 'Tags'),
+                        SectionHeading(title: AppTexts.tags),
 
                         SizedBox(height: AppSizes.spaceBtwItems),
 
@@ -141,7 +142,7 @@ class ProductDetailsScreen extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () => Get.to(
                                 () => EditProductScreen(product: product)),
-                            child: Text('Edit Product'),
+                            child: Text(AppTexts.editProduct),
                           ),
                         ),
 
@@ -153,7 +154,7 @@ class ProductDetailsScreen extends StatelessWidget {
                           child: OutlinedButton(
                             onPressed: () =>
                                 controller.deleteProduct(product.id),
-                            child: Text('Delete Product'),
+                            child: Text(AppTexts.deleteProduct),
                           ),
                         ),
                       ],

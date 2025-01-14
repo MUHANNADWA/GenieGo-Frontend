@@ -44,7 +44,9 @@ class OwnerDashboardScreen extends StatelessWidget {
                           child: GridLayout(
                             itemCount: 4,
                             itemBuilder: (_, __) => RoundedContainer(
-                                height: 282, backgroundColor: Colors.black),
+                                height: 282,
+                                backgroundColor:
+                                    const Color.fromARGB(255, 19, 16, 16)),
                           ),
                         )
                       : controller.hasError.value
@@ -67,12 +69,12 @@ class OwnerDashboardScreen extends StatelessWidget {
                                       Column(
                                         children: [
                                           SectionHeading(
-                                            title: 'My Store',
+                                            title: AppTexts.myStore,
                                             onPressed: () => Get.to(() =>
                                                 StoreDetailsScreen(
                                                     store: controller.store!)),
                                             showActionButton: true,
-                                            buttonTitle: 'View Details',
+                                            buttonTitle: AppTexts.viewDetails,
                                           ),
                                           SizedBox(
                                               height: AppSizes.defaultSpace),
@@ -87,7 +89,8 @@ class OwnerDashboardScreen extends StatelessWidget {
                                       Column(
                                         children: [
                                           SectionHeading(
-                                            title: 'My Products',
+                                            buttonTitle: AppTexts.viewAll,
+                                            title: AppTexts.myProducts,
                                             showActionButton: true,
                                             onPressed: () => Get.to(
                                                 () => OwnerProductsScreen()),
@@ -111,7 +114,7 @@ class OwnerDashboardScreen extends StatelessWidget {
                                       Column(
                                         children: [
                                           SectionHeading(
-                                            title: 'My Products',
+                                            title: AppTexts.myProducts,
                                             showActionButton: true,
                                             onPressed: () => Get.to(
                                                 () => OwnerProductsScreen()),
