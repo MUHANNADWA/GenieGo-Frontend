@@ -2,6 +2,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:geniego/features/shop/models/order_model.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
+import 'package:geniego/main_screen.dart';
+import 'package:geniego/utils/constants/image_strings.dart';
+import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:get/get.dart';
 
 class OredrsController extends GetxController {
@@ -50,19 +53,28 @@ class OredrsController extends GetxController {
     }
   }
 
-  Future<void> addOrder() async {
+  Future<void> addOrder(Map<int, RxInt> cartItems) async {
     try {
+      log('Adding Order 🔄');
       isLoading.value = true;
       hasError.value = false;
 
-      final orderData = {
-        //
-      };
+      List<Map<String, int>> orderItems = cartItems.entries
+          .map((entry) => {'id': entry.key, 'quantity': entry.value.value})
+          .toList();
+
+      final orderData = {'site_id': 2, 'products': orderItems};
 
       await ShopService.addOrder(orderData);
 
-      orders.refresh();
+      AppDialogs.showSuccessDialog(
+        'Your Order has been added!',
+        'Your Item Will Be Shipped Soon, Do Not Forget To Pay For The Delivery Man',
+        AppImages.successfulPaymentIcon,
+        () => Get.offAll(() => const MainScreen()),
+      );
     } catch (e) {
+      log('Error Fetching Orders ❌ error = $e');
       hasError.value = true;
       errorMessage.value = e.toString();
     } finally {

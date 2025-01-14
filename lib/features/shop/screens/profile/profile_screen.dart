@@ -32,7 +32,7 @@ class ProfileScreen extends StatelessWidget {
               height: 80,
               radius: 100,
               child: user.image == AppImages.user
-                  ? Image.asset(AppImages.productImage)
+                  ? Image.asset(AppImages.user)
                   : CachedNetworkImage(
                       imageUrl: user.image,
                       fit: BoxFit.cover,

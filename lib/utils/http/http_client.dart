@@ -13,7 +13,7 @@ class AppHttpHelper {
 
   static Map<String, String> getHeaders() => {
         'Content-Type': 'application/json',
-        'Accept': 'application/json ',
+        'Accept': 'application/json',
         'Authorization': AuthService.token,
       };
 

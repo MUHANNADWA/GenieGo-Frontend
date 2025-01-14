@@ -39,12 +39,12 @@ class EditProductScreen extends StatelessWidget {
                   children: [
                     // Product  Picture
                     Center(
-                      child: Obx(
-                        () => RoundedContainer(
-                          radius: 100,
-                          height: 80,
-                          width: 80,
-                          child: imageController.image.value == null
+                      child: RoundedContainer(
+                        radius: 100,
+                        height: 80,
+                        width: 80,
+                        child: Obx(
+                          () => imageController.image.value == null
                               ? Image.asset(AppImages.productImage)
                               : Image.file(
                                   imageController.image.value!,

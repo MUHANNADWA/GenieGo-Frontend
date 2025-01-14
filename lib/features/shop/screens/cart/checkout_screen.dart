@@ -3,16 +3,15 @@ import 'package:geniego/common/styles/spacing_styles.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
+import 'package:geniego/features/shop/controllers/addresses/addresses_controller.dart';
 import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
+import 'package:geniego/features/shop/controllers/orders/orders_controller.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_payment_section.dart';
-import 'package:geniego/main_screen.dart';
 import 'package:geniego/utils/constants/colors.dart';
-import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
-import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:get/get.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -23,6 +22,8 @@ class CheckoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CartController());
+    final orderController = Get.put(OredrsController());
+    final addressController = Get.put(AddressesController());
 
     return Scaffold(
       appBar: AppAppBar(
@@ -81,7 +82,8 @@ class CheckoutScreen extends StatelessWidget {
                   const Divider(),
 
                   // Address
-                  BillingAddressSection(),
+                  BillingAddressSection(
+                      address: addressController.activeAddress),
                 ],
               ),
             ),
@@ -91,13 +93,8 @@ class CheckoutScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => AppDialogs.showSuccessDialog(
-                  'Payment Success!',
-                  'Your Item Will Be Shipped Soon!',
-                  AppImages.successfulPaymentIcon,
-                  () => Get.offAll(() => const MainScreen()),
-                ),
-                child: Text('Checkout \$256.0'),
+                onPressed: () => orderController.addOrder(controller.cartItems),
+                child: Text('Send The Genie! (Order Now)'),
               ),
             ),
           ],

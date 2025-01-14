@@ -35,7 +35,7 @@ class HomePopularStores extends StatelessWidget {
               child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: 2,
+                itemCount: 6,
                 itemBuilder: (_, index) => Obx(
                   () => controller.isLoading.value
                       ? AppShimmer(

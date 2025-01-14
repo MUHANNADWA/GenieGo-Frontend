@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/texts/section_heading.dart';
+import 'package:geniego/features/shop/controllers/addresses/addresses_controller.dart';
+import 'package:geniego/features/shop/models/site_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class BillingAddressSection extends StatelessWidget {
-  const BillingAddressSection({super.key});
+  const BillingAddressSection({super.key, this.address});
+
+  final Site? address;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(AddressesController());
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SectionHeading(
           title: 'Shipping Address',
+          showActionButton: true,
           buttonTitle: 'Change',
-          onPressed: () {},
+          onPressed: () => controller.changeAddress(),
         ),
 
         const SizedBox(height: AppSizes.spaceBtwItems),
@@ -29,16 +37,18 @@ class BillingAddressSection extends StatelessWidget {
             Row(
               children: [
                 Icon(
-                  Iconsax.call,
+                  Iconsax.attach_circle,
                   color: AppColors.grey,
                   size: 16,
                 ),
 
                 const SizedBox(width: AppSizes.sm),
 
-                // Phone
-                Text('+92-317-8059525',
-                    style: Theme.of(context).textTheme.bodyMedium),
+                // Name
+                Obx(
+                  () => Text(address?.name ?? 'No Name Provided',
+                      style: Theme.of(context).textTheme.bodyMedium),
+                ),
               ],
             ),
 
@@ -54,10 +64,12 @@ class BillingAddressSection extends StatelessWidget {
                 const SizedBox(width: AppSizes.sm),
 
                 // Address
-                Text(
-                  'South Latina, Maine 87695, USA',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  softWrap: true,
+                Obx(
+                  () => Text(
+                    address?.address ?? 'No Address Provided',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    softWrap: true,
+                  ),
                 ),
               ],
             )

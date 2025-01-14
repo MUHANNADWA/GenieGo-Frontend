@@ -19,7 +19,7 @@ class AddressBox extends StatelessWidget {
     final controller = Get.put(AddressesController());
 
     return GestureDetector(
-      onTap: () {},
+      onTap: () => controller.activeAddress = address,
       child: RoundedContainer(
         padding: const EdgeInsets.all(AppSizes.md),
         width: double.infinity,

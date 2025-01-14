@@ -39,21 +39,19 @@ class EditProfileScreen extends StatelessWidget {
                   children: [
                     // Profile Picture
                     Center(
-                      child: Obx(
-                        () => RoundedContainer(
-                          radius: 100,
-                          height: 80,
-                          width: 80,
-                          child: AuthService.currentUser.image == AppImages.user
-                              ? Image.asset(AppImages.user)
-                              : imageController.image.value?.path == null
-                                  ? CachedNetworkImage(
-                                      imageUrl: AuthService.currentUser.image)
-                                  : Image.file(
-                                      imageController.image.value!,
-                                      fit: BoxFit.cover,
-                                    ),
-                        ),
+                      child: RoundedContainer(
+                        radius: 100,
+                        height: 80,
+                        width: 80,
+                        child: Obx(() => imageController.image.value != null
+                            ? Image.file(
+                                imageController.image.value!,
+                                fit: BoxFit.cover,
+                              )
+                            : AuthService.currentUser.image == AppImages.user
+                                ? Image.asset(AppImages.user)
+                                : CachedNetworkImage(
+                                    imageUrl: AuthService.currentUser.image)),
                       ),
                     ),
 
