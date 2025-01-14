@@ -116,4 +116,32 @@ class AppTexts {
 
   // dlaibd
   static String get dashboard => 'dashboard'.tr;
+  static String get myProducts => 'myProducts'.tr;
+  static String get myStore => 'myStore'.tr;
+  static String get viewDetails => 'viewDetails'.tr;
+  static String get viewAll => 'viewAll'.tr;
+  static String get deleteStore => 'deleteStore'.tr;
+  static String get editStore => 'editStore'.tr;
+  static String get description => 'description'.tr;
+  static String get readMore => 'readMore'.tr;
+  static String get readLess => 'readLess'.tr;
+  static String get storeInformation => 'storeInformation'.tr;
+  static String get storePicture => 'storePicture'.tr;
+  static String get englishName => 'englishName'.tr;
+  static String get arabicName => 'arabicName'.tr;
+  static String get englishDescription => 'englishDescription'.tr;
+  static String get arabicDescription => 'arabicDescription'.tr;
+  static String get saveStoreInfo => 'saveStoreInfo'.tr;
+  static String get status => 'status'.tr;
+  static String get stock => 'stock'.tr;
+  static String get tags => 'tags'.tr;
+  static String get editProduct => 'editProduct'.tr;
+  static String get deleteProduct => 'deleteProduct'.tr;
+  static String get productInformation => 'productInformation'.tr;
+  static String get productPicture => 'productPicture'.tr;
+  static String get saveProductInfo => 'saveProductInfo'.tr;
+  static String get price => 'price'.tr;
+  static String get quantity => 'quantity'.tr;
+  static String get addStore => 'addStore'.tr;
+  static String get addProduct => 'addProduct'.tr;
 }

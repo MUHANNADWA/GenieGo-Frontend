@@ -8,6 +8,7 @@ import 'package:geniego/features/shop/screens/profile/widgets/edit_profile_menu.
 import 'package:geniego/features/shop/controllers/settings/image_picker_controller.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -20,7 +21,7 @@ class AddStoreScreen extends StatelessWidget {
     final controller = Get.put(DashboardStoreController());
 
     return Scaffold(
-      appBar: AppAppBar(title: Text('Add Stores'), showBackArrow: true),
+      appBar: AppAppBar(title: Text(AppTexts.addStore), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AppSizes.defaultSpace),
@@ -64,30 +65,30 @@ class AddStoreScreen extends StatelessWidget {
               const SizedBox(height: AppSizes.spaceBtwItems),
 
               // Heading Personal Info
-              const SectionHeading(title: 'Store Information'),
+              SectionHeading(title: AppTexts.storeInformation),
 
               const SizedBox(height: AppSizes.spaceBtwItems),
 
               EditProfileMenu(
-                title: 'English Name',
+                title: AppTexts.englishName,
                 icon: Iconsax.document,
                 controller: controller.englishName,
               ),
 
               EditProfileMenu(
-                title: 'Arabic Name',
+                title: AppTexts.arabicName,
                 icon: Iconsax.document,
                 controller: controller.arabicName,
               ),
 
               EditProfileMenu(
-                title: 'English Description',
+                title: AppTexts.englishDescription,
                 icon: Iconsax.archive,
                 controller: controller.englishDescription,
               ),
 
               EditProfileMenu(
-                title: 'Arabic Description',
+                title: AppTexts.arabicDescription,
                 icon: Iconsax.archive,
                 controller: controller.arabicDescription,
               ),
@@ -98,7 +99,7 @@ class AddStoreScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => controller.addStore(),
-                  child: const Text('Add Store'),
+                  child: Text(AppTexts.addStore),
                 ),
               ),
             ]),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 
 class SectionHeading extends StatelessWidget {
   const SectionHeading({
     super.key,
     this.onPressed,
     this.textColor,
-    this.buttonTitle = 'View all',
+    this.buttonTitle = 'View All',
     required this.title,
     this.showActionButton = false,
   });

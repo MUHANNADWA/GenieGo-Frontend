@@ -24,7 +24,7 @@ class EditProductScreen extends StatelessWidget {
     final controller = Get.put(DashboardProductController());
 
     return Scaffold(
-      appBar: AppAppBar(title: Text(AppTexts.profile), showBackArrow: true),
+      appBar: AppAppBar(title: Text(AppTexts.editProduct), showBackArrow: true),
 
       // Body
       body: SingleChildScrollView(
@@ -56,7 +56,7 @@ class EditProductScreen extends StatelessWidget {
 
                     TextButton(
                       onPressed: () => imageController.pickImage(),
-                      child: TitleText(title: 'Change Product Picture'),
+                      child: TitleText(title: AppTexts.productPicture),
                     ),
                   ],
                 ),
@@ -70,42 +70,42 @@ class EditProductScreen extends StatelessWidget {
               const SizedBox(height: AppSizes.spaceBtwItems),
 
               // Heading Personal Info
-              const SectionHeading(title: 'Product Information'),
+              SectionHeading(title: AppTexts.productInformation),
 
               const SizedBox(height: AppSizes.spaceBtwItems),
 
               EditProfileMenu(
-                title: 'English Name',
+                title: AppTexts.englishName,
                 icon: Iconsax.document,
                 controller: controller.editEnglishName,
               ),
 
               EditProfileMenu(
-                title: 'Arabic Name',
+                title: AppTexts.arabicName,
                 icon: Iconsax.document,
                 controller: controller.editArabicName,
               ),
 
               EditProfileMenu(
-                title: 'English Description',
+                title: AppTexts.englishDescription,
                 icon: Iconsax.archive,
                 controller: controller.editEnglishDescription,
               ),
 
               EditProfileMenu(
-                title: 'Arabic Description',
+                title: AppTexts.arabicDescription,
                 icon: Iconsax.archive,
                 controller: controller.editArabicDescription,
               ),
 
               EditProfileMenu(
-                title: 'Price',
+                title: AppTexts.price,
                 icon: Iconsax.dollar_circle,
                 controller: controller.editPrice,
               ),
 
               EditProfileMenu(
-                title: 'Quantity',
+                title: AppTexts.quantity,
                 icon: Iconsax.add_square,
                 controller: controller.editQuantity,
               ),
@@ -116,7 +116,7 @@ class EditProductScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () => controller.updateProduct(product.id,
                       productImage: imageController.image.value),
-                  child: const Text('Save Product Info'),
+                  child: Text(AppTexts.saveProductInfo),
                 ),
               ),
             ]),

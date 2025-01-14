@@ -9,6 +9,7 @@ import 'package:geniego/features/shop/screens/profile/widgets/edit_profile_menu.
 import 'package:geniego/features/shop/controllers/settings/image_picker_controller.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -23,7 +24,7 @@ class EditStoreScreen extends StatelessWidget {
     final controller = Get.put(DashboardStoreController());
 
     return Scaffold(
-      appBar: AppAppBar(title: Text('Edit Store'), showBackArrow: true),
+      appBar: AppAppBar(title: Text(AppTexts.editStore), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(AppSizes.defaultSpace),
@@ -53,7 +54,7 @@ class EditStoreScreen extends StatelessWidget {
 
                     TextButton(
                       onPressed: () => imageController.pickImage(),
-                      child: TitleText(title: 'Change Store Picture'),
+                      child: TitleText(title: AppTexts.storePicture),
                     ),
                   ],
                 ),
@@ -67,30 +68,30 @@ class EditStoreScreen extends StatelessWidget {
               const SizedBox(height: AppSizes.spaceBtwItems),
 
               // Heading Personal Info
-              const SectionHeading(title: 'Store Information'),
+              SectionHeading(title: AppTexts.storeInformation),
 
               const SizedBox(height: AppSizes.spaceBtwItems),
 
               EditProfileMenu(
-                title: 'English Name',
+                title: AppTexts.englishName,
                 icon: Iconsax.document,
                 controller: controller.editEnglishName,
               ),
 
               EditProfileMenu(
-                title: 'Arabic Name',
+                title: AppTexts.arabicName,
                 icon: Iconsax.document,
                 controller: controller.editArabicName,
               ),
 
               EditProfileMenu(
-                title: 'English Description',
+                title: AppTexts.englishDescription,
                 icon: Iconsax.archive,
                 controller: controller.editEnglishDescription,
               ),
 
               EditProfileMenu(
-                title: 'Arabic Description',
+                title: AppTexts.arabicDescription,
                 icon: Iconsax.archive,
                 controller: controller.editArabicDescription,
               ),
@@ -100,7 +101,7 @@ class EditStoreScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => controller.updateStore(store.id),
-                  child: const Text('Save Store Info'),
+                  child: Text(AppTexts.saveStoreInfo),
                 ),
               ),
             ]),

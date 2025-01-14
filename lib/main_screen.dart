@@ -56,7 +56,7 @@ class MainScreen extends StatelessWidget {
                           icon: Icon(Iconsax.activity),
                           selectedIcon: Icon(Iconsax.activity5,
                               color: AppColors.darkLightInvert),
-                          label: 'Dashboard',
+                          label: AppTexts.dashboard,
                         )
                       : NavigationDestination(
                           icon: Icon(Iconsax.heart),
@@ -109,7 +109,7 @@ class MainScreen extends StatelessWidget {
                       AuthService.currentUser.role == 'Owner'
                           ? NavigationRailDestination(
                               icon: Icon(Iconsax.activity),
-                              label: Text('Dashboard'),
+                              label: Text(AppTexts.dashboard),
                             )
                           : NavigationRailDestination(
                               icon: Icon(Iconsax.heart),

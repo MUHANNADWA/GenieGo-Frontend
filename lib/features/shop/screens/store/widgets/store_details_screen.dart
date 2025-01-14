@@ -16,6 +16,7 @@ import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/constants/text_strings.dart';
 import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:get/get.dart';
 import 'package:readmore/readmore.dart';
@@ -64,11 +65,13 @@ class StoreDetailsScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         // Description
-                        const SectionHeading(title: 'Description'),
+                        SectionHeading(title: AppTexts.description),
 
                         const SizedBox(height: AppSizes.spaceBtwItems),
 
                         ReadMoreText(
+                          trimCollapsedText: AppTexts.readMore,
+                          trimExpandedText: AppTexts.readLess,
                           store.description,
                           trimMode: TrimMode.Line,
                           moreStyle: const TextStyle(
@@ -93,7 +96,7 @@ class StoreDetailsScreen extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () =>
                                 Get.to(() => EditStoreScreen(store: store)),
-                            child: Text('Edit Store'),
+                            child: Text(AppTexts.editStore),
                           ),
                         ),
 
@@ -105,7 +108,7 @@ class StoreDetailsScreen extends StatelessWidget {
                           child: OutlinedButton(
                             onPressed: () =>
                                 dashController.deleteStore(store.id),
-                            child: Text('Delete Store'),
+                            child: Text(AppTexts.deleteStore),
                           ),
                         ),
                       ],
