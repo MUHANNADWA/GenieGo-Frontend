@@ -13,10 +13,12 @@ class CartItem extends StatelessWidget {
   const CartItem({
     super.key,
     required this.product,
+    this.quantity,
     this.showAddRemoveButtons = true,
   });
 
   final Product product;
+  final int? quantity;
   final bool showAddRemoveButtons;
 
   @override
@@ -58,7 +60,7 @@ class CartItem extends StatelessWidget {
                   const SizedBox(width: 20),
 
                   Text(
-                      'Quantity: ${CartController.instance.getQuantity(product.id)}'),
+                      'Quantity: ${quantity ?? CartController.instance.getQuantity(product.id)}'),
 
                   // Product Price
                   PriceText(price: product.price),

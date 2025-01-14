@@ -11,8 +11,8 @@ class OrderItemsController extends GetxController {
   final RxBool isLoading = true.obs;
   final RxBool hasError = false.obs;
   final RxString errorMessage = ''.obs;
-  final RxMap<int, RxMap<Product, RxInt>> orderItems =
-      <int, RxMap<Product, RxInt>>{}.obs;
+  final RxMap<int, Map<Product, int>> orderItems =
+      <int, Map<Product, int>>{}.obs;
 
   Future<void> getOrderItemsByOrderId(id) async =>
       !orderItems.value.containsKey(id)
@@ -32,15 +32,15 @@ class OrderItemsController extends GetxController {
       final data = await ShopService.getOrderById(id);
       final orderItemsData = data['data']['products'];
 
-      for (var i = 0; i < orderItemsData.length; i++) {
-        final product =
-            await ShopService.getProductById(orderItemsData[i]['id']);
-        final quantity =
-            await ShopService.getProductById(orderItemsData[i]['quantity']);
-        orderItems.value.addAll({
-          id,
-          {Product.fromJson(product), RxInt(quantity)}
-        } as Map<int, RxMap<Product, RxInt>>);
+      for (var item in orderItemsData) {
+        final productData = await ShopService.getProductById(item['id']);
+        final product = Product.fromJson(productData['data']);
+        final quantity = item['quantity'];
+
+        if (!orderItems.containsKey(id)) {
+          orderItems[id] = {};
+        }
+        orderItems[id]![product] = quantity;
       }
 
       log('Items For The Order With Id: $id Fetched Successfully ✅  response = ${orderItems.value.map((orderId, products) => MapEntry(orderId, products.map((product, quantity) => MapEntry(product.toJson(), quantity))))}');

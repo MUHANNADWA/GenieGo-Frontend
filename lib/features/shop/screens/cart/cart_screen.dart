@@ -26,10 +26,10 @@ class CartScreen extends StatelessWidget {
         title: Text(AppTexts.cart,
             style: Theme.of(context).textTheme.headlineSmall),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(AppSizes.defaultSpace),
-        child: RefreshIndicator(
-          onRefresh: () => controller.fetchCartProducts(),
+      body: RefreshIndicator(
+        onRefresh: () => controller.fetchCartProducts(),
+        child: Padding(
+          padding: EdgeInsets.all(AppSizes.defaultSpace),
           child: Obx(
             () => ListView.separated(
               shrinkWrap: true,
@@ -60,17 +60,19 @@ class CartScreen extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: AppSpacingStyles.paddingWithoutTop,
-        child: ElevatedButton(
-          style: ButtonStyle(
-            side: WidgetStatePropertyAll(
-              BorderSide(color: Colors.transparent),
+        child: Obx(
+          () => ElevatedButton(
+            style: ButtonStyle(
+              side: WidgetStatePropertyAll(
+                BorderSide(color: Colors.transparent),
+              ),
             ),
+            onPressed: controller.cartItems.value.isNotEmpty
+                ? () => Get.to(() =>
+                    CheckoutScreen(cartItems: controller.cartProducts.value))
+                : null,
+            child: Text('Checkout'),
           ),
-          onPressed: controller.cartItems.value.isNotEmpty
-              ? () => Get.to(() =>
-                  CheckoutScreen(cartItems: controller.cartProducts.value))
-              : null,
-          child: Text('Checkout'),
         ),
       ),
     );

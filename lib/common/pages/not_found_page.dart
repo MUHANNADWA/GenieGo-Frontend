@@ -10,17 +10,13 @@ class NotFoundScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AppDefaultPage(
-          image: AppImages.onBoardingImage1,
-          title: AppTexts.notFoundTitle,
-          subTitle: AppTexts.notFoundSubTitle,
-          showActionButton: true,
-          actionButtonText: AppTexts.returnHome,
-          onPressedActionButton: () => Get.offAllNamed(mainScreen),
-        ),
-      ],
+    return AppDefaultPage(
+      image: AppImages.onBoardingImage1,
+      title: AppTexts.notFoundTitle,
+      subTitle: AppTexts.notFoundSubTitle,
+      showActionButton: true,
+      actionButtonText: AppTexts.returnHome,
+      onPressedActionButton: () => Get.offAllNamed(mainScreen),
     );
   }
 }

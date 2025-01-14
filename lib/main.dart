@@ -19,8 +19,6 @@ void main() async {
 
   // To Delete Everything In Storage
   // GetStorage().erase();
-  // GetStorage().remove('cartItems');
-  // GetStorage().remove('cartQuantites');
 
   // Run App
   runApp(const App());

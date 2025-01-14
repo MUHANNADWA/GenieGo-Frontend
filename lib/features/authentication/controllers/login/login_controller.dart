@@ -87,7 +87,7 @@ class LoginController extends GetxController {
       await AppDialogs.hideDialog();
 
       // Navigate To Navigation Menu
-      Get.toNamed(mainScreen);
+      Get.offAllNamed(mainScreen);
     } catch (e) {
       AppDialogs.hideDialog();
       AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

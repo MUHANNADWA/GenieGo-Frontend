@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -7,19 +8,23 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 Future<void> initService() async {
   final service = FlutterBackgroundService();
-  await service.configure(
-    iosConfiguration: IosConfiguration(
-      autoStart: true,
-      onForeground: onStart,
-      onBackground: onIosBackground,
-    ),
-    androidConfiguration: AndroidConfiguration(
-      onStart: onStart,
-      isForegroundMode: true,
-      autoStart: false,
-      foregroundServiceNotificationId: 888,
-    ),
-  );
+  try {
+    await service.configure(
+      iosConfiguration: IosConfiguration(
+        autoStart: true,
+        onForeground: onStart,
+        onBackground: onIosBackground,
+      ),
+      androidConfiguration: AndroidConfiguration(
+        onStart: onStart,
+        isForegroundMode: true,
+        autoStart: false,
+        foregroundServiceNotificationId: 888,
+      ),
+    );
+  } catch (e) {
+    log('error in background service $e');
+  }
 }
 
 @pragma('vm:entry-point')

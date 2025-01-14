@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/features/shop/models/order_model.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 
 class BillingAmountSection extends StatelessWidget {
-  const BillingAmountSection({super.key});
+  const BillingAmountSection({super.key, this.order});
+
+  final Order? order;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        /// SubTotal
+        // SubTotal
         Row(
           children: [
             Expanded(
@@ -18,17 +21,14 @@ class BillingAmountSection extends StatelessWidget {
               ),
             ),
             Text(
-              '\$256.0',
+              '\$${order?.totalPrice != null ? (order!.totalPrice - (order!.totalPrice * 0.2)).toStringAsFixed(2) : 80}',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],
         ),
-        const SizedBox(
-          height: AppSizes.spaceBtwItems / 2,
-        ),
+        const SizedBox(height: AppSizes.sm),
 
-        /// Shipping Fee
-
+        // Shipping Fee
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -37,17 +37,14 @@ class BillingAmountSection extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              '\$6.0',
+              '\$${order?.totalPrice != null ? (order!.totalPrice * 0.15).toStringAsFixed(2) : 15}',
               style: Theme.of(context).textTheme.labelLarge,
             ),
           ],
         ),
-        const SizedBox(
-          height: AppSizes.spaceBtwItems / 2,
-        ),
+        const SizedBox(height: AppSizes.sm),
 
-        /// Tax Fee
-
+        // Tax Fee
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -56,17 +53,14 @@ class BillingAmountSection extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              '\$6.0',
+              '\$${order?.totalPrice != null ? (order!.totalPrice * 0.05).toStringAsFixed(2) : 5}',
               style: Theme.of(context).textTheme.labelLarge,
             ),
           ],
         ),
-        const SizedBox(
-          height: AppSizes.spaceBtwItems / 2,
-        ),
+        const SizedBox(height: AppSizes.sm),
 
-        /// Order Total
-
+        // Order Total
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -75,7 +69,7 @@ class BillingAmountSection extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              '\$6.0',
+              '\$${order?.totalPrice ?? 100}',
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ],

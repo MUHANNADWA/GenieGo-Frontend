@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:geniego/common/styles/spacing_styles.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/products/cart/cart_item.dart';
-import 'package:geniego/features/authentication/screens/signup/success_screen.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:geniego/features/shop/screens/checkout/widgets/billing_amount_section.dart';
@@ -11,6 +11,7 @@ import 'package:geniego/main_screen.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/constants/sizes.dart';
+import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
 import 'package:get/get.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -44,35 +45,6 @@ class CheckoutScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              const SizedBox(height: AppSizes.spaceBtwSections),
-
-              // Billing Section
-              RoundedContainer(
-                padding: EdgeInsets.all(AppSizes.md),
-                showBorder: true,
-                backgroundColor: AppColors.darkLight,
-                child: Column(
-                  children: [
-                    // Pricing
-                    BillingAmountSection(),
-
-                    const SizedBox(height: AppSizes.spaceBtwItems),
-
-                    const Divider(),
-
-                    // Payment Methods
-                    BillingPaymentSection(),
-
-                    SizedBox(height: AppSizes.spaceBtwItems),
-
-                    const Divider(),
-
-                    // Address
-                    BillingAddressSection(),
-                  ],
-                ),
-              ),
             ],
           ),
         ),
@@ -80,17 +52,52 @@ class CheckoutScreen extends StatelessWidget {
 
       // Checkout Button
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(AppSizes.defaultSpace),
-        child: ElevatedButton(
-          onPressed: () => Get.to(
-            () => SuccessScreen(
-              image: AppImages.successfulPaymentIcon,
-              title: 'Payment Success!',
-              subTitle: 'Your Item Will Be Shipped Soon!',
-              onPressed: () => Get.offAll(() => const MainScreen()),
+        padding: AppSpacingStyles.paddingWithoutTop,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Billing Section
+            RoundedContainer(
+              padding: EdgeInsets.all(AppSizes.md),
+              showBorder: true,
+              backgroundColor: AppColors.darkLight,
+              child: Column(
+                children: [
+                  // Pricing
+                  BillingAmountSection(),
+
+                  const SizedBox(height: AppSizes.spaceBtwItems),
+
+                  const Divider(),
+
+                  // Payment Methods
+                  BillingPaymentSection(),
+
+                  SizedBox(height: AppSizes.spaceBtwItems),
+
+                  const Divider(),
+
+                  // Address
+                  BillingAddressSection(),
+                ],
+              ),
             ),
-          ),
-          child: Text('Checkout \$256.0'),
+
+            const SizedBox(height: AppSizes.spaceBtwItems),
+
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => AppDialogs.showSuccessDialog(
+                  'Payment Success!',
+                  'Your Item Will Be Shipped Soon!',
+                  AppImages.successfulPaymentIcon,
+                  () => Get.offAll(() => const MainScreen()),
+                ),
+                child: Text('Checkout \$256.0'),
+              ),
+            ),
+          ],
         ),
       ),
     );

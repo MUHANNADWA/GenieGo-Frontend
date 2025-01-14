@@ -11,32 +11,28 @@ class NoInternetConnentionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AppDefaultPage(
-          image: AppImages.noInternet,
-          title: AppTexts.noInternetTitle,
-          subTitle: AppTexts.noInternetSubTitle,
-          showActionButton: true,
-          actionButtonText: AppTexts.retryConnect,
-          onPressedActionButton: () async {
-            try {
-              AppDialogs.showLoadingDialog();
-              final isConnected = await NetworkManager.instance.isConnected();
-              if (!isConnected) {
-                AppLoaders.errorSnackBar(
-                  title: AppTexts.noInternetSnackBarTitle,
-                  message: AppTexts.noInternetSnackBarMessage,
-                );
-                return;
-              }
-              AppDialogs.hideDialog();
-            } finally {
-              AppDialogs.hideDialog();
-            }
-          },
-        ),
-      ],
+    return AppDefaultPage(
+      image: AppImages.noInternet,
+      title: AppTexts.noInternetTitle,
+      subTitle: AppTexts.noInternetSubTitle,
+      showActionButton: true,
+      actionButtonText: AppTexts.retryConnect,
+      onPressedActionButton: () async {
+        try {
+          AppDialogs.showLoadingDialog();
+          final isConnected = await NetworkManager.instance.isConnected();
+          if (!isConnected) {
+            AppLoaders.errorSnackBar(
+              title: AppTexts.noInternetSnackBarTitle,
+              message: AppTexts.noInternetSnackBarMessage,
+            );
+            return;
+          }
+          AppDialogs.hideDialog();
+        } finally {
+          AppDialogs.hideDialog();
+        }
+      },
     );
   }
 }
