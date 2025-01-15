@@ -95,7 +95,7 @@ class AppDialogs {
   }) {
     Get.defaultDialog(
       buttonColor: AppColors.primary,
-      confirmTextColor: AppColors.darkLightInvert,
+      confirmTextColor: AppColors.white,
       cancelTextColor: AppColors.darkLightInvert,
       title: confirmText,
       middleText: description,

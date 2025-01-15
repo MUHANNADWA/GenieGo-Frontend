@@ -49,7 +49,6 @@ class VerticalStoreCard extends StatelessWidget {
                           ? child
                           : CircularProgressIndicator(),
                   fit: BoxFit.cover,
-                  color: backgrongdColor ?? (AppColors.darkLightInvert),
                 ),
               ),
             ),

@@ -14,7 +14,9 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AddressScreen extends StatelessWidget {
-  const AddressScreen({super.key});
+  const AddressScreen({super.key, this.activateChangeAddress});
+
+  final bool? activateChangeAddress;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,9 @@ class AddressScreen extends StatelessWidget {
                             subTitle:
                                 'It looks like you haven’t added any addresses.')
                         : AddressesListview(
-                            addresses: controller.addresses.value),
+                            addresses: controller.addresses.value,
+                            activateChangeAddress: activateChangeAddress,
+                          ),
           ),
         ),
       ),

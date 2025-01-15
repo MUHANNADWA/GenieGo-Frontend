@@ -61,17 +61,37 @@ class CartScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: AppSpacingStyles.paddingWithoutTop,
         child: Obx(
-          () => ElevatedButton(
-            style: ButtonStyle(
-              side: WidgetStatePropertyAll(
-                BorderSide(color: Colors.transparent),
+          () => Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              // Clear
+              OutlinedButton(
+                onPressed: !controller.isLoading.value &&
+                        controller.cartItems.value.isNotEmpty
+                    ? () => controller.clearCart()
+                    : null,
+                child: Text('Clear Cart'),
               ),
-            ),
-            onPressed: controller.cartItems.value.isNotEmpty
-                ? () => Get.to(() =>
-                    CheckoutScreen(cartItems: controller.cartProducts.value))
-                : null,
-            child: Text('Checkout'),
+
+              SizedBox(width: AppSizes.spaceBtwItems),
+
+              // Checkout
+              Expanded(
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    side: WidgetStatePropertyAll(
+                      BorderSide(color: Colors.transparent),
+                    ),
+                  ),
+                  onPressed: !controller.isLoading.value &&
+                          controller.cartItems.value.isNotEmpty
+                      ? () => Get.to(() => CheckoutScreen(
+                          cartItems: controller.cartProducts.value))
+                      : null,
+                  child: Text('Checkout'),
+                ),
+              ),
+            ],
           ),
         ),
       ),

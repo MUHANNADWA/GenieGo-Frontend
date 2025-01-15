@@ -98,7 +98,8 @@ class AddStoreScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => controller.addStore(),
+                  onPressed: () => controller.addStore(
+                      storeImage: imageController.image.value),
                   child: Text(AppTexts.addStore),
                 ),
               ),

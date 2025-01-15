@@ -103,17 +103,21 @@ class AddProductScreen extends StatelessWidget {
                 validator: (value) => AppValidator.validateEmptyText(
                     AppTexts.arabicDescription, value),
               ),
+
               EditProfileMenu(
                 title: AppTexts.price,
                 icon: Iconsax.dollar_square,
                 controller: controller.price,
+                keyboardType: TextInputType.number,
                 validator: (value) =>
                     AppValidator.validateEmptyText(AppTexts.price, value),
               ),
+
               EditProfileMenu(
                 title: AppTexts.quantity,
                 icon: Iconsax.add_square,
                 controller: controller.quantity,
+                keyboardType: TextInputType.number,
                 validator: (value) =>
                     AppValidator.validateEmptyText(AppTexts.quantity, value),
               ),
@@ -123,7 +127,8 @@ class AddProductScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => controller.addProduct(),
+                  onPressed: () => controller.addProduct(
+                      productImage: imageController.image.value),
                   child: Text(AppTexts.addProduct),
                 ),
               ),

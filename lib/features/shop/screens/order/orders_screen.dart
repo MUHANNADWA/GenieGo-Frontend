@@ -42,7 +42,7 @@ class OrdersScreen extends StatelessWidget {
                             'There was an issue retrieving your Orders. Please refresh or check back in a few moments.')
                     : controller.orders.value.isEmpty
                         ? AppDefaultPage(
-                            image: AppImages.disconnected,
+                            image: AppImages.map,
                             title: 'Orders are Empty',
                             subTitle:
                                 'It looks like you haven’t added any Orders.')

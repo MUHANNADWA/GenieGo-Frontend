@@ -49,9 +49,10 @@ class EditProfileScreen extends StatelessWidget {
                                 fit: BoxFit.cover,
                               )
                             : AuthService.currentUser.image == AppImages.user
-                                ? Image.asset(AppImages.user)
+                                ? Image.asset(AppImages.user, fit: BoxFit.cover)
                                 : CachedNetworkImage(
-                                    imageUrl: AuthService.currentUser.image)),
+                                    imageUrl: AuthService.currentUser.image,
+                                    fit: BoxFit.cover)),
                       ),
                     ),
 
@@ -97,12 +98,14 @@ class EditProfileScreen extends StatelessWidget {
                 title: AppTexts.email,
                 icon: Iconsax.direct,
                 controller: controller.email,
+                keyboardType: TextInputType.emailAddress,
               ),
 
               EditProfileMenu(
                 title: AppTexts.phoneNo,
                 icon: Iconsax.call,
                 controller: controller.phone,
+                keyboardType: TextInputType.number,
               ),
 
               EditProfileMenu(

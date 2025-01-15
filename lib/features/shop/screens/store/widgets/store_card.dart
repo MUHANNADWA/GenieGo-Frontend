@@ -4,7 +4,6 @@ import 'package:geniego/common/widgets/custom_shapes/containers/rounded_containe
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
 import 'package:geniego/features/shop/models/store_model.dart';
 import 'package:geniego/features/shop/screens/store/widgets/store_details_screen.dart';
-import 'package:geniego/utils/constants/colors.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 import 'package:get/get.dart';
 
@@ -29,8 +28,7 @@ class StoreCard extends StatelessWidget {
               child: AppCircularImage(
                 backgroundColor: Colors.transparent,
                 image: store.image,
-                overlayColor: AppColors.darkLightInvert,
-                boxFit: BoxFit.contain,
+                boxFit: BoxFit.fitWidth,
               ),
             ),
 

@@ -4,9 +4,11 @@ import 'package:geniego/features/shop/screens/address/widgets/address_box.dart';
 import 'package:geniego/utils/constants/sizes.dart';
 
 class AddressesListview extends StatelessWidget {
-  const AddressesListview({super.key, required this.addresses});
+  const AddressesListview(
+      {super.key, required this.addresses, this.activateChangeAddress});
 
   final List<Site> addresses;
+  final bool? activateChangeAddress;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,10 @@ class AddressesListview extends StatelessWidget {
       shrinkWrap: true,
       itemCount: addresses.length,
       separatorBuilder: (_, __) => const SizedBox(height: AppSizes.sm),
-      itemBuilder: (_, index) => AddressBox(address: addresses[index]),
+      itemBuilder: (_, index) => AddressBox(
+        address: addresses[index],
+        activateChangeAddress: activateChangeAddress,
+      ),
     );
   }
 }

@@ -65,20 +65,24 @@ class BottomAddToCart extends StatelessWidget {
               ),
             ],
           ),
-          Obx(
-            () => ElevatedButton(
+          Obx(() {
+            // Safely retrieve the quantity for the product.
+            final productQuantity = controller.getQuantity(product.id);
+
+            // Determine if the button should be enabled.
+            final isButtonEnabled = product.stock > 0 && productQuantity > 0;
+
+            return ElevatedButton(
               onPressed:
-                  product.stock > 0 && controller.getQuantity(product.id) > 0
-                      ? () => controller.addToCart(product)
-                      : null,
+                  isButtonEnabled ? () => controller.addToCart(product) : null,
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.all(AppSizes.md),
                 backgroundColor: AppColors.black,
                 side: const BorderSide(color: AppColors.black),
               ),
               child: const Text('Add To Cart'),
-            ),
-          ),
+            );
+          }),
         ],
       ),
     );

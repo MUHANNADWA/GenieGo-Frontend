@@ -13,7 +13,7 @@ class AppShimmer extends StatelessWidget {
     return Shimmer.fromColors(
       baseColor: AppColors.darkLight,
       highlightColor:
-          AppHelper.isDarkMode ? AppColors.darkerGrey : AppColors.darkGrey,
+          AppHelper.isDarkMode ? AppColors.darkerGrey : AppColors.grey,
       child: child,
     );
   }

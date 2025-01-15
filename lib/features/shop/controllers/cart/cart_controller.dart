@@ -1,7 +1,11 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
+import 'package:geniego/features/shop/models/site_model.dart';
+import 'package:geniego/features/shop/screens/address/addresses_screen.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
+import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -11,12 +15,14 @@ class CartController extends GetxController {
 
   final RxMap<int, RxInt> cartItems = <int, RxInt>{}.obs;
   final RxMap<Product, RxInt> cartProducts = <Product, RxInt>{}.obs;
-  final RxBool isLoading = true.obs;
+  final RxBool isLoading = false.obs;
   final RxBool hasError = false.obs;
   final RxString errorMessage = ''.obs;
 
   Future<void> initCart() async {
-    await fetchCartProducts();
+    isLoading.firstRebuild && isLoading.value != true
+        ? await fetchCartProducts()
+        : DoNothingAction();
   }
 
   Future<void> fetchCartProducts() async {
@@ -26,7 +32,7 @@ class CartController extends GetxController {
       isLoading.value = true;
       hasError.value = false;
 
-      final List<int> items = GetStorage().read('cartItems') ?? [];
+      final List items = GetStorage().read('cartItems') ?? [];
       final List quantities = GetStorage().read('cartQuantites') ?? [];
 
       List<Product> products = [];
@@ -35,8 +41,10 @@ class CartController extends GetxController {
         products.add(Product.fromJson(response['data']));
       }
 
+      final itemss = items.map((m) => int.parse(m.toString()));
+
       cartItems.value = Map.fromIterables(
-          items, quantities.map((quantity) => RxInt(quantity)));
+          itemss, quantities.map((quantity) => RxInt(quantity)));
 
       cartProducts.value = Map.fromIterables(
           products, quantities.map((quantity) => RxInt(quantity)));
@@ -58,7 +66,7 @@ class CartController extends GetxController {
     if (contains(product.id) && getQuantity(product.id) < product.stock) {
       log('🔰 increasing product with the id: ${product.id} ..');
       cartItems[product.id]!.value++;
-    } else if (!contains(product.id)) {
+    } else if (!contains(product.id) && product.stock > 0) {
       cartItems[product.id] = 1.obs;
     }
   }
@@ -109,6 +117,17 @@ class CartController extends GetxController {
     await GetStorage().write('cartQuantites', quantities);
   }
 
+  Future<void> clearCart() async {
+    cartItems.clear();
+    cartProducts.clear();
+
+    cartItems.value = {};
+    cartProducts.value = {};
+
+    await GetStorage().remove('cartItems');
+    await GetStorage().remove('cartQuantites');
+  }
+
   double getTotalPrice() {
     double price = 0.0;
     for (var i = 0; i < cartProducts.length; i++) {
@@ -117,5 +136,10 @@ class CartController extends GetxController {
       price += productPrice * productQuantity;
     }
     return price;
+  }
+
+  Rx<Site> activeAddress = AppHelper.exampleSite.obs;
+  changeAddress() {
+    Get.to(() => AddressScreen(activateChangeAddress: true));
   }
 }

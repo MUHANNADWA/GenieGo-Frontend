@@ -11,11 +11,13 @@ class EditProfileMenu extends StatelessWidget {
     this.showToggle = false,
     this.validator,
     this.controller,
+    this.keyboardType = TextInputType.visiblePassword,
   });
 
   final String title;
   final bool showToggle;
   final IconData icon;
+  final TextInputType keyboardType;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
 
@@ -40,6 +42,8 @@ class EditProfileMenu extends StatelessWidget {
             Expanded(
               flex: 5,
               child: TextFormField(
+                keyboardType: keyboardType,
+                obscuringCharacter: '※',
                 obscureText:
                     showToggle ? controller.isPasswordObscured.value : false,
                 controller: this.controller,

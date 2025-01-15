@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
+import 'package:geniego/features/shop/controllers/orders/orders_controller.dart';
 import 'package:geniego/features/shop/models/order_model.dart';
 import 'package:geniego/features/shop/screens/order/order_details_screen.dart';
 import 'package:geniego/utils/constants/colors.dart';
@@ -15,6 +16,8 @@ class OrderBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(OredrsController());
+
     return RoundedContainer(
       padding: const EdgeInsets.all(AppSizes.md),
       showBorder: true,
@@ -69,7 +72,7 @@ class OrderBox extends StatelessWidget {
                     const Icon(Iconsax.money),
                     const SizedBox(width: AppSizes.spaceBtwItems / 2),
 
-                    /// Status & Date
+                    // Status & Date
                     Expanded(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -87,11 +90,11 @@ class OrderBox extends StatelessWidget {
               Expanded(
                 child: Row(
                   children: [
-                    /// Icon
+                    // Icon
                     const Icon(Iconsax.tag),
                     const SizedBox(width: AppSizes.spaceBtwItems / 2),
 
-                    /// Status & Date
+                    // Status & Date
                     Expanded(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -106,7 +109,11 @@ class OrderBox extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
+              IconButton(
+                onPressed: () => controller.deleteOrderById(order.id),
+                icon: const Icon(Iconsax.trash),
+              ),
             ],
           ),
         ],

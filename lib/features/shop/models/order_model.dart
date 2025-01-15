@@ -1,8 +1,11 @@
+import 'package:geniego/features/shop/models/site_model.dart';
+
 class Order {
   final int id;
   final double totalPrice;
   final String status;
   final List products;
+  final Site site;
   final String createdAt;
 
   Order({
@@ -10,6 +13,7 @@ class Order {
     required this.totalPrice,
     required this.status,
     required this.products,
+    required this.site,
     required this.createdAt,
   });
 
@@ -19,7 +23,8 @@ class Order {
       'totalPrice': totalPrice,
       'status': status,
       'products': products,
-      'createdAt': createdAt,
+      'site': site,
+      'created_at': createdAt,
     };
   }
 
@@ -29,11 +34,12 @@ class Order {
       totalPrice: double.parse(jsonData['total_price']),
       status: jsonData['status'],
       products: jsonData['products'],
+      site: Site.fromJson(jsonData['site']),
       createdAt: jsonData['created_at'],
     );
   }
 
   @override
   String toString() =>
-      'Order(id: $id, totalPrice: $totalPrice, status: $status, products: $products, products: $createdAt)';
+      'Order(id: $id, totalPrice: $totalPrice, status: $status, products: $products, createdAt: $createdAt, site: $site)';
 }

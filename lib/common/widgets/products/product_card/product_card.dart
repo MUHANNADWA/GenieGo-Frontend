@@ -5,6 +5,7 @@ import 'package:geniego/common/widgets/custom_shapes/containers/rounded_containe
 import 'package:geniego/common/widgets/products/product_card/favourite_button.dart';
 import 'package:geniego/common/widgets/texts/product_price_text.dart';
 import 'package:geniego/common/widgets/texts/product_title_text.dart';
+import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/features/shop/screens/product/product_details_screen.dart';
 import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
 import 'package:geniego/features/shop/models/product_model.dart';
@@ -115,13 +116,24 @@ class ProductCard extends StatelessWidget {
                             width: AppSizes.iconLg * 1.2,
                             height: AppSizes.iconLg * 1.2,
                             child: Center(
-                              child: Obx(() => CartController.instance
-                                          .getQuantity(product.id) ==
-                                      0
-                                  ? Icon(Iconsax.add, color: AppColors.white)
-                                  : Text(CartController.instance
-                                      .getQuantity(product.id)
-                                      .toString())),
+                              child: AuthService.currentUser.role == 'Owner'
+                                  ? Text(
+                                      product.id.toString(),
+                                      style: TextStyle(color: AppColors.white),
+                                    )
+                                  : Obx(
+                                      () => CartController.instance
+                                                  .getQuantity(product.id) ==
+                                              0
+                                          ? Icon(Iconsax.add,
+                                              color: AppColors.white)
+                                          : Text(
+                                              CartController.instance
+                                                  .getQuantity(product.id)
+                                                  .toString(),
+                                              style: TextStyle(
+                                                  color: AppColors.white)),
+                                    ),
                             ),
                           ),
                         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:geniego/features/shop/controllers/addresses/addresses_controller.dart';
+import 'package:geniego/features/shop/controllers/cart/cart_controller.dart';
 import 'package:geniego/features/shop/models/site_model.dart';
 import 'package:geniego/features/shop/screens/address/widgets/edit_address_screen.dart';
 import 'package:geniego/utils/constants/colors.dart';
@@ -10,16 +11,24 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class AddressBox extends StatelessWidget {
-  const AddressBox({super.key, required this.address});
+  const AddressBox(
+      {super.key, required this.address, this.activateChangeAddress});
 
   final Site address;
+  final bool? activateChangeAddress;
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(AddressesController());
+    final cartController = Get.put(CartController());
 
     return GestureDetector(
-      onTap: () => controller.activeAddress = address,
+      onTap: activateChangeAddress == true
+          ? () {
+              cartController.activeAddress.value = address;
+              Get.back();
+            }
+          : null,
       child: RoundedContainer(
         padding: const EdgeInsets.all(AppSizes.md),
         width: double.infinity,

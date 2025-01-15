@@ -1,9 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:geniego/features/shop/models/site_model.dart';
-import 'package:geniego/features/shop/screens/address/addresses_screen.dart';
 import 'package:geniego/features/shop/services/shop_service.dart';
-import 'package:geniego/utils/helpers/helper_functions.dart';
 import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 
@@ -128,10 +126,5 @@ class AddressesController extends GetxController {
     } finally {
       isLoading.value = false;
     }
-  }
-
-  Site activeAddress = AppHelper.exampleSite;
-  changeAddress() {
-    Get.to(() => AddressScreen(), fullscreenDialog: true);
   }
 }

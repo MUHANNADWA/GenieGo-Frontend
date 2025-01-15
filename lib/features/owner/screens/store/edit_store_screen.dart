@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
@@ -42,12 +43,18 @@ class EditStoreScreen extends StatelessWidget {
                         height: 80,
                         width: 80,
                         child: Obx(
-                          () => imageController.image.value == null
-                              ? Image.asset(AppImages.appLogo)
-                              : Image.file(
+                          () => imageController.image.value != null
+                              ? Image.file(
                                   imageController.image.value!,
                                   fit: BoxFit.cover,
-                                ),
+                                )
+                              : store.image != AppImages.appLogo
+                                  ? CachedNetworkImage(
+                                      imageUrl: store.image, fit: BoxFit.cover)
+                                  : Image.asset(
+                                      AppImages.productImage,
+                                      fit: BoxFit.cover,
+                                    ),
                         ),
                       ),
                     ),
@@ -100,7 +107,8 @@ class EditStoreScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => controller.updateStore(store.id),
+                  onPressed: () => controller.updateStore(store.id,
+                      storeImage: imageController.image.value),
                   child: Text(AppTexts.saveStoreInfo),
                 ),
               ),

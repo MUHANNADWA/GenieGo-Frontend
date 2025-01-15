@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/icons/app_circular_icons.dart';
+import 'package:geniego/features/authentication/services/auth_service.dart';
 import 'package:geniego/features/shop/controllers/wishlist/wishlist_controller.dart';
 import 'package:geniego/utils/constants/colors.dart';
 import 'package:get/get.dart';
@@ -14,13 +15,16 @@ class FavouriteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(WishlistController());
 
-    return Obx(
-      () => CircularIcon(
-        icon:
-            controller.isFavourite(productId) ? Iconsax.heart5 : Iconsax.heart,
-        color: controller.isFavourite(productId) ? AppColors.error : null,
-        onPressed: () => controller.toggleFavouriteProduct(productId),
-      ),
-    );
+    return AuthService.currentUser.role != 'Owner'
+        ? Obx(
+            () => CircularIcon(
+              icon: controller.isFavourite(productId)
+                  ? Iconsax.heart5
+                  : Iconsax.heart,
+              color: controller.isFavourite(productId) ? AppColors.error : null,
+              onPressed: () => controller.toggleFavouriteProduct(productId),
+            ),
+          )
+        : SizedBox();
   }
 }

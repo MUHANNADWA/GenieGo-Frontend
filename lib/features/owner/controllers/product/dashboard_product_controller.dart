@@ -76,8 +76,8 @@ class DashboardProductController extends GetxController {
       );
 
       final data = {
-        'price': price.text.trim(),
-        'stock': quantity.text.trim(),
+        'price': double.parse(price.text.trim()),
+        'stock': int.parse(quantity.text.trim()),
         'translations': {
           'en': {
             'name': englishName.text.trim(),
@@ -136,8 +136,8 @@ class DashboardProductController extends GetxController {
       );
 
       final data = {
-        'price': editPrice.text.trim(),
-        'stock': editQuantity.text.trim(),
+        'price': double.parse(editPrice.text.trim()),
+        'stock': int.parse(editQuantity.text.trim()),
         'translations': {
           'en': {
             'name': editEnglishName.text.trim(),

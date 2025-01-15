@@ -5,6 +5,7 @@ import 'package:geniego/features/shop/services/shop_service.dart';
 import 'package:geniego/main_screen.dart';
 import 'package:geniego/utils/constants/image_strings.dart';
 import 'package:geniego/utils/popups_loaders/app_dialogs.dart';
+import 'package:geniego/utils/popups_loaders/loaders.dart';
 import 'package:get/get.dart';
 
 class OredrsController extends GetxController {
@@ -67,6 +68,8 @@ class OredrsController extends GetxController {
 
       await ShopService.addOrder(orderData);
 
+      log('Order has been added Successfully ✅ response = ${orders.value.map((product) => product.toJson())}');
+
       AppDialogs.showSuccessDialog(
         'Your Order has been added!',
         'Your Item Will Be Shipped Soon, Do Not Forget To Pay For The Delivery Man',
@@ -107,10 +110,25 @@ class OredrsController extends GetxController {
       isLoading.value = true;
       hasError.value = false;
 
-      await ShopService.deleteOrderById(id);
+      AppDialogs.showConfirmationDialog(
+        title: 'Confirm Deletion',
+        description:
+            'Are you sure you want to delete this order? This action cannot be undone.',
+        confirmText: 'Delete',
+        onConfirm: () async {
+          Get.back();
+          await ShopService.deleteOrderById(id);
+          AppLoaders.errorSnackBar(
+              title: 'Deleted!',
+              message: 'The Order Has been Deleted Successfully');
+        },
+      );
 
       orders.refresh();
     } catch (e) {
+      await AppDialogs.hideDialog();
+      AppLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+
       hasError.value = true;
       errorMessage.value = e.toString();
     } finally {

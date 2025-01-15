@@ -72,7 +72,7 @@ class BillingAmountSection extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
-              '\$${pTotalPrice ?? 100}',
+              '\$${pTotalPrice?.toStringAsFixed(2) ?? 100}',
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ],

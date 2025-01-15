@@ -71,7 +71,7 @@ class OrderDetailsScreen extends StatelessWidget {
                                     .elementAt(index),
                                 quantity: controller
                                     .orderItems.value[order.id]!.values
-                                    .elementAt(2),
+                                    .elementAt(index),
                                 showAddRemoveButtons: false,
                               ),
                             ),
@@ -104,7 +104,8 @@ class OrderDetailsScreen extends StatelessWidget {
               const Divider(),
 
               // Address
-              BillingAddressSection(),
+              BillingAddressSection(
+                  address: order.site, showChangeButton: false),
             ],
           ),
         ),

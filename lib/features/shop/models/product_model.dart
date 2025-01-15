@@ -37,13 +37,12 @@ class Product {
   factory Product.fromJson(jsonData) {
     return Product(
       id: jsonData['id'],
-      price: double.parse(jsonData['price']),
+      price: double.parse(jsonData['price'].toString()),
       name: jsonData['translations'][AppHelper.currentLang]['name'] ?? '',
       description:
           jsonData['translations'][AppHelper.currentLang]['description'] ?? '',
       image: jsonData['icon_url'] ?? AppImages.productImage,
-      // stock: int.parse(jsonData['stock']),
-      stock: jsonData['stock'],
+      stock: int.parse(jsonData['stock'].toString()),
       tags: jsonData['tags'],
       storeId: jsonData['store_id'],
       arabicName: jsonData['translations']?['ar']?['name'] ??

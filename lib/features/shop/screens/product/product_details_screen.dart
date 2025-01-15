@@ -58,7 +58,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     children: [
                       TitleText(title: AppTexts.status),
                       const SizedBox(width: AppSizes.spaceBtwItems),
-                      Text('${AppTexts.stock} ${product.stock}',
+                      Text('${product.stock}  ${AppTexts.stock}',
                           style: Theme.of(context).textTheme.titleMedium),
                     ],
                   ),
@@ -122,7 +122,9 @@ class ProductDetailsScreen extends StatelessWidget {
                               ),
                               child: RoundedContainer(
                                 padding: EdgeInsets.all(AppSizes.sm),
-                                backgroundColor: AppColors.darkerGrey,
+                                backgroundColor: AppHelper.isDarkMode
+                                    ? AppColors.darkerGrey
+                                    : AppColors.grey,
                                 child: Text(product.tags[index]['name']),
                               ),
                             ),

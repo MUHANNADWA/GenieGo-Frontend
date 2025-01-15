@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:geniego/common/widgets/app_bar/app_app_bar.dart';
 import 'package:geniego/common/widgets/custom_shapes/containers/rounded_container.dart';
@@ -44,12 +45,19 @@ class EditProductScreen extends StatelessWidget {
                         height: 80,
                         width: 80,
                         child: Obx(
-                          () => imageController.image.value == null
-                              ? Image.asset(AppImages.productImage)
-                              : Image.file(
+                          () => imageController.image.value != null
+                              ? Image.file(
                                   imageController.image.value!,
                                   fit: BoxFit.cover,
-                                ),
+                                )
+                              : product.image != AppImages.productImage
+                                  ? CachedNetworkImage(
+                                      imageUrl: product.image,
+                                      fit: BoxFit.cover)
+                                  : Image.asset(
+                                      AppImages.productImage,
+                                      fit: BoxFit.cover,
+                                    ),
                         ),
                       ),
                     ),
@@ -102,12 +110,14 @@ class EditProductScreen extends StatelessWidget {
                 title: AppTexts.price,
                 icon: Iconsax.dollar_circle,
                 controller: controller.editPrice,
+                keyboardType: TextInputType.number,
               ),
 
               EditProfileMenu(
                 title: AppTexts.quantity,
                 icon: Iconsax.add_square,
                 controller: controller.editQuantity,
+                keyboardType: TextInputType.number,
               ),
 
               const SizedBox(height: AppSizes.spaceBtwSections),
