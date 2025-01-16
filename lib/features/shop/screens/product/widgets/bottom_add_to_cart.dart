@@ -66,10 +66,7 @@ class BottomAddToCart extends StatelessWidget {
             ],
           ),
           Obx(() {
-            // Safely retrieve the quantity for the product.
             final productQuantity = controller.getQuantity(product.id);
-
-            // Determine if the button should be enabled.
             final isButtonEnabled = product.stock > 0 && productQuantity > 0;
 
             return ElevatedButton(

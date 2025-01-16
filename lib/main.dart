@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:geniego/utils/background_services/background_service.dart';
+// import 'package:geniego/utils/background_services/background_service.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:geniego/app.dart';
 
@@ -9,7 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Background Service
-  await initService();
+  // await initService();
 
   // Initialize Environment Variables
   await dotenv.load();

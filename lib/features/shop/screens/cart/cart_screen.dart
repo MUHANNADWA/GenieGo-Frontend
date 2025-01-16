@@ -18,7 +18,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = CartController.instance;
-    controller.fetchCartProducts();
+    // controller.fetchCartProducts();
 
     return Scaffold(
       appBar: AppAppBar(
@@ -28,34 +28,42 @@ class CartScreen extends StatelessWidget {
       ),
       body: RefreshIndicator(
         onRefresh: () => controller.fetchCartProducts(),
-        child: Padding(
-          padding: EdgeInsets.all(AppSizes.defaultSpace),
-          child: Obx(
-            () => ListView.separated(
-              shrinkWrap: true,
-              itemCount: controller.cartItems.value.length,
-              separatorBuilder: (_, __) =>
-                  const Divider(height: AppSizes.spaceBtwItems),
-              itemBuilder: (_, index) => controller.isLoading.value
-                  ? AppShimmer(
-                      child: CartItem(product: AppHelper.exampleProduct))
-                  : controller.hasError.value
-                      ? AppDefaultPage(
-                          image: AppImages.disconnected,
-                          title: 'Oops! Something Went Wrong',
-                          subTitle:
-                              'We encountered an error while fetching the cart items.')
-                      : controller.cartItems.value.isEmpty
-                          ? AppDefaultPage(
-                              image: AppImages.disconnected,
-                              title: 'There Are No items in cart',
-                              subTitle:
-                                  'It looks like you haven’t added any items to the cart yet.')
-                          : CartItem(
-                              product: controller.cartProducts.keys
-                                  .elementAt(index)),
-            ),
-          ),
+        child: Obx(
+          () {
+            if (controller.isLoading.value) {
+              return ListView.builder(
+                padding: EdgeInsets.all(AppSizes.defaultSpace),
+                itemCount: 5,
+                itemBuilder: (_, __) => AppShimmer(
+                  child: CartItem(product: AppHelper.exampleProduct),
+                ),
+              );
+            } else if (controller.hasError.value) {
+              return AppDefaultPage(
+                image: AppImages.disconnected,
+                title: 'Oops! Something Went Wrong',
+                subTitle:
+                    'We encountered an error while fetching the cart items.',
+              );
+            } else if (controller.cartItems.value.isEmpty) {
+              return AppDefaultPage(
+                image: AppImages.lastTouches,
+                title: 'Your Cart is Empty',
+                subTitle: 'Add some items to your cart to get started!',
+              );
+            } else {
+              return ListView.separated(
+                padding: EdgeInsets.all(AppSizes.defaultSpace),
+                itemCount: controller.cartItems.length,
+                separatorBuilder: (_, __) =>
+                    const Divider(height: AppSizes.spaceBtwItems),
+                itemBuilder: (_, index) {
+                  final product = controller.cartProducts.keys.elementAt(index);
+                  return CartItem(product: product);
+                },
+              );
+            }
+          },
         ),
       ),
       bottomNavigationBar: Padding(
